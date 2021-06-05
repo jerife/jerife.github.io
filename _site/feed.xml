@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    
+    <title>Jerife</title>
+    
+    
+    <description>This website is a virtual proof that I'm awesome</description>
+    
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>DenseNet(Dense Network) 이해하기</title>
+        <description>
+          Dense Block - 
+          DenseNet이란? DenseNet은 저번 글에서 설명한 ResNet과 유사하게 입력값과 출력값을 더하는 형태의 모델이지만, 명백하게 다릅니다! ￼ 위 사진은 DenseNet모델 구조이며, 이미지가 들어가고 이후 Dense Block이라는 구조를 지나 convolution layer 와 pooling layer를 거쳐가는 것을 알 수 있습니다. 여기서 convolution layer는 1x1 convolution을 사용합니다. ( 1x1 convolution은 적은 연산량으로 채널을 압축시키거나, 증가시킬...
+        </description>
+        <pubDate>Wed, 12 May 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-05-12-densenet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-05-12-densenet/</guid>
+      </item>
+    
+      <item>
+        <title>ResNet(Residual Network) 이해하기</title>
+        <description>
+          Residual Block과 Skip-connection - 
+          ResNet이란? Residual Network를 명하는 단어로써, CNN모델 중 하나입니다. 앞으로 다양한 CNN 모델을 접할 예정인데, 그에 앞서 가장 기본이 되는 ResNet의 원리를 짚고 넘어가야합니다. 일반 CNN모델은 층이 깊어질수록 ERROR%가 더 큼을 알 수 있음 우리가 이해하는 CNN모델은 Convolution layer와 Pooling layer의 층을 깊게 쌓아 학습시킴으로서, 컴퓨터가 특징을 알아서 학습하는 모델입니다. CNN모델은...
+        </description>
+        <pubDate>Tue, 11 May 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-05-11-resnet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-05-11-resnet/</guid>
+      </item>
+    
+      <item>
+        <title>CNN(Convolution Nerual Network) 이해하기</title>
+        <description>
+          CNN 합성곱 신경망 이해하기 - 
+          CNN이란? CNN은 Convolution Nerual Network의 약자로서 입력값(이미지 or 텍스트)과 사용자가 지정한 필터(fitter / kernel)와 컨볼루션을 통해 특징을 추출해내는 기법이며, 우리말로 “합성곱 신경망”라고도 합니다. CNN은 주로 이미지처리 모델링에서 많이 이용되며, 이번 글에서도 이미지를 처리한다는 상황을 가정하고 글을 작성합니다. 위 사진은 CNN의 구조를 보여주며, 해당 사진 속 Feature Extraction 해당하는 Convolution layer(층)과...
+        </description>
+        <pubDate>Mon, 10 May 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-05-10-cnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-05-10-cnn/</guid>
+      </item>
+    
+      <item>
+        <title>To start blog with Github</title>
+        <description>
+          블로그 시작 - 
+          블로그 시작을 알리며, 이 블로그는 인공지능 관련 지식 공유와 기록을 목적으로 한 블로그로써, 인공지능 모델 및 기법등에 대해 리뷰하고 학습하고자하는 블로그입니다. 아직 깊은 지식이 있진 않지만, 꾸준한 공부를 통해 블로그의 성장과 동시에 넓혀가는 지식들로 방문해주시는 분들께 도움을 드릴 수 있는 블로그가 될것입니다🌈 소개 안녕하세요. 저는 인공지능을 공부하는 대학생입니다 :) 전공은...
+        </description>
+        <pubDate>Tue, 27 Apr 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-04-27-first/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-04-27-first/</guid>
+      </item>
+    
+      <item>
+        <title>Sample blog post</title>
+        <description>
+          Each post also has a subtitle - 
+          This is a demo post to show you how to write blog posts with markdown. I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc. Here is some bold text Here is a secondary...
+        </description>
+        <pubDate>Fri, 28 Feb 2020 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2020-02-28-test-markdown/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-02-28-test-markdown/</guid>
+      </item>
+    
+  </channel>
+</rss>

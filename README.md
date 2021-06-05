@@ -7,10 +7,10 @@
 It's a blog that studies and records artificial intelligence models. <br/>
 Write a big article about "Computer Vision" and "Natural Language Processing".
 
-#### 1) Computer Vision
-* CNN(Convolution Nerual Network) &nasp; &nasp; ➡️  [link](https://jerife.github.io/2021-05-10-cnn/)
-* ResNet(Residual Network) &nasp; &nasp; ➡️  [link](https://jerife.github.io/2021-05-11-resnet/)
-* DenseNet(Dense Network) &nasp; &nasp; ➡️  [link](https://jerife.github.io/2021-05-12-densenet/)
+#### 1) Computer Vision 
+* CNN(Convolution Nerual Network) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-05-10-cnn/)
+* ResNet(Residual Network) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-05-11-resnet/)
+* DenseNet(Dense Network) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-05-12-densenet/)
 
 #### 2) Natural Language Processing
-* RNN(Recurrent Neural Network) &nasp; &nasp; ➡️ [link](https://jerife.github.io/2021-06-05-rnn/)
+* RNN(Recurrent Neural Network) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-05-rnn/)

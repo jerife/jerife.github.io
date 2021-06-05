@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>RNN(Recurrent Neural Network) 이해하기</title>
+        <description>
+          순환 신경망의 기초 모델 RNN - 
+          RNN이란? Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. RNN은 주로 언어 데이터나 시계열 데이터 처리에 주로 사용되는 모델이며, 데이터를 순환시킴으로써 정보를 공유할 수 있는 모델입니다. 정보를 순환할 수 있는 기술들은 LSTM,GRU등 다양하며, 그중 가장 기초가 되는 RNN모델을 다뤄보겠습니다. (Xt : 입력) / (A : RNN층) / (ht : 출력) 위...
+        </description>
+        <pubDate>Sat, 05 Jun 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-06-05-rnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-05-rnn/</guid>
+      </item>
+    
+      <item>
         <title>DenseNet(Dense Network) 이해하기</title>
         <description>
           Dense Block - 

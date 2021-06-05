@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>RNN(Recurrent Neural Network) 이해하기</title>
+
+  
+  <meta name="author" content="Jerife">
+  
+
+  <meta name="description" content="순환 신경망의 기초 모델 RNN">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Jerife">
+  <meta property="og:title" content="RNN(Recurrent Neural Network) 이해하기">
+  <meta property="og:description" content="순환 신경망의 기초 모델 RNN">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2021-06-05T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2021-06-05-rnn/">
+  <link rel="canonical" href="http://localhost:4000/2021-06-05-rnn/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="RNN(Recurrent Neural Network) 이해하기">
+  <meta property="twitter:description" content="순환 신경망의 기초 모델 RNN">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/log.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/log.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/log.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/log.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/log.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/log.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/log.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/log.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/log.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/log.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/log.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/log.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/log.ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/log.ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Jerife</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://jerife.github.io">Home</a>
+          </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>RNN(Recurrent Neural Network) 이해하기</h1>
+          
+            
+              <h2 class="post-subheading">순환 신경망의 기초 모델 RNN</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on June 5, 2021</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h2 id="rnn이란">RNN이란?</h2>
+<p>Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. 
+RNN은 주로 언어 데이터나 시계열 데이터 처리에 주로 사용되는 모델이며,  데이터를 순환시킴으로써 정보를 공유할 수 있는 모델입니다.
+정보를 순환할 수 있는 기술들은 LSTM,GRU등 다양하며, 그중 가장 기초가 되는 RNN모델을 다뤄보겠습니다. <br /></p>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/120885276-0b429500-c623-11eb-9a2b-6130d4b60ae9.png" alt="ds" class="mx-auto d-block" /></p>
+<blockquote>
+  <p>(Xt : 입력) / (A : RNN층) / (ht : 출력)</p>
+</blockquote>
+
+<p>위 사진은 RNN의 가장 기초가 되는 사진입니다. 
+사진을 입력값 Xt가 A라는 층으로 들어가 ht라는 출력값을 구하는 동시에 A라는 층은 또 다시 A라는 층에 들어갑니다.
+우리가 집중해야할 부분은 A에서 나온 결과가 또 다시 A라는 층에 들어가는 것입니다.<br />
+그렇다면 A층에서 나온 A와 ht는 다른 값인가? 라는 생각을 하실수도 있지만, 이는 같은 값임을 분명히 말하겠습니다. 즉 출력값으로 나온 ht의 값이 또 다시 A층에 들어간다고 이해해도 무방합니다. <br />
+입력값으로 “i am a boy”과 같은 문장이 들어간다 가정하고, 입력과정을 단계별로 설명해보겠습니다.</p>
+
+<ul>
+  <li>STEP 1) 첫번째 입력값(“i”)이 A라는 층에 들어간다.</li>
+  <li>STEP 2) A층을 통해 결과값(h0)이 나온다.</li>
+  <li>STEP 3) 두번째 입력값(“am”)과 첫번째 결과값(h0)이 A라는 층에 들어간다.</li>
+  <li>STEP 4) A층을 통해 결과값(h1)이 나온다.</li>
+  <li>STEP 5) 세번째 입력값(“a”)과 두번째 결과값(h1)이 A라는 층에 들어간다.</li>
+  <li>STEP 6) A층을 통해 결과값(h2)이 나온다.</li>
+  <li>STEP 7) 네번째 입력값(“boy”)과 세번째결과값(h2)이 A라는 층에 들어간다.</li>
+  <li>STEP 8) A층을 통해 결과값(h3)이 나온다.</li>
+</ul>
+
+<p>위 내용처럼 RNN의 기본적인 메커니즘은 현재 입력값과 전 단계 결과 RNN층에 들어가서 현재 단계 결과를 출력하고, 이 현재 단계 결과는 또 다음단계 입력값과 함꼐 RNN층에 들어가고 결과를 출력합니다. <br /><br />
+<img src="https://user-images.githubusercontent.com/68190553/120886482-2e704300-c629-11eb-82ec-0b5b9064e2b9.png" alt="1d" class="mx-auto d-block" /> <br /></p>
+
+<p>RNN모델 그림을 풀어 해석하면 위와 같은 그림입니다. 사진속의 (X0 : “i”) / (X1 : “am”) / … 등으로 이해할 수 있겠죠? 그럼 A층은 어떻게 생겼길래 이런 구조를 내보내는 것일까요?</p>
+
+<h3 id="rnn-structure">RNN Structure</h3>
+<p>지금부터는 RNN 구조를 파헤쳐보겠습니다. <br /> <br />
+<img src="https://user-images.githubusercontent.com/68190553/120886682-13ea9980-c62a-11eb-86d8-b4de6468cfbd.jpg" alt="inside_rnn" class="mx-auto d-block" /> <br />
+이 사진은 A에 해당하는 부분의 구조입니다. 왼쪽에서 들어오는 화살표는 ht-1(전단계의 결과)이고, 밑에서 올라는 화살표는 입력값(Xt)입니다. <br />
+이 두값을 행렬 곱한 후, 하이퍼볼릭탄젠트(tanh)에 값을 넣습니다. 이 결과값을 ht라 부르고 입력값이 끝날때 까지 순환합니다.
+<strong>ht = tanh( ht-1 * Wh + Xt * Wx + b )</strong></p>
+
+<h3 id="backpropagation-of-rnn">Backpropagation of RNN</h3>
+<p>RNN은 데이터를 처리하는 과정에서 하이퍼볼릭탄젠트(tanh)와 행렬 곱을 사용해 연산을 합니다. 
+먼저 하이퍼볼릭탄젠트(tanh)을 미분하는 과정을 살펴보겠습니다.
+(Tanh 미분 사진){: .mx-auto.d-block :} <br />
+이를 미분한 값은 증가하지 않는다는 것을 볼 수 있습니다. 이런 과정은 많이 거칠 수록 기울기 손실(Gradient Vanshing)이 일어날 확률이 높습니다. 
+마찬가지로 행렬 곱하는 부분에서도 많은 과정을 거칠수록 기울기 폭발(Gradient Explosion) / 기울기 소실이(Gradient Vanshing) 일어납니다. <br />
+이처럼 RNN은 길이가 긴 데이터를 처리하지 못한다는 한계가 있습니다. 이 문제를 해결하기 위해 우리는 RNN에 게이트를 추가한 LSTM이나 GRU등의 순환신경망 모델을 사용합니다. 이는 다음 글에서 설명하는 것을 기약하며 마지막으로 Pytorch RNN모델 코드를 업로드 하며 마치겠습니다.</p>
+
+<h3 id="pytorch-code">Pytorch Code</h3>
+<p>content <br /></p>
+
+<blockquote>
+  <p>이미지/ 코드 출처</p>
+  <ul>
+    <li>https://slidetodoc.com/lecture-6-smaller-network-rnn-this-is-our/</li>
+  </ul>
+</blockquote>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#NLP">NLP</a>
+          
+            <a href="/tags#RNN Model">RNN Model</a>
+          
+            <a href="/tags#RNN">RNN</a>
+          
+            <a href="/tags#LSTM">LSTM</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=RNN%28Recurrent+Neural+Network%29+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0&url=http%3A%2F%2Flocalhost%3A4000%2F2021-06-05-rnn%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-06-05-rnn%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-06-05-rnn%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-05-12-densenet/" data-toggle="tooltip" data-placement="top" title="DenseNet(Dense Network) 이해하기">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="/feed.xml" title="RSS">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li><li class="list-inline-item">
+    <a href="mailto:jerife@naver.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/jerife" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Jerife
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">Jerife.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -15,7 +15,7 @@
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="Dense Block">
+  <meta name="description" content="Dense Block과 BottleNeck">
 
   
 
@@ -75,7 +75,7 @@
   
   <meta property="og:site_name" content="Jerife">
   <meta property="og:title" content="DenseNet(Dense Network) 이해하기">
-  <meta property="og:description" content="Dense Block">
+  <meta property="og:description" content="Dense Block과 BottleNeck">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -96,7 +96,7 @@
   <meta name="twitter:creator" content="@">
 
   <meta property="twitter:title" content="DenseNet(Dense Network) 이해하기">
-  <meta property="twitter:description" content="Dense Block">
+  <meta property="twitter:description" content="Dense Block과 BottleNeck">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -182,7 +182,7 @@
           <h1>DenseNet(Dense Network) 이해하기</h1>
           
             
-              <h2 class="post-subheading">Dense Block</h2>
+              <h2 class="post-subheading">Dense Block과 BottleNeck</h2>
             
           
 
@@ -285,7 +285,7 @@ DenseNet도 마찬가지로 H(x) = F(x) + x의 꼴로 입력값 + 출력값 이�
 
 <h3 id="densenet-architectures">DenseNet Architectures</h3>
 <p><img width="503" alt="image" src="https://user-images.githubusercontent.com/68190553/117983142-a1133900-b371-11eb-991b-5270678ddedf.png" class="mx-auto d-block" /> <br />
-위는 DenseNet 기본적인 구조입니다. 121 / 169 / 201 / 264 등 깊이에 따라 Dense Block을 어떻게 사용하는지 다르며, 필터의 크기 층의 개수등 모두 다르기 떄문에, 자신의 입력 데이터에 적합한 모델을 이용하시길 바랍니다.<br /></p>
+위는 DenseNet 기본적인 구조입니다. 121 / 169 / 201 / 264 등 깊이에 따라 Dense Block을 어떻게 사용하는지 다르며, 필터의 크기 층의 개수등 모두 다르기 때문에, 자신의 입력 데이터에 적합한 모델을 이용하시길 바랍니다.<br /></p>
 
 <h2 id="pytorch-code">Pytorch Code</h2>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BottleNeck</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
@@ -397,7 +397,7 @@ DenseNet도 마찬가지로 H(x) = F(x) + x의 꼴로 입력값 + 출력값 이�
         
         
         <li class="page-item next">
-          <a class="page-link" href="/2021-06-05-rnn/" data-toggle="tooltip" data-placement="top" title="RNN(Recurrent Neural Network) 이해하기">Next Post &rarr;</a>
+          <a class="page-link" href="/2021-06-05-lstm/" data-toggle="tooltip" data-placement="top" title="LSTM(Long Short-Term Memory) 이해하기">Next Post &rarr;</a>
         </li>
         
       </ul>

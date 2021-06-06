@@ -15,7 +15,7 @@
         <title>RNN(Recurrent Neural Network) 이해하기</title>
         <description>
           순환 신경망의 기초 모델 RNN - 
-          RNN이란? Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. RNN은 주로 언어 데이터나 시계열 데이터 처리에 주로 사용되는 모델이며, 데이터를 순환시킴으로써 정보를 공유할 수 있는 모델입니다. 정보를 순환할 수 있는 기술들은 LSTM,GRU등 다양하며, 그중 가장 기초가 되는 RNN모델을 다뤄보겠습니다. (Xt : 입력) / (A : RNN층) / (ht : 출력) 위...
+          RNN이란? Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. RNN은 주로 언어 데이터나 시계열 데이터 처리에 주로 사용되는 모델이며, 데이터를 순환시킴으로써 정보를 공유할 수 있는 모델입니다. 정보를 순환할 수 있는 기술들은 LSTM,GRU등 다양하며, 그중 가장 기초가 되는 RNN모델을 다뤄보겠습니다. (Xt : 입력) / (A : RNN 층) / (ht : 출력)...
         </description>
         <pubDate>Sat, 05 Jun 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-06-05-rnn/</link>
@@ -23,9 +23,20 @@
       </item>
     
       <item>
+        <title>LSTM(Long Short-Term Memory) 이해하기</title>
+        <description>
+          LSTM의 기억 셀 Ct - 
+          LSTM이란? Long Short-Term Memory의 약자로 길이가 긴 데이터 ( 시계열 데이터 / 언어 데이터 ) 를 잘 처리할 수 있는 순환 신경망 모델입니다. 저번 글 “RNN(Recurrent Neural Network) 이해하기” 에서 설명한 순환신경망에 게이트를 추가한 모델이죠. 사진 속에서 윗 부분은 기본 순환신경망 모델인 “RNN”, 밑 부분은 RNN에 게이트를 추가한 “LSTM”모델입니다. RNN모델과는...
+        </description>
+        <pubDate>Sat, 05 Jun 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-06-05-lstm/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-05-lstm/</guid>
+      </item>
+    
+      <item>
         <title>DenseNet(Dense Network) 이해하기</title>
         <description>
-          Dense Block - 
+          Dense Block과 BottleNeck - 
           DenseNet이란? DenseNet은 저번 글에서 설명한 ResNet과 유사하게 입력값과 출력값을 더하는 형태의 모델이지만, 명백하게 다릅니다! ￼ 위 사진은 DenseNet모델 구조이며, 이미지가 들어가고 이후 Dense Block이라는 구조를 지나 convolution layer 와 pooling layer를 거쳐가는 것을 알 수 있습니다. 여기서 convolution layer는 1x1 convolution을 사용합니다. ( 1x1 convolution은 적은 연산량으로 채널을 압축시키거나, 증가시킬...
         </description>
         <pubDate>Wed, 12 May 2021 00:00:00 -0400</pubDate>

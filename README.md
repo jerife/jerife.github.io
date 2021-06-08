@@ -14,3 +14,5 @@ Write a big article about "Computer Vision" and "Natural Language Processing".
 
 #### 2) Natural Language Processing
 * RNN(Recurrent Neural Network) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-05-rnn/)
+* LSTM(Long Short-Term Memory) 이해하기 &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-06-lstm/)
+* Seq2Seq(Sequence to Sequence) 이해하기 &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-08-seq2seq/)

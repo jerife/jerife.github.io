@@ -12,6 +12,28 @@
     
     
       <item>
+        <title>Seq2Seq(Sequence to Sequence) 이해하기</title>
+        <description>
+          Seq2Seq의 Encoder / Decoder - 
+          Seq2Seq이란? Seq2Seq는 Sequence to Sequence의 약자로써, 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른 시퀀스 데이터로 변환해주는 모델입니다. Seq2Seq 모델은 RNN모델(RNN, LSTM, GRU)등을 순환성을 기반으로 사용 되기에 [RNN(Recurrent Neural Network) 이해하기] | [LSTM(Long Short-Term Memory) 이해하기] 부분을 먼저 학습하셔야합니다. Seq2Seq 모델은 보이는 움짤과 같이 크게 인코더 (Encoder) 부분과 디코더 (Decoder) 부분으로...
+        </description>
+        <pubDate>Mon, 07 Jun 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-06-07-seq2seq/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-07-seq2seq/</guid>
+      </item>
+    
+      <item>
+        <title>LSTM(Long Short-Term Memory) 이해하기</title>
+        <description>
+          RNN에 기억셀 게이트를 추가한 LSTM - 
+          LSTM이란? Long Short-Term Memory의 약자로 길이가 긴 데이터 ( 시계열 데이터 / 언어 데이터 ) 를 잘 처리할 수 있는 순환 신경망 모델입니다. 저번 글 “RNN(Recurrent Neural Network) 이해하기” 에서 설명한 순환신경망에 게이트를 추가한 모델이죠. 사진 속에서 윗 부분은 기본 순환신경망 모델인 “RNN”, 밑 부분은 RNN에 게이트를 추가한 “LSTM”모델입니다. RNN모델과는...
+        </description>
+        <pubDate>Sun, 06 Jun 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-06-06-lstm/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-06-lstm/</guid>
+      </item>
+    
+      <item>
         <title>RNN(Recurrent Neural Network) 이해하기</title>
         <description>
           순환 신경망의 기초 모델 RNN - 
@@ -20,17 +42,6 @@
         <pubDate>Sat, 05 Jun 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-06-05-rnn/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-06-05-rnn/</guid>
-      </item>
-    
-      <item>
-        <title>LSTM(Long Short-Term Memory) 이해하기</title>
-        <description>
-          LSTM의 기억 셀 Ct - 
-          LSTM이란? Long Short-Term Memory의 약자로 길이가 긴 데이터 ( 시계열 데이터 / 언어 데이터 ) 를 잘 처리할 수 있는 순환 신경망 모델입니다. 저번 글 “RNN(Recurrent Neural Network) 이해하기” 에서 설명한 순환신경망에 게이트를 추가한 모델이죠. 사진 속에서 윗 부분은 기본 순환신경망 모델인 “RNN”, 밑 부분은 RNN에 게이트를 추가한 “LSTM”모델입니다. RNN모델과는...
-        </description>
-        <pubDate>Sat, 05 Jun 2021 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2021-06-05-lstm/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-06-05-lstm/</guid>
       </item>
     
       <item>

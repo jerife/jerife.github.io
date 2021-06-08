@@ -17,9 +17,9 @@
           Seq2Seq의 Encoder / Decoder - 
           Seq2Seq이란? Seq2Seq는 Sequence to Sequence의 약자로써, 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른 시퀀스 데이터로 변환해주는 모델입니다. Seq2Seq 모델은 RNN모델(RNN, LSTM, GRU)등을 순환성을 기반으로 사용 되기에 [RNN(Recurrent Neural Network) 이해하기] | [LSTM(Long Short-Term Memory) 이해하기] 부분을 먼저 학습하셔야합니다. Seq2Seq 모델은 보이는 움짤과 같이 크게 인코더 (Encoder) 부분과 디코더 (Decoder) 부분으로...
         </description>
-        <pubDate>Mon, 07 Jun 2021 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2021-06-07-seq2seq/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-06-07-seq2seq/</guid>
+        <pubDate>Tue, 08 Jun 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-06-08-seq2seq/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-08-seq2seq/</guid>
       </item>
     
       <item>

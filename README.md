@@ -16,3 +16,6 @@ Write a big article about "Computer Vision" and "Natural Language Processing".
 * RNN(Recurrent Neural Network) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-05-rnn/)
 * LSTM(Long Short-Term Memory) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-06-lstm/)
 * Seq2Seq(Sequence to Sequence) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-08-seq2seq/)
+
+#### 3) Time Series
+* ARIMA(AutoRegressive Integrated MovingAverage) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-26-arima/)

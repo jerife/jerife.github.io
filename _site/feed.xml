@@ -12,17 +12,6 @@
     
     
       <item>
-        <title>Attention with Seq2Seq 이해하기</title>
-        <description>
-          Attention Mechanism - 
-          Attention 이란? Attention이란 한국어로 “집중”이라는 의미를 갖고 있습니다. Pytorch Code import pytorch import pytorch.nn as nn class Encoder(nn.Module): def __init__(self, input_dim, embed_dim, hidden_dim, n_layers, dropout_ratio): super().__init__() # 임베딩(embedding)은 원-핫 인코딩(one-hot encoding)을 특정 차원의 임베딩으로 매핑하는 레이어 self.embedding = nn.Embedding(input_dim, embed_dim) # LSTM 레이어 self.hidden_dim = hidden_dim self.n_layers = n_layers self.rnn...
-        </description>
-        <pubDate>Thu, 10 Jun 2021 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2021-06-10-attention/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-06-10-attention/</guid>
-      </item>
-    
-      <item>
         <title>Seq2Seq(Sequence to Sequence) 이해하기</title>
         <description>
           Seq2Seq의 Encoder / Decoder - 

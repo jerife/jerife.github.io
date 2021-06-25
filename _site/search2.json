@@ -1,6 +1,15 @@
 [
   
     {
+      "title"    : "Attention with Seq2Seq 이해하기",
+      "category" : "",
+      "tags"     : "Natural Language Processing",
+      "url"      : "/2021-06-10-attention/",
+      "date"     : "2021-06-10 00:00:00 -0400",
+      "content"  : "[\n  {% for post in site.posts %}\n    {\n      \"title\"    : \"{{ post.title | escape }}\",\n      \"category\" : \"{{ post.category }}\",\n      \"tags\"     : \"{{ post.tags | join: ', ' }}\",\n      \"url\"      : \"{{ site.baseurl }}{{ post.url }}\",\n      \"date\"     : \"{{ post.date }}\",\n      \"content\"  : {{ page.content | jsonify }}\n    } {% unless forloop.last %},{% endunless %}\n  {% endfor %}\n  ,\n  {% for page in site.pages %}\n   {\n     {% if page.title != nil %}\n        \"title\"    : \"{{ page.title | escape }}\",\n        \"category\" : \"{{ page.category }}\",\n        \"tags\"     : \"{{ page.tags | join: ', ' }}\",\n        \"url\"      : \"{{ site.baseurl }}{{ page.url }}\",\n        \"date\"     : \"{{ page.date }}\",\n        \"content\"  : {{ page.content | jsonify }}\n     {% endif %}\n   } {% unless forloop.last %},{% endunless %}\n  {% endfor %}\n]\n"
+    } ,
+  
+    {
       "title"    : "Seq2Seq(Sequence to Sequence) 이해하기",
       "category" : "",
       "tags"     : "Natural Language Processing",
@@ -57,7 +66,7 @@
     {
       "title"    : "To start blog with Github",
       "category" : "",
-      "tags"     : "Information",
+      "tags"     : "",
       "url"      : "/2021-04-27-first/",
       "date"     : "2021-04-27 00:00:00 -0400",
       "content"  : "[\n  {% for post in site.posts %}\n    {\n      \"title\"    : \"{{ post.title | escape }}\",\n      \"category\" : \"{{ post.category }}\",\n      \"tags\"     : \"{{ post.tags | join: ', ' }}\",\n      \"url\"      : \"{{ site.baseurl }}{{ post.url }}\",\n      \"date\"     : \"{{ post.date }}\",\n      \"content\"  : {{ page.content | jsonify }}\n    } {% unless forloop.last %},{% endunless %}\n  {% endfor %}\n  ,\n  {% for page in site.pages %}\n   {\n     {% if page.title != nil %}\n        \"title\"    : \"{{ page.title | escape }}\",\n        \"category\" : \"{{ page.category }}\",\n        \"tags\"     : \"{{ page.tags | join: ', ' }}\",\n        \"url\"      : \"{{ site.baseurl }}{{ page.url }}\",\n        \"date\"     : \"{{ page.date }}\",\n        \"content\"  : {{ page.content | jsonify }}\n     {% endif %}\n   } {% unless forloop.last %},{% endunless %}\n  {% endfor %}\n]\n"

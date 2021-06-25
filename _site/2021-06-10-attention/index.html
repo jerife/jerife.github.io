@@ -9,13 +9,13 @@
 
   
 
-  <title>To start blog with Github</title>
+  <title>Attention with Seq2Seq 이해하기</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="블로그 시작">
+  <meta name="description" content="Attention Mechanism">
 
   
 
@@ -74,8 +74,8 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="To start blog with Github">
-  <meta property="og:description" content="블로그 시작">
+  <meta property="og:title" content="Attention with Seq2Seq 이해하기">
+  <meta property="og:description" content="Attention Mechanism">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -84,9 +84,9 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-04-27T00:00:00-04:00">
-  <meta property="og:url" content="http://localhost:4000/2021-04-27-first/">
-  <link rel="canonical" href="http://localhost:4000/2021-04-27-first/">
+  <meta property="og:article:published_time" content="2021-06-10T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2021-06-10-attention/">
+  <link rel="canonical" href="http://localhost:4000/2021-06-10-attention/">
   
 
   
@@ -95,8 +95,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="To start blog with Github">
-  <meta property="twitter:description" content="블로그 시작">
+  <meta property="twitter:title" content="Attention with Seq2Seq 이해하기">
+  <meta property="twitter:description" content="Attention Mechanism">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -182,15 +182,15 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>To start blog with Github</h1>
+          <h1>Attention with Seq2Seq 이해하기</h1>
           
             
-              <h2 class="post-subheading">블로그 시작</h2>
+              <h2 class="post-subheading">Attention Mechanism</h2>
             
           
 
           
-            <span class="post-meta">Posted on April 27, 2021</span>
+            <span class="post-meta">Posted on June 10, 2021</span>
             
             
           
@@ -232,26 +232,57 @@
       
 
       <article role="main" class="blog-post">
-        <h2 id="블로그-시작을-알리며">블로그 시작을 알리며,</h2>
-<p>이 블로그는 인공지능 관련 지식 공유와 기록을 목적으로 한 블로그로써, 인공지능 모델 및 기법등에 대해 리뷰하고 학습하고자하는 블로그입니다.<br />
-아직 깊은 지식이 있진 않지만, 꾸준한 공부를 통해 블로그의 성장과 동시에 넓혀가는 지식들로 방문해주시는 분들께 도움을 드릴 수 있는 블로그가 될것입니다🌈 <br /> <br /></p>
+        <h2 id="attention-이란">Attention 이란?</h2>
+<p>Attention이란 한국어로 “집중”이라는 의미를 갖고 있습니다.</p>
 
-<hr />
-<h2 id="소개">소개</h2>
-<p>안녕하세요. 저는 인공지능을 공부하는 대학생입니다 :) 전공은 정보통신전자공학부이며, 현재 관심분야는 Computer Vision / NLP 등 비정형 데이터에 대한 관심이 많습니다. 처음 머신러닝을 통해 정형데이터를 다루는 것에 흥미를 느꼈지만, 가시적인 결과가 도출되는 이미지 처리 / 문자 처리등에 더욱 매력을 느꼈던 것 같습니다. 결국 이런 흥미들이 블로그를 통해 기록하고 나누자는 취지까지 이어졌습니다!
- 혼자서 딥러닝 대해서 공부 할때면 막히는 부분도 분명히 많고, 매번 같은 내용과 비슷한 내용의 모델들을 또 검색하고 찾아보는 일들에 지치기도 했습니다. 하지만 모델들을 이해하는 과정은 내용이 겹칠만큼 중요한 것이라 생각하며, 때문에 모델들을 분석하고 이를 게시글로 작성하며 완벽하게 공부하고 이해하려합니다. 글을 작성한다는 것은 단순히 기록하고 나눈다는 것을 넘어, 그만큼 정확하고 신뢰성있어야 하기에 글을 게시하기까지 저 또한 깊게 공부하고 이해하는 과정을 거칠것입니다.</p>
+<h2 id="pytorch-code">Pytorch Code</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pytorch</span>
+<span class="kn">import</span> <span class="nn">pytorch.nn</span> <span class="k">as</span> <span class="n">nn</span>
 
-<h2 id="방향">방향</h2>
-<ul>
-  <li>이미지 처리 모델 (CNN, VGG16, ResNet 등..)</li>
-  <li>언어 처리 모델 (RNN, LSTM, GRU 등..) <br />
-일단은 크게 두가지를 중심으로 공부하고 글로 옮길 계획에 있습니다. 주로 이론에 대한 글들이을 작성될 예정이며, 코드가 필요한 경우 tensorflow, pytorch등의 딥러닝프레임워크를 통해 작성할 예정입니다. <br /></li>
-</ul>
+<span class="k">class</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">n_layers</span><span class="p">,</span> <span class="n">dropout_ratio</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
 
-<p>긴 글 읽어주셔서 감사하며, 꾸준하고 유익한 블로그로 반전시킬 수 있도록 하겠습니다 :)🙇🏻‍♂️</p>
+        <span class="c1"># 임베딩(embedding)은 원-핫 인코딩(one-hot encoding)을 특정 차원의 임베딩으로 매핑하는 레이어
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">)</span>
+
+        <span class="c1"># LSTM 레이어
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">hidden_dim</span> <span class="o">=</span> <span class="n">hidden_dim</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">n_layers</span> <span class="o">=</span> <span class="n">n_layers</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">n_layers</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="n">dropout_ratio</span><span class="p">)</span>
+        
+        <span class="c1"># 드롭아웃(dropout)
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_ratio</span><span class="p">)</span>
+
+    <span class="c1"># 인코더는 소스 문장을 입력으로 받아 문맥 벡터(context vector)를 반환        
+</span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">embedded</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dropout</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+        <span class="n">outputs</span><span class="p">,</span> <span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">rnn</span><span class="p">(</span><span class="n">embedded</span><span class="p">)</span>
+      
+        <span class="c1"># 문맥 벡터(context vector) 반환
+</span>        <span class="k">return</span> <span class="n">hidden</span><span class="p">,</span> <span class="n">cell</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<blockquote>
+  <p>이미지/ 코드 출처</p>
+  <ul>
+    <li>https://github.com/ndb796/Deep-Learning-Paper-Review-and-Practice ( 코드 )</li>
+    <li>http://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/ (이미지)</li>
+    <li>밑바닥부터 시작하는 딥러닝 2 / 사이토 고키 / 한빛 미디어</li>
+  </ul>
+</blockquote>
 
       </article>
 
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+          
+        </div>
       
 
       
@@ -266,7 +297,7 @@
   <span class="sr-only">Share: </span>
 
   
-    <a href="https://twitter.com/intent/tweet?text=To+start+blog+with+Github&url=http%3A%2F%2Flocalhost%3A4000%2F2021-04-27-first%2F"
+    <a href="https://twitter.com/intent/tweet?text=Attention+with+Seq2Seq+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0&url=http%3A%2F%2Flocalhost%3A4000%2F2021-06-10-attention%2F"
       class="btn btn-social-icon btn-twitter" title="Share on Twitter">
       <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
       <span class="sr-only">Twitter</span>
@@ -274,7 +305,7 @@
   
 
   
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-04-27-first%2F"
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-06-10-attention%2F"
       class="btn btn-social-icon btn-facebook" title="Share on Facebook">
       <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
       <span class="sr-only">Facebook</span>
@@ -282,7 +313,7 @@
   
 
   
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-04-27-first%2F"
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-06-10-attention%2F"
       class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
       <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
       <span class="sr-only">LinkedIn</span>
@@ -300,13 +331,9 @@
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2020-02-28-test-markdown/" data-toggle="tooltip" data-placement="top" title="Sample blog post">&larr; Previous Post</a>
+          <a class="page-link" href="/2021-06-08-seq2seq/" data-toggle="tooltip" data-placement="top" title="Seq2Seq(Sequence to Sequence) 이해하기">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-05-10-cnn/" data-toggle="tooltip" data-placement="top" title="CNN(Convolution Nerual Network) 이해하기">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

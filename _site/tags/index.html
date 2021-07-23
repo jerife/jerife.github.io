@@ -9,7 +9,7 @@
 
   
 
-  <title>Records Categori</title>
+  <title>All Records</title>
 
   
   <meta name="author" content="Jerife">
@@ -74,7 +74,7 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Records Categori">
+  <meta property="og:title" content="All Records">
   <meta property="og:description" content="{% assign date_format = site.date_format | default: &quot;%B %-d, %Y&quot; %} {%- capture site_tags -%} {%- for tag in site.tags -%} {{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%} {%- endfor -%} {%- endcapture -%} {%- assign tags_list = site_tags | split:',' | sort -%} {%- for tag...">
 
   
@@ -93,7 +93,7 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Records Categori">
+  <meta property="twitter:title" content="All Records">
   <meta property="twitter:description" content="{% assign date_format = site.date_format | default: &quot;%B %-d, %Y&quot; %} {%- capture site_tags -%} {%- for tag in site.tags -%} {{- tag | first -}}{%- unless forloop.last -%},{%- endunless -%} {%- endfor -%} {%- endcapture -%} {%- assign tags_list = site_tags | split:',' | sort -%} {%- for tag...">
 
   
@@ -177,7 +177,7 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="page-heading">
-          <h1>Records Categori</h1>
+          <h1>All Records</h1>
           
 
           
@@ -197,53 +197,85 @@
     <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
       
 
-      <a href="#Computer Vision" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Computer Vision&nbsp;(3)</a><a href="#Natural Language Processing" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Natural Language Processing&nbsp;(3)</a><a href="#Time Series" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;Time Series&nbsp;(1)</a><div id="full-tags-list"><h2 id="Computer Vision" class="linked-section">
+      <!-- search -->
+<style>
+    #search-bar {
+        margin: 32px auto;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 0 20px;
+    }
+
+    #search-bar #search-input {
+        width: calc(100% - 30px);
+        border: none;
+        line-height: 44px;
+        outline: none;
+        border-style: none;
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+</style>
+    
+<div class="container">
+<div class="row">
+ <div class="col-12">
+   <div id="search-bar">
+     <i class="fa fa-search" aria-hidden="true"></i>
+     <input id="search-input" type="text" placeholder="Search..." />
+   </div>
+   <ul id="results-container"></ul>
+ </div>
+</div>
+</div>
+
+<!-- Script pointing to jekyll-search.js -->
+<script src="/assets/js/jekyll-search.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+SimpleJekyllSearch({
+     searchInput: document.getElementById('search-input'),
+     resultsContainer: document.getElementById('results-container'),
+     json: '/search.json',
+     searchResultTemplate: '<li><a href="{url}" title="{desc}" target="_blank">{title}</a></li>',
+     noResultsText: 'No results found',
+     limit: 10000,
+     fuzzy: false,
+     exclude: ['Welcome']
+});
+</script>
+<!-- search --><a id="full-tags-list" href="#Computer Vision" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Computer Vision&nbsp;(3)</a><a id="full-tags-list" href="#Natural Language Processing" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Natural Language Processing&nbsp;(3)</a><a id="full-tags-list" href="#Time Series" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Time Series&nbsp;(1)</a><div id="full-tags-list"><h2 id="Computer Vision" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Computer Vision&nbsp;(3)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <a href="/2021-05-12-densenet/">DenseNet(Dense Network) 이해하기</a>
-                <div class="entry-date">
-                    <time datetime="2021-05-12T00:00:00-04:00">May 12, 2021</time>
-                </div>
+                <time class="entry-date" datetime="2021-05-12T00:00:00-04:00">May 12, 2021&nbsp;&nbsp;</time><a href="/2021-05-12-densenet/">DenseNet(Dense Network) 이해하기</a>
+                
             </div><div class="tag-entry">
-                <a href="/2021-05-11-resnet/">ResNet(Residual Network) 이해하기</a>
-                <div class="entry-date">
-                    <time datetime="2021-05-11T00:00:00-04:00">May 11, 2021</time>
-                </div>
+                <time class="entry-date" datetime="2021-05-11T00:00:00-04:00">May 11, 2021&nbsp;&nbsp;</time><a href="/2021-05-11-resnet/">ResNet(Residual Network) 이해하기</a>
+                
             </div><div class="tag-entry">
-                <a href="/2021-05-10-cnn/">CNN(Convolution Nerual Network) 이해하기</a>
-                <div class="entry-date">
-                    <time datetime="2021-05-10T00:00:00-04:00">May 10, 2021</time>
-                </div>
+                <time class="entry-date" datetime="2021-05-10T00:00:00-04:00">May 10, 2021&nbsp;&nbsp;</time><a href="/2021-05-10-cnn/">CNN(Convolution Nerual Network) 이해하기</a>
+                
             </div></div><h2 id="Natural Language Processing" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Natural Language Processing&nbsp;(3)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <a href="/2021-06-08-seq2seq/">Seq2Seq(Sequence to Sequence) 이해하기</a>
-                <div class="entry-date">
-                    <time datetime="2021-06-08T00:00:00-04:00">June 8, 2021</time>
-                </div>
+                <time class="entry-date" datetime="2021-06-08T00:00:00-04:00">June 8, 2021&nbsp;&nbsp;</time><a href="/2021-06-08-seq2seq/">Seq2Seq(Sequence to Sequence) 이해하기</a>
+                
             </div><div class="tag-entry">
-                <a href="/2021-06-06-lstm/">LSTM(Long Short-Term Memory) 이해하기</a>
-                <div class="entry-date">
-                    <time datetime="2021-06-06T00:00:00-04:00">June 6, 2021</time>
-                </div>
+                <time class="entry-date" datetime="2021-06-06T00:00:00-04:00">June 6, 2021&nbsp;&nbsp;</time><a href="/2021-06-06-lstm/">LSTM(Long Short-Term Memory) 이해하기</a>
+                
             </div><div class="tag-entry">
-                <a href="/2021-06-05-rnn/">RNN(Recurrent Neural Network) 이해하기</a>
-                <div class="entry-date">
-                    <time datetime="2021-06-05T00:00:00-04:00">June 5, 2021</time>
-                </div>
+                <time class="entry-date" datetime="2021-06-05T00:00:00-04:00">June 5, 2021&nbsp;&nbsp;</time><a href="/2021-06-05-rnn/">RNN(Recurrent Neural Network) 이해하기</a>
+                
             </div></div><h2 id="Time Series" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Time Series&nbsp;(1)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <a href="/2021-06-26-arima/">ARIMA (AutoRegressive Integrated MovingAverage) 이해하기</a>
-                <div class="entry-date">
-                    <time datetime="2021-06-26T00:00:00-04:00">June 26, 2021</time>
-                </div>
+                <time class="entry-date" datetime="2021-06-26T00:00:00-04:00">June 26, 2021&nbsp;&nbsp;</time><a href="/2021-06-26-arima/">ARIMA (AutoRegressive Integrated MovingAverage) 이해하기</a>
+                
             </div></div></div>
 
 

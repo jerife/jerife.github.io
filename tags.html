@@ -12,6 +12,28 @@ title: 'All Records'
 {%- endcapture -%}
 {%- assign tags_list = site_tags | split:',' | sort -%}
 
+
+
+
+<!-- search -->
+<style>
+    #search-bar {
+        margin: 32px auto;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        padding: 0 20px;
+    }
+
+    #search-bar #search-input {
+        width: calc(100% - 30px);
+        border: none;
+        line-height: 44px;
+        outline: none;
+        border-style: none;
+        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+</style>
+    
 <div class="container">
 <div class="row">
  <div class="col-12">
@@ -39,13 +61,14 @@ SimpleJekyllSearch({
      exclude: ['Welcome']
 });
 </script>
+<!-- search -->
 
 
 
 
 
 {%- for tag in tags_list -%}
-    <a href="#{{- tag -}}" class="btn btn-primary tag-btn"><i class="fas fa-tag" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})</a>
+    <a id="full-tags-list" href="#{{- tag -}}" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})</a>
 {%- endfor -%}
 
 <div id="full-tags-list">
@@ -57,10 +80,8 @@ SimpleJekyllSearch({
     <div class="post-list">
         {%- for post in site.tags[tag] -%}
             <div class="tag-entry">
-                <a href="{{ post.url | relative_url }}">{{- post.title -}}</a>
-                <div class="entry-date">
-                    <time datetime="{{- post.date | date_to_xmlschema -}}">{{- post.date | date: date_format -}}</time>
-                </div>
+                <time class="entry-date" datetime="{{- post.date | date_to_xmlschema -}}">{{- post.date | date: date_format -}}&nbsp;&nbsp;</time><a href="{{ post.url | relative_url }}">{{- post.title -}}</a>
+                
             </div>
         {%- endfor -%}
     </div>

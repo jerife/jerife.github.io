@@ -15,7 +15,7 @@
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="CNN 합성곱 신경망 이해하기">
+  <meta name="description" content="합성곱 신경망 이해하기">
 
   
 
@@ -75,7 +75,7 @@
   
   <meta property="og:site_name" content="Jerife">
   <meta property="og:title" content="CNN(Convolution Nerual Network) 이해하기">
-  <meta property="og:description" content="CNN 합성곱 신경망 이해하기">
+  <meta property="og:description" content="합성곱 신경망 이해하기">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -96,7 +96,7 @@
   <meta name="twitter:creator" content="@">
 
   <meta property="twitter:title" content="CNN(Convolution Nerual Network) 이해하기">
-  <meta property="twitter:description" content="CNN 합성곱 신경망 이해하기">
+  <meta property="twitter:description" content="합성곱 신경망 이해하기">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -182,7 +182,7 @@
           <h1>CNN(Convolution Nerual Network) 이해하기</h1>
           
             
-              <h2 class="post-subheading">CNN 합성곱 신경망 이해하기</h2>
+              <h2 class="post-subheading">합성곱 신경망 이해하기</h2>
             
           
 
@@ -232,9 +232,8 @@
         <h2 id="cnn이란">CNN이란?</h2>
 <p>CNN은 Convolution Nerual Network의 약자로서 입력값(이미지 or 텍스트)과 사용자가 지정한 필터(fitter / kernel)와 컨볼루션을 통해 특징을 추출해내는 기법이며, 우리말로 “합성곱 신경망”라고도 합니다.
 CNN은 주로 이미지처리 모델링에서 많이 이용되며, 이번 글에서도 이미지를 처리한다는 상황을 가정하고 글을 작성합니다.<br />
-<img src="https://user-images.githubusercontent.com/68190553/117629584-48973c80-b1b5-11eb-9058-aa82af4575d2.jpeg" alt="214ABC4455DEBDF322" class="mx-auto d-block" /> <br /></p>
-
-<p>위 사진은 CNN의 구조를 보여주며, 해당 사진 속 Feature Extraction 해당하는 Convolution layer(층)과 Pooling layer(층)을 구분해 설명하고자 합니다.</p>
+<img src="https://user-images.githubusercontent.com/68190553/117629584-48973c80-b1b5-11eb-9058-aa82af4575d2.jpeg" alt="214ABC4455DEBDF322" class="mx-auto d-block" /> <br />
+위 사진은 CNN의 구조를 보여주며, 해당 사진 속 Feature Extraction 해당하는 Convolution layer(층)과 Pooling layer(층)을 구분해 설명하고자 합니다.</p>
 
 <hr />
 <h3 id="convolution-layer">Convolution layer</h3>
@@ -246,12 +245,12 @@ CNN은 주로 이미지처리 모델링에서 많이 이용되며, 이번 글에
 우리는 여기서 입력 이미지의 크기 / 필터의 크기 / 필터가 이동하는 범위 / Convolution을 해도 feature map의 크기가 안줄어들게 파라미터를 조절할 수 있습니다.</p>
 <h4 id="1-필터의-크기">[1] 필터의 크기</h4>
 <ul>
-  <li>위 움짤에선 필터의 크기가 3x3크기로 입력 이미지를 Convolution하는 것을 알 수 있습니다. 우리는 필터의 크기를 조절해 feature map의 크기를 정할 수 있습니다</li>
+  <li>위 움짤에선 필터의 크기가 3x3크기로 입력 이미지를 Convolution하는 것을 알 수 있습니다. 우리는 필터의 크기를 조절해 feature map의 크기를 정할 수 있습니다.</li>
 </ul>
 
 <h4 id="2-필터가-이동하는-범위-스트라이드">[2] 필터가 이동하는 범위 (스트라이드)</h4>
 <ul>
-  <li>위 움짤을 보면 3x3크기의 필터가 1칸씩 움직이는걸 확인할 수 있다. 이는 stride=1 라고 이해할 수 있습니다. 우리는 stride=2 로 조절해 필터가 2칸씩 움직일 수 있게 조절할 수 있다. stride가 커질 수록 당연히 feature map의 크기는 줄어들 것 입니다.</li>
+  <li>위 움짤을 보면 3x3크기의 필터가 1칸씩 움직이는걸 확인할 수 있습니다. 이는 stride=1 라고 이해할 수 있습니다. 우리는 stride=2 로 조절해 필터가 2칸씩 움직일 수 있게 조절할 수 있습니다. stride가 커질 수록 당연히 feature map의 크기는 줄어들 것입니다.</li>
 </ul>
 
 <h4 id="3-패딩-">[3] 패딩 <br /></h4>
@@ -263,7 +262,9 @@ CNN은 주로 이미지처리 모델링에서 많이 이용되며, 이번 글에
 <h3 id="pooling-layer">Pooling layer</h3>
 <p>풀링층에서는 데이터의 크기를 줄일 수 있습니다. 이는 모델의 입력이미지의 크기를 줄이는 동시에 자연스레 파라미터수(연산)까지 줄일 수 있으며, 딥러닝에서 모델이 깊어짐에 따라 더욱 섬세한 부분을 학습시킬 수 있는 과정입니다. (비선형적특징을 더 학습할 수 있음) 대부분의 CNN에선 Convolution layer를 거친 후 pooling layer를 통해 깊게 학습시킵니다.<br />
 <img src="https://user-images.githubusercontent.com/68190553/117657120-27921400-b1d4-11eb-8b2e-ce74a64914be.JPG" alt="IMG_5777" class="mx-auto d-block" /> <br />
-위 사진은 4x4크기의 입력 이미지에 2x2크기의 pooling이 적용된 사진입니다. 풀링은 convolution layer의 필터와 같이 움직입니다. 하지만, 기본적으로 Pooling layer에서의 “필터는 크기”와 “필터가 움직이는 크기”의 값이 같습니다. 즉, 필터의 값이 겹쳐서 나오지 않습니다. 위 사진에서 4x4크기의 입력 이미지가 4가지 색으로 표현되어있으며, 각 2x2크기의 필터마다 다른 색칠되어있습니다. 이는 2x2크기의 필터로 pooling을 한다고 이해하시면 되겠습니다. 덧붙여 pooling의 종류에는 크게 Average-Pooling / Max-Pooling 으로 2가지가 사용되며 밑에서 설명하겠습니다.</p>
+위 사진은 4x4크기의 입력 이미지에 2x2크기의 pooling이 적용된 사진입니다. 풀링은 convolution layer의 필터와 같이 움직입니다. 하지만, 기본적으로 Pooling layer에서의 “필터는 크기”와 “필터가 움직이는 크기”의 값이 같습니다. <br />
+즉, 필터의 값이 겹쳐서 나오지 않습니다. 위 사진에서 4x4크기의 입력 이미지가 4가지 색으로 표현되어있으며, 각 2x2크기의 필터마다 다른 색칠되어있습니다. 이는 2x2크기의 필터로 pooling을 한다고 이해하시면 되겠습니다. <br />
+덧붙여 pooling의 종류에는 크게 Average-Pooling / Max-Pooling 으로 2가지가 사용되며 밑에서 설명하겠습니다.</p>
 <h4 id="1-average-pooling">[1] Average-Pooling</h4>
 <ul>
   <li>먼저 Average-Pooling입니다. Average-Pooling은 위사진에선 4x4크기의 입력 이미지에서 2x2크기마다 평균을 구해 결과를 구합니다.</li>
@@ -294,7 +295,7 @@ CNN은 주로 이미지처리 모델링에서 많이 이용되며, 이번 글에
 <p><br /></p>
 
 <blockquote>
-  <p>이미지 출처</p>
+  <p>Reference</p>
   <ul>
     <li>http://deeplearning.stanford.edu/wiki/index.php/Feature_extraction_using_convolution</li>
   </ul>

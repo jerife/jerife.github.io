@@ -230,40 +230,37 @@
 
       <article role="main" class="blog-post">
         <h3 id="시계열-모형의-이해">시계열 모형의 이해</h3>
-<p>데이터 분석시 가장 기본적인 시계열 분석이라 하면, ARIMA모델일 것입니다. <br />
-ARIMA는 AutoRegressive Integrated MovingAverage의 약자로써,  AutoRegressive  / MovingAverage 2개의 모형이 합쳐진 모형입니다. 이 두 모형을 바탕으로 만들어진 시계열 모델들에 대해 다뤄보겠습니다.</p>
-
-<p><img src="https://user-images.githubusercontent.com/68190553/123450881-239d4280-d618-11eb-9c1c-8bee2475fec7.png" alt="Forecast-from-ARIMA1-0-10-1-1-with-weekly-lags" class="mx-auto d-block" /> <br /></p>
+<p>데이터 분석시 가장 기본적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다. <br />
+ARIMA는 AutoRegressive Integrated MovingAverage의 약자로써,  AutoRegressive  / MovingAverage 2개의 모형이 합쳐진 모형입니다. 이 두 모형을 바탕으로 만들어진 시계열 모델들에 대해 다뤄보겠습니다.<br />
+<img src="https://user-images.githubusercontent.com/68190553/123450881-239d4280-d618-11eb-9c1c-8bee2475fec7.png" alt="Forecast-from-ARIMA1-0-10-1-1-with-weekly-lags" class="mx-auto d-block" /> <br /></p>
 
 <h5 id="1-자기회귀모형-ar--autoregressive">[1] 자기회귀모형 AR : AutoRegressive</h5>
 <p>먼저 AR모형입니다. AR모형은 이전 시점의 자료로 현재시점에 영향을 주는 모형입니다.
-<strong>yt=c+ϕ1yt−1+ϕ2t−2+⋯+ϕpyt−p+εt</strong>
-<br /></p>
+<strong>yt=c+ϕ1yt−1+ϕ2t−2+⋯+ϕpyt−p+εt</strong><br /></p>
 
 <h5 id="2-이동평균모형-ma--movingaverage">[2] 이동평균모형 MA : MovingAverage</h5>
 <p>다음 MA모형입니다. MA모형은 현재 시점의 에러와 과거의 에러로 표현되는 모형입니다. 
-<strong>yt=c+εt+θ1εt−1+θ2εt−2+⋯+θqεt−q</strong>
-<br /> <br /></p>
+<strong>yt=c+εt+θ1εt−1+θ2εt−2+⋯+θqεt−q</strong><br /></p>
 
+<hr />
 <h3 id="정상-프로세스-stationary-process">정상 프로세스 Stationary Process</h3>
 <p>AR / MA 모델을 사용하기 위해선 정상적인 시계열 데이터를 사용해야합니다. 우리는 이런 정상적인 상태를 Stationary한 상태라고도 합니다.  Stationary한 그래프는 평균과 분산이 일정한 상태를 의미합니다. <br />
-그럼 반대로 비정상적인 상태를 뭐라할까요? 바로 Non Stationary하다고 표현합니다. Non Stationary한 데이터들엔 어떤 종류가 있을까요? 
+그럼 반대로 비정상적인 상태를 뭐라할까요? 바로 Non Stationary하다고 표현합니다. Non Stationary한 데이터들엔 어떤 종류가 있을까요? <br />
 <img src="https://user-images.githubusercontent.com/68190553/123447713-1df22d80-d615-11eb-925d-b90ba02cc619.png" alt="3lKCxEn" class="mx-auto d-block" /> <br /></p>
 
 <p>먼저 1행의 사진들을 보겠습니다.  Non Stationary한 그래프를 보면 주기적으로 상승하는 그래프임을 알수있습니다. 즉,  그래프의 분산은 일정하지만 평균이 상승하는 것을 알 수 있죠? <br />
 그 다음 2행의 사진들을 보겠습니다. Non Stationary한 그래프를 보면 분산도, 평균도 뒤죽박죽임을 알 수 있습니다. <br />
-마지막으로 3행의 Non Stationary한 그래프를 보면 한 곳에 뭉쳐있는 것을 알 수 있습니다. 얼핏 보기에 분산이나 평균은 문제 없지만, 시계열적으로 골구로 퍼지지 않아 Non Stationary한 것을 알 수 있습니다. <br /></p>
+마지막으로 3행의 Non Stationary한 그래프를 보면 한 곳에 뭉쳐있는 것을 알 수 있습니다. 얼핏 보기에 분산이나 평균은 문제 없지만, 시계열적으로 골구로 퍼지지 않아 Non Stationary한 것을 알 수 있습니다.</p>
 
 <h3 id="어떻게-정상상태로-바꿀까">어떻게 정상상태로 바꿀까?</h3>
 <p>그렇다면 Non Stationary한 그래프를 어떻게 Stationary하게 바꿔줄 수 있을까요? <br />
-바로 Differencing (차분)을 해줌으로써 Stationary하게 그래프를 바꿔줄 수 있습니다. 이때 차분은 보통 1~2번정도 해주고, 차분 횟수에 따라 1차차분 / 2차 차분이라고 불립니다. <br /></p>
+바로 Differencing (차분)을 해줌으로써 Stationary하게 그래프를 바꿔줄 수 있습니다. 이때 차분은 보통 1~2번정도 해주고, 차분 횟수에 따라 1차차분 / 2차 차분이라고 불립니다.</p>
 
+<hr />
 <h2 id="arima란">ARIMA란?</h2>
-<p>이제 ARIMA에 대해 본격적으로 설명하겠습니다. ARIMA는 자기회귀누적이동편균 모형이며, “AR” + “I” + “MA” = “ARIMA” 라고 이해하시면 됩니다. <br />
-여기서 “AR”은 자기회귀모형 / “MA”는 이동평균모형이며, “I”는 이 둘을 결합했다는 의미를 갖습니다. <br />
-ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
-
-<p><strong>y′t=c+ϕ1y′t−1+⋯+ϕpy′t−p+θ1εt−1+⋯+θqεt−q+εt</strong></p>
+<p>이제 ARIMA에 대해 설명하겠습니다. ARIMA는 자기회귀누적이동편균 모형이며, “AR” + “I” + “MA” = “ARIMA” 라고 이해하시면 됩니다. <br />
+여기서 “AR”은 자기회귀모형 / “MA”는 이동평균모형이며, “I”는 이 둘을 결합했다는 의미를 갖습니다. ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.<br />
+<strong>y′t=c+ϕ1y′t−1+⋯+ϕpy′t−p+θ1εt−1+⋯+θqεt−q+εt</strong></p>
 
 <ul>
   <li>p : 자기회귀 부분의 차수</li>
@@ -271,10 +268,39 @@ ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
   <li>q :  이동 평균 부분의 차수</li>
 </ul>
 
-<p>즉, 얼만큼 자기회귀를 시킬지 “p”값으로 정하고, “q”값엔 이동평군의합을 정하고, 마지막으로 차분을  몇 번할지 “d”값으로 정하면 됩니다.</p>
+<p>즉, 얼만큼 자기회귀를 시킬지 “p”값으로 정하고, “q”값엔 이동평균의 합을 정하고, 마지막으로 차분을  몇 번할지 “d”값으로 정합니다.<br /><br /></p>
+
+<h2 id="pytorch-code">Pytorch Code</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
+<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="n">sm</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">pdq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">q</span><span class="p">))</span>
+<span class="n">pdq</span> <span class="o">=</span> <span class="n">pdq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Drop (0,1,0)
+</span>
+<span class="n">aic</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pdq</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">train_sample</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"ARIMA : {} | AIC : {:.3f}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">model_fit</span><span class="p">.</span><span class="n">aic</span><span class="p">))</span>
+    <span class="n">aic</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_fit</span><span class="p">.</span><span class="n">aic</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.020</span>
+<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">153.662</span>
+<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.662</span>
+<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">157.662</span>
+<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.087</span>
+<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.415</span>
+<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.662</span>
+<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">156.740</span>
+<span class="p">.....</span>
+</code></pre></div></div>
+<p><br /></p>
 
 <blockquote>
-  <p>이미지/ 코드 출처</p>
+  <p>Reference</p>
   <ul>
     <li>https://otexts.com/fppkr/non-seasonal-arima.html</li>
     <li>https://www.researchgate.net/figure/Forecast-from-ARIMA1-0-10-1-1-with-weekly-lags_fig4_284142511</li>

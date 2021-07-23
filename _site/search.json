@@ -1,0 +1,75 @@
+[
+    
+     {
+       "title"    : "ARIMA (AutoRegressive Integrated MovingAverage) 이해하기",
+       "category" : "",
+       "tags"     : "Time Series",
+       "url"      : "/2021-06-26-arima/",
+       "date"     : "2021-06-26 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "Seq2Seq(Sequence to Sequence) 이해하기",
+       "category" : "",
+       "tags"     : "Natural Language Processing",
+       "url"      : "/2021-06-08-seq2seq/",
+       "date"     : "2021-06-08 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "LSTM(Long Short-Term Memory) 이해하기",
+       "category" : "",
+       "tags"     : "Natural Language Processing",
+       "url"      : "/2021-06-06-lstm/",
+       "date"     : "2021-06-06 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "RNN(Recurrent Neural Network) 이해하기",
+       "category" : "",
+       "tags"     : "Natural Language Processing",
+       "url"      : "/2021-06-05-rnn/",
+       "date"     : "2021-06-05 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "DenseNet(Dense Network) 이해하기",
+       "category" : "",
+       "tags"     : "Computer Vision",
+       "url"      : "/2021-05-12-densenet/",
+       "date"     : "2021-05-12 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "ResNet(Residual Network) 이해하기",
+       "category" : "",
+       "tags"     : "Computer Vision",
+       "url"      : "/2021-05-11-resnet/",
+       "date"     : "2021-05-11 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "CNN(Convolution Nerual Network) 이해하기",
+       "category" : "",
+       "tags"     : "Computer Vision",
+       "url"      : "/2021-05-10-cnn/",
+       "date"     : "2021-05-10 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "To start blog with Github",
+       "category" : "",
+       "tags"     : "",
+       "url"      : "/2021-04-27-first/",
+       "date"     : "2021-04-27 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "Sample blog post",
+       "category" : "",
+       "tags"     : "",
+       "url"      : "/2020-02-28-test-markdown/",
+       "date"     : "2020-02-28 00:00:00 -0500"
+     } 
+    
+]

@@ -1,6 +1,6 @@
 # jerife.github.io
 
-<img width="549" alt="image" src="https://user-images.githubusercontent.com/68190553/126891262-aa2a1027-1d59-40af-af87-9d7002da8490.png">{: .mx-auto.d-block :} <br/>
+<img width="549" alt="image" src="https://user-images.githubusercontent.com/68190553/126891262-aa2a1027-1d59-40af-af87-9d7002da8490.png">
 
 ## What blog is it?
 It's a blog that studies and records artificial intelligence models. <br/>

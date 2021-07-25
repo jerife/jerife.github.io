@@ -1,0 +1,47 @@
+---
+layout: post 
+title: R-CNN 이해하기
+subtitle: 2-Stage Detection Model (1)
+gh-repo: jerife/jerife.github.io
+gh-badge: [star, follow]
+tags: [Computer Vision, Object Detection]
+comments: true
+---
+
+## R-CNN이란?
+Object Detection 분야는 크게  2-Stage Detection Model 에서 1-Stage Detection Model로 발전돼 왔습니다. 그  2-Stage Detection Model중 가장 발전에 영향을 준 R-CNN모델을 이해할 예정입니다. <br/>
+![rcnn_img_1](https://user-images.githubusercontent.com/68190553/126890031-13bae9e8-cf15-4270-b975-11cc40cb87e8.png){: .mx-auto.d-block :} <br/>
+
+
+### 2-Stage Detection Model의 메커니즘
+2-Stage Detection Model은 이름과 같이 2가지 과정을 거칩니다. <br/>
+* **1) Region Proposal**<br/>
+*  **2) Object Detect**<br/>
+![rcnn_img_2](https://user-images.githubusercontent.com/68190553/126890169-48412ad9-8ffb-4d51-b73f-f988e70492bd.png){: .mx-auto.d-block :} <br/>
+
+#### [1] Region Proposal
+Region Proposal은 이미지 속에서 해당 영역이 물체일 것 같은 곳은 **추천**해주는 역할을 합니다.<br/>
+R-CNN / Fast R-CNN / Faster R-CNN 등의 2-Stage Detection Model들은 Region Proposal 부분을 더 효과적으로 만듦으로써 R-CNN를 발전 시켜왔습니다.<br/>
+![rcnn_img_3](https://user-images.githubusercontent.com/68190553/126890359-3c9afd8b-4dbd-4fd1-beb7-a00d9d0cf76c.png){: .mx-auto.d-block :}
+>  Region Proposal을 해주는 "Selective Search"라는 알고리즘
+
+그중 R-CNN 모델의 Region Proposal은 이미지 속의 "물체의 크기", "색이 다른 곳", "직각적인 모서리를 보이는 곳"등의 알고리즘을 통해 영역을 추천해줍니다.<br/>
+
+#### [2] Object Detect
+이제 R-CNN 모델은 Region Proposal을 통해 추천된 영역들 2000개를 **CNN모델** (VGG16 / Resnet 등의 CNN모델)을 통해 특징을 추출하고, 박스 속의 물체를 분류해주고 박스의 위치를 예측해줍니다.<br/>
+<img width="197" alt="rcnn_img_4" src="https://user-images.githubusercontent.com/68190553/126890481-d2c2ef56-82d1-414e-a42e-29e393005a04.png">{: .mx-auto.d-block :} <br/>
+사진을 보면 4개의 CNN밖에 구현이 되지 않았지만, 우리는 2000개의 추천된 영역을 각각의 CNN영역을 거쳐야합니다. 밑에서 이와 같은 R-CNN모델의 단점들에 대해 다뤄보겠습니다.
+
+***
+### R-CNN의 한계
+R-CNN모델은 해야할 연산들이 너무 많아 속도 측면에서 실시간으로 적용하기 어렵다는 점입니다.<br/>
+그렇다면 왜 연산량이 많을까요?
+* 1) 1개의 이미지를 "Selective Search" 알고리즘에 넣고 2000개의 영역을 추천 받으며, 이를 **CNN모델** (VGG16 / Resnet 등의 CNN모델)의 input 사이즈에 맞게 crop / warp 해줘야합니다.
+* 2) crop / warp 이미지들을 각각 CNN모델에 넣어서 특징을 추출합니다. ( 즉 모델을 2000번 돌린다는 의미입니다.)
+
+R-CNN의 막대한 계산량과 비용을 절감하기 위해 추후 SPP-Net의 "Poi-Pooling" 기법을 적용해 Fast R-CNN 모델을 탄생시킵니다.
+
+<br/>
+
+> Reference
+> * https://arxiv.org/abs/1311.2524

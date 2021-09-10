@@ -10,14 +10,25 @@
     
     
       <item>
+        <title>Fast R-CNN 이해하기</title>
+        <description>
+          2-Stage Detection Model (2) - 
+          Fast R-CNN이란? Fast R-CNN는 이전 포스트에서 설명한 R-CNN을 속도 측면에서 큰 변화를 준 모델입니다. R-CNN은 2000개의 Region Proposal들이 Convolution Layer를 거쳐서, 연산 속도가 굉장히 오려걸렸었습니다. Fast R-CNN는 이런 R-CNN의 속도전 한계를 개선한 모델입니다. 2-Stage Detection Model의 메커니즘 (Fast R-CNN) 1) Region Proposal 2) ROI Pooling Layer [1] Region Proposal 기존...
+        </description>
+        <pubDate>Tue, 07 Sep 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-09-07-fastrcnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-09-07-fastrcnn/</guid>
+      </item>
+    
+      <item>
         <title>R-CNN 이해하기</title>
         <description>
           2-Stage Detection Model (1) - 
           R-CNN이란? Object Detection 분야는 크게 2-Stage Detection Model 에서 1-Stage Detection Model로 발전돼 왔습니다. 그 2-Stage Detection Model중 가장 발전에 영향을 준 R-CNN모델을 이해할 예정입니다. 2-Stage Detection Model의 메커니즘 2-Stage Detection Model은 이름과 같이 2가지 과정을 거칩니다. 1) Region Proposal 2) Object Detect [1] Region Proposal Region Proposal은 이미지 속에서...
         </description>
-        <pubDate>Sat, 24 Jul 2021 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2021-07-24-fasterrcnn/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-07-24-fasterrcnn/</guid>
+        <pubDate>Sun, 25 Jul 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-07-25-rcnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-07-25-rcnn/</guid>
       </item>
     
       <item>

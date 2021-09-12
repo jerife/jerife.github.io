@@ -4,8 +4,16 @@
        "title"    : "Fast R-CNN 이해하기",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",
-       "url"      : "/2021-09-07-fastrcnn/",
-       "date"     : "2021-09-07 00:00:00 -0400"
+       "url"      : "/2021-09-10-fastrcnn/",
+       "date"     : "2021-09-10 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "Faster R-CNN 이해하기",
+       "category" : "",
+       "tags"     : "Computer Vision, Object Detection",
+       "url"      : "/2021-09-10-fasterrcnn/",
+       "date"     : "2021-09-10 00:00:00 -0400"
      } ,
     
      {

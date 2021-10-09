@@ -84,9 +84,9 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-09-10T00:00:00-04:00">
-  <meta property="og:url" content="http://localhost:4000/2021-09-10-fasterrcnn/">
-  <link rel="canonical" href="http://localhost:4000/2021-09-10-fasterrcnn/">
+  <meta property="og:article:published_time" content="2021-09-12T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2021-09-12-fasterrcnn/">
+  <link rel="canonical" href="http://localhost:4000/2021-09-12-fasterrcnn/">
   
 
   
@@ -187,7 +187,7 @@
           
 
           
-            <span class="post-meta">Posted on September 10, 2021</span>
+            <span class="post-meta">Posted on September 12, 2021</span>
             
             
           
@@ -291,13 +291,14 @@ Ground Truth의 값 g=(gx,gy,gw,gh)</p>
   </li>
 </ul>
 
-<p>RPN에서 Prediect한 Anchor Box의 값과 그에 해당하는 Ground Truth 값을 학습할수 있게 변환(로그변환 등) 해줍니다. <br /></p>
+<p>먼저 Bounding Box의 값인 P(X,Y,W,H)를 G에 가깝게 만들어주기위해 dx, dy, dw, dw라는 함수에 P값을 넣어줍니다. 즉, 우리는 d함수들이 G에 가깝게 이동시킬 수 있게 학습시키는 것입니다. <br /><br />
+이때 X,Y는 점이기 때문에 위치만 이동시켜주고, W,H는 이미지의 크기에 맞게 조정해야하기 때문에 그에 맞는 계산을 추가해줍니다. <br /></p>
 
 <p><img width="170" alt="fasterrcnn_img_10" src="https://user-images.githubusercontent.com/68190553/132978085-6dba8ffd-1d1d-42b5-a97a-3d2fbf0e586c.png" class="mx-auto d-block" /> <br />
-변환된 Ground Truth값과 Prediect(RPN에서 Proposal)한 Bounding Box의 값을 이용해  Target값을 정의해줍니다. <br /></p>
+이제 P를 변환시킨 G로 이동시키기 위한 이동량인 tx, ty, tw, th를 정의해줍니다. <br /></p>
 
 <p><img width="321" alt="fasterrcnn_img_11" src="https://user-images.githubusercontent.com/68190553/132978095-2def57ab-6340-475d-a3d9-b6e8ccf0ca3d.png" class="mx-auto d-block" /> <br />
-정의해준 Target 값과, 위의 연산으로 Bounding Box Regression을 진행 해주며, 이 Regression는 RPN의 학습시 사용 됩니다.</p>
+정의해준 t 값과, 위의 연산으로 Bounding Box Regression을 진행 해주며, 이 Regression는 RPN의 학습시 사용 됩니다.</p>
 
 <h4 id="3-region-proposal-network-loss-function">[3] Region Proposal Network Loss Function</h4>
 <p><img src="https://user-images.githubusercontent.com/68190553/132979260-a0acf85e-b8d0-444c-8546-a4e13f8cf61a.png" alt="fasterrcnn_img_12" class="mx-auto d-block" /></p>
@@ -310,8 +311,6 @@ Ground Truth의 값 g=(gx,gy,gw,gh)</p>
 
 <hr />
 <p>R-CNN계열 Detect Model은 여기까지 이해하는 것으로 마치며, 이후 1-Stage Detection Model에 대해 정리하겠습니다. <br /></p>
-
-<p><br /></p>
 
 <blockquote>
   <p>Reference</p>
@@ -345,7 +344,7 @@ Ground Truth의 값 g=(gx,gy,gw,gh)</p>
   <span class="sr-only">Share: </span>
 
   
-    <a href="https://twitter.com/intent/tweet?text=Faster+R-CNN+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0&url=http%3A%2F%2Flocalhost%3A4000%2F2021-09-10-fasterrcnn%2F"
+    <a href="https://twitter.com/intent/tweet?text=Faster+R-CNN+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0&url=http%3A%2F%2Flocalhost%3A4000%2F2021-09-12-fasterrcnn%2F"
       class="btn btn-social-icon btn-twitter" title="Share on Twitter">
       <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
       <span class="sr-only">Twitter</span>
@@ -353,7 +352,7 @@ Ground Truth의 값 g=(gx,gy,gw,gh)</p>
   
 
   
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-09-10-fasterrcnn%2F"
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-09-12-fasterrcnn%2F"
       class="btn btn-social-icon btn-facebook" title="Share on Facebook">
       <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
       <span class="sr-only">Facebook</span>
@@ -361,7 +360,7 @@ Ground Truth의 값 g=(gx,gy,gw,gh)</p>
   
 
   
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-09-10-fasterrcnn%2F"
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-09-12-fasterrcnn%2F"
       class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
       <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
       <span class="sr-only">LinkedIn</span>
@@ -379,12 +378,12 @@ Ground Truth의 값 g=(gx,gy,gw,gh)</p>
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-07-25-rcnn/" data-toggle="tooltip" data-placement="top" title="R-CNN 이해하기">&larr; Previous Post</a>
+          <a class="page-link" href="/2021-09-10-fastrcnn/" data-toggle="tooltip" data-placement="top" title="Fast R-CNN 이해하기">&larr; Previous Post</a>
         </li>
         
         
         <li class="page-item next">
-          <a class="page-link" href="/2021-09-10-fastrcnn/" data-toggle="tooltip" data-placement="top" title="Fast R-CNN 이해하기">Next Post &rarr;</a>
+          <a class="page-link" href="/2021-10-09-yolov3/" data-toggle="tooltip" data-placement="top" title="YOLO(You Only Look Once) v3 이해하기">Next Post &rarr;</a>
         </li>
         
       </ul>

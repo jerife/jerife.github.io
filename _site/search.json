@@ -1,18 +1,26 @@
 [
     
      {
-       "title"    : "Fast R-CNN 이해하기",
+       "title"    : "YOLO(You Only Look Once) v3 이해하기",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",
-       "url"      : "/2021-09-10-fastrcnn/",
-       "date"     : "2021-09-10 00:00:00 -0400"
+       "url"      : "/2021-10-09-yolov3/",
+       "date"     : "2021-10-09 00:00:00 -0400"
      } ,
     
      {
        "title"    : "Faster R-CNN 이해하기",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",
-       "url"      : "/2021-09-10-fasterrcnn/",
+       "url"      : "/2021-09-12-fasterrcnn/",
+       "date"     : "2021-09-12 00:00:00 -0400"
+     } ,
+    
+     {
+       "title"    : "Fast R-CNN 이해하기",
+       "category" : "",
+       "tags"     : "Computer Vision, Object Detection",
+       "url"      : "/2021-09-10-fastrcnn/",
        "date"     : "2021-09-10 00:00:00 -0400"
      } ,
     

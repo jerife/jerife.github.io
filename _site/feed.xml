@@ -10,14 +10,14 @@
     
     
       <item>
-        <title>Fast R-CNN 이해하기</title>
+        <title>YOLO(You Only Look Once) v3 이해하기</title>
         <description>
-          2-Stage Detection Model (2) - 
-          Fast R-CNN이란? Fast R-CNN는 이전 포스트에서 설명한 R-CNN을 속도 측면에서 큰 변화를 준 모델입니다. R-CNN은 2000개의 Region Proposal들이 Convolution Layer를 거쳐서, 연산 속도가 굉장히 오려걸렸었습니다. Fast R-CNN는 이런 R-CNN의 속도전 한계를 개선한 모델입니다. 2-Stage Detection Model의 메커니즘 (Fast R-CNN) 1) Region Proposal 2) ROI Pooling Layer [1] Region Proposal 기존...
+          1-Stage Detection Model - 
+          YOLO란? R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network 구조를 적용 시켜 더 빠른 속도를 자랑하는 모델입니다. Fast R-CNN + RPN(Region Proposal Network) 2-Stage Detection Model의 메커니즘 (Faster R-CNN) 1) Region Proposal Network 2) Anchor Box 3) Region Proposal Network Loss Function [1] Region Proposal Network 우리는 1개의...
         </description>
-        <pubDate>Fri, 10 Sep 2021 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2021-09-10-fastrcnn/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-09-10-fastrcnn/</guid>
+        <pubDate>Sat, 09 Oct 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-10-09-yolov3/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-10-09-yolov3/</guid>
       </item>
     
       <item>
@@ -26,9 +26,20 @@
           2-Stage Detection Model (3) - 
           Faster R-CNN이란? R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network 구조를 적용 시켜 더 빠른 속도를 자랑하는 모델입니다. Fast R-CNN + RPN(Region Proposal Network) 2-Stage Detection Model의 메커니즘 (Faster R-CNN) 1) Region Proposal Network 2) Anchor Box 3) Region Proposal Network Loss Function [1] Region Proposal Network 우리는...
         </description>
+        <pubDate>Sun, 12 Sep 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-09-12-fasterrcnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-09-12-fasterrcnn/</guid>
+      </item>
+    
+      <item>
+        <title>Fast R-CNN 이해하기</title>
+        <description>
+          2-Stage Detection Model (2) - 
+          Fast R-CNN이란? Fast R-CNN는 이전 포스트에서 설명한 R-CNN을 속도 측면에서 큰 변화를 준 모델입니다. R-CNN은 2000개의 Region Proposal들이 Convolution Layer를 거쳐서, 연산 속도가 굉장히 오려걸렸었습니다. Fast R-CNN는 이런 R-CNN의 속도전 한계를 개선한 모델입니다. 2-Stage Detection Model의 메커니즘 (Fast R-CNN) 1) Region Proposal 2) ROI Pooling Layer [1] Region Proposal 기존...
+        </description>
         <pubDate>Fri, 10 Sep 2021 00:00:00 -0400</pubDate>
-        <link>http://localhost:4000/2021-09-10-fasterrcnn/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-09-10-fasterrcnn/</guid>
+        <link>http://localhost:4000/2021-09-10-fastrcnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-09-10-fastrcnn/</guid>
       </item>
     
       <item>

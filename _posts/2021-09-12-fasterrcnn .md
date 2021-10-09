@@ -55,13 +55,14 @@ Faster R-CNN의 RPN은 Anchor Box를 통해 (1)Image Pos/Neg Classification, (2)
 > Prediect(RPN에서 Proposal)한 Bounding Box의 값 : p=(px,py,pw,ph) <br/>
 > Ground Truth의 값 g=(gx,gy,gw,gh)
 
-RPN에서 Prediect한 Anchor Box의 값과 그에 해당하는 Ground Truth 값을 학습할수 있게 변환(로그변환 등) 해줍니다. <br/>
+먼저 Bounding Box의 값인 P(X,Y,W,H)를 G에 가깝게 만들어주기위해 dx, dy, dw, dw라는 함수에 P값을 넣어줍니다. 즉, 우리는 d함수들이 G에 가깝게 이동시킬 수 있게 학습시키는 것입니다. <br/><br/>
+이때 X,Y는 점이기 때문에 위치만 이동시켜주고, W,H는 이미지의 크기에 맞게 조정해야하기 때문에 그에 맞는 계산을 추가해줍니다. <br/>
 
 <img width="170" alt="fasterrcnn_img_10" src="https://user-images.githubusercontent.com/68190553/132978085-6dba8ffd-1d1d-42b5-a97a-3d2fbf0e586c.png">{: .mx-auto.d-block :} <br/>
-변환된 Ground Truth값과 Prediect(RPN에서 Proposal)한 Bounding Box의 값을 이용해  Target값을 정의해줍니다. <br/>
+이제 P를 변환시킨 G로 이동시키기 위한 이동량인 tx, ty, tw, th를 정의해줍니다. <br/>
 
 <img width="321" alt="fasterrcnn_img_11" src="https://user-images.githubusercontent.com/68190553/132978095-2def57ab-6340-475d-a3d9-b6e8ccf0ca3d.png">{: .mx-auto.d-block :} <br/>
-정의해준 Target 값과, 위의 연산으로 Bounding Box Regression을 진행 해주며, 이 Regression는 RPN의 학습시 사용 됩니다. 
+정의해준 t 값과, 위의 연산으로 Bounding Box Regression을 진행 해주며, 이 Regression는 RPN의 학습시 사용 됩니다. 
 
 #### [3] Region Proposal Network Loss Function
 ![fasterrcnn_img_12](https://user-images.githubusercontent.com/68190553/132979260-a0acf85e-b8d0-444c-8546-a4e13f8cf61a.png){: .mx-auto.d-block :}

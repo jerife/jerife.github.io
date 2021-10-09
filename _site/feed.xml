@@ -10,10 +10,10 @@
     
     
       <item>
-        <title>YOLO(You Only Look Once) v3 이해하기</title>
+        <title>Yolov3</title>
         <description>
           1-Stage Detection Model - 
-          YOLO란? R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network 구조를 적용 시켜 더 빠른 속도를 자랑하는 모델입니다. Fast R-CNN + RPN(Region Proposal Network) 2-Stage Detection Model의 메커니즘 (Faster R-CNN) 1) Region Proposal Network 2) Anchor Box 3) Region Proposal Network Loss Function [1] Region Proposal Network 우리는 1개의...
+          YOLO란? YOLO는 이전 포스팅인 2-stage 모델인 Faster RCNN과 다르게 대표적인 1-stage Object detection 모델입니다. 1-stage와 2-stage의 차이를 알기위해 구조를 먼저 언급하겠습니다. 1 stage: 이미지를 입력받아 한 모델에 한번에 Classification과 BoundingBox를 출력합니다. 2 stage: 이미지를 입력받고 Feature map을 하여, RPN에서 Region Proposal을 받아 Feature map에 대입해 학습합니다. 이는 Yolo v1의 구조입니다....
         </description>
         <pubDate>Sat, 09 Oct 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-10-09-yolov3/</link>

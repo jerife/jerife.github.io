@@ -1,25 +1,509 @@
-<p><br />
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Yolo v3 이해하기</title>
+
+  
+  <meta name="author" content="Jerife">
+  
+
+  <meta name="description" content="1-Stage Detection Model">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Jerife">
+  <meta property="og:title" content="Yolo v3 이해하기">
+  <meta property="og:description" content="1-Stage Detection Model">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2021-10-09T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2021-10-09-yolov3/">
+  <link rel="canonical" href="http://localhost:4000/2021-10-09-yolov3/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Yolo v3 이해하기">
+  <meta property="twitter:description" content="1-Stage Detection Model">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/log.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/log.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/log.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/log.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/log.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/log.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/log.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/log.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/log.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/log.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/log.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/log.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/log.ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/log.ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Jerife</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://jerife.github.io/tags/">Records</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Yolo v3 이해하기</h1>
+          
+            
+              <h2 class="post-subheading">1-Stage Detection Model</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on October 9, 2021</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <p><br />
 <img src="https://user-images.githubusercontent.com/68190553/136654564-a8955779-5be8-4dd2-997d-a25a32d3160c.png" alt="yolo_img_1" class="mx-auto d-block" /> <br /></p>
 
-<h2 id="yolo란">YOLO란?</h2>
-<p>YOLO는 이전 포스팅인 2-stage 모델인 Faster RCNN과 다르게 대표적인 1-stage Object detection 모델입니다. <br />
-1-stage와 2-stage의 차이를 알기위해 구조를 먼저 언급하겠습니다. <br /></p>
+<h1 id="yolo란">YOLO란?</h1>
+<h6 id="yolo는-이전-포스팅인-2-stage-모델인-faster-rcnn과-다르게-대표적인-1-stage-object-detection-모델입니다-">YOLO는 이전 포스팅인 2-stage 모델인 Faster RCNN과 다르게 대표적인 1-stage Object detection 모델입니다. <br /></h6>
+<h6 id="1-stage와-2-stage의-차이를-알기위해-구조를-먼저-언급하겠습니다--">1-stage와 2-stage의 차이를 알기위해 구조를 먼저 언급하겠습니다. <br /> <br /></h6>
 <blockquote>
-  <p>1 stage: 이미지를 입력받아 한 모델에 한번에 Classification과 BoundingBox를 출력합니다.
-2 stage: 이미지를 입력받고 Feature map을 하여, RPN에서 Region Proposal을 받아 Feature map에 대입해 학습합니다.</p>
+  <h6 id="1-stage---이미지를-입력받아-한-모델에-한번에-classification과-boundingbox를-출력합니다-">1 stage :  이미지를 입력받아 한 모델에 한번에 Classification과 BoundingBox를 출력합니다. <br /></h6>
+  <h6 id="2-stage---이미지를-입력받고-feature-map을-하여-rpn에서-region-proposal을-받아-feature-map에-적용해-학습합니다">2 stage :  이미지를 입력받고 Feature map을 하여, RPN에서 Region Proposal을 받아 Feature map에 적용해 학습합니다.</h6>
 </blockquote>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/136654678-fa54308a-3ff4-489c-8cee-ef4bd3fc2f30.png" alt="yolo_img_2" class="mx-auto d-block" /> <br />
-이는 Yolo v1의 구조입니다. Faster RCNN과 다르게 RPN부분이 따로 없는 것을 알 수 있습니다. <br />
-이 포스팅에선 Yolo에 혁명을 준, 3번쨰 버전인 v3에 대해 다뤄보겠습니다.  <br /><br />
-Yolo v3의 구조는 크게 “Backbone”, “Neck”, “Head” 3가지로 나눌 수 있습니다. 순서대로 설명해보겠습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/68190553/136654678-fa54308a-3ff4-489c-8cee-ef4bd3fc2f30.png" alt="yolo_img_2" class="mx-auto d-block" /> <br /></p>
+<h6 id="이는-yolo-v1의-구조입니다-faster-rcnn과-다르게-rpn부분이-따로-없는-것을-알-수-있습니다-이-포스트에선-yolo의-혁명이라-불리는-3번째v3버전-대해-다뤄보겠습니다--">이는 Yolo v1의 구조입니다. Faster RCNN과 다르게 RPN부분이 따로 없는 것을 알 수 있습니다. 이 포스트에선 Yolo의 혁명이라 불리는 3번째(v3)버전 대해 다뤄보겠습니다.  <br /><br /></h6>
+<h6 id="yolo-v3의-구조는-크게-backbone-neck-head-3가지로-나눌-수-있습니다-순서대로-설명해보겠습니다--">Yolo v3의 구조는 크게 <strong>“Backbone”, “Neck”, “Head”</strong> 3가지로 나눌 수 있습니다. 순서대로 설명해보겠습니다. <br /> <br /></h6>
 
-<h3 id="1-backbone">[1] Backbone</h3>
-<p>Backbone은 “Feature Extractor”라고도 불립니다. 이미지를 모델에 input으로 사용해, 이미지의 특징(feature map)을 ouptput으로 내보내는 모델입니다. <br />
-대표적으론 CNN계열 모델들인 “ResNet”, “DenseNet”등 Feature map을 output하는 어떠한 모델들도 Backbone으로 사용될 수 있습니다. <br /><br />
-하지만 Yolo v3에선 <strong>DarkNet 53</strong>이라는 모델을 사용했습니다. <br />
-<img src="https://user-images.githubusercontent.com/68190553/136654864-4e9412ca-7cb6-447d-84e2-eb5ccf976036.png" alt="yolo_img_4" class="mx-auto d-block" /> <br /></p>
+<h2 id="1-backbone">[1] Backbone</h2>
+<h6 id="backbone은-feature-extractor라고도-불립니다-이미지를-모델에-input으로-사용해-이미지의-특징feature-map을-ouptput으로-내보내는-모델입니다--">Backbone은 “Feature Extractor”라고도 불립니다. 이미지를 모델에 input으로 사용해, 이미지의 특징(feature map)을 ouptput으로 내보내는 모델입니다. <br /> <br /></h6>
+<h6 id="대표적으론-cnn계열-모델들인-resnet-densenet등-feature-map을-출력하는-어떠한-모델들도-backbone으로-사용될-수-있습니다-">대표적으론 CNN계열 모델들인 “ResNet”, “DenseNet”등 Feature map을 출력하는 어떠한 모델들도 Backbone으로 사용될 수 있습니다. <br /><br /></h6>
+<h6 id="하지만-yolo-v3에선-darknet-53이라는-모델을-사용했습니다-">하지만 Yolo v3에선 <strong>DarkNet 53</strong>이라는 모델을 사용했습니다. <br /></h6>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/136654864-4e9412ca-7cb6-447d-84e2-eb5ccf976036.png" alt="yolo_img_4" class="mx-auto d-block" /></p>
 <blockquote>
-  <p>DarkNet 53의 Architecture</p>
+  <h6 id="architecture-of-darknet-53">Architecture of DarkNet 53<br /></h6>
 </blockquote>
 
+<h6 id="darknet-53의-구조는-위와-같습니다-residual을-사용하는-것을-보아-resnet의-shot-connection을-사용하는-것을-알-수-있습니다--">DarkNet 53의 구조는 위와 같습니다. Residual을 사용하는 것을 보아, ResNet의 Shot connection을 사용하는 것을 알 수 있습니다. <br /> <br /></h6>
+
+<h2 id="2-neck">[2] Neck</h2>
+<h6 id="neck은-backbone에서-나온-feature-map을-더-유의미하게-만들어주는-작업을-해줍니다-대표적으로-fpnfeature-pyramid-network라는-구조가-있습니다--">Neck은 Backbone에서 나온 Feature map을 더 <strong>유의미하게</strong> 만들어주는 작업을 해줍니다. 대표적으로 FPN(Feature Pyramid Network)라는 구조가 있습니다. <br /> <br /></h6>
+
+<h3 id="2-1-fpn">[2-1] FPN</h3>
+<p><img src="https://user-images.githubusercontent.com/68190553/136657129-9be97224-d7bc-4dd3-8fc5-c9bbc4ed1296.png" alt="yolo_img_3" class="mx-auto d-block" /> <br /></p>
+
+<h6 id="yolo의-neck-구조를-설명하기-앞서-간단하게-fpn에-대해-정의하겠습니다--">Yolo의 Neck 구조를 설명하기 앞서 간단하게 FPN에 대해 정의하겠습니다. <br /> <br /></h6>
+<h6 id="우리는-backbone에서-여러단계를-거쳐-최종-feature-map을-출력합니다-하지만-fpn은-중간-중간의-feature-map을-재사용해-예측에-이용합니다--">우리는 Backbone에서 여러단계를 거쳐 최종 Feature map을 출력합니다. 하지만 FPN은 중간 중간의 Feature map을 재사용해, 예측에 이용합니다. <br /> <br /></h6>
+<h4 id="왜-이런-복잡한-과정을-거칠까요-"><strong>왜 이런 복잡한 과정을 거칠까요?</strong> <br /></h4>
+<h6 id="feature-map은-층이-깊어질수록-사이즈가-작아지면서-추상적인-특징을-띄웁니다--">Feature map은 층이 깊어질수록 사이즈가 작아지면서 추상적인 특징을 띄웁니다. <br /> <br /></h6>
+<h6 id="하지만-중간중간의-feature-map은-최종-feature-map보다-사실적인-특징직각-굴곡등-육안으로-확인하기-쉬운-특징을-가지고-있기-때문에-중간중간의-feature-map을-사용함으로써-더-유의미한-특징으로-모델을-이용할-수-있기때문입니다-">하지만, 중간중간의 Feature map은 최종 Feature map보다 사실적인 특징(직각, 굴곡등 육안으로 확인하기 쉬운 특징)을 가지고 있기 때문에, 중간중간의 Feature map을 사용함으로써 더 유의미한 특징으로 모델을 이용할 수 있기때문입니다.<br /> <br /></h6>
+
+<h3 id="2-2-yolo-v3-neck">[2-2] Yolo v3 Neck</h3>
+<p><img src="https://user-images.githubusercontent.com/68190553/136655327-217550b6-7364-4c75-bf42-31ec375ef4f5.PNG" alt="yolo_img_5" class="mx-auto d-block" /></p>
+<blockquote>
+  <h6 id="architecture-of-yolo-v3">Architecture of Yolo v3<br /></h6>
+</blockquote>
+
+<h6 id="위-사진은-yolo-v3의-전체적인-구조를-보여줍니다-사진의-좌측은-backbone인-darknet53이며-backbone의-최종-중간-초기-feature-map을-fpn에-사용합니다--">위 사진은 Yolo v3의 전체적인 구조를 보여줍니다. 사진의 좌측은 Backbone인 <strong>DarkNet53</strong>이며 Backbone의 최종, 중간, 초기 Feature map을 FPN에 사용합니다. <br /> <br /></h6>
+<h6 id="fpn에선-각각-크기가-다른-3개의-feature-map을-upsampling-과정을-통해-크기를-맞춰주고-concatnation해줍니다--">FPN에선 각각 크기가 다른 3개의 Feature map을 Upsampling 과정을 통해 크기를 맞춰주고 Concatnation해줍니다. <br /> <br /></h6>
+<h6 id="neck부분에선-결과적으로-각각-크기가-다른-3개의-feature-map을-head부분에-전달합니다--">Neck부분에선 결과적으로 각각 크기가 다른 3개의 Feature map을 Head부분에 전달합니다. <br /> <br /></h6>
+
+<h2 id="3-head">[3] Head</h2>
+<h6 id="마지막으로-head부분입니다-head는-이미지의-boundingbox를-구하고-classification해주는-부분입니다-">마지막으로 Head부분입니다. Head는 이미지의 BoundingBox를 구하고 Classification해주는 부분입니다.<br /> <br /></h6>
+
+<h3 id="3-1-anchor-box">[3-1] Anchor Box</h3>
+<h6 id="head부분에선-boundingbox를-구하기-위해-anchor-box라는-개념이-도입됍니다-anchor-box의-내용은-faster-r-cnn포스트에-기재돼있으므로-간단하게만-짚고-넘어가겠습니다-">Head부분에선 BoundingBox를 구하기 위해 Anchor Box라는 개념이 도입됍니다. Anchor Box의 내용은 <a href="https://jerife.github.io/2021-09-12-fasterrcnn/">Faster R-CNN</a>포스트에 기재돼있으므로, 간단하게만 짚고 넘어가겠습니다.<br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/136657152-bd423d75-79d9-4f26-a0b7-d0d886ca2c62.png" alt="yolo_img_7" class="mx-auto d-block" /> <br /></p>
+<blockquote>
+  <h6 id="pw-ph-anchorbox-width-height">Pw, Ph: AnchorBox width, height</h6>
+  <h6 id="tx-ty-tw-th-prediction-box">tx, ty, tw, th: Prediction Box</h6>
+  <h6 id="bx-by-bw-bh-예측한-값을-학습할-수-있게-">bx, by, bw, bh: 예측한 값을 학습할 수 있게 <br /></h6>
+</blockquote>
+
+<h6 id="yolov에서는-left-top-꼭지점cxcy으로부터-얼만큼-이동하는-지를-예측합니다-이것이-bxσtx--cx가-의미하는-바입니다-이때-σsigmoid함수를-사용함으로써-01사이로-center좌표가-cell중심을-못벗어나게-조절해줍니다--">yolov에서는 left top 꼭지점(Cx,Cy)으로부터 얼만큼 이동하는 지를 예측합니다. 이것이 bx=σ(tx) + cx가 의미하는 바입니다. 이때 σ(sigmoid)함수를 사용함으로써 0~1사이로 center좌표가 cell중심을 못벗어나게 조절해줍니다. <br /> <br /></h6>
+<h6 id="다음으로-너비와-높이는-사전에-정의된-박스의-크기pw-ph를-얼만큼-비율로-조절할-지를-지수승을-통해-예측하며-bwpwetw에-잘-나타나-있습니다--">다음으로 너비와 높이는 사전에 정의된 박스의 크기(Pw, Ph)를 얼만큼 비율로 조절할 지를 지수승을 통해 예측하며, bw=pwe^tw에 잘 나타나 있습니다. <br /> <br /></h6>
+
+<h3 id="3-2-output-shape">[3-2] Output Shape</h3>
+<h6 id="학습의-흐름을-한번-짚어보겠습니다">학습의 흐름을 한번 짚어보겠습니다.</h6>
+<ul>
+  <li>
+    <h6 id="1-backbone을-통해-3개의최종-중간-초반-feature-map을-출력한다">(1) Backbone을 통해 3개의(최종, 중간, 초반) Feature map을 출력한다.</h6>
+  </li>
+  <li>
+    <h6 id="2-neck에서-fpn을-통해-3개의-feature-map을-upsampling과-concatnation과정으로-3개-feature-map에-유의미한-특징을-부여한다">(2) Neck에서 FPN을 통해 3개의 Feature map을 Upsampling과 Concatnation과정으로 3개 Feature map에 유의미한 특징을 부여한다.</h6>
+  </li>
+  <li>
+    <h6 id="3-3개의-feature-map에-각각-anchor-box기법을-적용해-boudingbox를-구한후-classification한다">(3) 3개의 Feature map에 각각 Anchor Box기법을 적용해 BoudingBox를 구한후 Classification한다.</h6>
+    <p><img src="https://user-images.githubusercontent.com/68190553/136657642-47369a3e-808c-4f59-b389-42ac541bb5d4.png" alt="yolo_img_6" class="mx-auto d-block" /> <br /></p>
+    <h6 id="이렇게-boudingbox를-구하고-classification까지-하면-위와같은-output이-나오게됩니다--">이렇게 BoudingBox를 구하고 Classification까지 하면, 위와같은 Output이 나오게됩니다. <br /> <br /></h6>
+    <h6 id="txtytwth는-각-boundbox의-좌표-po는-object일-확률-p1p2pc는-클래스일-확률입니다-만약-우리의-문제가-강아지와-고양이분류-문제라면-클래스-확률은-p1강아지p2고양이로-2가지겠죠--">tx,ty,tw,th는 각 Boundbox의 좌표, Po는 Object일 확률, P1,P2,…,Pc는 클래스일 확률입니다. 만약 우리의 문제가 “강아지와 고양이분류” 문제라면, 클래스 확률은 P1(강아지),P2(고양이)로 2가지겠죠? <br /> <br /></h6>
+    <h6 id="특히-yolo-v3는-1cell당-3가지-모양의-anchor-box를-갖고-각-3가지의-스케일을-갖습니다-즉-1cell당-933개의-anchorbox를-갖습니다-">특히 Yolo v3는 1Cell당 3가지 모양의 Anchor Box를 갖고 각 3가지의 스케일을 갖습니다. 즉, 1Cell당 9(3*3)개의 AnchorBox를 갖습니다.<br /> <br /></h6>
+    <h6 id="때문에-사진의-banchor-box의-갯수는-9일-것입니다-여기까지가-yolo-v3의-구조입니다-앞으로-우리는-이-정보를-바탕으로-loss를-구하고-backprobagation과정을-통해-점차-학습을-하게-될-것입니다-">때문에 사진의 “B(Anchor Box의 갯수)”는 9일 것입니다. 여기까지가 Yolo v3의 구조입니다. 앞으로 우리는 이 정보를 바탕으로 Loss를 구하고 Backprobagation과정을 통해 점차 학습을 하게 될 것입니다.<br /> <br /></h6>
+  </li>
+</ul>
+
+<h2 id="4-yolo-loss">[4] Yolo Loss</h2>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/136657673-881f68e5-1f16-4d5b-a0fb-4d6f4103cb98.png" alt="yolo_img_8" class="mx-auto d-block" /> <br /></p>
+<h6 id="regression--confidence--classification-3개의-loss를-합해-구해집니다-각-수식의-첫번쨰-시그마는-각-그리드마다의-loss를-구하기-위함이고-두번째-시그마는-예측한-bounding-box의-갯수를-의미합니다-">Regression / Confidence / Classification 3개의 loss를 합해 구해집니다. 각 수식의 첫번쨰 시그마는 각 그리드마다의 loss를 구하기 위함이고, 두번째 시그마는 예측한 Bounding Box의 갯수를 의미합니다.<br /> <br /></h6>
+<h6 id="1-regression-loss부터-확인해보겠습니다-예측된-xy좌표의-오차-제곱과-wh의-루트를-취해-오차제곱한-값을-기반으로-구해집니다--">1) Regression loss부터 확인해보겠습니다. 예측된 x,y좌표의 오차 제곱과, w,h의 루트를 취해 오차제곱한 값을 기반으로 구해집니다. <br /> <br /></h6>
+<h6 id="2-다음-confidence-loss는-예측된-confidence-score와-ground-truth의-iou-오차를-기반으로-학습하며-람다noob값을-이용해-물체가-없는-영역에-대한-값을-덜-반영합니다-">2) 다음 Confidence loss는 예측된 Confidence Score와 Ground Truth의 IOU 오차를 기반으로 학습하며, 람다noob값을 이용해 물체가 없는 영역에 대한 값을 덜 반영합니다.<br /> <br /></h6>
+<h6 id="3-마지막으로-classsiciation-loss를-확인해보겠습니다-예측-화률과-실제값의-오차의-제곱을-해준-값이며-object를-책임지는-bbox만-대상으로-학습을-합니다-">3) 마지막으로 Classsiciation loss를 확인해보겠습니다. 예측 화률과 실제값의 오차의 제곱을 해준 값이며, Object를 책임지는 Bbox만 대상으로 학습을 합니다.<br /> <br /></h6>
+
+<hr />
+<p><br />
+<img src="https://user-images.githubusercontent.com/68190553/136658281-05551dd0-734f-4c05-b69c-5a0e8727f4dd.jpg" alt="yolo_img_9" class="mx-auto d-block" /> <br /></p>
+<h6 id="위-사진은-yolo논문에-기재된-학습-결과입니다-그래프를-넘어가면서까지-다른-모델들과-비교하는-것이-흥미롭네요-yolo는-현재-v5까지-출시됐으며-지금까지-가장-기본이-되는-v3모델을-정리함으로써-yolo소개를-마무리하겠습니다">위 사진은 Yolo논문에 기재된 학습 결과입니다. 그래프를 넘어가면서까지 다른 모델들과 비교하는 것이 흥미롭네요. Yolo는 현재 v5까지 출시됐으며, 지금까지 가장 기본이 되는 v3모델을 정리함으로써 Yolo소개를 마무리하겠습니다.</h6>
+
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Computer Vision">Computer Vision</a>
+          
+            <a href="/tags#Object Detection">Object Detection</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+<section id = "social-share-section">
+  <span class="sr-only">Share: </span>
+
+  
+    <a href="https://twitter.com/intent/tweet?text=Yolo+v3+%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0&url=http%3A%2F%2Flocalhost%3A4000%2F2021-10-09-yolov3%2F"
+      class="btn btn-social-icon btn-twitter" title="Share on Twitter">
+      <span class="fab fa-fw fa-twitter" aria-hidden="true"></span>
+      <span class="sr-only">Twitter</span>
+    </a>
+  
+
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2021-10-09-yolov3%2F"
+      class="btn btn-social-icon btn-facebook" title="Share on Facebook">
+      <span class="fab fa-fw fa-facebook" aria-hidden="true"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  
+
+  
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2021-10-09-yolov3%2F"
+      class="btn btn-social-icon btn-linkedin" title="Share on LinkedIn">
+      <span class="fab fa-fw fa-linkedin" aria-hidden="true"></span>
+      <span class="sr-only">LinkedIn</span>
+    </a>
+  
+
+  
+
+</section>
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-09-12-fasterrcnn/" data-toggle="tooltip" data-placement="top" title="Faster R-CNN 이해하기">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:jerife@naver.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/jerife" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Jerife
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">Jerife.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -27,7 +27,9 @@ comments: true
 ###### 기존 Scaling으로 했을 때는 일정 Accuracy(80% 이하)에서 머물렀던 반면, Compound Scaling시 기존보다 3%프로 가량의 Accuracy가 상승한 것을 볼 수 있습니다. <br/> <br/> 
 ![efficientnet_img_4](https://user-images.githubusercontent.com/68190553/139203032-1fcea2dc-ad0e-4590-923d-f8fa8c52ac99.png){: .mx-auto.d-block :}
 ###### EfficientNet에선 Compound Scaling을 적용하기 위해 위의 식을 적용했습니다. width, depth, resoultion를 각각 α, β, γ로 지정하여 Φ를 제곱승 해줍니다. <br/> <br/>
-###### 이때 Φ는 모델의 크기에 따라 조절할 수 있는 변수입니다. 논문에선 α=1.2, β=1.1, γ=1.15를 사용하며,Φ를 조절함으로써 모델 사이즈도 조절합니다. <br/> <br/> <br/> 
+###### 이때 Φ는 모델의 크기에 따라 조절할 수 있는 변수입니다.(늘릴수록 연산량 증가) 논문에선 α=1.2, β=1.1, γ=1.15를 사용하며,Φ를 조절함으로써 모델 사이즈도 조절합니다. <br/> <br/>
+###### 추가적으로 논문에선 α, β^2, γ^2 = 2로 제한함으로써  FLOPs가 (α, β^2, γ^2)^2배 만큼만 증가하게 제한을 뒀습니다. 하지만 우리는 Φ를 조절함으로써 FLOPs을 증가시킬 수 있습니다.
+ <br/> 
 
 
 ## [Architecture]

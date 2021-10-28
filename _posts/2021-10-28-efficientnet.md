@@ -1,6 +1,6 @@
 ---
 layout: post  
-title: Efficient Net 이해하기
+title: EfficientNet 이해하기
 subtitle: Compound Scaling CNN Model
 gh-repo: jerife/jerife.github.io
 gh-badge: [star, follow]

@@ -1,6 +1,14 @@
 [
     
      {
+       "title"    : "Efficient Net 이해하기",
+       "category" : "",
+       "tags"     : "Computer Vision",
+       "url"      : "/2021-10-28-efficientnet/",
+       "date"     : "2021-10-28 00:00:00 -0400"
+     } ,
+    
+     {
        "title"    : "Yolo v3 이해하기",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",

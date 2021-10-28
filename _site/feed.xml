@@ -10,6 +10,17 @@
     
     
       <item>
+        <title>Efficient Net 이해하기</title>
+        <description>
+          Convolution Nerual Network Model - 
+          EfficientNet이란? EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로 받고 특징을 output으로 내보내는 모델이죠. 그렇다면 기존 모델들과 무슨 차이점이 있기에 SOTA를 달성했을까요? 우리는 기존 CNN모델을 향상시키기위해, 위 사진처럼 (a)모델을 (b)/(c)/(d) 와 같이 scaling하며 모델을 수정해왔습니다. 특히 이 과정에(b/c/d)서 주로 1가지 방법으로만 scaling해 모델을 성능을 기대해왔습니다. 하지만...
+        </description>
+        <pubDate>Thu, 28 Oct 2021 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/2021-10-28-efficientnet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-10-28-efficientnet/</guid>
+      </item>
+    
+      <item>
         <title>Yolo v3 이해하기</title>
         <description>
           1-Stage Detection Model - 

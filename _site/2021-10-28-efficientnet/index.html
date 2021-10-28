@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Efficient Net 이해하기</title>
+
+  
+  <meta name="author" content="Jerife">
+  
+
+  <meta name="description" content="Convolution Nerual Network Model">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Jerife">
+  <meta property="og:title" content="Efficient Net 이해하기">
+  <meta property="og:description" content="Convolution Nerual Network Model">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2021-10-28T00:00:00-04:00">
+  <meta property="og:url" content="http://localhost:4000/2021-10-28-efficientnet/">
+  <link rel="canonical" href="http://localhost:4000/2021-10-28-efficientnet/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Efficient Net 이해하기">
+  <meta property="twitter:description" content="Convolution Nerual Network Model">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/log.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/log.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/log.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/log.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/log.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/log.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/log.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/log.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/log.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/log.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/log.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/log.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/log.ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/log.ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Jerife</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Records</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Efficient Net 이해하기</h1>
+          
+            
+              <h2 class="post-subheading">Convolution Nerual Network Model</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on October 28, 2021</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <h1 id="efficientnet이란">EfficientNet이란?</h1>
+<h6 id="efficientnet은-기본-cnn모델resnet-mobilenet-etc와-같은-feature-extractor-모델입니다-즉-이미지를-input으로-받고-특징을-output으로-내보내는-모델이죠-">EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로 받고 특징을 output으로 내보내는 모델이죠.<br /> <br /></h6>
+<h6 id="그렇다면-기존-모델들과-무슨-차이점이-있기에-sota를-달성했을까요-">그렇다면 기존 모델들과 무슨 차이점이 있기에 SOTA를 달성했을까요?<br /> <br /></h6>
+<hr />
+<p><img src="https://user-images.githubusercontent.com/68190553/139193693-0c5b58cd-990b-450e-a98d-13e73ef282c4.png" alt="efficientnet_img_2" class="mx-auto d-block" /></p>
+<h6 id="우리는-기존-cnn모델을-향상시키기위해-위-사진처럼-a모델을-bcd-와-같이-scaling하며-모델을-수정해왔습니다-특히-이-과정에bcd서-주로-1가지-방법으로만-scaling해-모델을-성능을-기대해왔습니다-">우리는 기존 CNN모델을 향상시키기위해, 위 사진처럼 (a)모델을 (b)/(c)/(d) 와 같이 scaling하며 모델을 수정해왔습니다. 특히 이 과정에(b/c/d)서 주로 1가지 방법으로만 scaling해 모델을 성능을 기대해왔습니다.<br /> <br /></h6>
+<h6 id="하지만-efficientnet에선-bcd과정을-골고루-조합하면-즉-e방법으로-적은-연산량으로-더-좋은-성능을-낼수있음을-증명했습니다-">하지만 EfficientNet에선 (b)/(c)/(d)과정을 골고루 조합하면, 즉 (e)방법으로 적은 연산량으로 더 좋은 성능을 낼수있음을 증명했습니다.<br /> <br /></h6>
+<h5 id="efficientnet에선-이를-compound-scaling-라합니다---">EfficientNet에선 이를 <strong>“Compound Scaling”</strong> 라합니다. <br /> <br /> <br /></h5>
+
+<h2 id="compound-scaling">[Compound Scaling]</h2>
+<p><img src="https://user-images.githubusercontent.com/68190553/139195588-84b59886-a118-4184-8f63-83ae00f4d54c.png" alt="efficientnet_img_3" class="mx-auto d-block" /></p>
+<h6 id="compound-scaling과-비교하기전-기존-scaling를-참고해보겠습니다-위-사진-3개는-각각-width-depth-resoultion을-점점-늘려가면서-실험한-결과입니다-">Compound Scaling과 비교하기전 기존 Scaling를 참고해보겠습니다. 위 사진 3개는 각각 width, depth, resoultion을 점점 늘려가면서 실험한 결과입니다.<br /> <br /></h6>
+<h6 id="일정-수준까지-빠르게-상승하다-일정-accuracy80-쯤에서-머무르는-것을-알-수-있습니다--">일정 수준까지 빠르게 상승하다, 일정 Accuracy(80% 쯤)에서 머무르는 것을 알 수 있습니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/139196343-99d0578e-7307-4711-a4b2-d3ab3c13b581.png" alt="4" class="mx-auto d-block" /></p>
+<h6 id="이번엔-depth와-resolution을-함께-조정한-compound-scaling을-살펴보겠습니다-">이번엔 depth와 resolution을 함께 조정한 Compound Scaling을 살펴보겠습니다.<br /> <br /></h6>
+<h6 id="기존-scaling으로-했을-때는-일정-accuracy80-이하에서-머물렀던-반면-compound-scaling시-기존보다-3프로-가량의-accuracy가-상승한-것을-볼-수-있습니다--">기존 Scaling으로 했을 때는 일정 Accuracy(80% 이하)에서 머물렀던 반면, Compound Scaling시 기존보다 3%프로 가량의 Accuracy가 상승한 것을 볼 수 있습니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/139203032-1fcea2dc-ad0e-4590-923d-f8fa8c52ac99.png" alt="efficientnet_img_4" class="mx-auto d-block" /></p>
+<h6 id="efficientnet에선-compound-scaling을-적용하기-위해-위의-식을-적용했습니다-width-depth-resoultion를-각각-α-β-γ로-지정하여-φ를-제곱승-해줍니다--">EfficientNet에선 Compound Scaling을 적용하기 위해 위의 식을 적용했습니다. width, depth, resoultion를 각각 α, β, γ로 지정하여 Φ를 제곱승 해줍니다. <br /> <br /></h6>
+<h6 id="이때-φ는-모델의-크기에-따라-조절할-수-있는-변수입니다-논문에선-α12-β11-γ115를-사용하며φ를-조절함으로써-모델-사이즈도-조절합니다---">이때 Φ는 모델의 크기에 따라 조절할 수 있는 변수입니다. 논문에선 α=1.2, β=1.1, γ=1.15를 사용하며,Φ를 조절함으로써 모델 사이즈도 조절합니다. <br /> <br /> <br /></h6>
+
+<h2 id="architecture">[Architecture]</h2>
+<h6 id="efficientnet의-이론을-알았으니-어떤-모델에-사용되는지-알아보겠습니다">EfficientNet의 이론을 알았으니, 어떤 모델에 사용되는지 알아보겠습니다.</h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/139201539-a7c8fe3b-bc0e-4b56-b003-7f944639a8c5.png" alt="efficientnet_img_5" class="mx-auto d-block" /></p>
+<h6 id="efficientnet은-mobilenetv2과-mnasnet랑-유사한-모델을-사용하고있습니다-하지만-이-모델을-바탕으로-compound-scaling한다는-점이-차이점이죠">EfficientNet은 MobileNetV2과 MnasNet랑 유사한 모델을 사용하고있습니다. 하지만 이 모델을 바탕으로 Compound Scaling한다는 점이 차이점이죠.</h6>
+<h6 id="사실-모델의-architecture보단-compound-scaling의-매커니즘이-큰-주목받고-있는-모델이랍니다-">사실 모델의 Architecture보단 Compound Scaling의 매커니즘이 큰 주목받고 있는 모델이랍니다.<br /> <br /></h6>
+
+<hr />
+
+<p>##[Performance]
+<img src="https://user-images.githubusercontent.com/68190553/139202754-0f131c96-c269-4ec1-9ec2-6e14dbddd46a.png" alt="efficientnet_img_6" class="mx-auto d-block" /></p>
+<h6 id="마지막으로-논문에서-제공한-performance에-대해-이야기하고-마치겠습니다">마지막으로 논문에서 제공한 performance에 대해 이야기하고 마치겠습니다.</h6>
+<h6 id="위-사진들은-각각의-scaling시-나온-featuremap입니다-compound-scaling이-가장-특징을-잘-추출해내는-것을-알-수-있습니다-">위 사진들은 각각의 Scaling시 나온 Featuremap입니다. Compound Scaling이 가장 특징을 잘 추출해내는 것을 알 수 있습니다.<br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/139203576-2f44a51b-f828-4fc2-906b-24646970edf6.png" alt="efficientnet_img_7" class="mx-auto d-block" /></p>
+<h6 id="마지막은-다른-모델들과-비교한-efficientnet의-performance입니다-다른-cnnfeature-extractor보다-적은-연산량으로-좋은-성능을-낸다는것을-알수있죠">마지막은 다른 모델들과 비교한 EfficientNet의 performance입니다. 다른 CNN(Feature Extractor)보다 적은 연산량으로 좋은 성능을 낸다는것을 알수있죠.</h6>
+<h6 id="이상으로-efficientnet에-대한-설명을-마치겠습니다">이상으로 EfficientNet에 대한 설명을 마치겠습니다.</h6>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Computer Vision">Computer Vision</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-10-09-yolov3/" data-toggle="tooltip" data-placement="top" title="Yolo v3 이해하기">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:jerife@naver.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/jerife" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Jerife
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">Jerife.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

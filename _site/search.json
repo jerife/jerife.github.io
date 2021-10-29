@@ -1,7 +1,7 @@
 [
     
      {
-       "title"    : "Efficient Net 이해하기",
+       "title"    : "Introduce to EfficientNet",
        "category" : "",
        "tags"     : "Computer Vision",
        "url"      : "/2021-10-28-efficientnet/",
@@ -9,7 +9,7 @@
      } ,
     
      {
-       "title"    : "Yolo v3 이해하기",
+       "title"    : "Introduce to Yolo v3",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",
        "url"      : "/2021-10-09-yolov3/",
@@ -17,7 +17,7 @@
      } ,
     
      {
-       "title"    : "Faster R-CNN 이해하기",
+       "title"    : "Introduce to Faster R-CNN",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",
        "url"      : "/2021-09-12-fasterrcnn/",
@@ -25,7 +25,7 @@
      } ,
     
      {
-       "title"    : "Fast R-CNN 이해하기",
+       "title"    : "Introduce to Fast R-CNN",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",
        "url"      : "/2021-09-10-fastrcnn/",
@@ -33,7 +33,7 @@
      } ,
     
      {
-       "title"    : "R-CNN 이해하기",
+       "title"    : "Introduce to R-CNN",
        "category" : "",
        "tags"     : "Computer Vision, Object Detection",
        "url"      : "/2021-07-25-rcnn/",
@@ -41,7 +41,7 @@
      } ,
     
      {
-       "title"    : "ARIMA (AutoRegressive Integrated MovingAverage) 이해하기",
+       "title"    : "Intriduce to ARIMA Model",
        "category" : "",
        "tags"     : "Time Series",
        "url"      : "/2021-06-26-arima/",
@@ -49,7 +49,7 @@
      } ,
     
      {
-       "title"    : "Seq2Seq(Sequence to Sequence) 이해하기",
+       "title"    : "Introduce to Seq2Seq",
        "category" : "",
        "tags"     : "Natural Language Processing",
        "url"      : "/2021-06-08-seq2seq/",
@@ -57,7 +57,7 @@
      } ,
     
      {
-       "title"    : "LSTM(Long Short-Term Memory) 이해하기",
+       "title"    : "Introduce to LSTM",
        "category" : "",
        "tags"     : "Natural Language Processing",
        "url"      : "/2021-06-06-lstm/",
@@ -65,7 +65,7 @@
      } ,
     
      {
-       "title"    : "RNN(Recurrent Neural Network) 이해하기",
+       "title"    : "Introduce to RNN",
        "category" : "",
        "tags"     : "Natural Language Processing",
        "url"      : "/2021-06-05-rnn/",
@@ -73,7 +73,7 @@
      } ,
     
      {
-       "title"    : "DenseNet(Dense Network) 이해하기",
+       "title"    : "Introduce to DenseNet",
        "category" : "",
        "tags"     : "Computer Vision",
        "url"      : "/2021-05-12-densenet/",
@@ -81,7 +81,7 @@
      } ,
     
      {
-       "title"    : "ResNet(Residual Network) 이해하기",
+       "title"    : "Introduce to ResNet",
        "category" : "",
        "tags"     : "Computer Vision",
        "url"      : "/2021-05-11-resnet/",
@@ -89,7 +89,7 @@
      } ,
     
      {
-       "title"    : "CNN(Convolution Nerual Network) 이해하기",
+       "title"    : "Introduce to CNN",
        "category" : "",
        "tags"     : "Computer Vision",
        "url"      : "/2021-05-10-cnn/",

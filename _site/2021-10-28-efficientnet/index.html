@@ -9,13 +9,13 @@
 
   
 
-  <title>Efficient Net 이해하기</title>
+  <title>Introduce to EfficientNet</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="Convolution Nerual Network Model">
+  <meta name="description" content="Compound Scaling CNN Model">
 
   
 
@@ -74,8 +74,8 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Efficient Net 이해하기">
-  <meta property="og:description" content="Convolution Nerual Network Model">
+  <meta property="og:title" content="Introduce to EfficientNet">
+  <meta property="og:description" content="Compound Scaling CNN Model">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -95,8 +95,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Efficient Net 이해하기">
-  <meta property="twitter:description" content="Convolution Nerual Network Model">
+  <meta property="twitter:title" content="Introduce to EfficientNet">
+  <meta property="twitter:description" content="Compound Scaling CNN Model">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -179,10 +179,10 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Efficient Net 이해하기</h1>
+          <h1>Introduce to EfficientNet</h1>
           
             
-              <h2 class="post-subheading">Convolution Nerual Network Model</h2>
+              <h2 class="post-subheading">Compound Scaling CNN Model</h2>
             
           
 
@@ -229,10 +229,16 @@
       
 
       <article role="main" class="blog-post">
-        <h1 id="efficientnet이란">EfficientNet이란?</h1>
+        <div align="center"><h1>EfficientNet 이해하기</h1></div>
+<!--break-->
+
+<hr />
+
+<p><br /></p>
+<h1 id="efficientnet이란">EfficientNet이란?</h1>
 <h6 id="efficientnet은-기본-cnn모델resnet-mobilenet-etc와-같은-feature-extractor-모델입니다-즉-이미지를-input으로-받고-특징을-output으로-내보내는-모델이죠-">EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로 받고 특징을 output으로 내보내는 모델이죠.<br /> <br /></h6>
 <h6 id="그렇다면-기존-모델들과-무슨-차이점이-있기에-sota를-달성했을까요-">그렇다면 기존 모델들과 무슨 차이점이 있기에 SOTA를 달성했을까요?<br /> <br /></h6>
-<hr />
+
 <p><img src="https://user-images.githubusercontent.com/68190553/139193693-0c5b58cd-990b-450e-a98d-13e73ef282c4.png" alt="efficientnet_img_2" class="mx-auto d-block" /></p>
 <h6 id="우리는-기존-cnn모델을-향상시키기위해-위-사진처럼-a모델을-bcd-와-같이-scaling하며-모델을-수정해왔습니다-특히-이-과정에bcd서-주로-1가지-방법으로만-scaling해-모델을-성능을-기대해왔습니다-">우리는 기존 CNN모델을 향상시키기위해, 위 사진처럼 (a)모델을 (b)/(c)/(d) 와 같이 scaling하며 모델을 수정해왔습니다. 특히 이 과정에(b/c/d)서 주로 1가지 방법으로만 scaling해 모델을 성능을 기대해왔습니다.<br /> <br /></h6>
 <h6 id="하지만-efficientnet에선-bcd과정을-골고루-조합하면-즉-e방법으로-적은-연산량으로-더-좋은-성능을-낼수있음을-증명했습니다-">하지만 EfficientNet에선 (b)/(c)/(d)과정을 골고루 조합하면, 즉 (e)방법으로 적은 연산량으로 더 좋은 성능을 낼수있음을 증명했습니다.<br /> <br /></h6>
@@ -247,7 +253,9 @@
 <h6 id="기존-scaling으로-했을-때는-일정-accuracy80-이하에서-머물렀던-반면-compound-scaling시-기존보다-3프로-가량의-accuracy가-상승한-것을-볼-수-있습니다--">기존 Scaling으로 했을 때는 일정 Accuracy(80% 이하)에서 머물렀던 반면, Compound Scaling시 기존보다 3%프로 가량의 Accuracy가 상승한 것을 볼 수 있습니다. <br /> <br /></h6>
 <p><img src="https://user-images.githubusercontent.com/68190553/139203032-1fcea2dc-ad0e-4590-923d-f8fa8c52ac99.png" alt="efficientnet_img_4" class="mx-auto d-block" /></p>
 <h6 id="efficientnet에선-compound-scaling을-적용하기-위해-위의-식을-적용했습니다-width-depth-resoultion를-각각-α-β-γ로-지정하여-φ를-제곱승-해줍니다--">EfficientNet에선 Compound Scaling을 적용하기 위해 위의 식을 적용했습니다. width, depth, resoultion를 각각 α, β, γ로 지정하여 Φ를 제곱승 해줍니다. <br /> <br /></h6>
-<h6 id="이때-φ는-모델의-크기에-따라-조절할-수-있는-변수입니다-논문에선-α12-β11-γ115를-사용하며φ를-조절함으로써-모델-사이즈도-조절합니다---">이때 Φ는 모델의 크기에 따라 조절할 수 있는 변수입니다. 논문에선 α=1.2, β=1.1, γ=1.15를 사용하며,Φ를 조절함으로써 모델 사이즈도 조절합니다. <br /> <br /> <br /></h6>
+<h6 id="이때-φ는-모델의-크기에-따라-조절할-수-있는-변수입니다늘릴수록-연산량-증가-논문에선-α12-β11-γ115를-사용하며φ를-조절함으로써-모델-사이즈도-조절합니다--">이때 Φ는 모델의 크기에 따라 조절할 수 있는 변수입니다.(늘릴수록 연산량 증가) 논문에선 α=1.2, β=1.1, γ=1.15를 사용하며,Φ를 조절함으로써 모델 사이즈도 조절합니다. <br /> <br /></h6>
+<h6 id="추가적으로-논문에선-α-β2-γ2--2로-제한함으로써--flops가-α-β2-γ22배-만큼만-증가하게-제한을-뒀습니다-하지만-우리는-φ를-조절함으로써-flops을-증가시킬-수-있습니다">추가적으로 논문에선 α, β^2, γ^2 = 2로 제한함으로써  FLOPs가 (α, β^2, γ^2)^2배 만큼만 증가하게 제한을 뒀습니다. 하지만 우리는 Φ를 조절함으로써 FLOPs을 증가시킬 수 있습니다.</h6>
+<p><br /></p>
 
 <h2 id="architecture">[Architecture]</h2>
 <h6 id="efficientnet의-이론을-알았으니-어떤-모델에-사용되는지-알아보겠습니다">EfficientNet의 이론을 알았으니, 어떤 모델에 사용되는지 알아보겠습니다.</h6>
@@ -257,12 +265,12 @@
 
 <hr />
 
-<p>##[Performance]
-<img src="https://user-images.githubusercontent.com/68190553/139202754-0f131c96-c269-4ec1-9ec2-6e14dbddd46a.png" alt="efficientnet_img_6" class="mx-auto d-block" /></p>
+<h2 id="performance">[Performance]</h2>
+<p><img src="https://user-images.githubusercontent.com/68190553/139202754-0f131c96-c269-4ec1-9ec2-6e14dbddd46a.png" alt="efficientnet_img_6" class="mx-auto d-block" /></p>
 <h6 id="마지막으로-논문에서-제공한-performance에-대해-이야기하고-마치겠습니다">마지막으로 논문에서 제공한 performance에 대해 이야기하고 마치겠습니다.</h6>
 <h6 id="위-사진들은-각각의-scaling시-나온-featuremap입니다-compound-scaling이-가장-특징을-잘-추출해내는-것을-알-수-있습니다-">위 사진들은 각각의 Scaling시 나온 Featuremap입니다. Compound Scaling이 가장 특징을 잘 추출해내는 것을 알 수 있습니다.<br /> <br /></h6>
 <p><img src="https://user-images.githubusercontent.com/68190553/139203576-2f44a51b-f828-4fc2-906b-24646970edf6.png" alt="efficientnet_img_7" class="mx-auto d-block" /></p>
-<h6 id="마지막은-다른-모델들과-비교한-efficientnet의-performance입니다-다른-cnnfeature-extractor보다-적은-연산량으로-좋은-성능을-낸다는것을-알수있죠">마지막은 다른 모델들과 비교한 EfficientNet의 performance입니다. 다른 CNN(Feature Extractor)보다 적은 연산량으로 좋은 성능을 낸다는것을 알수있죠.</h6>
+<h6 id="마지막은-다른-모델들과-비교한-efficientnet의-performance입니다-다른-cnnfeature-extractor보다-적은-연산량으로-좋은-성능을-낸다는것을-알수있죠-">마지막은 다른 모델들과 비교한 EfficientNet의 performance입니다. 다른 CNN(Feature Extractor)보다 적은 연산량으로 좋은 성능을 낸다는것을 알수있죠.<br /> <br /></h6>
 <h6 id="이상으로-efficientnet에-대한-설명을-마치겠습니다">이상으로 EfficientNet에 대한 설명을 마치겠습니다.</h6>
 
       </article>
@@ -290,7 +298,7 @@
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-10-09-yolov3/" data-toggle="tooltip" data-placement="top" title="Yolo v3 이해하기">&larr; Previous Post</a>
+          <a class="page-link" href="/2021-10-09-yolov3/" data-toggle="tooltip" data-placement="top" title="Introduce to Yolo v3">&larr; Previous Post</a>
         </li>
         
         

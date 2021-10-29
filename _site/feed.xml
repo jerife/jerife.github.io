@@ -10,10 +10,10 @@
     
     
       <item>
-        <title>Efficient Net 이해하기</title>
+        <title>Introduce to EfficientNet</title>
         <description>
-          Convolution Nerual Network Model - 
-          EfficientNet이란? EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로 받고 특징을 output으로 내보내는 모델이죠. 그렇다면 기존 모델들과 무슨 차이점이 있기에 SOTA를 달성했을까요? 우리는 기존 CNN모델을 향상시키기위해, 위 사진처럼 (a)모델을 (b)/(c)/(d) 와 같이 scaling하며 모델을 수정해왔습니다. 특히 이 과정에(b/c/d)서 주로 1가지 방법으로만 scaling해 모델을 성능을 기대해왔습니다. 하지만...
+          Compound Scaling CNN Model - 
+          EfficientNet 이해하기 EfficientNet이란? EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로...
         </description>
         <pubDate>Thu, 28 Oct 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-10-28-efficientnet/</link>
@@ -21,10 +21,10 @@
       </item>
     
       <item>
-        <title>Yolo v3 이해하기</title>
+        <title>Introduce to Yolo v3</title>
         <description>
           1-Stage Detection Model - 
-          YOLO란? YOLO는 이전 포스팅인 2-stage 모델인 Faster RCNN과 다르게 대표적인 1-stage Object detection 모델입니다. 1-stage와 2-stage의 차이를 알기위해 구조를 먼저 언급하겠습니다. 1 stage : 이미지를 입력받아 한 모델에 한번에 Classification과 BoundingBox를 출력합니다. 2 stage : 이미지를 입력받고 Feature map을 하여, RPN에서 Region Proposal을 받아 Feature map에 적용해 학습합니다. 이는 Yolo...
+          Yolo v3 이해하기 YOLO란? YOLO는 이전 포스팅인 2-stage 모델인 Faster RCNN과 다르게 대표적인 1-stage Object...
         </description>
         <pubDate>Sat, 09 Oct 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-10-09-yolov3/</link>
@@ -32,10 +32,10 @@
       </item>
     
       <item>
-        <title>Faster R-CNN 이해하기</title>
+        <title>Introduce to Faster R-CNN</title>
         <description>
           2-Stage Detection Model (3) - 
-          Faster R-CNN이란? R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network 구조를 적용 시켜 더 빠른 속도를 자랑하는 모델입니다. Fast R-CNN + RPN(Region Proposal Network) 2-Stage Detection Model의 메커니즘 (Faster R-CNN) 1) Region Proposal Network 2) Anchor Box 3) Region Proposal Network Loss Function [1] Region Proposal Network 우리는...
+          Faster R-CNN 이해하기 Faster R-CNN이란? R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network...
         </description>
         <pubDate>Sun, 12 Sep 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-09-12-fasterrcnn/</link>
@@ -43,10 +43,10 @@
       </item>
     
       <item>
-        <title>Fast R-CNN 이해하기</title>
+        <title>Introduce to Fast R-CNN</title>
         <description>
           2-Stage Detection Model (2) - 
-          Fast R-CNN이란? Fast R-CNN는 이전 포스트에서 설명한 R-CNN을 속도 측면에서 큰 변화를 준 모델입니다. R-CNN은 2000개의 Region Proposal들이 Convolution Layer를 거쳐서, 연산 속도가 굉장히 오려걸렸었습니다. 반면 Fast R-CNN는 이런 R-CNN의 속도전 한계를 개선한 모델입니다. 2-Stage Detection Model의 메커니즘 (Fast R-CNN) 1) Region Proposal 2) ROI Pooling Layer [1] Region Proposal...
+          Fast R-CNN 이해하기 Fast R-CNN이란? Fast R-CNN는 이전 포스트에서 설명한 R-CNN을 속도 측면에서 큰 변화를...
         </description>
         <pubDate>Fri, 10 Sep 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-09-10-fastrcnn/</link>
@@ -54,10 +54,10 @@
       </item>
     
       <item>
-        <title>R-CNN 이해하기</title>
+        <title>Introduce to R-CNN</title>
         <description>
           2-Stage Detection Model (1) - 
-          R-CNN이란? Object Detection 분야는 크게 2-Stage Detection Model 에서 1-Stage Detection Model로 발전돼 왔습니다. 그 2-Stage Detection Model중 가장 발전에 영향을 준 R-CNN모델을 이해할 예정입니다. 2-Stage Detection Model의 메커니즘 2-Stage Detection Model은 이름과 같이 2가지 과정을 거칩니다. 1) Region Proposal 2) Object Detect [1] Region Proposal Region Proposal은 이미지 속에서...
+          R-CNN 이해하기 R-CNN이란? Object Detection 분야는 크게 2-Stage Detection Model 에서 1-Stage Detection Model로 발전돼...
         </description>
         <pubDate>Sun, 25 Jul 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-07-25-rcnn/</link>
@@ -65,10 +65,10 @@
       </item>
     
       <item>
-        <title>ARIMA (AutoRegressive Integrated MovingAverage) 이해하기</title>
+        <title>Intriduce to ARIMA Model</title>
         <description>
           시계열 모형의 이해 - 
-          시계열 모형의 이해 데이터 분석시 가장 기본적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다. ARIMA는 AutoRegressive Integrated MovingAverage의 약자로써, AutoRegressive / MovingAverage 2개의 모형이 합쳐진 모형입니다. 이 두 모형을 바탕으로 만들어진 시계열 모델들에 대해 다뤄보겠습니다. [1] 자기회귀모형 AR : AutoRegressive 먼저 AR모형입니다. AR모형은 이전 시점의 자료로 현재시점에 영향을 주는 모형입니다. yt=c+ϕ1yt−1+ϕ2t−2+⋯+ϕpyt−p+εt...
+          ARIMA 이해하기 데이터 분석시 가장 전통적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다. ARIMA는 AutoRegressive Integrated...
         </description>
         <pubDate>Sat, 26 Jun 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-06-26-arima/</link>
@@ -76,10 +76,10 @@
       </item>
     
       <item>
-        <title>Seq2Seq(Sequence to Sequence) 이해하기</title>
+        <title>Introduce to Seq2Seq</title>
         <description>
           Seq2Seq의 Encoder / Decoder - 
-          Seq2Seq이란? Seq2Seq는 Sequence to Sequence의 약자로써, 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른 시퀀스 데이터로 변환해주는 모델입니다. Seq2Seq 모델은 RNN모델(RNN, LSTM, GRU)등을 순환성을 기반으로 사용 되기에 [RNN(Recurrent Neural Network) 이해하기] | [LSTM(Long Short-Term Memory) 이해하기] 부분을 먼저 학습하셔야 합니다. Seq2Seq 모델은 보이는 움짤과 같이 크게 인코더 (Encoder) 부분과 디코더 (Decoder)...
+          Seq2Seq 이해하기 Seq2Seq란? Seq2Seq는 Sequence to Sequence의 약자로써, 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른...
         </description>
         <pubDate>Tue, 08 Jun 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-06-08-seq2seq/</link>
@@ -87,10 +87,10 @@
       </item>
     
       <item>
-        <title>LSTM(Long Short-Term Memory) 이해하기</title>
+        <title>Introduce to LSTM</title>
         <description>
           RNN에 기억셀 게이트를 추가한 LSTM - 
-          LSTM이란? Long Short-Term Memory의 약자로 길이가 긴 데이터 ( 시계열 데이터 / 언어 데이터 ) 를 잘 처리할 수 있는 순환 신경망 모델입니다. 저번 글 “RNN(Recurrent Neural Network) 이해하기” 에서 설명한 순환신경망에 게이트를 추가한 모델이죠. 사진 속에서 윗 부분은 기본 순환신경망 모델인 “RNN”, 밑 부분은 RNN에 게이트를 추가한 “LSTM”모델입니다. RNN모델과는...
+          LSTM 이해하기 LSTM이란? Long Short-Term Memory의 약자로 길이가 긴 데이터 ( 시계열 데이터 / 언어...
         </description>
         <pubDate>Sun, 06 Jun 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-06-06-lstm/</link>
@@ -98,10 +98,10 @@
       </item>
     
       <item>
-        <title>RNN(Recurrent Neural Network) 이해하기</title>
+        <title>Introduce to RNN</title>
         <description>
           순환 신경망의 기초 모델 RNN - 
-          RNN이란? Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. RNN은 주로 언어 데이터나 시계열 데이터 처리에 주로 사용되는 모델이며, 데이터를 순환시킴으로써 정보를 공유할 수 있는 모델입니다. 정보를 순환할 수 있는 기술들은 LSTM,GRU등 다양하며, 그중 가장 기초가 되는 RNN모델을 다뤄보겠습니다. (Xt : 입력) / (A : RNN 층) / (ht : 출력)...
+          RNN 이해하기 RNN이란? Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. RNN은 주로 언어 데이터나 시계열...
         </description>
         <pubDate>Sat, 05 Jun 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-06-05-rnn/</link>
@@ -109,10 +109,10 @@
       </item>
     
       <item>
-        <title>DenseNet(Dense Network) 이해하기</title>
+        <title>Introduce to DenseNet</title>
         <description>
           Dense Block과 Skip Connection의 차이 - 
-          DenseNet이란? DenseNet은 저번 글에서 설명한 ResNet과 유사하게 입력값과 출력값을 더하는 형태의 모델이지만, 명백하게 다릅니다. ￼ 위 사진은 DenseNet모델 구조이며, 이미지가 들어가고 이후 Dense Block이라는 구조를 지나 convolution layer 와 pooling layer를 거쳐가는 것을 알 수 있습니다. 여기서 convolution layer는 1x1 convolution을 사용합니다. ( 1x1 convolution은 적은 연산량으로 채널을 압축시키거나, 증가시킬...
+          DenseNet 이해하기 DenseNet이란? DenseNet은 저번 글에서 설명한 ResNet과 유사하게 입력값과 출력값을 더하는 형태의 모델이지만, 명백하게...
         </description>
         <pubDate>Wed, 12 May 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-05-12-densenet/</link>
@@ -120,10 +120,10 @@
       </item>
     
       <item>
-        <title>ResNet(Residual Network) 이해하기</title>
+        <title>Introduce to ResNet</title>
         <description>
           Residual Block과 Skip-connection - 
-          ResNet이란? Residual Network를 명하는 단어로써, CNN모델 중 하나입니다. 앞으로 다양한 CNN 모델을 접할 예정인데, 그에 앞서 가장 기본이 되는 ResNet의 원리를 이해해보겠습니다. 일반 CNN모델은 층이 깊어질수록 ERROR%가 더 큼을 알 수 있음 우리가 이해하는 CNN모델은 Convolution layer와 Pooling layer의 층을 깊게 쌓아 학습시킴으로서, 컴퓨터가 특징을 알아서 학습하는 모델입니다. CNN모델은 층이...
+          ResNet 이해하기 ResNet이란? Residual Network를 명하는 단어로써, CNN모델 중 하나입니다. 앞으로 다양한 CNN 모델을 접할...
         </description>
         <pubDate>Tue, 11 May 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-05-11-resnet/</link>
@@ -131,10 +131,10 @@
       </item>
     
       <item>
-        <title>CNN(Convolution Nerual Network) 이해하기</title>
+        <title>Introduce to CNN</title>
         <description>
-          합성곱 신경망 이해하기 - 
-          CNN이란? CNN은 Convolution Nerual Network의 약자로서 입력값(이미지 or 텍스트)과 사용자가 지정한 필터(fitter / kernel)와 컨볼루션을 통해 특징을 추출해내는 기법이며, 우리말로 “합성곱 신경망”라고도 합니다. CNN은 주로 이미지처리 모델링에서 많이 이용되며, 이번 글에서도 이미지를 처리한다는 상황을 가정하고 글을 작성합니다. 위 사진은 CNN의 구조를 보여주며, 해당 사진 속 Feature Extraction 해당하는 Convolution layer(층)과...
+          Image Feature Extractor - 
+          CNN 이해하기 CNN이란? CNN은 Convolution Nerual Network의 약자로서 입력값(이미지 or 텍스트)과 사용자가 지정한 필터(fitter /...
         </description>
         <pubDate>Mon, 10 May 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-05-10-cnn/</link>
@@ -145,7 +145,7 @@
         <title>To start blog with Github</title>
         <description>
           블로그 시작 - 
-          블로그 시작을 알리며, 이 블로그는 인공지능 관련 지식 공유와 기록을 목적으로 한 블로그로써, 인공지능 모델 및 기법등에 대해 리뷰하고 학습하고자하는 블로그입니다. 아직 깊은 지식이 있진 않지만, 꾸준한 공부를 통해 블로그의 성장과 동시에 넓혀가는 지식들로 방문해주시는 분들께 도움을 드릴 수 있는 블로그가 될것입니다🌈 소개 안녕하세요. 저는 인공지능을 공부하는 대학생입니다 :) 전공은...
+          블로그 시작을 알리며, 이 블로그는 인공지능 관련 지식 공유와 기록을 목적으로 한 블로그로써, 인공지능 모델...
         </description>
         <pubDate>Tue, 27 Apr 2021 00:00:00 -0400</pubDate>
         <link>http://localhost:4000/2021-04-27-first/</link>
@@ -156,7 +156,7 @@
         <title>Sample blog post</title>
         <description>
           Each post also has a subtitle - 
-          This is a demo post to show you how to write blog posts with markdown. I strongly encourage you to take 5 minutes to learn how to write in markdown - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc. Here is some bold text Here is a secondary...
+          This is a demo post to show you how to write blog posts with markdown....
         </description>
         <pubDate>Fri, 28 Feb 2020 00:00:00 -0500</pubDate>
         <link>http://localhost:4000/2020-02-28-test-markdown/</link>

@@ -1,13 +1,19 @@
 ---
 layout: post 
-title: Faster R-CNN 이해하기
+title: Introduce to Faster R-CNN
 subtitle: 2-Stage Detection Model (3)
 gh-repo: jerife/jerife.github.io
 gh-badge: [star, follow]
 tags: [Computer Vision, Object Detection]
 comments: true
+excerpt_separator: <!--break-->
 ---
+<div align=center><h1>Faster R-CNN 이해하기</h1></div>
+<!--break-->
 
+----
+
+ <br/>
 # Faster R-CNN이란?
 ###### R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network 구조를 적용 시켜 더 빠른 속도를 자랑하는 모델입니다.  <br/> <br/>
 > ###### Fast R-CNN + RPN(Region Proposal Network) 

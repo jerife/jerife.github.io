@@ -1,13 +1,18 @@
 ---
 layout: post  
-title: EfficientNet 이해하기
+title: Introduce to EfficientNet
 subtitle: Compound Scaling CNN Model
 gh-repo: jerife/jerife.github.io
 gh-badge: [star, follow]
 tags: [Computer Vision]
 comments: true
+excerpt_separator: <!--break-->
 ---
+<div align=center><h1>EfficientNet 이해하기</h1></div>
+<!--break-->
 
+----
+ <br/>
 # EfficientNet이란?
 ###### EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로 받고 특징을 output으로 내보내는 모델이죠.<br/> <br/>
 ###### 그렇다면 기존 모델들과 무슨 차이점이 있기에 SOTA를 달성했을까요?<br/> <br/>

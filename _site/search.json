@@ -102,14 +102,6 @@
        "tags"     : "",
        "url"      : "/2021-04-27-first/",
        "date"     : "2021-04-27 00:00:00 -0400"
-     } ,
-    
-     {
-       "title"    : "Sample blog post",
-       "category" : "",
-       "tags"     : "",
-       "url"      : "/2020-02-28-test-markdown/",
-       "date"     : "2020-02-28 00:00:00 -0500"
      } 
     
 ]

@@ -10,6 +10,17 @@
     
     
       <item>
+        <title>Introduce to EfficientDet</title>
+        <description>
+          Compound Scaling 1-Stage Detection Model - 
+          EfficientDet 이해하기 EfficientDet이란? EfficientDet은 1-Stage Detection 모델이며, EfficientNet의 Compound Scaling과 Feature Pyramid Network(FPN)에 변화를 주어...
+        </description>
+        <pubDate>Mon, 15 Nov 2021 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2021-11-15-efficientdet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-11-15-efficientdet/</guid>
+      </item>
+    
+      <item>
         <title>Introduce to EfficientNet</title>
         <description>
           Compound Scaling CNN Model - 

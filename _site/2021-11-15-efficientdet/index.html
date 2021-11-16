@@ -275,7 +275,7 @@
 <h6 id="그래서-bifpn에선-각각의-input-feature-map의-중요도에-따라-가중치를-부여합니다">그래서 BiFPN에선 각각의 input feature map의 중요도에 따라 가중치를 부여합니다.<img width="521" alt="efficientdet_img_9" src="https://user-images.githubusercontent.com/68190553/141735672-2ec0ea88-7fc1-4d64-b01d-0681a9736c8c.png" class="mx-auto d-block" /><br /></h6>
 <h6 id="논문에서-weighted-feature-fusion으로-적용된-위-수식은-fast-normalized-fusion이라합니다-가중치들은-relu를-거치기-때문에-0이상이며-분모에-입실론을-넣어서-가중치의-값이-01사이값이-되도록-normalize해줍니다">논문에서 Weighted Feature Fusion으로 적용된 위 수식은 “Fast normalized fusion”이라합니다. 가중치들은 ReLU를 거치기 때문에 0이상이며, 분모에 입실론을 넣어서, 가중치의 값이 0~1사이값이 되도록 normalize해줍니다.</h6>
 
-<p><img width="349" alt="efficientdet_img_11" src="https://user-images.githubusercontent.com/68190553/141741769-13701e2d-6b22-418e-a5d2-a9d29e69f186.png" class="mx-auto d-block" /><br /></p>
+<p><img width="349" alt="efficientdet_img_11" src="https://user-images.githubusercontent.com/68190553/141741769-13701e2d-6b22-418e-a5d2-a9d29e69f186.png" class="mx-auto d-block" /></p>
 <h6 id="계산은-위와-같이-진행되며-fpn에서-각-input-feature-map에-가중치weight-곱해서-합친다는것을-알-수-있습니다--">계산은 위와 같이 진행되며, FPN에서 각 input feature map에 가중치(weight) 곱해서 합친다는것을 알 수 있습니다. <br /> <br /></h6>
 <h6 id="지금까지-bifpn의-특징에-대해-정리했으며-이제-compound-scaling에-대해서-이야기해보겠습니다">지금까지 BiFPN의 특징에 대해 정리했으며, 이제 Compound Scaling에 대해서 이야기해보겠습니다.</h6>
 

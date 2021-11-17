@@ -38,6 +38,7 @@ Dzmitry Bahdanau, Kyunghyun Cho, Yoshua Bengio"](https://arxiv.org/abs/1409.0473
 ---
 
 <br/>
+## [Seq2Seq with Attention] 
 ### [1] Prepare inputs
 <img width="1147" alt="attention_img_2" src="https://user-images.githubusercontent.com/68190553/141924473-d9c88274-635d-4e91-9fc7-eee9a899b35b.png">{: .mx-auto.d-block :}
 ###### 1-1) Seq2Seq의 Encoder 부분에서 각 단어마다 Hidden state가 나오며, 최종 출력단에 Context Vector가 나옵니다.<br/> <br/>

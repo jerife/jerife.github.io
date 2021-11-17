@@ -73,3 +73,8 @@ excerpt_separator: <!--break-->
 ![attention_img_6](https://user-images.githubusercontent.com/68190553/141936561-810fb691-8665-4a37-aa94-5c1e92866443.png){: .mx-auto.d-block :}
 ###### 어텐션 메커니즘의 유용한 속성은 해석이 가능하다는 점입니다. 입력 시퀀스의 특정 인코더 출력에 가중치를 부여하는 데 사용되므로 각 시간 단계에서 네트워크가 가장 집중되는 위치를 파악할 수 있습니다. <br/> <br/>
 ###### 이상으로 Attention Mechanism에 대한 설명을 마치겠습니다.
+
+<br/>
+
+> ##### Reference
+> * ###### https://jalammar.github.io/illustrated-transformer/

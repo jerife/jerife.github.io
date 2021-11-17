@@ -25,7 +25,8 @@ excerpt_separator: <!--break-->
 <img width="27" alt="seq2seq_img_4" src="https://user-images.githubusercontent.com/68190553/121125066-e2a7de80-c860-11eb-8fd7-20e3e2ebefb5.png">{: .mx-auto.d-block :}
 ###### Context Vector는 입력값(“je suis étudiant”)의 모든 정보를 모아 놓은 동시에, 고정된 크기의 벡터이기도 합니다.<br/> <br/>
 ###### Context Vector는 많은양의 데이터도 꾹꾹 눌러서 압축시켜야하기 때문에, 정보 손실이 있다는 단점이 있었죠? 뿐만아니라 RNN계열의 특성상 Gradient Vanishing의 단점도 해결해야할 숙제였습니다.<br/> <br/>
-###### 이 한계를 극복하게해준 Mechanism이 ["Attention Is All You Need "](https://arxiv.org/abs/1706.03762) 논문에서 제안된 바로 **"Attention"** 입니다.<br/> <br/>
+###### 이 한계를 극복하게해준 Mechanism이 ["Neural Machine Translation by Jointly Learning to Align and Translate
+Dzmitry Bahdanau, Kyunghyun Cho, Yoshua Bengio"](https://arxiv.org/abs/1409.0473) 논문에서 제안된 바로 **"Attention"** 입니다.<br/> <br/>
 
 
 ## [Attention Mechanism] 

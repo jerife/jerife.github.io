@@ -10,6 +10,17 @@
     
     
       <item>
+        <title>Introduce to Attention Mechanism</title>
+        <description>
+          Attention Is All You Need - 
+          Attention Mechanism 이해하기 Attention란? 우리는 이전에 언어처리에 관한 Seq2Seq모델을 “Introduce to Seq2Seq”이글에서 다뤘습니다. Seq2Seq는 RNN모델(RNN,...
+        </description>
+        <pubDate>Tue, 16 Nov 2021 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/2021-11-16-attention/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-11-16-attention/</guid>
+      </item>
+    
+      <item>
         <title>Introduce to EfficientDet</title>
         <description>
           Compound Scaling 1-Stage Detection Model - 

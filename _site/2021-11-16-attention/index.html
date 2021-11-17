@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Introduce to Attention Mechanism</title>
+
+  
+  <meta name="author" content="Jerife">
+  
+
+  <meta name="description" content="Attention Is All You Need">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Jerife">
+  <meta property="og:title" content="Introduce to Attention Mechanism">
+  <meta property="og:description" content="Attention Is All You Need">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2021-11-16T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2021-11-16-attention/">
+  <link rel="canonical" href="http://localhost:4000/2021-11-16-attention/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Introduce to Attention Mechanism">
+  <meta property="twitter:description" content="Attention Is All You Need">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/log.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/log.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/log.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/log.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/log.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/log.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/log.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/log.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/log.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/log.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/log.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/log.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/log.ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/log.ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Jerife</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Records</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Introduce to Attention Mechanism</h1>
+          
+            
+              <h2 class="post-subheading">Attention Is All You Need</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on November 16, 2021</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <div align="center"><h1>Attention Mechanism 이해하기</h1></div>
+<!--break-->
+
+<hr />
+
+<p><br /></p>
+<h1 id="attention란">Attention란?</h1>
+<h6 id="우리는-이전에-언어처리에-관한-seq2seq모델을-introduce-to-seq2seq이글에서-다뤘습니다-">우리는 이전에 언어처리에 관한 Seq2Seq모델을 <a href="https://jerife.github.io/2021-06-08-seq2seq/">“Introduce to Seq2Seq”</a>이글에서 다뤘습니다.<br /> <br /></h6>
+<h6 id="seq2seq는-rnn모델rnn-lstm-gru등을-순환성을-기반으로-시퀀스-데이터언어-시계열-데이터-등를-또-다른-시퀀스-데이터로-변환해주는-모델이라-했었습니다--">Seq2Seq는 RNN모델(RNN, LSTM, GRU)등을 순환성을 기반으로 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른 시퀀스 데이터로 변환해주는 모델이라 했었습니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/121048577-e2bcc580-c7f1-11eb-9c39-2cb0f717ce2d.gif" alt="image" class="mx-auto d-block" /></p>
+<blockquote>
+  <h6 id="artchitecture-of-seq2seq">Artchitecture of Seq2Seq</h6>
+</blockquote>
+
+<h2 id="seq2seq의-한계">[Seq2Seq의 한계]</h2>
+<h6 id="seq2seq의-한계는-encoder---decoder로-보내는-context-vector의-크기가-고정되었다는-것입니다--">Seq2Seq의 한계는 Encoder -&gt; Decoder로 보내는 Context Vector의 크기가 고정되었다는 것입니다. <br /> <br /></h6>
+<p><img width="27" alt="seq2seq_img_4" src="https://user-images.githubusercontent.com/68190553/121125066-e2a7de80-c860-11eb-8fd7-20e3e2ebefb5.png" class="mx-auto d-block" /></p>
+<h6 id="context-vector는-입력값je-suis-étudiant의-모든-정보를-모아-놓은-동시에-고정된-크기의-벡터이기도-합니다-">Context Vector는 입력값(“je suis étudiant”)의 모든 정보를 모아 놓은 동시에, 고정된 크기의 벡터이기도 합니다.<br /> <br /></h6>
+<h6 id="context-vector는-많은양의-데이터도-꾹꾹-눌러서-압축시켜야하기-때문에-정보-손실이-있다는-단점이-있었죠-뿐만아니라-rnn계열의-특성상-gradient-vanishing의-단점도-해결해야할-숙제였습니다-">Context Vector는 많은양의 데이터도 꾹꾹 눌러서 압축시켜야하기 때문에, 정보 손실이 있다는 단점이 있었죠? 뿐만아니라 RNN계열의 특성상 Gradient Vanishing의 단점도 해결해야할 숙제였습니다.<br /> <br /></h6>
+<h6 id="이-한계를-극복하게해준-mechanism이-attention-is-all-you-need--논문에서-제안된-바로-attention-입니다-">이 한계를 극복하게해준 Mechanism이 <a href="https://arxiv.org/abs/1706.03762">“Attention Is All You Need “</a> 논문에서 제안된 바로 <strong>“Attention”</strong> 입니다.<br /> <br /></h6>
+
+<h2 id="attention-mechanism">[Attention Mechanism]</h2>
+<h6 id="attention-mechanism은-decoder에서-출력-단어를-예측하는-매-시점마다-인코더에서의-전체-입력-문장을-다시-한-번-참고한다는-점입니다-">Attention Mechanism은 Decoder에서 출력 단어를 예측하는 매 시점마다, 인코더에서의 전체 입력 문장을 다시 한 번 참고한다는 점입니다.<br /> <br /></h6>
+<h6 id="attention은-집중라는-의미를-지니고있습니다-attention-mechanism에서도-입력-문장을-다시-한-번-참고할때-해당-시점에서-예측해야할-단어와-연관이-있는-입력-단어-부분을-좀-더-집중attention해서-보게-됩니다">Attention은 “집중”라는 의미를 지니고있습니다. Attention Mechanism에서도 입력 문장을 다시 한 번 참고할때, 해당 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중(Attention)해서 보게 됩니다.</h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/141924378-e7348509-de3e-4d72-944c-b62954a304bd.gif" alt="attention_gif_1" class="mx-auto d-block" /></p>
+<h6 id="위-사진은-seq2seq모델에-attention을-적용했을때의-동작과정입니다-지금부터-자세한-동작과정을-기술해보겠습니다--">위 사진은 Seq2Seq모델에 Attention을 적용했을때의 동작과정입니다. 지금부터 자세한 동작과정을 기술해보겠습니다. <br /> <br /></h6>
+
+<hr />
+
+<p><br /></p>
+<h3 id="1-prepare-inputs">[1] Prepare inputs</h3>
+<p><img width="1147" alt="attention_img_2" src="https://user-images.githubusercontent.com/68190553/141924473-d9c88274-635d-4e91-9fc7-eee9a899b35b.png" class="mx-auto d-block" /></p>
+<h6 id="1-1-seq2seq의-encoder-부분에서-각-단어마다-hidden-state가-나오며-최종-출력단에-context-vector가-나옵니다-">1-1) Seq2Seq의 Encoder 부분에서 각 단어마다 Hidden state가 나오며, 최종 출력단에 Context Vector가 나옵니다.<br /> <br /></h6>
+<h6 id="1-2-첫번째-decoder는-라는-입력과-최종-출력단에-context-vector를--hidden-state로-입력-받으며-자신도-outputhidden-state을-출력합니다-">1-2) 첫번째 Decoder는 “<START>"라는 입력과, 최종 출력단에 Context Vector를  Hidden state로 입력 받으며, 자신도 Output(Hidden state)을 출력합니다.<br /> <br /></START></h6>
+<blockquote>
+  <h6 id="여기까진-seq2seq의-mechanism-입니다">여기까진 Seq2Seq의 Mechanism 입니다.</h6>
+</blockquote>
+
+<p><br /> <br /></p>
+<h3 id="2-score-each-hidden-state">[2] Score each hidden state</h3>
+<p><img width="958" alt="attention_img_3" src="https://user-images.githubusercontent.com/68190553/141924521-cfe9da87-1916-4b63-88e5-d7b1b06e8c43.png" class="mx-auto d-block" /></p>
+<h6 id="2-첫번째-decoder의-outputhidden-state과-encoder-부분에서-각-단어마다-hidden-state들을-dot-product합니다이-값들을-attention-score라-합니다-">2) 첫번째 Decoder의 Output(Hidden state)과 Encoder 부분에서 각 단어마다 Hidden state들을 dot product합니다.(이 값들을 <strong>“Attention score”</strong>라 합니다.)<br /> <br /></h6>
+
+<p><br /> <br /></p>
+<h3 id="3-softmax-the-scores">[3] Softmax the scores</h3>
+<p><img width="842" alt="attention_img_4" src="https://user-images.githubusercontent.com/68190553/141925277-a6d6160b-4d2d-4936-ac51-10448dfd7460.png" class="mx-auto d-block" /></p>
+<h6 id="3-그리고-attention-score를-softmax-취해줌으로써-encoder-부분에서-각-단어마다-hidden-state들이-01사이-값을-가지게-됩니다">3) 그리고 Attention score를 Softmax 취해줌으로써, Encoder 부분에서 각 단어마다 Hidden state들이 0~1사이 값을 가지게 됩니다.</h6>
+<h6 id="첫번째-decoder의-outputhidden-state과-연관-있을시-높은-점수를-얻습니다-">(첫번째 Decoder의 Output(Hidden state)과 연관 있을시 높은 점수를 얻습니다.)<br /> <br /></h6>
+
+<p><br /> <br /></p>
+<h3 id="4-sum-up-the-weighted-vectors">[4] Sum up the weighted vectors</h3>
+<p><img width="926" alt="attention_img_5" src="https://user-images.githubusercontent.com/68190553/141924653-6a52712d-4e39-4724-a6c0-02bafae5dab0.png" class="mx-auto d-block" /></p>
+<h6 id="4-그리고-softmax를-거친-attention-score과-encoder-부분에서-각-단어마다-hidden-state를-곱한후-더합니다weight-sum-">4) 그리고 Softmax를 거친 Attention score과 Encoder 부분에서 각 단어마다 Hidden state를 곱한후, 더합니다.(weight sum)<br /> <br /></h6>
+
+<p><br /> <br /></p>
+<h3 id="5-concatnation-with-decoders-hidden-state-and-weighted-vectors">[5] Concatnation with Decoders Hidden state and weighted vectors</h3>
+<h6 id="5-1-weight-sum한-값과-첫번째-decoder의-outputhidden-state을-concatnation해줍니다-">5-1) weight sum한 값과 첫번째 Decoder의 Output(Hidden state)을 Concatnation해줍니다.<br /> <br /></h6>
+<h6 id="5-2-concatnation한-값을-layer넘겨-첫번째-decoder-최종-output-예측하고-두번째-decoder의-입력으로-값을-넘깁니다--">5-2) Concatnation한 값을 Layer넘겨 첫번째 Decoder 최종 Output 예측하고, 두번째 Decoder의 입력으로 값을 넘깁니다. <br /> <br /></h6>
+
+<h6 class="box-note" id="note-결국-attention-은-위에서-언급한-것과-같이-decoder에서-출력-단어를-예측하는-시점에서-예측해야할-단어와-연관이-있는-입력-단어-부분을-좀-더-집중하는-mechanism이라는-것을-알수있죠"><strong>Note:</strong> 결국 Attention 은 위에서 언급한 것과 같이 Decoder에서 출력 단어를 예측하는 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중하는 Mechanism이라는 것을 알수있죠.</h6>
+
+<hr />
+
+<h2 id="performance">[Performance]</h2>
+<p><img src="https://user-images.githubusercontent.com/68190553/141936561-810fb691-8665-4a37-aa94-5c1e92866443.png" alt="attention_img_6" class="mx-auto d-block" /></p>
+<h6 id="어텐션-메커니즘의-유용한-속성은-해석이-가능하다는-점입니다-입력-시퀀스의-특정-인코더-출력에-가중치를-부여하는-데-사용되므로-각-시간-단계에서-네트워크가-가장-집중되는-위치를-파악할-수-있습니다--">어텐션 메커니즘의 유용한 속성은 해석이 가능하다는 점입니다. 입력 시퀀스의 특정 인코더 출력에 가중치를 부여하는 데 사용되므로 각 시간 단계에서 네트워크가 가장 집중되는 위치를 파악할 수 있습니다. <br /> <br /></h6>
+<h6 id="이상으로-attention-mechanism에-대한-설명을-마치겠습니다">이상으로 Attention Mechanism에 대한 설명을 마치겠습니다.</h6>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-11-15-efficientdet/" data-toggle="tooltip" data-placement="top" title="Introduce to EfficientDet">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:jerife@naver.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/jerife" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Jerife
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">Jerife.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

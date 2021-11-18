@@ -248,7 +248,8 @@
 <p><img width="27" alt="seq2seq_img_4" src="https://user-images.githubusercontent.com/68190553/121125066-e2a7de80-c860-11eb-8fd7-20e3e2ebefb5.png" class="mx-auto d-block" /></p>
 <h6 id="context-vector는-입력값je-suis-étudiant의-모든-정보를-모아-놓은-동시에-고정된-크기의-벡터이기도-합니다-">Context Vector는 입력값(“je suis étudiant”)의 모든 정보를 모아 놓은 동시에, 고정된 크기의 벡터이기도 합니다.<br /> <br /></h6>
 <h6 id="context-vector는-많은양의-데이터도-꾹꾹-눌러서-압축시켜야하기-때문에-정보-손실이-있다는-단점이-있었죠-뿐만아니라-rnn계열의-특성상-gradient-vanishing의-단점도-해결해야할-숙제였습니다-">Context Vector는 많은양의 데이터도 꾹꾹 눌러서 압축시켜야하기 때문에, 정보 손실이 있다는 단점이 있었죠? 뿐만아니라 RNN계열의 특성상 Gradient Vanishing의 단점도 해결해야할 숙제였습니다.<br /> <br /></h6>
-<h6 id="이-한계를-극복하게해준-mechanism이-attention-is-all-you-need--논문에서-제안된-바로-attention-입니다-">이 한계를 극복하게해준 Mechanism이 <a href="https://arxiv.org/abs/1706.03762">“Attention Is All You Need “</a> 논문에서 제안된 바로 <strong>“Attention”</strong> 입니다.<br /> <br /></h6>
+<h6 id="이-한계를-극복하게해준-mechanism이-neural-machine-translation-by-jointly-learning-to-align-and-translate">이 한계를 극복하게해준 Mechanism이 [“Neural Machine Translation by Jointly Learning to Align and Translate</h6>
+<p>Dzmitry Bahdanau, Kyunghyun Cho, Yoshua Bengio”](https://arxiv.org/abs/1409.0473) 논문에서 제안된 바로 <strong>“Attention”</strong> 입니다.<br /> <br /></p>
 
 <h2 id="attention-mechanism">[Attention Mechanism]</h2>
 <h6 id="attention-mechanism은-decoder에서-출력-단어를-예측하는-매-시점마다-인코더에서의-전체-입력-문장을-다시-한-번-참고한다는-점입니다-">Attention Mechanism은 Decoder에서 출력 단어를 예측하는 매 시점마다, 인코더에서의 전체 입력 문장을 다시 한 번 참고한다는 점입니다.<br /> <br /></h6>
@@ -259,6 +260,7 @@
 <hr />
 
 <p><br /></p>
+<h2 id="seq2seq-with-attention">[Seq2Seq with Attention]</h2>
 <h3 id="1-prepare-inputs">[1] Prepare inputs</h3>
 <p><img width="1147" alt="attention_img_2" src="https://user-images.githubusercontent.com/68190553/141924473-d9c88274-635d-4e91-9fc7-eee9a899b35b.png" class="mx-auto d-block" /></p>
 <h6 id="1-1-seq2seq의-encoder-부분에서-각-단어마다-hidden-state가-나오며-최종-출력단에-context-vector가-나옵니다-">1-1) Seq2Seq의 Encoder 부분에서 각 단어마다 Hidden state가 나오며, 최종 출력단에 Context Vector가 나옵니다.<br /> <br /></h6>
@@ -297,6 +299,17 @@
 <h6 id="어텐션-메커니즘의-유용한-속성은-해석이-가능하다는-점입니다-입력-시퀀스의-특정-인코더-출력에-가중치를-부여하는-데-사용되므로-각-시간-단계에서-네트워크가-가장-집중되는-위치를-파악할-수-있습니다--">어텐션 메커니즘의 유용한 속성은 해석이 가능하다는 점입니다. 입력 시퀀스의 특정 인코더 출력에 가중치를 부여하는 데 사용되므로 각 시간 단계에서 네트워크가 가장 집중되는 위치를 파악할 수 있습니다. <br /> <br /></h6>
 <h6 id="이상으로-attention-mechanism에-대한-설명을-마치겠습니다">이상으로 Attention Mechanism에 대한 설명을 마치겠습니다.</h6>
 
+<p><br /></p>
+
+<blockquote>
+  <h5 id="reference">Reference</h5>
+  <ul>
+    <li>
+      <h6 id="httpsjalammargithubioillustrated-transformer">https://jalammar.github.io/illustrated-transformer/</h6>
+    </li>
+  </ul>
+</blockquote>
+
       </article>
 
       
@@ -325,6 +338,10 @@
           <a class="page-link" href="/2021-11-15-efficientdet/" data-toggle="tooltip" data-placement="top" title="Introduce to EfficientDet">&larr; Previous Post</a>
         </li>
         
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021-11-17-transformer/" data-toggle="tooltip" data-placement="top" title="Introduce to Transformer">Next Post &rarr;</a>
+        </li>
         
       </ul>
       

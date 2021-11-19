@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Introduce to BERT</title>
+
+  
+  <meta name="author" content="Jerife">
+  
+
+  <meta name="description" content="Bidirectional Encoder Representations from Transformers">
+
+  
+
+  
+
+  <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Jerife">
+  <meta property="og:title" content="Introduce to BERT">
+  <meta property="og:description" content="Bidirectional Encoder Representations from Transformers">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2021-11-19T00:00:00-05:00">
+  <meta property="og:url" content="http://localhost:4000/2021-11-19-bert/">
+  <link rel="canonical" href="http://localhost:4000/2021-11-19-bert/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Introduce to BERT">
+  <meta property="twitter:description" content="Bidirectional Encoder Representations from Transformers">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/log.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/log.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/log.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/log.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/log.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/log.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/log.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/log.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/log.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/log.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/log.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/log.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/log.ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/log.ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+
+
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Jerife</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Records</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Introduce to BERT</h1>
+          
+            
+              <h2 class="post-subheading">Bidirectional Encoder Representations from Transformers</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on November 19, 2021</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <div align="center"><h1>BERT 이해하기</h1></div>
+<!--break-->
+
+<hr />
+
+<p><br />
+<img src="https://user-images.githubusercontent.com/68190553/142567208-ad01bb1f-4183-49fd-b176-5e95272a047a.jpeg" alt="bert_img_1" class="mx-auto d-block" /></p>
+<h1 id="bert란">BERT란?</h1>
+<h6 id="bert는-bidirectional-encoder-representations-from-transformers의-약자로-이전-포스팅인-introduce-to-transformer-에서-다룬-transformers의-encoder부분을-양방향으로-정보를-공유할-수-있게한-언어모델language-model입니다--">BERT는 Bidirectional Encoder Representations from Transformers의 약자로, 이전 포스팅인 <a href="https://jerife.github.io/2021-11-17-transformer/">“Introduce to Transformer”</a> 에서 다룬 Transformers의 Encoder부분을 양방향으로 정보를 공유할 수 있게한 언어모델(Language Model)입니다. <br /> <br /></h6>
+<h6 id="bert는-wikipedia-corpus와-같은-방대한-양의-텍스트-데이터로-사전훈련된-언어모델language-model입니다-때문에-이미-pretrained-된-모델이며-우리가-어떻게-사용할지에-따라-fine-tuning해나가는-모델입니다-">BERT는 Wikipedia Corpus와 같은 방대한 양의 텍스트 데이터로 사전훈련된 언어모델(Language Model)입니다. 때문에 이미 Pretrained 된 모델이며, 우리가 어떻게 사용할지에 따라 Fine-tuning해나가는 모델입니다.<br /> <br /></h6>
+
+<h2 id="differences-in-pre-training-model">[Differences in pre-training model]</h2>
+<p><img width="671" alt="bert_img_3" src="https://user-images.githubusercontent.com/68190553/142567337-1cf6dbbf-ce52-4a63-8d9a-0d3684f80253.png" class="mx-auto d-block" /></p>
+<h6 id="위-사진속-모델은-각각-bert--gpt--elmo의-architecture-입니다--">위 사진속 모델은 각각, BERT / GPT / ELMo의 Architecture 입니다. <br /> <br /></h6>
+<h6 id="gpt는-left-to-right-방식으로-transformer의-decoder부분을-이용하며-elmo는-독립적으로-각각-lstm을-이용해-left-to-right-right-to-left-방식으로-특징을-얻어냅니다--">GPT는 left-to-right 방식으로 Transformer의 Decoder부분을 이용하며, ELMo는 독립적으로 각각 LSTM을 이용해 left-to-right, right-to-left 방식으로 특징을 얻어냅니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/142571487-32a123b3-6604-48dd-8c14-0d793f32c584.png" alt="bert_img_5" class="mx-auto d-block" /></p>
+<h6 id="반면-bert는-transformer의-encoder부분을-이용하며-양방향으로-공동으로-조절되는-특징을-가지고-있습니다-때문에-다양한-방법으로-fine-tuning해-다양한-taskmnlineraquad에-적용할-수-있습니다--">반면, BERT는 Transformer의 Encoder부분을 이용하며, 양방향으로 공동으로 조절되는 특징을 가지고 있습니다. 때문에 다양한 방법으로 Fine-tuning해, 다양한 Task(MNLI/NER/AQuAD/..)에 적용할 수 있습니다. <br /> <br /></h6>
+<blockquote>
+  <h6 id="어떤-종류의-task를-수행할-수-있는지는-밑에서-언급하며-먼저-bert의-pre-training-과정에-대해서-먼저-언급하겠습니다">어떤 종류의 Task를 수행할 수 있는지는 밑에서 언급하며, 먼저 BERT의 Pre-training 과정에 대해서 먼저 언급하겠습니다.</h6>
+</blockquote>
+
+<hr />
+
+<h2 id="bert-pre-training">[BERT Pre-training]</h2>
+<h6 id="bert는-방대한-양의-텍스트-데이터로-사전훈련된-언어모델language-model이라-언급한-바에-있습니다-그-학습-방법으로는-mlm-nsp이렇게-두가지가-있으며-그-전에-bert에-적용된-기술과-구조적인-특징에-대해-먼저-설명하겠습니다-">BERT는 방대한 양의 텍스트 데이터로 사전훈련된 언어모델(Language Model)이라 언급한 바에 있습니다. 그 학습 방법으로는 “MLM”, “NSP”이렇게 두가지가 있으며, 그 전에 BERT에 적용된 기술과, 구조적인 특징에 대해 먼저 설명하겠습니다.<br /> <br /></h6>
+
+<h3 id="1-bert-embedding">[1] BERT Embedding</h3>
+<p><img width="535" alt="bert_img_2" src="https://user-images.githubusercontent.com/68190553/142575165-354daaa7-5c19-40c8-b18e-a393a57c5503.png" class="mx-auto d-block" /></p>
+<h4 id="1-1-wordpiece-tokenizer-input">1-1) WordPiece Tokenizer (input)</h4>
+<h6 id="bert는-학습함에-있어-단어를-최대한-쪼개어-학습을-진행했습니다-때문에-input값에-bert가-학습하지-않았던-단어들은-밑과-같이-분리됩니다">BERT는 학습함에 있어, 단어를 최대한 쪼개어 학습을 진행했습니다. 때문에 input값에 BERT가 학습하지 않았던 단어들은 밑과 같이 분리됩니다.</h6>
+<ul>
+  <li>
+    <h6 id="input--the-bird-is-flying">input : “The bird is flying.”</h6>
+  </li>
+  <li>
+    <h6 id="wordpiece-tokenizerinput--cls-the-bird-is-fly-ing-sep">WordPiece Tokenizer(input) : “[CLS]”, “The”, “bird”, “is”, “fly”, “##ing”, “[SEP]”</h6>
+  </li>
+</ul>
+
+<h6 id="cls와-sep은-각각-시작함을-알리고-문장이-끝났다고-모델에게-인식시켜주기-위한-토큰입니다-bert에는-값이-들어갈때는-이러한-구분자를-생성합니다">“[CLS]”와 “[SEP]”은 각각 시작함을 알리고, 문장이 끝났다고 모델에게 인식시켜주기 위한 토큰입니다. Bert에는 값이 들어갈때는 이러한 구분자를 생성합니다.</h6>
+<blockquote>
+  <h6 id="pad---0">[PAD] - 0</h6>
+  <h6 id="unk---100">[UNK] - 100</h6>
+  <h6 id="cls---101">[CLS] - 101</h6>
+  <h6 id="sep---102">[SEP] - 102</h6>
+  <h6 id="mask---103">[MASK] - 103</h6>
+</blockquote>
+
+<h4 id="1-2-position-embedding">1-2) Position Embedding</h4>
+<h6 id="이전-글에서-다룬-transformer은-sincos함수를-이용해-위치적인-벡터를-표현했습니다-하지만-bert에서는-position-embedding또한-학습시켜서-위치적인-벡터를-얻습니다--">이전 글에서 다룬 Transformer은 Sin/Cos함수를 이용해 위치적인 벡터를 표현했습니다. 하지만 BERT에서는 Position Embedding또한 학습시켜서 위치적인 벡터를 얻습니다. <br /> <br /></h6>
+<h6 id="bert는-squence단어-1개의-최대-길이갯수는-512이며-총-512개의-position-embedding-벡터가-학습됩니다-">BERT는 Squence(단어 1개)의 최대 길이(갯수)는 512이며, 총 512개의 Position Embedding 벡터가 학습됩니다.<br /> <br /></h6>
+
+<p><br /></p>
+<h4 id="1-3-segment-embedding">1-3) Segment Embedding</h4>
+<h6 id="bert는-한-문장만-학습할-수-있는것이-아니라-두문장도-학습이-가능합니다">BERT는 한 문장만 학습할 수 있는것이 아니라, 두문장도 학습이 가능합니다.</h6>
+<blockquote>
+  <ul>
+    <li>
+      <h6 id="sentence-1--the-bird-is-flying">sentence 1 : “The bird is flying.”</h6>
+    </li>
+    <li>
+      <h6 id="sentence-2--the-dog-is-running">sentence 2 : “The dog is running.”</h6>
+    </li>
+  </ul>
+</blockquote>
+
+<h6 id="sentence-1-과-sentence-2를-이어-붙여-학습하고자-한다면-아래와-같이-변할-것입니다">sentence 1 과 sentence 2를 이어 붙여 학습하고자 한다면, 아래와 같이 변할 것입니다.</h6>
+<blockquote>
+  <ul>
+    <li>
+      <h6 id="final-sentence--cls-the-bird-is-fly-ing-sep-the-dog-is-run-ing-sep">final sentence : “[CLS]”, “The”, “bird”, “is”, “fly”, “##ing”, “[SEP]”, “The”, “dog”, “is”, “run”, “##ing”, “[SEP]”</h6>
+    </li>
+  </ul>
+</blockquote>
+
+<h6 id="때문에-sentence-1-과-sentence-2를-구분할-수-있는-embedding도-input으로-넣어줍니다-위-이미지에서-segment-embedding는-초록색-박스들을-의미합니다-">때문에 sentence 1 과 sentence 2를 구분할 수 있는 Embedding도 input으로 넣어줍니다. 위 이미지에서 Segment Embedding는 초록색 박스들을 의미합니다.<br /> <br /></h6>
+
+<p><br /></p>
+<h4 id="1-4-attention-mask">1-4) Attention Mask</h4>
+<h6 id="위-사진속에는-명시되어있지-않지만-코딩할-경우-attention-mask가-추가적으로-필요합니다-attention-mask는-attention해야할-부분을-bert모델에-전달해주는-embedding입니다-">위 사진속에는 명시되어있지 않지만, 코딩할 경우 Attention Mask가 추가적으로 필요합니다. Attention Mask는 Attention해야할 부분을 BERT모델에 전달해주는 Embedding입니다.<br /> <br /></h6>
+<h6 id="attention해야할-부분은-우리가-쓰거나-입력에-넣는-문장들입니다-하지만-bert는-512개의-sequence단어-1개를-받기때문에-빈칸은-pad로-채워집니다">Attention해야할 부분은 우리가 쓰거나 입력에 넣는 문장들입니다. 하지만 BERT는 512개의 Sequence(단어 1개)를 받기때문에, 빈칸은 “[PAD]”로 채워집니다.</h6>
+<blockquote>
+  <ul>
+    <li>
+      <h6 id="input--the-bird-is-flying-1">input : “The bird is flying.”</h6>
+    </li>
+    <li>
+      <h6 id="wordpiece-tokenizerinput--cls-the-bird-is-fly-ing-sep-pad-pad-pad-pad512번째">WordPiece Tokenizer(input) : “[CLS]”, “The”, “bird”, “is”, “fly”, “##ing”, “[SEP]”, “[PAD]”, “[PAD]”, “[PAD]”….., “[PAD]”(512번째)</h6>
+    </li>
+  </ul>
+</blockquote>
+
+<h6 id="때문에-attention-mask는-pad은-0으로-나머지는-1로-채워줍니다">때문에 Attention Mask는 “[PAD]”은 0으로 나머지는 1로 채워줍니다.</h6>
+<blockquote>
+  <ul>
+    <li>
+      <h6 id="1-1-1-1-1-1-1-0-0-0-0-00512번째">1 1 1 1 1 1 1 0 0 0 0 0…..0(512번째)</h6>
+    </li>
+  </ul>
+</blockquote>
+
+<p><br /></p>
+<h4 id="bert는-1-2과정을-통해-모든-단어와의-관계있는-문맥-벡터를-얻고-1-234과정과-함께-입력으로-들어갑니다-그렇다면-bert는-어떻게-모든-단어와의-관계있는-문맥을-반영한-임베딩을-얻게-되는-것일까요">BERT는 (1-2)과정을 통해 모든 단어와의 관계있는 문맥 벡터를 얻고, (1-2,3,4)과정과 함께 입력으로 들어갑니다. 그렇다면, BERT는 어떻게 모든 단어와의 관계있는 문맥을 반영한 임베딩을 얻게 되는 것일까요?</h4>
+
+<h6 class="box-note" id="note-bert에는-self-attention을-할-수-있는-layer가-있기-때문에-스스로의-연관성을-얻을-수-있습니다"><strong>Note:</strong> BERT에는 Self Attention을 할 수 있는 layer가 있기 때문에 스스로의 연관성을 얻을 수 있습니다.</h6>
+
+<p><br /></p>
+<h3 id="2-mlmmasked-language-model">[2] MLM(Masked Language Model)</h3>
+<h6 id="지금부터-bert의-학습과정에-대해-본격적으로-이야기하며-먼저-label-없이도-스스로-학습할-수-있는-bert의-특징에-대해서-이야기해보겠습니다--">지금부터 BERT의 학습과정에 대해 본격적으로 이야기하며, 먼저 Label 없이도 스스로 학습할 수 있는 BERT의 특징에 대해서 이야기해보겠습니다. <br /> <br /></h6>
+<h6 id="bert는-스스로-데이터에-mask를-주고-그걸-맞춰나가면서-스스로-학습하는-언어모델language-model입니다">BERT는 스스로 데이터에 “[MASK]”를 주고, 그걸 맞춰나가면서 스스로 학습하는 언어모델(Language Model)입니다.</h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/142593647-4cb0539b-c040-4db7-a81a-bb77d6a78d67.png" alt="bert_img_7" class="mx-auto d-block" /></p>
+<ul>
+  <li>
+    <h6 id="mask는-전체-데이터의-15에만-적용한다">“[MASK]”는 전체 데이터의 15%에만 적용한다.</h6>
+  </li>
+  <li>
+    <h6 id="mask가-적용된-15-데이터-중에서-80는-mask를-적용해서-맞춰나간다">“[MASK]”가 적용된 15% 데이터 중에서, 80%는 “[MASK]”를 적용해서 맞춰나간다.</h6>
+  </li>
+  <li>
+    <h6 id="mask가-적용된-15-데이터-중에서-10는-다른-단어로-변경해-맞춰나간다">“[MASK]”가 적용된 15% 데이터 중에서, 10%는 다른 단어로 변경해 맞춰나간다.</h6>
+  </li>
+  <li>
+    <h6 id="mask가-적용된-15-데이터-중에서-10는-mask나-다른-단어가-아니라-원래-단어로-유지해-맞춰나간다">“[MASK]”가 적용된 15% 데이터 중에서, 10%는 “[MASK]”나 다른 단어가 아니라 원래 단어로 유지해 맞춰나간다.</h6>
+  </li>
+</ul>
+
+<h6 id="mask가-적용된-부분에-대해서만-예측하고-그-부분만-학습을-합니다-때문에-전체-데이터의-15만-mask를-적용하는-bert의-특성상-전체-데이터의-15만-학습할-수-있는-것입니다-">“[MASK]”가 적용된 부분에 대해서만 예측하고, 그 부분만 학습을 합니다. 때문에 전체 데이터의 15%만 “[MASK]”를 적용하는 BERT의 특성상 전체 데이터의 15%만 학습할 수 있는 것입니다.<br /> <br /></h6>
+
+<h3 id="3-nspnext-sentence-prediction">[3] NSP(Next Sentence Prediction)</h3>
+<h6 id="nsp는-말-그대로-next-sentence-prediction-다음-문장을-예측하면서-학습해나가는-방법입니다-두개의-문장을-주고-두-문장이-이어지는-문장인지-아닌지를-맞추는-방법">NSP는 말 그대로 “Next Sentence Prediction”, 다음 문장을 예측하면서 학습해나가는 방법입니다. (두개의 문장을 주고, 두 문장이 이어지는 문장인지 아닌지를 맞추는 방법)</h6>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/142593554-33301fda-51d8-4ce1-bf0a-71076077aca6.png" alt="bert_img_6" class="mx-auto d-block" />
+<img width="351" alt="bert_img_8" src="https://user-images.githubusercontent.com/68190553/142637536-4aed8a53-28d3-4775-a07c-0af180abe36d.png" class="mx-auto d-block" /></p>
+<h6 id="때문에-5050-비율로-한문장-다음문장--한문장-다른문장-으로-input에-들어갑니다-bert는-이-input을-가지고-cls-토큰의-출력단에서-예측을-하고-학습을-합니다--">때문에 50:50 비율로 “한문장, 다음문장” / “한문장, 다른문장” 으로 input에 들어갑니다. BERT는 이 input을 가지고 “[CLS]” 토큰의 출력단에서 예측을 하고 학습을 합니다. <br /> <br /></h6>
+
+<h2 id="bert-fine-tuning">[BERT Fine-tuning]</h2>
+<h6 id="bert는-pre-trainied되어진-언어모델language-model라-했으며-사용-용도에-따라-fine-tuning을-진행할-수-있습니다">BERT는 Pre-trainied되어진 언어모델(Language Model)라 했으며, 사용 용도에 따라 Fine-tuning을 진행할 수 있습니다.</h6>
+<p><img width="574" alt="bert_img_4" src="https://user-images.githubusercontent.com/68190553/142638519-11efeb73-bea5-48c7-8fdd-1060adebd9a7.png" class="mx-auto d-block" /></p>
+<ul>
+  <li>
+    <h6 id="a-2개의-sentence의-관계를-가지고-1개의-출력값을-얻을-수-있습니다">(a): 2개의 sentence의 관계를 가지고, 1개의 출력값을 얻을 수 있습니다.</h6>
+  </li>
+  <li>
+    <h6 id="b-1개의-sentence로-1개의-출력값을-얻으며-대표적으로-감성분류가-있습니다">(b): 1개의 sentence로 1개의 출력값을 얻으며, 대표적으로 감성분류가 있습니다.</h6>
+  </li>
+  <li>
+    <h6 id="c-qa문제를-풀어낼수있습니다-2개의-sentence로-각각-질문-답이-포함되어있는-문장을-입력으로-넣으며-답이-포함되어있는-문장-속에-답에-해당하는-start-index와-end-index를-구합니다">(c): Q&amp;A문제를 풀어낼수있습니다. 2개의 sentence로 각각 “질문”, “답이 포함되어있는 문장”을 입력으로 넣으며, “답이 포함되어있는 문장” 속에 답에 해당하는 start index와 end index를 구합니다.</h6>
+  </li>
+  <li>
+    <h6 id="d-1개의-sentence를-입력으로-넣어-각각의-단어-성분에-대한-품사를-구합니다">(d): 1개의 sentence를 입력으로 넣어, 각각의 단어 성분에 대한 품사를 구합니다.</h6>
+  </li>
+</ul>
+
+<h6 id="위와-같이-bert라는-언어모델language-model은-용도에-따라-fine-tuning-진행해-학습할-수-있습니다-bert소개를-이상으로-마치겠습니다--">위와 같이 BERT라는 언어모델(Language Model)은 용도에 따라 Fine-tuning 진행해 학습할 수 있습니다. BERT소개를 이상으로 마치겠습니다. <br /> <br /></h6>
+
+<hr />
+<blockquote>
+  <h5 id="reference">Reference</h5>
+  <ul>
+    <li>
+      <h6 id="httpsarxivorgabs181004805">https://arxiv.org/abs/1810.04805</h6>
+    </li>
+    <li>
+      <h6 id="httpjalammargithubioillustrated-bert">http://jalammar.github.io/illustrated-bert/</h6>
+    </li>
+    <li>
+      <h6 id="httpswikidocsnet115055">https://wikidocs.net/115055</h6>
+    </li>
+  </ul>
+</blockquote>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-11-17-transformer/" data-toggle="tooltip" data-placement="top" title="Introduce to Transformer">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:jerife@naver.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/jerife" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Jerife
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">Jerife.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

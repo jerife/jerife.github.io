@@ -277,6 +277,7 @@
   <h6 id="mask---103">[MASK] - 103</h6>
 </blockquote>
 
+<p><br /></p>
 <h4 id="1-2-position-embedding">1-2) Position Embedding</h4>
 <h6 id="이전-글에서-다룬-transformer은-sincos함수를-이용해-위치적인-벡터를-표현했습니다-하지만-bert에서는-position-embedding또한-학습시켜서-위치적인-벡터를-얻습니다--">이전 글에서 다룬 Transformer은 Sin/Cos함수를 이용해 위치적인 벡터를 표현했습니다. 하지만 BERT에서는 Position Embedding또한 학습시켜서 위치적인 벡터를 얻습니다. <br /> <br /></h6>
 <h6 id="bert는-squence단어-1개의-최대-길이갯수는-512이며-총-512개의-position-embedding-벡터가-학습됩니다-">BERT는 Squence(단어 1개)의 최대 길이(갯수)는 512이며, 총 512개의 Position Embedding 벡터가 학습됩니다.<br /> <br /></h6>
@@ -355,14 +356,14 @@
   </li>
 </ul>
 
-<h6 id="mask가-적용된-부분에-대해서만-예측하고-그-부분만-학습을-합니다-때문에-전체-데이터의-15만-mask를-적용하는-bert의-특성상-전체-데이터의-15만-학습할-수-있는-것입니다-">“[MASK]”가 적용된 부분에 대해서만 예측하고, 그 부분만 학습을 합니다. 때문에 전체 데이터의 15%만 “[MASK]”를 적용하는 BERT의 특성상 전체 데이터의 15%만 학습할 수 있는 것입니다.<br /> <br /></h6>
+<h6 id="mask가-적용된-부분에-대해서만-예측하고-그-부분만-학습을-합니다-때문에-전체-데이터의-15만-mask를-적용하는-bert의-특성상-전체-데이터의-15만-학습할-수-있는-것입니다--">“[MASK]”가 적용된 부분에 대해서만 예측하고, 그 부분만 학습을 합니다. 때문에 전체 데이터의 15%만 “[MASK]”를 적용하는 BERT의 특성상 전체 데이터의 15%만 학습할 수 있는 것입니다.<br /> <br /> <br /></h6>
 
 <h3 id="3-nspnext-sentence-prediction">[3] NSP(Next Sentence Prediction)</h3>
+<p><img width="351" alt="bert_img_8" src="https://user-images.githubusercontent.com/68190553/142637536-4aed8a53-28d3-4775-a07c-0af180abe36d.png" class="mx-auto d-block" /></p>
 <h6 id="nsp는-말-그대로-next-sentence-prediction-다음-문장을-예측하면서-학습해나가는-방법입니다-두개의-문장을-주고-두-문장이-이어지는-문장인지-아닌지를-맞추는-방법">NSP는 말 그대로 “Next Sentence Prediction”, 다음 문장을 예측하면서 학습해나가는 방법입니다. (두개의 문장을 주고, 두 문장이 이어지는 문장인지 아닌지를 맞추는 방법)</h6>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/142593554-33301fda-51d8-4ce1-bf0a-71076077aca6.png" alt="bert_img_6" class="mx-auto d-block" />
-<img width="351" alt="bert_img_8" src="https://user-images.githubusercontent.com/68190553/142637536-4aed8a53-28d3-4775-a07c-0af180abe36d.png" class="mx-auto d-block" /></p>
-<h6 id="때문에-5050-비율로-한문장-다음문장--한문장-다른문장-으로-input에-들어갑니다-bert는-이-input을-가지고-cls-토큰의-출력단에서-예측을-하고-학습을-합니다--">때문에 50:50 비율로 “한문장, 다음문장” / “한문장, 다른문장” 으로 input에 들어갑니다. BERT는 이 input을 가지고 “[CLS]” 토큰의 출력단에서 예측을 하고 학습을 합니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/142593554-33301fda-51d8-4ce1-bf0a-71076077aca6.png" alt="bert_img_6" class="mx-auto d-block" /></p>
+<h6 id="때문에-5050-비율로-한문장-다음문장--한문장-다른문장-으로-input에-들어갑니다-bert는-이-input을-가지고-cls-토큰의-출력단에서-예측하고-학습합니다---">때문에 50:50 비율로 “한문장, 다음문장” / “한문장, 다른문장” 으로 input에 들어갑니다. BERT는 이 input을 가지고 “[CLS]” 토큰의 출력단에서 예측하고 학습합니다. <br /> <br /> <br /></h6>
 
 <h2 id="bert-fine-tuning">[BERT Fine-tuning]</h2>
 <h6 id="bert는-pre-trainied되어진-언어모델language-model라-했으며-사용-용도에-따라-fine-tuning을-진행할-수-있습니다">BERT는 Pre-trainied되어진 언어모델(Language Model)라 했으며, 사용 용도에 따라 Fine-tuning을 진행할 수 있습니다.</h6>

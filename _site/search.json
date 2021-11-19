@@ -1,6 +1,14 @@
 [
     
      {
+       "title"    : "Introduce to BERT",
+       "category" : "",
+       "tags"     : "Natural Language Processing",
+       "url"      : "/2021-11-19-bert/",
+       "date"     : "2021-11-19 00:00:00 -0500"
+     } ,
+    
+     {
        "title"    : "Introduce to Transformer",
        "category" : "",
        "tags"     : "Natural Language Processing",

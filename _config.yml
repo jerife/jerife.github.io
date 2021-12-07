@@ -252,6 +252,14 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
+
+# Analytics
+analytics:
+  provider               : "google-gtag"
+                          # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "G-H3TE8W3M78"
+    anonymize_ip         : # true, false (default)
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
 

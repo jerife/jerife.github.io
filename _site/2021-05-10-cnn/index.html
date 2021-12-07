@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head></head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Introduce to CNN</title>
+
+  
+  <meta name="author" content="Jerife">
+  
+
+  <meta name="description" content="Image Feature Extractor">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Jerife">
+  <meta property="og:title" content="Introduce to CNN">
+  <meta property="og:description" content="Image Feature Extractor">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2021-05-10T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2021-05-10-cnn/">
+  <link rel="canonical" href="http://localhost:4000/2021-05-10-cnn/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Introduce to CNN">
+  <meta property="twitter:description" content="Image Feature Extractor">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/log.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/log.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/log.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/log.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/log.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/log.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/log.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/log.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/log.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/log.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/log.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/log.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/log.ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/log.ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+</head>
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Jerife</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Records</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Introduce to BERT", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-19-bert/", \
+          "date"     : "November 19, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Transformer", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-17-transformer/", \
+          "date"     : "November 17, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Attention Mechanism", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-16-attention/", \
+          "date"     : "November 16, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientDet", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-11-15-efficientdet/", \
+          "date"     : "November 15, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-10-28-efficientnet/", \
+          "date"     : "October 28, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Yolo v3", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-10-09-yolov3/", \
+          "date"     : "October  9, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Faster R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-12-fasterrcnn/", \
+          "date"     : "September 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Fast R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-10-fastrcnn/", \
+          "date"     : "September 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-07-25-rcnn/", \
+          "date"     : "July 25, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Intriduce to ARIMA Model", \
+          "category" : "Time Series", \
+          "url"      : "/2021-06-26-arima/", \
+          "date"     : "June 26, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Seq2Seq", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-08-seq2seq/", \
+          "date"     : "June  8, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to LSTM", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-06-lstm/", \
+          "date"     : "June  6, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to RNN", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-05-rnn/", \
+          "date"     : "June  5, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to DenseNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-12-densenet/", \
+          "date"     : "May 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to ResNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-11-resnet/", \
+          "date"     : "May 11, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to CNN", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-10-cnn/", \
+          "date"     : "May 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "To start blog with Github", \
+          "category" : "Diary", \
+          "url"      : "/2021-04-27-first/", \
+          "date"     : "April 27, 2021" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "All Records", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Introduce to CNN</h1>
+          
+            
+              <h2 class="post-subheading">Image Feature Extractor</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on May 10, 2021</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <div align="center"><h1>CNN 이해하기</h1></div>
+<!--break-->
+
+<hr />
+
+<p><br /></p>
+<h1 id="cnn이란">CNN이란?</h1>
+<h6 id="cnn은-convolution-nerual-network의-약자로서-입력값이미지-or-텍스트과-사용자가-지정한-필터fitter--kernel와-컨볼루션을-통해-특징을-추출해내는-기법이며-우리말로-합성곱-신경망라고도-합니다-">CNN은 Convolution Nerual Network의 약자로서 입력값(이미지 or 텍스트)과 사용자가 지정한 필터(fitter / kernel)와 컨볼루션을 통해 특징을 추출해내는 기법이며, 우리말로 “합성곱 신경망”라고도 합니다.<br /> <br /></h6>
+<h6 id="cnn은-주로-이미지처리-모델링에서-많이-이용되며-이번-글에서도-이미지를-처리한다는-상황을-가정하고-글을-작성합니다--">CNN은 주로 이미지처리 모델링에서 많이 이용되며, 이번 글에서도 이미지를 처리한다는 상황을 가정하고 글을 작성합니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/117629584-48973c80-b1b5-11eb-9058-aa82af4575d2.jpeg" alt="214ABC4455DEBDF322" class="mx-auto d-block" /> <br /></p>
+<h6 id="위-사진은-cnn의-구조를-보여주며-해당-사진-속-feature-extraction-해당하는-convolution-layer층과-pooling-layer층을-구분해-설명하고자-합니다-">위 사진은 CNN의 구조를 보여주며, 해당 사진 속 Feature Extraction 해당하는 Convolution layer(층)과 Pooling layer(층)을 구분해 설명하고자 합니다.<br /> <br /></h6>
+
+<hr />
+
+<h2 id="convolution-layer">[Convolution layer]</h2>
+<h6 id="convolution-layer에서는-cnn의-핵심이자-위에서-말한것과-같이-입력값이미지과-특징을-뽑아주는-필터를-convolution하는-층입니다-">Convolution layer에서는 CNN의 핵심이자, 위에서 말한것과 같이 입력값(이미지)과 특징을 뽑아주는 필터를 Convolution하는 층입니다. <br /></h6>
+<h6 id="이-과정에서-이미지는-단순히-이미지자체로만-convolution할-순-없습니다-우리는-컴퓨터가-이미지를-이해할-수-있게-이미지를-숫자화-시킵니다-숫자화-된-이미지는-특징을-뽑아주는-필터와-convolution합니다-">이 과정에서 이미지는 단순히 이미지자체로만 Convolution할 순 없습니다. 우리는 컴퓨터가 이미지를 이해할 수 있게 이미지를 숫자화 시킵니다. 숫자화 된 이미지는 특징을 뽑아주는 필터와 Convolution합니다.<br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/117654131-50b0a580-b1d0-11eb-8553-02af68281ee6.jpg" alt="IMG_5780" class="mx-auto d-block" /> <br /></p>
+<h6 id="사진을-보면-좌측의-숫자화-된-입력-이미지와-임의의-필터를-convolution을-해줍니다-5x5이미지가-3x3크기의-필터와-convolution을-통해-3x3크기의-결과가-나옵니다-우리는-이-결과를-feature-map이라고-부릅니다">사진을 보면 좌측의 숫자화 된 입력 이미지와 임의의 필터를 Convolution을 해줍니다. 5x5이미지가 3x3크기의 필터와 Convolution을 통해 3x3크기의 결과가 나옵니다. 우리는 이 결과를 feature map이라고 부릅니다.<br /></h6>
+<h6 id="더-명확한-이해를-돕기위해-동영상-이미지-가져왔습니다-">더 명확한 이해를 돕기위해 동영상 이미지 가져왔습니다.<br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/117630407-1df9b380-b1b6-11eb-9e22-9dca5f313594.GIF" alt="IMG_5776" class="mx-auto d-block" /> <br /></p>
+<h6 id="우리는-여기서-입력-이미지의-크기--필터의-크기--필터가-이동하는-범위--convolution을-해도-feature-map의-크기가-안줄어들게-파라미터를-조절할-수-있습니다-">우리는 여기서 입력 이미지의 크기 / 필터의 크기 / 필터가 이동하는 범위 / Convolution을 해도 feature map의 크기가 안줄어들게 파라미터를 조절할 수 있습니다.<br /> <br /></h6>
+<h4 id="1-필터의-크기">[1] 필터의 크기</h4>
+<ul>
+  <li>
+    <h6 id="위-사진에선-필터의-크기가-3x3크기로-입력-이미지를-convolution하는-것을-알-수-있습니다-우리는-필터의-크기를-조절해-feature-map의-크기를-정할-수-있습니다">위 사진에선 필터의 크기가 3x3크기로 입력 이미지를 Convolution하는 것을 알 수 있습니다. 우리는 필터의 크기를 조절해 feature map의 크기를 정할 수 있습니다.</h6>
+  </li>
+</ul>
+
+<h4 id="2-필터가-이동하는-범위-스트라이드">[2] 필터가 이동하는 범위 (스트라이드)</h4>
+<ul>
+  <li>
+    <h6 id="위-사진을-보면-3x3크기의-필터가-1칸씩-움직이는걸-확인할-수-있습니다-이는-stride1-라고-이해할-수-있습니다-우리는-stride2-로-조절해-필터가-2칸씩-움직일-수-있게-조절할-수-있습니다-stride가-커질-수록-당연히-feature-map의-크기는-줄어들-것입니다">위 사진을 보면 3x3크기의 필터가 1칸씩 움직이는걸 확인할 수 있습니다. 이는 stride=1 라고 이해할 수 있습니다. 우리는 stride=2 로 조절해 필터가 2칸씩 움직일 수 있게 조절할 수 있습니다. stride가 커질 수록 당연히 feature map의 크기는 줄어들 것입니다.</h6>
+  </li>
+</ul>
+
+<h4 id="3-패딩-">[3] 패딩 <br /></h4>
+<p><img src="https://user-images.githubusercontent.com/68190553/117656075-dc2b3600-b1d2-11eb-89e7-d9fe6ecb3a42.png" alt="NU7y2" class="mx-auto d-block" /> <br /></p>
+<ul>
+  <li>
+    <h6 id="패딩이란-convolution과정에서-입력-이미지의-크기가-줄어드는-것을-방지하기-위한-기법입니다-기존-입력-이미지에-0값을-둘러쌓음으로써-결과로-나올-feature-map의-크기를-조절합니다-우리는-padding값을-full--same--vaild-등을-통해-조절할-수-있습니다">패딩이란? Convolution과정에서 입력 이미지의 크기가 줄어드는 것을 방지하기 위한 기법입니다. 기존 입력 이미지에 0값을 둘러쌓음으로써 결과로 나올 feature map의 크기를 조절합니다. 우리는 padding값을 full / same / vaild 등을 통해 조절할 수 있습니다.</h6>
+  </li>
+</ul>
+
+<p><br /></p>
+<h2 id="pooling-layer">[Pooling layer]</h2>
+<h6 id="풀링층에서는-데이터의-크기를-줄일-수-있습니다-이는-모델의-입력이미지의-크기를-줄이는-동시에-자연스레-파라미터수연산까지-줄일-수-있으며-딥러닝에서-모델이-깊어짐에-따라-더욱-섬세한-부분을-학습시킬-수-있는-과정입니다-비선형적특징을-더-학습할-수-있음--">풀링층에서는 데이터의 크기를 줄일 수 있습니다. 이는 모델의 입력이미지의 크기를 줄이는 동시에 자연스레 파라미터수(연산)까지 줄일 수 있으며, 딥러닝에서 모델이 깊어짐에 따라 더욱 섬세한 부분을 학습시킬 수 있는 과정입니다. (비선형적특징을 더 학습할 수 있음) <br /> <br /></h6>
+<h6 id="대부분의-cnn에선-convolution-layer를-거친-후-pooling-layer를-통해-깊게-학습시킵니다-">대부분의 CNN에선 Convolution layer를 거친 후 pooling layer를 통해 깊게 학습시킵니다.<br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/117657120-27921400-b1d4-11eb-8b2e-ce74a64914be.JPG" alt="IMG_5777" class="mx-auto d-block" /> <br /></p>
+<h6 id="위-사진은-4x4크기의-입력-이미지에-2x2크기의-pooling이-적용된-사진입니다-풀링은-convolution-layer의-필터와-같이-움직입니다-하지만-기본적으로-pooling-layer에서의-필터는-크기와-필터가-움직이는-크기의-값이-같습니다--">위 사진은 4x4크기의 입력 이미지에 2x2크기의 pooling이 적용된 사진입니다. 풀링은 convolution layer의 필터와 같이 움직입니다. 하지만, 기본적으로 Pooling layer에서의 “필터는 크기”와 “필터가 움직이는 크기”의 값이 같습니다. <br /> <br /></h6>
+<h6 id="즉-필터의-값이-겹쳐서-나오지-않습니다-위-사진에서-4x4크기의-입력-이미지가-4가지-색으로-표현되어있으며-각-2x2크기의-필터마다-다른-색칠되어있습니다-이는-2x2크기의-필터로-pooling을-한다고-이해하시면-되겠습니다--">즉, 필터의 값이 겹쳐서 나오지 않습니다. 위 사진에서 4x4크기의 입력 이미지가 4가지 색으로 표현되어있으며, 각 2x2크기의 필터마다 다른 색칠되어있습니다. 이는 2x2크기의 필터로 pooling을 한다고 이해하시면 되겠습니다. <br /> <br /></h6>
+<h6 id="덧붙여-pooling의-종류에는-크게-average-pooling--max-pooling-으로-2가지가-사용되며-밑에서-설명하겠습니다-">덧붙여 pooling의 종류에는 크게 Average-Pooling / Max-Pooling 으로 2가지가 사용되며 밑에서 설명하겠습니다.<br /> <br /></h6>
+<h4 id="1-average-pooling">[1] Average-Pooling</h4>
+<ul>
+  <li>
+    <h6 id="먼저-average-pooling입니다-average-pooling은-위사진에선-4x4크기의-입력-이미지에서-2x2크기마다-평균을-구해-결과를-구합니다">먼저 Average-Pooling입니다. Average-Pooling은 위사진에선 4x4크기의 입력 이미지에서 2x2크기마다 평균을 구해 결과를 구합니다.</h6>
+  </li>
+</ul>
+
+<h4 id="2-max-pooling">[2] Max-Pooling</h4>
+<ul>
+  <li>
+    <h6 id="max-pooling입니다-max-pooling은-위사진에-4x4크기의-입력-이미지에서-2x2크기마다-가장-큰-값을-구해-결과를-구합니다">Max-Pooling입니다. Max-Pooling은 위사진에 4x4크기의 입력 이미지에서 2x2크기마다 가장 큰 값을 구해 결과를 구합니다.</h6>
+    <p><br /></p>
+  </li>
+</ul>
+
+<h2 id="pytorch-code">Pytorch Code</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+ 
+<span class="k">class</span> <span class="nc">CNN</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_channel</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">filter_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_channel</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">output_channel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pooling_size</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">CNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">convolution_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">input_chanel</span><span class="p">,</span> <span class="n">output_channel</span><span class="p">,</span> <span class="n">filter_size</span><span class="p">,</span> <span class="n">stride_size</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">pooling_layer</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">pooling_size</span><span class="p">)</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_channel</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">convolution_layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">pooling_layer</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">fc</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<blockquote>
+  <h6 id="reference">Reference</h6>
+  <ul>
+    <li>
+      <h6 id="httpdeeplearningstanfordeduwikiindexphpfeature_extraction_using_convolution">http://deeplearning.stanford.edu/wiki/index.php/Feature_extraction_using_convolution</h6>
+    </li>
+  </ul>
+</blockquote>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Computer Vision">Computer Vision</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-04-27-first/" data-toggle="tooltip" data-placement="top" title="To start blog with Github">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021-05-11-resnet/" data-toggle="tooltip" data-placement="top" title="Introduce to ResNet">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:jerife@naver.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/jerife" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Jerife
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">Jerife.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

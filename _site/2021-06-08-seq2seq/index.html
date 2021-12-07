@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
+<head></head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+
+  
+
+  <title>Introduce to Seq2Seq</title>
+
+  
+  <meta name="author" content="Jerife">
+  
+
+  <meta name="description" content="Seq2Seq의 Encoder / Decoder">
+
+  
+
+  
+
+  
+  <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+      
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+
+
+    
+      
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+
+
+    
+  
+
+  
+    
+      <link rel="stylesheet" href="/assets/css/bootstrap-social.css">
+    
+      <link rel="stylesheet" href="/assets/css/beautifuljekyll.css">
+    
+  
+
+  
+
+  
+  
+  
+
+  
+
+  
+  <meta property="og:site_name" content="Jerife">
+  <meta property="og:title" content="Introduce to Seq2Seq">
+  <meta property="og:description" content="Seq2Seq의 Encoder / Decoder">
+
+  
+  <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2021-06-08T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2021-06-08-seq2seq/">
+  <link rel="canonical" href="http://localhost:4000/2021-06-08-seq2seq/">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:creator" content="@">
+
+  <meta property="twitter:title" content="Introduce to Seq2Seq">
+  <meta property="twitter:description" content="Seq2Seq의 Encoder / Decoder">
+
+  
+  <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
+  
+
+  
+
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/log.ico/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/log.ico/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/log.ico/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/log.ico/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/log.ico/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/log.ico/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/log.ico/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/log.ico/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/log.ico/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/log.ico/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/log.ico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/log.ico/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/log.ico/favicon-16x16.png">
+  <link rel="manifest" href="/assets/log.ico/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+</head>
+
+<body>
+
+  
+
+
+  <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-custom top-nav-regular"><a class="navbar-brand" href="http://localhost:4000/">Jerife</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="main-navbar">
+    <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/tags">Records</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutme">About Me</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
+  </div>
+
+  
+
+  
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        <a href="http://localhost:4000/">
+          <img alt="Navigation bar avatar" class="avatar-img" src="/assets/img/avatar-icon.png" />
+        </a>
+      </div>
+    </div>
+  
+
+</nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Introduce to BERT", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-19-bert/", \
+          "date"     : "November 19, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Transformer", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-17-transformer/", \
+          "date"     : "November 17, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Attention Mechanism", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-16-attention/", \
+          "date"     : "November 16, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientDet", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-11-15-efficientdet/", \
+          "date"     : "November 15, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-10-28-efficientnet/", \
+          "date"     : "October 28, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Yolo v3", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-10-09-yolov3/", \
+          "date"     : "October  9, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Faster R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-12-fasterrcnn/", \
+          "date"     : "September 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Fast R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-10-fastrcnn/", \
+          "date"     : "September 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-07-25-rcnn/", \
+          "date"     : "July 25, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Intriduce to ARIMA Model", \
+          "category" : "Time Series", \
+          "url"      : "/2021-06-26-arima/", \
+          "date"     : "June 26, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Seq2Seq", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-08-seq2seq/", \
+          "date"     : "June  8, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to LSTM", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-06-lstm/", \
+          "date"     : "June  6, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to RNN", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-05-rnn/", \
+          "date"     : "June  5, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to DenseNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-12-densenet/", \
+          "date"     : "May 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to ResNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-11-resnet/", \
+          "date"     : "May 11, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to CNN", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-10-cnn/", \
+          "date"     : "May 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "To start blog with Github", \
+          "category" : "Diary", \
+          "url"      : "/2021-04-27-first/", \
+          "date"     : "April 27, 2021" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "All Records", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
+
+
+  <!-- TODO this file has become a mess, refactor it -->
+
+
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container-md">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+        <div class="post-heading">
+          <h1>Introduce to Seq2Seq</h1>
+          
+            
+              <h2 class="post-subheading">Seq2Seq의 Encoder / Decoder</h2>
+            
+          
+
+          
+            <span class="post-meta">Posted on June 8, 2021</span>
+            
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+
+<div class=" container-md ">
+  <div class="row">
+    <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
+      
+
+      
+
+      <article role="main" class="blog-post">
+        <div align="center"><h1>Seq2Seq 이해하기</h1></div>
+<!--break-->
+
+<hr />
+
+<p><br /></p>
+<h1 id="seq2seq란">Seq2Seq란?</h1>
+<h6 id="seq2seq는-sequence-to-sequence의-약자로써-시퀀스-데이터언어-시계열-데이터-등를-또-다른-시퀀스-데이터로-변환해주는-모델입니다--">Seq2Seq는 Sequence to Sequence의 약자로써, 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른 시퀀스 데이터로 변환해주는 모델입니다. <br /> <br /></h6>
+<h6 id="seq2seq-모델은-rnn모델rnn-lstm-gru등을-순환성을-기반으로-사용-되기에-rnnrecurrent-neural-network-이해하기--lstmlong-short-term-memory-이해하기-부분을-먼저-학습하셔야-합니다--">Seq2Seq 모델은 RNN모델(RNN, LSTM, GRU)등을 순환성을 기반으로 사용 되기에 [<a href="https://jerife.github.io/2021-06-05-rnn/">RNN(Recurrent Neural Network) 이해하기</a>] | [<a href="https://jerife.github.io/2021-06-06-lstm/">LSTM(Long Short-Term Memory) 이해하기</a>] 부분을 먼저 학습하셔야 합니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/121118577-0ebd6280-c855-11eb-8717-5a1b232331ee.gif" alt="seq2seq_gif_1" class="mx-auto d-block" /> <br /></p>
+<h6 id="seq2seq-모델은-보이는-움짤과-같이-크게-인코더-encoder-부분과-디코더-decoder-부분으로-나눌-수-있습니다-">Seq2Seq 모델은 보이는 움짤과 같이 크게 <strong>인코더 (Encoder)</strong> 부분과 <strong>디코더 (Decoder)</strong> 부분으로 나눌 수 있습니다. <br /></h6>
+<h6 id="간단하게-인코더는-문자를-데이터로-변환시키고-디코더는-데이터를-문자로-변환시키는-역할을-합니다--">간단하게 인코더는 문자를 데이터로 변환시키고, 디코더는 데이터를 문자로 변환시키는 역할을 합니다. <br /> <br /></h6>
+
+<h2 id="rnn-of-seq2seq">[RNN of Seq2Seq]</h2>
+<h6 id="여기-seq2seq의-encoder와-decoder에선-rnn-기반-모델들을-rnn-lstm-gru-사용합니다-이-글에선-lstm-모델을-사용한다-가정하겠습니다--">여기 Seq2Seq의 Encoder와 Decoder에선 RNN 기반 모델들을 (RNN, LSTM, GRU) 사용합니다. 이 글에선 LSTM 모델을 사용한다 가정하겠습니다. <br /> <br /></h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/121049358-97ef7d80-c7f2-11eb-8cf4-83117dffe5ba.png" alt="lstm_img_4" class="mx-auto d-block" /> <br /></p>
+<h6 id="lstm모델은-시간에-따른-데이터를-순환-시켜주는-ht-값과--중요한-데이터는-기억하고-아닌-데이터는-잊는-기억셀-ct가-있습니다-이-두-값은-다음셀로-계속-사용전달-되어-다음셀에-영향을-줍니다--">LSTM모델은 시간에 따른 데이터를 순환 시켜주는 “ht” 값과 / 중요한 데이터는 기억하고, 아닌 데이터는 잊는 기억셀 “Ct”가 있습니다. 이 두 값은 다음셀로 계속 사용전달 되어, 다음셀에 영향을 줍니다. <br /> <br /></h6>
+<h6 id="이렇게-다음-층으로-계속-전달-되는-층을-hidden-state-라고도-부릅니다-">이렇게 다음 층으로 계속 전달 되는 층을 <strong>HIdden state</strong> 라고도 부릅니다. <br /></h6>
+
+<h2 id="seq2seq-architecture">[Seq2Seq Architecture]</h2>
+<h6 id="seq2seq에서-사용-될-rnn모델을-정했기에-이제-encoder--decoder-와-이-둘을-이어주는-context문맥-부분을-이해해보겠습니다">Seq2Seq에서 사용 될 RNN모델을 정했기에 이제 Encoder / Decoder 와 이 둘을 이어주는 Context(문맥) 부분을 이해해보겠습니다.</h6>
+<p><img src="https://user-images.githubusercontent.com/68190553/121048577-e2bcc580-c7f1-11eb-9c39-2cb0f717ce2d.gif" alt="image" class="mx-auto d-block" /></p>
+<h4 id="1-encoder">[1] Encoder<br /></h4>
+<p><img width="434" alt="seq2seq_img_2" src="https://user-images.githubusercontent.com/68190553/121124975-c0ae5c00-c860-11eb-9e27-ed281412fcf8.png" class="mx-auto d-block" /><br /></p>
+<h6 id="encoder부분을-보면-je-suis-étudiant-라는-문장이-word-level로단어마다-rnn모델에-한개씩-들어가는-것을-알-수-있습니다--">Encoder부분을 보면 “je suis étudiant” 라는 문장이 Word level로(단어마다) RNN모델에 한개씩 들어가는 것을 알 수 있습니다. <br /> <br /></h6>
+<h6 id="셀에-단어가-들어갈때-마다-hidden-statelstm의-기억셀-ct와-결과값-ht-값이-나와서-다음셀에-영향을-주는-것을-볼-수-있습니다--">셀에 단어가 들어갈때 마다 <strong>HIdden state</strong>(LSTM의 기억셀 Ct와, 결과값 ht) 값이 나와서 다음셀에 영향을 주는 것을 볼 수 있습니다. <br /> <br /></h6>
+<h6 id="이-후-마지막-셀에-étudiant-단어가-들어가는-순간-hidden-state값이-나오고-그-값이-decoder에-들어가는-것을-볼-수-있습니다-우리는-encoder부분의-마지막-셀에서-나오는-hidden-state를-context-vector문맥이라고도-부릅니다--">이 후 마지막 셀에 “étudiant” 단어가 들어가는 순간 <strong>HIdden state</strong>값이 나오고 그 값이 Decoder에 들어가는 것을 볼 수 있습니다. 우리는 Encoder부분의 마지막 셀에서 나오는 HIdden state를 <strong>Context Vector</strong>(문맥)이라고도 부릅니다. <br /> <br /></h6>
+
+<h4 id="2-context-vector">[2] Context Vector<br /></h4>
+<p><img width="27" alt="seq2seq_img_4" src="https://user-images.githubusercontent.com/68190553/121125066-e2a7de80-c860-11eb-8fd7-20e3e2ebefb5.png" class="mx-auto d-block" /><br /></p>
+<h6 id="context-vector문맥으로-불리는-encoder부분의-마지막-셀에서-나오는-hidden-state에-대해서-추가적인-설명을-하겠습니다--"><strong>Context Vector</strong>(문맥)으로 불리는 Encoder부분의 마지막 셀에서 나오는 HIdden state에 대해서 추가적인 설명을 하겠습니다. <br /> <br /></h6>
+<h6 id="context-vector는-입력값je-suis-étudiant의-모든-정보를-모아-놓은-동시에-고정된-크기의-벡터이기도-합니다--">Context Vector는 입력값(“je suis étudiant”)의 모든 정보를 모아 놓은 동시에, <strong>고정된 크기의 벡터</strong>이기도 합니다. <br /> <br /></h6>
+<h6 id="고정된-크기의-벡터는-많은양의-데이터도-꾹꾹-눌러서-압축시켜야하기-때문에-정보-손실률이-있다는-단점이-있지만-차-후-attention-mechanism을-통해-단점을-해결할-수-있게-됩니다-이-글에선-attention-mechanism에-대해선-다루지-않겠습니다">고정된 크기의 벡터는 많은양의 데이터도 꾹꾹 눌러서 압축시켜야하기 때문에, 정보 손실률이 있다는 단점이 있지만, 차 후 <strong>Attention Mechanism</strong>을 통해 단점을 해결할 수 있게 됩니다. 이 글에선 Attention Mechanism에 대해선 다루지 않겠습니다.</h6>
+
+<h4 id="3-decoder">[3] Decoder<br /></h4>
+<p><img width="417" alt="seq2seq_img_3" src="https://user-images.githubusercontent.com/68190553/121125051-db80d080-c860-11eb-9b1c-038c2df283bc.png" class="mx-auto d-block" /><br /></p>
+<h6 id="decoder도-encoder과-마찬가지로-정보를-받아-rnn을-통해-결과를-예측하는-것-까지는-같습니다">Decoder도 Encoder과 마찬가지로 정보를 받아, RNN을 통해 결과를 예측하는 것 까지는 같습니다.<br /></h6>
+<h6 id="decoder는-유일한-정보인-context-vector만을-정보로-받아-i-am-a-student와-같은-결과를-출력합니다--">Decoder는 유일한 정보인 Context Vector만을 정보로 받아 “i am a student”와 같은 결과를 출력합니다. <br /> <br /></h6>
+
+<hr />
+
+<h2 id="seq2seq-개선">[Seq2Seq 개선]</h2>
+<h6 id="seq2seq-개선하는-방법-중-하나는-위에서-언급한-attention-mechanism이-가장-인상-깊겠지만-그전에-간단한-방법으로-개선하는-법을-언급하겠습니다--">Seq2Seq 개선하는 방법 중 하나는 위에서 언급한 Attention Mechanism이 가장 인상 깊겠지만, 그전에 간단한 방법으로 개선하는 법을 언급하겠습니다. <br /> <br /></h6>
+<h6 id="-입력데이터의-순서를-뒤집는다-">=&gt; 입력데이터의 순서를 뒤집는다. <br /></h6>
+<h6 id="ex-안녕-나는-딥러닝을-좋아하는-파이썬돌이야----파이썬돌이야-좋아하는-딥러닝을-나는-안녕--"><strong>ex) “안녕 나는 딥러닝을 좋아하는 파이썬돌이야 .” =&gt; “. 파이썬돌이야 좋아하는 딥러닝을 나는 안녕”</strong> <br /> <br /></h6>
+<h6 id="이렇게-언어-순서를-바꿔주는-것-만으로도-context-vector에-다른-작용을해서-좋은-결과를-추출한다고-합니다-">이렇게 언어 순서를 바꿔주는 것 만으로도 Context Vector에 다른 작용을해서 좋은 결과를 추출한다고 합니다.<br /> <br /></h6>
+
+<h2 id="pytorch-code">Pytorch Code</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">EncoderRNN</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EncoderRNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+        <span class="c1"># Layers
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">gru</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">hidden</span><span class="p">):</span>
+        <span class="n">embedded</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">embedding</span><span class="p">(</span><span class="nb">input</span><span class="p">).</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">embedded</span>
+        <span class="n">output</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">gru</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">hidden</span>
+
+    <span class="k">def</span> <span class="nf">initHidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DecoderRNN</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
+      <span class="nb">super</span><span class="p">(</span><span class="n">DecoderRNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+      <span class="c1"># Layers
+</span>      <span class="bp">self</span><span class="p">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">output_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">gru</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">softmax</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">LogSoftmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">hidden</span><span class="p">):</span>
+      <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">embedding</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+      <span class="n">output</span> <span class="o">=</span> <span class="n">F</span><span class="p">.</span><span class="n">relu</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+      <span class="n">output</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">gru</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+      <span class="n">ouptput</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">softmax</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">out</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>    
+      <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">hidden</span>
+    
+    <span class="k">def</span> <span class="nf">initHidden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<blockquote>
+  <h5 id="reference">Reference</h5>
+  <ul>
+    <li>
+      <h6 id="httpstutorialspytorchkrintermediateseq2seq_translation_tutorialhtml">https://tutorials.pytorch.kr/intermediate/seq2seq_translation_tutorial.html</h6>
+    </li>
+    <li>
+      <h6 id="httpjalammargithubiovisualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention">http://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</h6>
+    </li>
+    <li>
+      <h6 id="밑바닥부터-시작하는-딥러닝-2--사이토-고키--한빛-미디어">밑바닥부터 시작하는 딥러닝 2 / 사이토 고키 / 한빛 미디어</h6>
+    </li>
+  </ul>
+</blockquote>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
+
+
+      
+
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2021-06-06-lstm/" data-toggle="tooltip" data-placement="top" title="Introduce to LSTM">&larr; Previous Post</a>
+        </li>
+        
+        
+        <li class="page-item next">
+          <a class="page-link" href="/2021-06-26-arima/" data-toggle="tooltip" data-placement="top" title="Intriduce to ARIMA Model">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+      
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+  
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  <footer>
+  <div class="container-md beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
+      <ul class="list-inline text-center footer-links"><li class="list-inline-item">
+    <a href="mailto:jerife@naver.com" title="Email me">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">Email me</span>
+   </a>
+  </li><li class="list-inline-item">
+    <a href="https://github.com/jerife" title="GitHub">
+      <span class="fa-stack fa-lg" aria-hidden="true">
+        <i class="fas fa-circle fa-stack-2x"></i>
+        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+      </span>
+      <span class="sr-only">GitHub</span>
+   </a>
+  </li></ul>
+
+      
+      <p class="copyright text-muted">
+      
+        Jerife
+        &nbsp;&bull;&nbsp;
+      
+      2021
+
+      
+        &nbsp;&bull;&nbsp;
+        <span class="author-site">
+          <a href="http://localhost:4000/">Jerife.github.io</a>
+        </span>
+      
+
+      
+      </p>
+      <p class="theme-by text-muted">
+        Powered by
+        <a href="https://beautifuljekyll.com">Beautiful Jekyll</a>
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  
+  
+    
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+
+  
+    
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  
+
+
+
+  
+    <!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+    
+      <script src="/assets/js/beautifuljekyll.js"></script>
+    
+  
+
+
+
+
+
+
+
+
+
+</body>
+</html>

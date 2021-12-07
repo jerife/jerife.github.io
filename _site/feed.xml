@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    
+    <title>Jerife</title>
+    
+    
+    <description>This website is a virtual proof that I'm awesome</description>
+    
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+    
+      <item>
+        <title>Introduce to BERT</title>
+        <description>
+          Bidirectional Encoder Representations from Transformers - 
+          BERT 이해하기 BERT란? BERT는 Bidirectional Encoder Representations from Transformers의 약자로, 이전 포스팅인 “Introduce to Transformer”...
+        </description>
+        <pubDate>Fri, 19 Nov 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-11-19-bert/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-11-19-bert/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to Transformer</title>
+        <description>
+          Transformer with Attention - 
+          Transformer 이해하기 Transformer란? 기존의 AI의 NLP분야는 RNN계열의 Lstm, GRU, Seq2Seq등의 모델이 사용되었으며, 추가적으로 Attention Mechanism을...
+        </description>
+        <pubDate>Wed, 17 Nov 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-11-17-transformer/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-11-17-transformer/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to Attention Mechanism</title>
+        <description>
+          Attention Is All You Need - 
+          Attention Mechanism 이해하기 Attention란? 우리는 이전에 언어처리에 관한 Seq2Seq모델을 “Introduce to Seq2Seq”이글에서 다뤘습니다. Seq2Seq는 RNN모델(RNN,...
+        </description>
+        <pubDate>Tue, 16 Nov 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-11-16-attention/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-11-16-attention/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to EfficientDet</title>
+        <description>
+          Compound Scaling 1-Stage Detection Model - 
+          EfficientDet 이해하기 EfficientDet이란? EfficientDet은 1-Stage Detection 모델이며, EfficientNet의 Compound Scaling과 Feature Pyramid Network(FPN)에 변화를 주어...
+        </description>
+        <pubDate>Mon, 15 Nov 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-11-15-efficientdet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-11-15-efficientdet/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to EfficientNet</title>
+        <description>
+          Compound Scaling CNN Model - 
+          EfficientNet 이해하기 EfficientNet이란? EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로...
+        </description>
+        <pubDate>Thu, 28 Oct 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-10-28-efficientnet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-10-28-efficientnet/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to Yolo v3</title>
+        <description>
+          1-Stage Detection Model - 
+          Yolo v3 이해하기 YOLO란? YOLO는 이전 포스팅인 2-stage 모델인 Faster RCNN과 다르게 대표적인 1-stage Object...
+        </description>
+        <pubDate>Sat, 09 Oct 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-10-09-yolov3/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-10-09-yolov3/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to Faster R-CNN</title>
+        <description>
+          2-Stage Detection Model (3) - 
+          Faster R-CNN 이해하기 Faster R-CNN이란? R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network...
+        </description>
+        <pubDate>Sun, 12 Sep 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-09-12-fasterrcnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-09-12-fasterrcnn/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to Fast R-CNN</title>
+        <description>
+          2-Stage Detection Model (2) - 
+          Fast R-CNN 이해하기 Fast R-CNN이란? Fast R-CNN는 이전 포스트에서 설명한 R-CNN을 속도 측면에서 큰 변화를...
+        </description>
+        <pubDate>Fri, 10 Sep 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-09-10-fastrcnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-09-10-fastrcnn/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to R-CNN</title>
+        <description>
+          2-Stage Detection Model (1) - 
+          R-CNN 이해하기 R-CNN이란? Object Detection 분야는 크게 2-Stage Detection Model 에서 1-Stage Detection Model로 발전돼...
+        </description>
+        <pubDate>Sun, 25 Jul 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-07-25-rcnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-07-25-rcnn/</guid>
+      </item>
+    
+      <item>
+        <title>Intriduce to ARIMA Model</title>
+        <description>
+          시계열 모형의 이해 - 
+          ARIMA 이해하기 데이터 분석시 가장 전통적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다. ARIMA는 AutoRegressive Integrated...
+        </description>
+        <pubDate>Sat, 26 Jun 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-06-26-arima/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-26-arima/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to Seq2Seq</title>
+        <description>
+          Seq2Seq의 Encoder / Decoder - 
+          Seq2Seq 이해하기 Seq2Seq란? Seq2Seq는 Sequence to Sequence의 약자로써, 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른...
+        </description>
+        <pubDate>Tue, 08 Jun 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-06-08-seq2seq/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-08-seq2seq/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to LSTM</title>
+        <description>
+          RNN에 기억셀 게이트를 추가한 LSTM - 
+          LSTM 이해하기 LSTM이란? Long Short-Term Memory의 약자로 길이가 긴 데이터 ( 시계열 데이터 / 언어...
+        </description>
+        <pubDate>Sun, 06 Jun 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-06-06-lstm/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-06-lstm/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to RNN</title>
+        <description>
+          순환 신경망의 기초 모델 RNN - 
+          RNN 이해하기 RNN이란? Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. RNN은 주로 언어 데이터나 시계열...
+        </description>
+        <pubDate>Sat, 05 Jun 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-06-05-rnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-06-05-rnn/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to DenseNet</title>
+        <description>
+          Dense Block과 Skip Connection의 차이 - 
+          DenseNet 이해하기 DenseNet이란? DenseNet은 저번 글에서 설명한 ResNet과 유사하게 입력값과 출력값을 더하는 형태의 모델이지만, 명백하게...
+        </description>
+        <pubDate>Wed, 12 May 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-05-12-densenet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-05-12-densenet/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to ResNet</title>
+        <description>
+          Residual Block과 Skip-connection - 
+          ResNet 이해하기 ResNet이란? Residual Network를 명하는 단어로써, CNN모델 중 하나입니다. 앞으로 다양한 CNN 모델을 접할...
+        </description>
+        <pubDate>Tue, 11 May 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-05-11-resnet/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-05-11-resnet/</guid>
+      </item>
+    
+      <item>
+        <title>Introduce to CNN</title>
+        <description>
+          Image Feature Extractor - 
+          CNN 이해하기 CNN이란? CNN은 Convolution Nerual Network의 약자로서 입력값(이미지 or 텍스트)과 사용자가 지정한 필터(fitter /...
+        </description>
+        <pubDate>Mon, 10 May 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-05-10-cnn/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-05-10-cnn/</guid>
+      </item>
+    
+      <item>
+        <title>To start blog with Github</title>
+        <description>
+          블로그 시작 - 
+          블로그 시작을 알리며, 이 블로그는 인공지능 관련 지식 공유와 기록을 목적으로 한 블로그로써, 인공지능 모델...
+        </description>
+        <pubDate>Tue, 27 Apr 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-04-27-first/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-04-27-first/</guid>
+      </item>
+    
+  </channel>
+</rss>

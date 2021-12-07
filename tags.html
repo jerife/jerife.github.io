@@ -13,63 +13,8 @@ subtitle: Searching and Tagging
 {%- endcapture -%}
 {%- assign tags_list = site_tags | split:',' | sort -%}
 
-
-
-
-<!-- search -->
-<style>
-    #search-bar {
-        margin: 32px auto;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        padding: 0 20px;
-    }
-
-    #search-bar #search-input {
-        width: calc(100% - 30px);
-        border: none;
-        line-height: 44px;
-        outline: none;
-        border-style: none;
-        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-</style>
-    
-<div class="container">
-<div class="row">
- <div class="col-12">
-   <div id="search-bar">
-     <i class="fa fa-search" aria-hidden="true"></i>
-     <input id="search-input" type="text" placeholder="Search..." />
-   </div>
-   <ul id="results-container"></ul>
- </div>
-</div>
-</div>
-
-<!-- Script pointing to jekyll-search.js -->
-<script src="/assets/js/jekyll-search.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-SimpleJekyllSearch({
-     searchInput: document.getElementById('search-input'),
-     resultsContainer: document.getElementById('results-container'),
-     json: '/search.json',
-     searchResultTemplate: '<li><a href="{url}" title="{desc}" target="_blank">{title}</a></li>',
-     noResultsText: 'No results found',
-     limit: 10000,
-     fuzzy: false,
-     exclude: ['Welcome']
-});
-</script>
-<!-- search -->
-
-
-
-
-
 {%- for tag in tags_list -%}
-    <a id="full-tags-list" href="#{{- tag -}}" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})</a>
+    <a href="#{{- tag -}}" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;{{- tag -}}&nbsp;({{site.tags[tag].size}})</a>
 {%- endfor -%}
 
 <div id="full-tags-list">
@@ -82,7 +27,7 @@ SimpleJekyllSearch({
         {%- for post in site.tags[tag] -%}
             <div class="tag-entry">
                 <time class="entry-date" datetime="{{- post.date | date_to_xmlschema -}}">{{- post.date | date: date_format -}}&nbsp;&nbsp;</time><a href="{{ post.url | relative_url }}">{{- post.title -}}</a>
-                
+
             </div>
         {%- endfor -%}
     </div>

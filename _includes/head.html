@@ -1,4 +1,4 @@
-<head>
+<head></head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -39,7 +39,9 @@
   <meta name="keywords" content="{{ site.keywords }}">
   {% endif %}
 
+  {% if site.rss-description %}
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
+  {% endif %}
 
   {% include gtag.html %}
   {% include gtm_head.html %}
@@ -78,7 +80,6 @@
 
   {% if site.fb_app_id %}
   <meta property="fb:app_id" content="{{ site.fb_app_id }}">
-  
   {% endif %}
 
   {% if site.title %}
@@ -164,6 +165,8 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{{site.baseurl}}/assets/log.ico/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
+  {% if page.use_math %}
+    {% include mathjax_support.html %}
+  {% endif %}
 </head>
-
-

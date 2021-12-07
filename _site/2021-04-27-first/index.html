@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
-<head>
+<head></head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,7 +21,9 @@
 
   
 
+  
   <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+  
 
   
 
@@ -84,7 +86,7 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-04-27T00:00:00-04:00">
+  <meta property="og:article:published_time" content="2021-04-27T00:00:00+09:00">
   <meta property="og:url" content="http://localhost:4000/2021-04-27-first/">
   <link rel="canonical" href="http://localhost:4000/2021-04-27-first/">
   
@@ -125,10 +127,9 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
+  
 </head>
-
-
-
 
 <body>
 
@@ -146,7 +147,13 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/aboutme">About Me</a>
-          </li></ul>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
   </div>
 
   
@@ -162,6 +169,194 @@
   
 
 </nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Introduce to BERT", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-19-bert/", \
+          "date"     : "November 19, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Transformer", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-17-transformer/", \
+          "date"     : "November 17, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Attention Mechanism", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-16-attention/", \
+          "date"     : "November 16, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientDet", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-11-15-efficientdet/", \
+          "date"     : "November 15, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-10-28-efficientnet/", \
+          "date"     : "October 28, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Yolo v3", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-10-09-yolov3/", \
+          "date"     : "October  9, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Faster R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-12-fasterrcnn/", \
+          "date"     : "September 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Fast R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-10-fastrcnn/", \
+          "date"     : "September 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-07-25-rcnn/", \
+          "date"     : "July 25, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Intriduce to ARIMA Model", \
+          "category" : "Time Series", \
+          "url"      : "/2021-06-26-arima/", \
+          "date"     : "June 26, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Seq2Seq", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-08-seq2seq/", \
+          "date"     : "June  8, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to LSTM", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-06-lstm/", \
+          "date"     : "June  6, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to RNN", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-05-rnn/", \
+          "date"     : "June  5, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to DenseNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-12-densenet/", \
+          "date"     : "May 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to ResNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-11-resnet/", \
+          "date"     : "May 11, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to CNN", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-10-cnn/", \
+          "date"     : "May 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "To start blog with Github", \
+          "category" : "Diary", \
+          "url"      : "/2021-04-27-first/", \
+          "date"     : "April 27, 2021" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "All Records", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
 
 
   <!-- TODO this file has become a mess, refactor it -->
@@ -308,6 +503,8 @@
 
   
 
+
+  
 
 
 

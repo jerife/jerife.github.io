@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
-<head>
+<head></head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,7 +21,9 @@
 
   
 
+  
   <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+  
 
   
 
@@ -123,10 +125,9 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
+  
 </head>
-
-
-
 
 <body>
 
@@ -144,7 +145,13 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/aboutme">About Me</a>
-          </li></ul>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
   </div>
 
   
@@ -160,6 +167,194 @@
   
 
 </nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Introduce to BERT", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-19-bert/", \
+          "date"     : "November 19, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Transformer", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-17-transformer/", \
+          "date"     : "November 17, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Attention Mechanism", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-16-attention/", \
+          "date"     : "November 16, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientDet", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-11-15-efficientdet/", \
+          "date"     : "November 15, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-10-28-efficientnet/", \
+          "date"     : "October 28, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Yolo v3", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-10-09-yolov3/", \
+          "date"     : "October  9, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Faster R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-12-fasterrcnn/", \
+          "date"     : "September 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Fast R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-10-fastrcnn/", \
+          "date"     : "September 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-07-25-rcnn/", \
+          "date"     : "July 25, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Intriduce to ARIMA Model", \
+          "category" : "Time Series", \
+          "url"      : "/2021-06-26-arima/", \
+          "date"     : "June 26, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Seq2Seq", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-08-seq2seq/", \
+          "date"     : "June  8, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to LSTM", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-06-lstm/", \
+          "date"     : "June  6, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to RNN", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-05-rnn/", \
+          "date"     : "June  5, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to DenseNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-12-densenet/", \
+          "date"     : "May 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to ResNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-11-resnet/", \
+          "date"     : "May 11, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to CNN", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-10-cnn/", \
+          "date"     : "May 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "To start blog with Github", \
+          "category" : "Diary", \
+          "url"      : "/2021-04-27-first/", \
+          "date"     : "April 27, 2021" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "All Records", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
 
 
   <!-- TODO this file has become a mess, refactor it -->
@@ -202,138 +397,92 @@
     <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
       
 
-      <!-- search -->
-<style>
-    #search-bar {
-        margin: 32px auto;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        padding: 0 20px;
-    }
-
-    #search-bar #search-input {
-        width: calc(100% - 30px);
-        border: none;
-        line-height: 44px;
-        outline: none;
-        border-style: none;
-        font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-</style>
-    
-<div class="container">
-<div class="row">
- <div class="col-12">
-   <div id="search-bar">
-     <i class="fa fa-search" aria-hidden="true"></i>
-     <input id="search-input" type="text" placeholder="Search..." />
-   </div>
-   <ul id="results-container"></ul>
- </div>
-</div>
-</div>
-
-<!-- Script pointing to jekyll-search.js -->
-<script src="/assets/js/jekyll-search.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-SimpleJekyllSearch({
-     searchInput: document.getElementById('search-input'),
-     resultsContainer: document.getElementById('results-container'),
-     json: '/search.json',
-     searchResultTemplate: '<li><a href="{url}" title="{desc}" target="_blank">{title}</a></li>',
-     noResultsText: 'No results found',
-     limit: 10000,
-     fuzzy: false,
-     exclude: ['Welcome']
-});
-</script>
-<!-- search --><a id="full-tags-list" href="#Computer Vision" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Computer Vision&nbsp;(9)</a><a id="full-tags-list" href="#Diary" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Diary&nbsp;(1)</a><a id="full-tags-list" href="#Natural Language Processing" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Natural Language Processing&nbsp;(6)</a><a id="full-tags-list" href="#Object Detection" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Object Detection&nbsp;(5)</a><a id="full-tags-list" href="#Time Series" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Time Series&nbsp;(1)</a><div id="full-tags-list"><h2 id="Computer Vision" class="linked-section">
+      <a href="#Computer Vision" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Computer Vision&nbsp;(9)</a><a href="#Diary" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Diary&nbsp;(1)</a><a href="#Natural Language Processing" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Natural Language Processing&nbsp;(6)</a><a href="#Object Detection" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Object Detection&nbsp;(5)</a><a href="#Time Series" class="btn btn-secondary tag-btn"><i class="" aria-hidden="true"></i>&nbsp;Time Series&nbsp;(1)</a><div id="full-tags-list"><h2 id="Computer Vision" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Computer Vision&nbsp;(9)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <time class="entry-date" datetime="2021-11-15T00:00:00-05:00">November 15, 2021&nbsp;&nbsp;</time><a href="/2021-11-15-efficientdet/">Introduce to EfficientDet</a>
-                
+                <time class="entry-date" datetime="2021-11-15T00:00:00+09:00">November 15, 2021&nbsp;&nbsp;</time><a href="/2021-11-15-efficientdet/">Introduce to EfficientDet</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-10-28T00:00:00-04:00">October 28, 2021&nbsp;&nbsp;</time><a href="/2021-10-28-efficientnet/">Introduce to EfficientNet</a>
-                
+                <time class="entry-date" datetime="2021-10-28T00:00:00+09:00">October 28, 2021&nbsp;&nbsp;</time><a href="/2021-10-28-efficientnet/">Introduce to EfficientNet</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-10-09T00:00:00-04:00">October 9, 2021&nbsp;&nbsp;</time><a href="/2021-10-09-yolov3/">Introduce to Yolo v3</a>
-                
+                <time class="entry-date" datetime="2021-10-09T00:00:00+09:00">October 9, 2021&nbsp;&nbsp;</time><a href="/2021-10-09-yolov3/">Introduce to Yolo v3</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-09-12T00:00:00-04:00">September 12, 2021&nbsp;&nbsp;</time><a href="/2021-09-12-fasterrcnn/">Introduce to Faster R-CNN</a>
-                
+                <time class="entry-date" datetime="2021-09-12T00:00:00+09:00">September 12, 2021&nbsp;&nbsp;</time><a href="/2021-09-12-fasterrcnn/">Introduce to Faster R-CNN</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-09-10T00:00:00-04:00">September 10, 2021&nbsp;&nbsp;</time><a href="/2021-09-10-fastrcnn/">Introduce to Fast R-CNN</a>
-                
+                <time class="entry-date" datetime="2021-09-10T00:00:00+09:00">September 10, 2021&nbsp;&nbsp;</time><a href="/2021-09-10-fastrcnn/">Introduce to Fast R-CNN</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-07-25T00:00:00-04:00">July 25, 2021&nbsp;&nbsp;</time><a href="/2021-07-25-rcnn/">Introduce to R-CNN</a>
-                
+                <time class="entry-date" datetime="2021-07-25T00:00:00+09:00">July 25, 2021&nbsp;&nbsp;</time><a href="/2021-07-25-rcnn/">Introduce to R-CNN</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-05-12T00:00:00-04:00">May 12, 2021&nbsp;&nbsp;</time><a href="/2021-05-12-densenet/">Introduce to DenseNet</a>
-                
+                <time class="entry-date" datetime="2021-05-12T00:00:00+09:00">May 12, 2021&nbsp;&nbsp;</time><a href="/2021-05-12-densenet/">Introduce to DenseNet</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-05-11T00:00:00-04:00">May 11, 2021&nbsp;&nbsp;</time><a href="/2021-05-11-resnet/">Introduce to ResNet</a>
-                
+                <time class="entry-date" datetime="2021-05-11T00:00:00+09:00">May 11, 2021&nbsp;&nbsp;</time><a href="/2021-05-11-resnet/">Introduce to ResNet</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-05-10T00:00:00-04:00">May 10, 2021&nbsp;&nbsp;</time><a href="/2021-05-10-cnn/">Introduce to CNN</a>
-                
+                <time class="entry-date" datetime="2021-05-10T00:00:00+09:00">May 10, 2021&nbsp;&nbsp;</time><a href="/2021-05-10-cnn/">Introduce to CNN</a>
+
             </div></div><h2 id="Diary" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Diary&nbsp;(1)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <time class="entry-date" datetime="2021-04-27T00:00:00-04:00">April 27, 2021&nbsp;&nbsp;</time><a href="/2021-04-27-first/">To start blog with Github</a>
-                
+                <time class="entry-date" datetime="2021-04-27T00:00:00+09:00">April 27, 2021&nbsp;&nbsp;</time><a href="/2021-04-27-first/">To start blog with Github</a>
+
             </div></div><h2 id="Natural Language Processing" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Natural Language Processing&nbsp;(6)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <time class="entry-date" datetime="2021-11-19T00:00:00-05:00">November 19, 2021&nbsp;&nbsp;</time><a href="/2021-11-19-bert/">Introduce to BERT</a>
-                
+                <time class="entry-date" datetime="2021-11-19T00:00:00+09:00">November 19, 2021&nbsp;&nbsp;</time><a href="/2021-11-19-bert/">Introduce to BERT</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-11-17T00:00:00-05:00">November 17, 2021&nbsp;&nbsp;</time><a href="/2021-11-17-transformer/">Introduce to Transformer</a>
-                
+                <time class="entry-date" datetime="2021-11-17T00:00:00+09:00">November 17, 2021&nbsp;&nbsp;</time><a href="/2021-11-17-transformer/">Introduce to Transformer</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-11-16T00:00:00-05:00">November 16, 2021&nbsp;&nbsp;</time><a href="/2021-11-16-attention/">Introduce to Attention Mechanism</a>
-                
+                <time class="entry-date" datetime="2021-11-16T00:00:00+09:00">November 16, 2021&nbsp;&nbsp;</time><a href="/2021-11-16-attention/">Introduce to Attention Mechanism</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-06-08T00:00:00-04:00">June 8, 2021&nbsp;&nbsp;</time><a href="/2021-06-08-seq2seq/">Introduce to Seq2Seq</a>
-                
+                <time class="entry-date" datetime="2021-06-08T00:00:00+09:00">June 8, 2021&nbsp;&nbsp;</time><a href="/2021-06-08-seq2seq/">Introduce to Seq2Seq</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-06-06T00:00:00-04:00">June 6, 2021&nbsp;&nbsp;</time><a href="/2021-06-06-lstm/">Introduce to LSTM</a>
-                
+                <time class="entry-date" datetime="2021-06-06T00:00:00+09:00">June 6, 2021&nbsp;&nbsp;</time><a href="/2021-06-06-lstm/">Introduce to LSTM</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-06-05T00:00:00-04:00">June 5, 2021&nbsp;&nbsp;</time><a href="/2021-06-05-rnn/">Introduce to RNN</a>
-                
+                <time class="entry-date" datetime="2021-06-05T00:00:00+09:00">June 5, 2021&nbsp;&nbsp;</time><a href="/2021-06-05-rnn/">Introduce to RNN</a>
+
             </div></div><h2 id="Object Detection" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Object Detection&nbsp;(5)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <time class="entry-date" datetime="2021-11-15T00:00:00-05:00">November 15, 2021&nbsp;&nbsp;</time><a href="/2021-11-15-efficientdet/">Introduce to EfficientDet</a>
-                
+                <time class="entry-date" datetime="2021-11-15T00:00:00+09:00">November 15, 2021&nbsp;&nbsp;</time><a href="/2021-11-15-efficientdet/">Introduce to EfficientDet</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-10-09T00:00:00-04:00">October 9, 2021&nbsp;&nbsp;</time><a href="/2021-10-09-yolov3/">Introduce to Yolo v3</a>
-                
+                <time class="entry-date" datetime="2021-10-09T00:00:00+09:00">October 9, 2021&nbsp;&nbsp;</time><a href="/2021-10-09-yolov3/">Introduce to Yolo v3</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-09-12T00:00:00-04:00">September 12, 2021&nbsp;&nbsp;</time><a href="/2021-09-12-fasterrcnn/">Introduce to Faster R-CNN</a>
-                
+                <time class="entry-date" datetime="2021-09-12T00:00:00+09:00">September 12, 2021&nbsp;&nbsp;</time><a href="/2021-09-12-fasterrcnn/">Introduce to Faster R-CNN</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-09-10T00:00:00-04:00">September 10, 2021&nbsp;&nbsp;</time><a href="/2021-09-10-fastrcnn/">Introduce to Fast R-CNN</a>
-                
+                <time class="entry-date" datetime="2021-09-10T00:00:00+09:00">September 10, 2021&nbsp;&nbsp;</time><a href="/2021-09-10-fastrcnn/">Introduce to Fast R-CNN</a>
+
             </div><div class="tag-entry">
-                <time class="entry-date" datetime="2021-07-25T00:00:00-04:00">July 25, 2021&nbsp;&nbsp;</time><a href="/2021-07-25-rcnn/">Introduce to R-CNN</a>
-                
+                <time class="entry-date" datetime="2021-07-25T00:00:00+09:00">July 25, 2021&nbsp;&nbsp;</time><a href="/2021-07-25-rcnn/">Introduce to R-CNN</a>
+
             </div></div><h2 id="Time Series" class="linked-section">
         <i class="fas fa-tag" aria-hidden="true"></i>
         &nbsp;Time Series&nbsp;(1)
     </h2>
     <div class="post-list"><div class="tag-entry">
-                <time class="entry-date" datetime="2021-06-26T00:00:00-04:00">June 26, 2021&nbsp;&nbsp;</time><a href="/2021-06-26-arima/">Intriduce to ARIMA Model</a>
-                
+                <time class="entry-date" datetime="2021-06-26T00:00:00+09:00">June 26, 2021&nbsp;&nbsp;</time><a href="/2021-06-26-arima/">Intriduce to ARIMA Model</a>
+
             </div></div></div>
 
 

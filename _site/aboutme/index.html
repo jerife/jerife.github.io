@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Beautiful Jekyll 5.0.0 | Copyright Dean Attali 2020 -->
-<head>
+<head></head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,13 +15,15 @@
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="The first step for Artificial Intelligence developers.">
+  <meta name="description" content="The first step for AI Engineer 🏆">
 
   
 
   
 
+  
   <link rel="alternate" type="application/rss+xml" title="Jerife" href="http://localhost:4000/feed.xml">
+  
 
   
 
@@ -75,7 +77,7 @@
   
   <meta property="og:site_name" content="Jerife">
   <meta property="og:title" content="About me">
-  <meta property="og:description" content="The first step for Artificial Intelligence developers.">
+  <meta property="og:description" content="The first step for AI Engineer 🏆">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -94,7 +96,7 @@
   <meta name="twitter:creator" content="@">
 
   <meta property="twitter:title" content="About me">
-  <meta property="twitter:description" content="The first step for Artificial Intelligence developers.">
+  <meta property="twitter:description" content="The first step for AI Engineer 🏆">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -123,10 +125,9 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+
+  
 </head>
-
-
-
 
 <body>
 
@@ -144,7 +145,13 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/aboutme">About Me</a>
-          </li></ul>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-search-link" href="#" title="Search">
+            <span id="nav-search-icon" class="fa fa-search"></span>
+            <span id="nav-search-text">Search</span>
+          </a>
+        </li></ul>
   </div>
 
   
@@ -160,6 +167,194 @@
   
 
 </nav>
+
+
+
+<div id="beautifuljekyll-search-overlay">
+
+  <div id="nav-search-exit" title="Exit search">✕</div>
+  <input type="text" id="nav-search-input" placeholder="Search">
+  <ul id="search-results-container"></ul>
+  
+  <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+  <script>
+    var searchjson = '[ \
+       \
+        { \
+          "title"    : "Introduce to BERT", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-19-bert/", \
+          "date"     : "November 19, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Transformer", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-17-transformer/", \
+          "date"     : "November 17, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Attention Mechanism", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-11-16-attention/", \
+          "date"     : "November 16, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientDet", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-11-15-efficientdet/", \
+          "date"     : "November 15, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to EfficientNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-10-28-efficientnet/", \
+          "date"     : "October 28, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Yolo v3", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-10-09-yolov3/", \
+          "date"     : "October  9, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Faster R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-12-fasterrcnn/", \
+          "date"     : "September 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Fast R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-09-10-fastrcnn/", \
+          "date"     : "September 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to R-CNN", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-07-25-rcnn/", \
+          "date"     : "July 25, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Intriduce to ARIMA Model", \
+          "category" : "Time Series", \
+          "url"      : "/2021-06-26-arima/", \
+          "date"     : "June 26, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to Seq2Seq", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-08-seq2seq/", \
+          "date"     : "June  8, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to LSTM", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-06-lstm/", \
+          "date"     : "June  6, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to RNN", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-06-05-rnn/", \
+          "date"     : "June  5, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to DenseNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-12-densenet/", \
+          "date"     : "May 12, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to ResNet", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-11-resnet/", \
+          "date"     : "May 11, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "Introduce to CNN", \
+          "category" : "Computer Vision", \
+          "url"      : "/2021-05-10-cnn/", \
+          "date"     : "May 10, 2021" \
+        }, \
+       \
+        { \
+          "title"    : "To start blog with Github", \
+          "category" : "Diary", \
+          "url"      : "/2021-04-27-first/", \
+          "date"     : "April 27, 2021" \
+        }, \
+       \
+       \
+        { \
+          "title"    : "About me", \
+          "category" : "page", \
+          "url"      : "/aboutme/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "All Records", \
+          "category" : "page", \
+          "url"      : "/tags/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page2/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page3/", \
+          "date"     : "January 1, 1970" \
+        }, \
+       \
+        { \
+          "title"    : "Jerife Blog", \
+          "category" : "page", \
+          "url"      : "/page4/", \
+          "date"     : "January 1, 1970" \
+        } \
+       \
+    ]';
+    searchjson = JSON.parse(searchjson);
+
+    var sjs = SimpleJekyllSearch({
+      searchInput: document.getElementById('nav-search-input'),
+      resultsContainer: document.getElementById('search-results-container'),
+      json: searchjson
+    });
+  </script>
+</div>
+
+
+
 
 
   <!-- TODO this file has become a mess, refactor it -->
@@ -181,7 +376,7 @@
           
             
               <hr class="small">
-              <span class="page-subheading">The first step for Artificial Intelligence developers.</span>
+              <span class="page-subheading">The first step for AI Engineer 🏆</span>
             
           
 
@@ -204,60 +399,37 @@
 
       <p><img src="https://user-images.githubusercontent.com/68190553/126738295-5e5ab7cd-978c-4c63-b45c-193876287e3c.jpg" alt="KakaoTalk_20200226_121813715" class="mx-auto d-block" /></p>
 
-<h3 id="who">Who</h3>
+<h4 id="who">Who</h4>
 <ul>
-  <li>
-    <h6 id="jaewoo-park">Jaewoo Park</h6>
-  </li>
-  <li>
-    <h6 id="201903-the-catholic-university-of-korea-majoring-in-information-and-communication-electronics">2019.03 The Catholic University of Korea (majoring in Information and Communication Electronics)</h6>
-  </li>
+  <li>Jaewoo Park</li>
+  <li>2019.03 The Catholic University of Korea (majoring in Information and Communication Electronics)</li>
 </ul>
 
-<h3 id="project">Project</h3>
+<h4 id="project">Project</h4>
 <ul>
-  <li>
-    <h6 id="202105-인공지능딥러닝기반-의류자동분류-ai의류케어-서비스">2021.05 인공지능(딥러닝)기반 의류자동분류, AI의류케어 서비스</h6>
-  </li>
+  <li>2021.05 인공지능(딥러닝)기반 의류자동분류, AI의류케어 서비스</li>
 </ul>
 
-<h3 id="interest">Interest</h3>
+<h4 id="interest">Interest</h4>
 <ul>
-  <li>
-    <h6 id="computer-vision">Computer Vision</h6>
+  <li>Computer Vision
     <blockquote>
       <ul>
-        <li>
-          <h6 id="object-detection">Object Detection</h6>
-        </li>
+        <li>Object Detection</li>
       </ul>
     </blockquote>
   </li>
-  <li>
-    <h6 id="natural-language-processing">Natural Language Processing</h6>
-  </li>
-  <li>
-    <h6 id="data-mining">Data Mining</h6>
-  </li>
+  <li>Natural Language Processing</li>
+  <li>Data Mining</li>
 </ul>
 
-<h3 id="license">License</h3>
+<h4 id="license">License</h4>
 <ul>
-  <li>
-    <h6 id="202104-adsp데이터분석-준-전문가">2021.04 ADsP(데이터분석 준 전문가)</h6>
-  </li>
-  <li>
-    <h6 id="202102-컴퓨터활용능력-1급">2021.02 컴퓨터활용능력 1급</h6>
-  </li>
-  <li>
-    <h6 id="201807-철도전기신호기능사">2018.07 철도전기신호기능사</h6>
-  </li>
-  <li>
-    <h6 id="201712-승강기기능사">2017.12 승강기기능사</h6>
-  </li>
-  <li>
-    <h6 id="201709-전기기능사">2017.09 전기기능사</h6>
-  </li>
+  <li>2021.04 ADsP(데이터분석 준 전문가)</li>
+  <li>2021.02 컴퓨터활용능력 1급</li>
+  <li>2018.07 철도전기신호기능사</li>
+  <li>2017.12 승강기기능사</li>
+  <li>2017.09 전기기능사</li>
 </ul>
 
 

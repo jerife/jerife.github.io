@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: The first step for AI Engineer 🏆
+subtitle: The first step for AI Engineer 🚀
 ---
 ![KakaoTalk_20200226_121813715](https://user-images.githubusercontent.com/68190553/126738295-5e5ab7cd-978c-4c63-b45c-193876287e3c.jpg){: .mx-auto.d-block :}
 

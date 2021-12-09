@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Introduce to RoBERTa</title>
+        <description>
+          Bidirectional Encoder Representations from Transformers - 
+          RoBERTa 이해하기 RoBERTa란? BERT는 Bidirectional Encoder Representations from Transformers의 약자로, 이전 포스팅인 “Introduce to Transformer”...
+        </description>
+        <pubDate>Tue, 07 Dec 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-12-07-Roberta/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-12-07-Roberta/</guid>
+      </item>
+    
+      <item>
         <title>Introduce to BERT</title>
         <description>
           Bidirectional Encoder Representations from Transformers - 

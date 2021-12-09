@@ -131,7 +131,7 @@ footer-hover-col: "#0085A1"
 # --- Web Analytics Section --- #
 
 # Fill in your Google Analytics gtag.js ID to track your website using gtag
-#gtag: ""
+gtag: "G-H3TE8W3M78"
 
 # Fill in your Google Analytics ID to track your website using Google Analytics
 #google_analytics: ""
@@ -251,14 +251,6 @@ exclude:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
-
-
-# Analytics
-analytics:
-  provider: "google"
-  google:
-    tracking_id: "G-H3TE8W3M78"
-    anonymize_ip: false # default
 # Beautiful Jekyll / Dean Attali
 # 2fc73a3a967e97599c9763d05e564189
 

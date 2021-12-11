@@ -5,6 +5,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<!--$f(x) = x^2$->
+  
+
   
 
   
@@ -135,34 +163,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-
-  
-    <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    TeX: {
-      equationNumbers: {
-        autoNumber: "AMS"
-      }
-    },
-    tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$'] ],
-    processEscapes: true,
-  }
-});
-MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
-	  alert("Math Processing Error: "+message[1]);
-	});
-MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
-	  alert("Math Processing Error: "+message[1]);
-	});
-</script>
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-<!--$f(x) = x^2$->
-  
 </head>
 
 <body>
@@ -571,7 +571,7 @@ GAN은 Noise Vector를 입력받는 Generator를 통해 가짜 이미지를 생�
 <h3 id="performance">Performance</h3>
 <p><img width="543" alt="electra_img_1" src="https://user-images.githubusercontent.com/68190553/145669156-e2cf46d3-c6de-4409-8fbc-96d744b871df.png" class="mx-auto d-block" />
 위 사진을 보시면, GLUE 성적은 BERT모델보다 5.0 이상 좋은 성적을 높다는 것을 알 수 있습니다. <br />
-또한 타 모델에 비해 적은 연산량(FLOPS)으로 좋은 performance를 보여주는 모델임을 알 수 있습니다. <br /> <br />
+또한 타 모델에 비해 적은 연산량(FLOPS)으로 좋은 performance를 보여주는 모델임을 알 수 있습니다. <br />
 이상으로 ELECTRA모델에 대한 소개를 마치겠습니다. <br /> <br /></p>
 
 <h6 id="reference">Reference</h6>

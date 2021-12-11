@@ -12,14 +12,25 @@
     
     
       <item>
+        <title>Introduce to ELECTRA</title>
+        <description>
+          Pre-training Text Encoders as Discriminators Rather Than Generators - 
+          ELECTRA 이해하기 ELECTRA란? ELECTRA는 이전 포스팅 “Introduce to BERT” 에서 다룬 BERT를 기반으로 한 모델입니다....
+        </description>
+        <pubDate>Sat, 11 Dec 2021 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2021-12-11-electra/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-12-11-electra/</guid>
+      </item>
+    
+      <item>
         <title>Introduce to RoBERTa</title>
         <description>
           Robustly Optimized BERT Pretraining Approach - 
           RoBERTa 이해하기 RoBERTa란? RoBERTa는 Robustly Optimized BERT Pretraining Approach의 약자로, 이전 포스팅 “Introduce to BERT”...
         </description>
         <pubDate>Tue, 07 Dec 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-12-07-Roberta/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-12-07-Roberta/</guid>
+        <link>http://localhost:4000/2021-12-07-roberta/</link>
+        <guid isPermaLink="true">http://localhost:4000/2021-12-07-roberta/</guid>
       </item>
     
       <item>

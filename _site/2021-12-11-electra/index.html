@@ -9,13 +9,13 @@
 
   
 
-  <title>Introduce to Attention Mechanism</title>
+  <title>Introduce to ELECTRA</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="Attention Is All You Need">
+  <meta name="description" content="Pre-training Text Encoders as Discriminators Rather Than Generators">
 
   
 
@@ -84,8 +84,8 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Introduce to Attention Mechanism">
-  <meta property="og:description" content="Attention Is All You Need">
+  <meta property="og:title" content="Introduce to ELECTRA">
+  <meta property="og:description" content="Pre-training Text Encoders as Discriminators Rather Than Generators">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -94,9 +94,9 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-11-16T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-11-16-attention/">
-  <link rel="canonical" href="http://localhost:4000/2021-11-16-attention/">
+  <meta property="og:article:published_time" content="2021-12-11T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2021-12-11-electra/">
+  <link rel="canonical" href="http://localhost:4000/2021-12-11-electra/">
   
 
   
@@ -105,8 +105,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Introduce to Attention Mechanism">
-  <meta property="twitter:description" content="Attention Is All You Need">
+  <meta property="twitter:title" content="Introduce to ELECTRA">
+  <meta property="twitter:description" content="Pre-training Text Encoders as Discriminators Rather Than Generators">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -136,6 +136,32 @@
   <meta name="msapplication-TileImage" content="/assets/log.ico/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
 
+  
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<!--$f(x) = x^2$->
   
 </head>
 
@@ -396,15 +422,15 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Introduce to Attention Mechanism</h1>
+          <h1>Introduce to ELECTRA</h1>
           
             
-              <h2 class="post-subheading">Attention Is All You Need</h2>
+              <h2 class="post-subheading">Pre-training Text Encoders as Discriminators Rather Than Generators</h2>
             
           
 
           
-            <span class="post-meta">Posted on November 16, 2021</span>
+            <span class="post-meta">Posted on December 11, 2021</span>
             
             
           
@@ -446,88 +472,113 @@
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h1>Attention Mechanism 이해하기</h1></div>
+        <div align="center"><h2>ELECTRA 이해하기</h2></div>
 <!--break-->
 
 <hr />
 
 <p><br /></p>
-<h2 id="attention란">Attention란?</h2>
-<p>우리는 이전에 언어처리에 관한 Seq2Seq모델을 <a href="https://jerife.github.io/2021-06-08-seq2seq/">“Introduce to Seq2Seq”</a>이글에서 다뤘습니다.<br /> 
-Seq2Seq는 RNN모델(RNN, LSTM, GRU)등을 순환성을 기반으로 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른 시퀀스 데이터로 변환해주는 모델이라 했었습니다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/121048577-e2bcc580-c7f1-11eb-9c39-2cb0f717ce2d.gif" alt="image" class="mx-auto d-block" /></p>
+<h2 id="electra란">ELECTRA란?</h2>
+<p>ELECTRA는 이전 포스팅 <a href="https://jerife.github.io/2021-11-19-bert/">“Introduce to BERT”</a> 에서 다룬 BERT를 기반으로 한 모델입니다.<br /> 
+“Efficiently Learning an Encoder that Classifies Token Replacements Accurately” 라는 의미를 가지며, 말 그대로 대체된 Token을 정확하게 분류하는 Task로 만들어진 모델입니다.</p>
+
+<p><img width="349" alt="gan_img_1" src="https://user-images.githubusercontent.com/68190553/145668086-36461ce6-422f-4249-8d8e-53a6f0437d37.png" class="mx-auto d-block" /></p>
+
+<p>특히 ELECTRA는 기존 GAN(Generative Adversarial Network)의 Generator와 Discriminator의 아이디어를 활용했다고 합니다.<br /> <br /> 
+GAN은 Noise Vector를 입력받는 Generator를 통해 가짜 이미지를 생성하고, Discriminator는 진짜 이미지 데이터와 Generator를 통해 만들어진 가짜 이미지를 분별하는 Network입니다.
+이 둘은 서로를 적대적으로 (Adversarial) 학습합니다.</p>
 <blockquote>
-  <p>Artchitecture of Seq2Seq</p>
+  <ul>
+    <li>Generator : Generator를 통해 만들어진 가짜 이미지로 Discriminator가 속게 학습함</li>
+    <li>Discriminator가 : Generator를 통해 만들어진 가짜 이미지를 잘 분류할 수 있게 학습함.</li>
+  </ul>
 </blockquote>
 
-<p><br /></p>
-<h3 id="1-seq2seq의-한계">1) Seq2Seq의 한계</h3>
-<p>Seq2Seq의 한계는 Encoder -&gt; Decoder로 보내는 Context Vector의 크기가 고정되었다는 것입니다.
-<img width="27" alt="seq2seq_img_4" src="https://user-images.githubusercontent.com/68190553/121125066-e2a7de80-c860-11eb-8fd7-20e3e2ebefb5.png" class="mx-auto d-block" /></p>
-
-<p>Context Vector는 입력값(“je suis étudiant”)의 모든 정보를 모아 놓은 동시에, 고정된 크기의 벡터이기도 합니다.<br /> <br />
-Context Vector는 많은양의 데이터도 꾹꾹 눌러서 압축시켜야하기 때문에, 정보 손실이 있다는 단점이 있었죠? 뿐만아니라 RNN계열의 특성상 Gradient Vanishing의 단점도 해결해야할 숙제였습니다.<br /> <br />
-이 한계를 극복하게해준 Mechanism이 <a href="https://arxiv.org/abs/1409.0473">“Neural Machine Translation by Jointly Learning to Align and Translate
-Dzmitry Bahdanau, Kyunghyun Cho, Yoshua Bengio”</a> 논문에서 제안된 바로 <strong>“Attention”</strong> 입니다.<br /></p>
-
-<h3 id="2-attention-mechanism">2) Attention Mechanism</h3>
-<p>Attention Mechanism은 Decoder에서 출력 단어를 예측하는 매 시점마다, 인코더에서의 전체 입력 문장을 다시 한 번 참고한다는 점입니다.<br /> <br />
-Attention은 “집중”라는 의미를 지니고있습니다. Attention Mechanism에서도 입력 문장을 다시 한 번 참고할때, 해당 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중(Attention)해서 보게 됩니다.</p>
-
-<p><img src="https://user-images.githubusercontent.com/68190553/141924378-e7348509-de3e-4d72-944c-b62954a304bd.gif" alt="attention_gif_1" class="mx-auto d-block" />
-위 사진은 Seq2Seq모델에 Attention을 적용했을때의 동작과정입니다. 지금부터 자세한 동작과정을 기술해보겠습니다.</p>
+<p>하지만 ELECTRA는 Generator와 Discriminator가 Adversarial하게 학습하는 것이 아닌, likehood하게 학습한다는 차이점이 있습니다.
+밑에서 ELECTRA에 대한 설명을 시작하겠습니다.</p>
 
 <hr />
 
-<h3 id="seq2seq-with-attention">Seq2Seq with Attention</h3>
-<h4 id="1-prepare-inputs">[1] Prepare inputs</h4>
-<p><img width="1147" alt="attention_img_2" src="https://user-images.githubusercontent.com/68190553/141924473-d9c88274-635d-4e91-9fc7-eee9a899b35b.png" class="mx-auto d-block" /></p>
+<h3 id="replaced-token-detection-rtd">Replaced Token Detection (RTD)</h3>
+<p><img width="519" alt="electra_img_2" src="https://user-images.githubusercontent.com/68190553/145668133-6bd69a3f-8fd1-4f83-b364-1e05d645711e.png" class="mx-auto d-block" /></p>
 
-<p>1-1) Seq2Seq의 Encoder 부분에서 각 단어마다 Hidden state가 나오며, 최종 출력단에 Context Vector가 나옵니다.<br /> 
-1-2) 첫번째 Decoder는 “<START>"라는 입력과, 최종 출력단에 Context Vector를  Hidden state로 입력 받으며, 자신도 Output(Hidden state)을 출력합니다.</START></p>
+<p>위 사진은 Generator와 Discriminator로 이뤄진 ELECTRA의 Architecture이며, 사진을 참고하여 pre-trained과정을 간단히 설명하겠습니다. <br /></p>
+
+<h4 id="동작과정">[동작과정]</h4>
 
 <blockquote>
-  <p>여기까진 Seq2Seq의 Mechanism 입니다.</p>
+  <p>“the”, “chef”, “cooked”, “the”, “meal”</p>
 </blockquote>
 
-<p><br /></p>
-<h4 id="2-score-each-hidden-state">[2] Score each hidden state</h4>
-<p><img width="958" alt="attention_img_3" src="https://user-images.githubusercontent.com/68190553/141924521-cfe9da87-1916-4b63-88e5-d7b1b06e8c43.png" class="mx-auto d-block" /></p>
+<p>위 5개의 단어들은 원본 문장을 tokenize 된 token입니다. 이 단어들은 Generator에 들어가 MLM Task를 통해 학습힙니다. <br />
+때문에 위 5개의 token에 랜덤하게 [MASK]를 취해줍니다. <br /> <br /></p>
 
-<p>2) 첫번째 Decoder의 Output(Hidden state)과 Encoder 부분에서 각 단어마다 Hidden state들을 dot product합니다.(이 값들을 <strong>“Attention score”</strong>라 합니다.)</p>
+<blockquote>
+  <p>“[MASK]”, “chef”, “[MASK]”, “the”, “meal”</p>
+</blockquote>
 
-<p><br /></p>
-<h4 id="3-softmax-the-scores">[3] Softmax the scores</h4>
-<p><img width="842" alt="attention_img_4" src="https://user-images.githubusercontent.com/68190553/141925277-a6d6160b-4d2d-4936-ac51-10448dfd7460.png" class="mx-auto d-block" /></p>
+<p>위와 같이 MLM Task의 input으로 적합한 token들이 나왔습니다. <br />
+이 token들은  <strong>Generator</strong>의 input으로 들어가 MLM Task를 수행하여 각각의 [MASK]를 예측합니다.<br /> <br /></p>
 
-<p>3) 그리고 Attention score를 Softmax 취해줌으로써, Encoder 부분에서 각 단어마다 Hidden state들이 0~1사이 값을 가지게 됩니다.
-   (첫번째 Decoder의 Output(Hidden state)과 연관 있을시 높은 점수를 얻습니다.)</p>
+<blockquote>
+  <p>“the”, “chef”, “ate”, “the”, “meal”</p>
+</blockquote>
 
-<p><br /></p>
-<h4 id="4-sum-up-the-weighted-vectors">[4] Sum up the weighted vectors</h4>
-<p><img width="926" alt="attention_img_5" src="https://user-images.githubusercontent.com/68190553/141924653-6a52712d-4e39-4724-a6c0-02bafae5dab0.png" class="mx-auto d-block" /></p>
+<p>“the”라는 token은 올바르게 “the”로 예측을 했지만, “cooked”는 “ate”로 틀리게 예측을 했으며, 이 token들은 곧장 Discriminator의 input으로 들어가 학습하게됩니다. <br /> <br /></p>
 
-<p>4) 그리고 Softmax를 거친 Attention score과 Encoder 부분에서 각 단어마다 Hidden state를 곱한후, 더합니다.(weight sum)</p>
+<p>Discriminator는 input으로 들어온 token들 중에서 원본 데이터가 대체되었는지 아닌지를 (original/replaced) 분류하며 학습을 진행합니다.<br />
+이 Task를 <strong>“Replaced Token Detection (RTD)”</strong> 라 합니다.</p>
 
-<p><br /></p>
-<h4 id="5-concatnation-with-decoders-hidden-state-and-weighted-vectors">[5] Concatnation with Decoders Hidden state and weighted vectors</h4>
-<p>5-1) weight sum한 값과 첫번째 Decoder의 Output(Hidden state)을 Concatnation해줍니다.<br />
-5-2) Concatnation한 값을 Layer넘겨 첫번째 Decoder 최종 Output 예측하고, 두번째 Decoder의 입력으로 값을 넘깁니다.</p>
+<h3 id="mechanism">Mechanism</h3>
+<h4 id="1-generator">1) Generator</h4>
+<p>입력 벡터 $\boldsymbol x = [x_1, …, x_n]$ 중에서 랜덤하게 Masking할 단어들을 고릅니다. <br />
+(Masking된 단어들 : $\boldsymbol m = [m_1, …, m_k]$)</p>
 
-<p class="box-warning">결국 Attention 은 위에서 언급한 것과 같이 Decoder에서 출력 단어를 예측하는 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중하는 Mechanism이라는 것을 알수있죠.</p>
+<div align="center">$\boldsymbol x^{masked}$ = REPLACE($\boldsymbol x, \boldsymbol m$, [MASK]) </div>
+
+<p>그 후 위 식을 통해 마스킹을 완료합니다.</p>
+
+<p><img width="441" alt="electra_img_3" src="https://user-images.githubusercontent.com/68190553/145672844-6f4999cd-c834-46c3-a833-99d94a233627.png" class="mx-auto d-block" /></p>
+
+<p>그리고 입력 벡터 <strong>x</strong> = $[x_1, …, x_n]$가 문맥적 의미를 가질 수 있게 $h$(<strong>x</strong>) = $[h_1, …, h_n]$ 문맥을 갖는 벡터로 변화해준 후, 
+위 식 Generator에 input으로 넣은 후 예측합니다. (t번째의 $\ x$에 대한 확률 값을 반환함)  <br /> <br /></p>
+
+<h4 id="2-discriminator">2) Discriminator</h4>
+<p>처음 입력 벡터 <strong>x</strong> = $[x_1, …, x_n]$에, Masking되고 Generator거친 결과 값을 대치(Replace) 합니다. <br /></p>
+<div align="center">$\boldsymbol x^{corrupt}$ = REPLACE($\boldsymbol x, \boldsymbol m, \boldsymbol {\hat x}$) </div>
+
+<p>여기서 $\boldsymbol {\hat x}$ 벡터 값은 Generator에서 예측한 결과 ($P_G(x_t$ㅣ$\boldsymbol x)$) 입니다.</p>
+
+<p><img width="234" alt="electra_img_4" src="https://user-images.githubusercontent.com/68190553/145672907-51af5788-f765-4e4a-ba2e-24c6b5f85e8a.png" class="mx-auto d-block" /></p>
+
+<p>그 후 Discriminator에 $\boldsymbol x$ 벡터를 넣으면, $h_D(\boldsymbol x)_t$를 거치고 가중치와 곱해진 후, Sigmoid layer를 통해 0~1사이의 값을 갖습니다. <br />
+0~1사이의 값은 이 단어가 Replace된 단어인지 아닌지를 예측하며, 학습해 나갑니다.</p>
+
+<h3 id="loss-function">Loss Function</h3>
+<p>이제 위 Generator와 Discriminator가 어떤식으로 학습을 진행하지는 이야기해보겠습니다.</p>
+
+<p><img width="692" alt="electra_img_7" src="https://user-images.githubusercontent.com/68190553/145678181-42fc118b-99f7-4b61-8f38-015298f4cecc.png" class="mx-auto d-block" /></p>
+
+<p>그 후, 위 식($L_{MLM}$)을 통해 Generator의 loss 값을 구하고, <br />
+아래 식($L_{Disc}$)으로 Discriminator의 loss값을 구합니다.</p>
+
+<p><img width="314" alt="electra_img_8" src="https://user-images.githubusercontent.com/68190553/145678515-33aedd2f-589a-4f65-a887-f2de16e556e7.png" class="mx-auto d-block" /></p>
+
+<p>이후 두 식을 더해서 minimization 하는 방향을 Backpropagation을 진행합니다. <br /> <br /></p>
 
 <hr />
-
 <h3 id="performance">Performance</h3>
-<p><img src="https://user-images.githubusercontent.com/68190553/141936561-810fb691-8665-4a37-aa94-5c1e92866443.png" alt="attention_img_6" class="mx-auto d-block" />
-어텐션 메커니즘의 유용한 속성은 해석이 가능하다는 점입니다. 입력 시퀀스의 특정 인코더 출력에 가중치를 부여하는 데 사용되므로 각 시간 단계에서 네트워크가 가장 집중되는 위치를 파악할 수 있습니다. <br /> <br />
-이상으로 Attention Mechanism에 대한 설명을 마치겠습니다.<br /> <br /></p>
+<p><img width="543" alt="electra_img_1" src="https://user-images.githubusercontent.com/68190553/145669156-e2cf46d3-c6de-4409-8fbc-96d744b871df.png" class="mx-auto d-block" />
+위 사진을 보시면, GLUE 성적은 BERT모델보다 5.0 이상 좋은 성적을 높다는 것을 알 수 있습니다. <br />
+또한 타 모델에 비해 적은 연산량(FLOPS)으로 좋은 performance를 보여주는 모델임을 알 수 있습니다. <br /> <br />
+이상으로 ELECTRA모델에 대한 소개를 마치겠습니다. <br /> <br /></p>
 
 <h6 id="reference">Reference</h6>
 <ul>
-  <li>https://arxiv.org/abs/1409.0473</li>
-  <li>https://jalammar.github.io/illustrated-transformer/</li>
+  <li>https://arxiv.org/abs/2003.10555</li>
+  <li>https://christinakouridi.blog/2019/07/09/vanilla-gan-numpy/</li>
+  <li>https://www.onemathematicalcat.org/MathJaxDocumentation/MathJaxKorean/TeXSyntax_ko.html</li>
 </ul>
 
       </article>
@@ -555,13 +606,9 @@ Attention은 “집중”라는 의미를 지니고있습니다. Attention Mecha
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-11-15-efficientdet/" data-toggle="tooltip" data-placement="top" title="Introduce to EfficientDet">&larr; Previous Post</a>
+          <a class="page-link" href="/2021-12-07-roberta/" data-toggle="tooltip" data-placement="top" title="Introduce to RoBERTa">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-11-17-transformer/" data-toggle="tooltip" data-placement="top" title="Introduce to Transformer">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

@@ -191,9 +191,16 @@
     var searchjson = '[ \
        \
         { \
+          "title"    : "Introduce to ELECTRA", \
+          "category" : "Natural Language Processing", \
+          "url"      : "/2021-12-11-electra/", \
+          "date"     : "December 11, 2021" \
+        }, \
+       \
+        { \
           "title"    : "Introduce to RoBERTa", \
           "category" : "Natural Language Processing", \
-          "url"      : "/2021-12-07-Roberta/", \
+          "url"      : "/2021-12-07-roberta/", \
           "date"     : "December  7, 2021" \
         }, \
        \
@@ -532,7 +539,7 @@ Scaled Dot-Product Attention에선 2x4벡터를 Q(Query), K(Key), V(Value)로 �
 위 사진속에선 W0 ~ W7까지 총 8개의 Scaled Dot-Product Attention을 병렬처리하는 내용을 보여줍니다. 결국 Z0~Z7의 갯수도 8개가 되는걸 알 수 있습니다.<br /> <br />
 이제 이 Z를 Concatnation(dim=1)해준 후, W^O의 가중치와 합해줘서 최종 Z(맨 오른쪽)의 값을 얻습니다. 여기서 최종 Z의 크기는 입력값으로 넣은 X(2x4벡터)와 “같은 크기”임을 알 수 있죠.</p>
 
-<p class="box-note">“Multi-Head Attention혹은 에 값을 넣으면, 입력값과 출력값의 크기가 같다.”</p>
+<p class="box-warning">“Multi-Head Attention혹은 에 값을 넣으면, 입력값과 출력값의 크기가 같다.”</p>
 
 <p>입력값과 출력값의 크기가 같다는 것은 Multi-Head Attention을 직렬화 처리해서 여러번 붙여넣을 수도 있다는 의미입니다. 실제로 논문에서도 Encoder을 7번 직렬화시켰습니다.<br /> <br /></p>
 
@@ -566,7 +573,7 @@ Mask는 디코더 과정에서 target 단어 이후의 단어를 보지 않고 �
   <p>-♾️ 들어간 곳은 이후 Softmax를 취해질 경우 0의 값을 가집니다.</p>
 </blockquote>
 
-<p class="box-note">“Mask를 취해줌으로써 다음 단어를 미리 알지 못한다.”</p>
+<p class="box-warning">“Mask를 취해줌으로써 다음 단어를 미리 알지 못한다.”</p>
 
 <p><br /></p>
 <h4 id="2-encoder-decoder-multi-head-attention">[2] Encoder-Decoder Multi-Head Attention</h4>
@@ -577,7 +584,7 @@ Q(query)는 이미  Masked Multi-Head Attention에서 masking 됐으므로, i번
 Decoder의 이 두가지 Attetion과정 이외에는 Encoder와 같으므로 설명을 생략하겠습니다.</p>
 
 <hr />
-<h2 id="performance">[Performance]</h2>
+<h3 id="performance">Performance</h3>
 <p><img src="https://user-images.githubusercontent.com/68190553/142361266-2d27964f-b2ac-4479-a07a-72ba31ec2b3b.png" alt="transformer_img_18" class="mx-auto d-block" /></p>
 <blockquote>
   <p>특정 Encoder/Decoder Layer의 Attention의 해석을 시각화할 수 있음</p>

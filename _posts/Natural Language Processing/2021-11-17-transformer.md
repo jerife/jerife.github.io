@@ -83,7 +83,7 @@ Scaled Dot-Product Attention에선 2x4벡터를 Q(Query), K(Key), V(Value)로 �
 위 사진속에선 W0 ~ W7까지 총 8개의 Scaled Dot-Product Attention을 병렬처리하는 내용을 보여줍니다. 결국 Z0~Z7의 갯수도 8개가 되는걸 알 수 있습니다.<br/> <br/>
 이제 이 Z를 Concatnation(dim=1)해준 후, W^O의 가중치와 합해줘서 최종 Z(맨 오른쪽)의 값을 얻습니다. 여기서 최종 Z의 크기는 입력값으로 넣은 X(2x4벡터)와 "같은 크기"임을 알 수 있죠.
 
-{: .box-note}
+{: .box-warning} 
 "Multi-Head Attention혹은 에 값을 넣으면, 입력값과 출력값의 크기가 같다."
 
 
@@ -115,7 +115,7 @@ Mask는 디코더 과정에서 target 단어 이후의 단어를 보지 않고 �
 
 > -♾️ 들어간 곳은 이후 Softmax를 취해질 경우 0의 값을 가집니다.
 
-{: .box-note}
+{: .box-warning}
 "Mask를 취해줌으로써 다음 단어를 미리 알지 못한다."
 
  <br/>
@@ -127,7 +127,7 @@ Q(query)는 이미  Masked Multi-Head Attention에서 masking 됐으므로, i번
 Decoder의 이 두가지 Attetion과정 이외에는 Encoder와 같으므로 설명을 생략하겠습니다.
 
 ---
-## [Performance]
+### Performance
 ![transformer_img_18](https://user-images.githubusercontent.com/68190553/142361266-2d27964f-b2ac-4479-a07a-72ba31ec2b3b.png){: .mx-auto.d-block :}
 > 특정 Encoder/Decoder Layer의 Attention의 해석을 시각화할 수 있음
 

@@ -26,6 +26,8 @@ Write a big article about "Computer Vision" and "Natural Language Processing".
 * Attention Mechanism &#160; ➡️ &#160;[link](https://jerife.github.io/2021-11-16-attention/)
 * Transformer &#160; ➡️ &#160;[link](https://jerife.github.io/2021-11-17-transformer/)
 * BERT &#160; ➡️ &#160;[link](https://jerife.github.io/2021-11-19-bert/)
+* RoBERTa &#160; ➡️ &#160;[link](https://jerife.github.io/2021-12-07-Roberta/)
+* ELECTRA &#160; ➡️ &#160;[link](https://jerife.github.io/2021-12-11-electra/)
 
 ### 3) Time Series
 * ARIMA(AutoRegressive Integrated MovingAverage) &#160; ➡️ &#160;[link](https://jerife.github.io/2021-06-26-arima/)

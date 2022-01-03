@@ -12,10 +12,21 @@
     
     
       <item>
+        <title>Introduce to LUKE</title>
+        <description>
+          Deep Contextualized Entity Representations with Entity-aware Self-attention - 
+          LUKE 이해하기 LUKE란? LUKE 또한 BERT 기반 모델인 “Introduce to RoBERTa” 를 기반으로 한 모델입니다....
+        </description>
+        <pubDate>Mon, 03 Jan 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-01-03-luke/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-01-03-luke/</guid>
+      </item>
+    
+      <item>
         <title>2021년 한 해를 돌아보는 회고록</title>
         <description>
           2021 Memoirs - 
-          2021년도를 마무리하며, 블로그를 찾아주신 모든 분께 🙌🏻 감사의 말을 전하며, 꿈을 찾고 싶어 방황하고 그러다...
+          2021년도를 마무리하며 블로그를 찾아주신 모든 분께 🙌🏻 감사의 말을 전하며, 꿈을 찾고 싶어 방황하고 그러다...
         </description>
         <pubDate>Fri, 31 Dec 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-12-31-2021end/</link>
@@ -218,17 +229,6 @@
         <pubDate>Mon, 10 May 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-05-10-cnn/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-05-10-cnn/</guid>
-      </item>
-    
-      <item>
-        <title>To start blog with Github</title>
-        <description>
-          블로그 시작 - 
-          블로그 시작을 알리며, 이 블로그는 인공지능 관련 지식 공유와 기록을 목적으로 한 블로그로써, 인공지능 모델...
-        </description>
-        <pubDate>Tue, 27 Apr 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-04-27-first/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-04-27-first/</guid>
       </item>
     
   </channel>

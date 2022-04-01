@@ -10,13 +10,12 @@ subtitle: The first step for AI Engineer 🚀
  - 2019.03 The Catholic University of Korea (majoring in Information and Communication Electronics)
 
 #### Project 
- - 2021.05 인공지능(딥러닝)기반 의류자동분류, AI의류케어 서비스
+ - 2022.04 AI 기반 불량교복 탐지 및 벌점, 출석관리 서비스
 
 #### Interest 
  - Computer Vision 
- > * Object Detection
  - Natural Language Processing 
- - Data Mining 
+ - Signal Processing
 
 #### License 
  - 2022.04 리눅스마스터 2급

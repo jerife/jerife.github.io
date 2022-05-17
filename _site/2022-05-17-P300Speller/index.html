@@ -6,18 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
+<!--$f(x) = x^2$->
   
 
   
 
-  <title>Jerife Blog</title>
+  
+
+  <title>Review - Robust Classification of EEG Signal for Brain Computer Interface</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="All Study Records 🌈">
+  <meta name="description" content="P300 Speller">
 
   
 
@@ -86,17 +112,19 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Jerife Blog">
-  <meta property="og:description" content="All Study Records 🌈">
+  <meta property="og:title" content="Review - Robust Classification of EEG Signal for Brain Computer Interface">
+  <meta property="og:description" content="P300 Speller">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
   
 
   
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="http://localhost:4000/">
-  <link rel="canonical" href="http://localhost:4000/">
+  <meta property="og:type" content="article">
+  <meta property="og:article:author" content="Jerife">
+  <meta property="og:article:published_time" content="2022-05-17T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-05-17-P300Speller/">
+  <link rel="canonical" href="http://localhost:4000/2022-05-17-P300Speller/">
   
 
   
@@ -105,8 +133,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Jerife Blog">
-  <meta property="twitter:description" content="All Study Records 🌈">
+  <meta property="twitter:title" content="Review - Robust Classification of EEG Signal for Brain Computer Interface">
+  <meta property="twitter:description" content="P300 Speller">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -421,15 +449,18 @@
   <div class="container-md">
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
-        <div class="page-heading">
-          <h1>Jerife Blog</h1>
+        <div class="post-heading">
+          <h1>Review - Robust Classification of EEG Signal for Brain Computer Interface</h1>
           
             
-              <hr class="small">
-              <span class="page-subheading">All Study Records 🌈</span>
+              <h2 class="post-subheading">P300 Speller</h2>
             
           
 
+          
+            <span class="post-meta">Posted on May 17, 2022</span>
+            
+            
           
         </div>
       </div>
@@ -442,274 +473,196 @@
 
 
 
-<div class=" container-md " role="main">
+<div class=" container-md ">
   <div class="row">
     <div class=" col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 ">
+
+      
+        
+        
+        
+
+        <div id="header-gh-btns">
+          
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&repo=jerife.github.io&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                
+            
+              
+                  <iframe src="https://ghbtns.com/github-btn.html?user=jerife&type=follow&count=true" frameborder="0" scrolling="0" width="220px" height="20px"></iframe>
+              
+            
+          
+        </div>
       
 
       
 
+      <article role="main" class="blog-post">
+        <div align="center"><h2>Brain-Computer Interface P300 Speller 논문 리뷰</h2></div>
+<!--break-->
 
+<hr />
 
-<div class="posts-list">
-  
-  <article class="post-preview">
-    
+<p><br /></p>
 
-    
+<h2 id="luke란">LUKE란?</h2>
+<p>LUKE 또한 BERT 기반 모델인 <a href="http://localhost:4000/2021-12-07-roberta/">“Introduce to RoBERTa”</a> 를 기반으로 한 모델입니다.<br /> 
+“Language Understanding with Knowledge-based Embeddings” 라는 의미를 가지며, 문장에서 Word 뿐만 아니라 Entity 까지 사용해 학습하는 모델입니다.</p>
+<blockquote>
+  <p>논문에서 Entity란? Wikipedia에 하이퍼링크로 걸려있는 단어를 뜻합니다.</p>
+</blockquote>
 
-    <a href="http://localhost:4000/2022-05-17-P300Speller/">
-      <h2 class="post-title">Review - Robust Classification of EEG Signal for Brain Computer Interface</h2>
+<p><img src="https://user-images.githubusercontent.com/68190553/147893652-8f0cdc81-c90d-4a5f-9745-e9b908d89333.png" alt="img_luke_1" class="mx-auto d-block" /></p>
 
-      
-        <h3 class="post-subtitle">
-        P300 Speller
-        </h3>
-      
-    </a>
+<h4 id="luke-동작과정">LUKE 동작과정</h4>
+<ol>
+  <li>“Beyonce lives in Los Angeles.” 문장이 LUKE에 input되고 각 Word와 Entity의 contextualized representation가 출력됩니다.</li>
+  <li>모델은 랜덤하게 [MASK]된 Words(‘lives’, ‘Angeles’)와 Entities(‘Los Angeles’)를 예측합니다.</li>
+  <li>output representations를 linear classifiers 함으로써 적용하고자하는 Downstream tasks에 적용합니다.</li>
+</ol>
 
-    <p class="post-meta">
-      
-      Posted on May 17, 2022
-    </p>
+<hr />
 
-    
+<h3 id="1-input-representation">1. Input Representation</h3>
+<h4 id="token-embedding">Token embedding</h4>
+<p>LUKE에선 Word와 Entity를 구분하기에 Token embedding도 각각 두가지입니다.</p>
 
-    
-    
+<p>먼저 <strong>Word</strong>의 경우에는 Word 단어 임베딩을 따라가며, “<strong>A</strong>” 기호를 사용합니다.<br />
+반면 <strong>Entity</strong>의 경우에는 Entity 단어 임베딩을 따라가고, 계산의 효율성을 위해 Entity 단어 임베딩을 B와 U로 분해하여 “<strong>BU</strong>” 기호를 사용합니다.</p>
 
-    <div class="post-entry">
-      
-      Brain-Computer Interface P300 Speller 논문 리뷰
+<h4 id="position-embedding">Position embedding</h4>
+<p>각 단어의 위치를 나타내는 임베딩입니다.</p>
 
+<p>먼저 <strong>Word</strong>의 경우, “<strong>$C_{i}$</strong>” 기호를 사용합니다.<br />
+반면 <strong>Entity</strong>의 경우, “<strong>$D_{i}$</strong>“기호를 사용합니다.</p>
 
-      
-      
-        <a href="http://localhost:4000/2022-05-17-P300Speller/" class="post-read-more">[Read&nbsp;More]</a>
-      
-    </div>
-    
+<p>하지만 Entity가 위 사진처럼 ‘Los’ + ‘Angless’ 로 분리된 2가지 토큰이라면, 각 Position embedding 값을 평균해 사용합니다.</p>
 
-    
-    <div class="blog-tags">
-      <span>Tags:</span>
-      
-      <a href="http://localhost:4000/tags#Brain Computer Interface">Brain Computer Interface</a>
-      
-    </div>
-    
+<h4 id="entity-type-embedding">Entity type embedding</h4>
+<p>Entity를 표현하는 단일 벡터 임베딩입니다.</p>
 
-   </article>
-  
-  <article class="post-preview">
-    
+<p><br /></p>
+<h3 id="2-entity-aware-self-attention">2. Entity-aware Self-attention</h3>
+<p><img src="https://user-images.githubusercontent.com/68190553/147894991-2126af1a-2324-4ec3-8933-bded4f5457a8.png" alt="img_luke_2" class="mx-auto d-block" /></p>
+<blockquote>
+  <p>Self-attention 과정</p>
+</blockquote>
 
-    
+<p>기존 Transformer의 Self-attention과 다르게 entity-aware query mechanism를 사용하여 성능을 향상 시켰습니다.</p>
 
-    <a href="http://localhost:4000/2022-01-03-luke/">
-      <h2 class="post-title">Introduce to LUKE</h2>
+<p><img src="https://user-images.githubusercontent.com/68190553/147895011-3e652707-4dbf-48c0-8d34-51a4760e6c28.png" alt="img_luke_3" class="mx-auto d-block" /></p>
 
-      
-        <h3 class="post-subtitle">
-        Deep Contextualized Entity Representations with Entity-aware Self-attention
-        </h3>
-      
-    </a>
+<p>Entity-aware Self-attention에서 attention socre($e_{ij}$)는 downstream task에 따라 위 공식으로 구해집니다.</p>
 
-    <p class="post-meta">
-      
-      Posted on January 3, 2022
-    </p>
+<p>추가적으로 훈련 시간에 기울기를 계산하고 추가 쿼리 행렬 매개 변수를 업데이트하는 추가 과정을 제외하곤 원래 메커니즘과 제안된 메커니즘의 계산 비용동일하다고 합니다.</p>
 
-    
+<p><br /></p>
+<h3 id="3-pretraining-task">3. Pretraining Task</h3>
 
-    
-    
+<p><img src="https://user-images.githubusercontent.com/68190553/147895323-4fa121d9-7489-4c1c-9d12-dffff001e922.png" alt="img_luke_5" class="mx-auto d-block" /></p>
 
-    <div class="post-entry">
-      
-      LUKE 이해하기
+<p>LUKE는 위키피디아의 하이퍼링크를 entity-annotations 으로 취급하고 위키피디아에서 검색된 대규모 entity-annotated 코퍼스를 사용하여 모델을 훈련합니다.</p>
 
+<p>그리고 Entity의 15퍼센트를 [MASK]로 변환하고 이를 예측하면서 학습해나갑니다.</p>
+<blockquote>
+  <p>위 식에서 $h_{e}$가 [MASK] 변환까지 적용된 Entity입니다.</p>
+</blockquote>
 
-      
-      
-        <a href="http://localhost:4000/2022-01-03-luke/" class="post-read-more">[Read&nbsp;More]</a>
-      
-    </div>
-    
+<p><br /></p>
+<h3 id="4-modeling-detail">4. Modeling Detail</h3>
+<p>나열해가면서 LUKE 모델의 Detail을 다뤄보겠습니다.</p>
 
-    
-    <div class="blog-tags">
-      <span>Tags:</span>
-      
-      <a href="http://localhost:4000/tags#Natural Language Processing">Natural Language Processing</a>
-      
-    </div>
-    
-
-   </article>
-  
-  <article class="post-preview">
-    
-
-    
-
-    <a href="http://localhost:4000/2021-12-31-2021end/">
-      <h2 class="post-title">2021년 한 해를 돌아보는 회고록</h2>
-
-      
-        <h3 class="post-subtitle">
-        2021 Memoir
-        </h3>
-      
-    </a>
-
-    <p class="post-meta">
-      
-      Posted on December 31, 2021
-    </p>
-
-    
-
-    
-    
-
-    <div class="post-entry">
-      
-      2021년도를 마무리하며
-
-
-      
-      
-        <a href="http://localhost:4000/2021-12-31-2021end/" class="post-read-more">[Read&nbsp;More]</a>
-      
-    </div>
-    
-
-    
-    <div class="blog-tags">
-      <span>Tags:</span>
-      
-      <a href="http://localhost:4000/tags#Diary">Diary</a>
-      
-    </div>
-    
-
-   </article>
-  
-  <article class="post-preview">
-    
-
-    
-
-    <a href="http://localhost:4000/2021-12-11-electra/">
-      <h2 class="post-title">Introduce to ELECTRA</h2>
-
-      
-        <h3 class="post-subtitle">
-        Pre-training Text Encoders as Discriminators Rather Than Generators
-        </h3>
-      
-    </a>
-
-    <p class="post-meta">
-      
-      Posted on December 11, 2021
-    </p>
-
-    
-
-    
-    
-
-    <div class="post-entry">
-      
-      ELECTRA 이해하기
-
-
-      
-      
-        <a href="http://localhost:4000/2021-12-11-electra/" class="post-read-more">[Read&nbsp;More]</a>
-      
-    </div>
-    
-
-    
-    <div class="blog-tags">
-      <span>Tags:</span>
-      
-      <a href="http://localhost:4000/tags#Natural Language Processing">Natural Language Processing</a>
-      
-    </div>
-    
-
-   </article>
-  
-  <article class="post-preview">
-    
-
-    
-
-    <a href="http://localhost:4000/2021-12-07-roberta/">
-      <h2 class="post-title">Introduce to RoBERTa</h2>
-
-      
-        <h3 class="post-subtitle">
-        Robustly Optimized BERT Pretraining Approach
-        </h3>
-      
-    </a>
-
-    <p class="post-meta">
-      
-      Posted on December 7, 2021
-    </p>
-
-    
-
-    
-    
-
-    <div class="post-entry">
-      
-      RoBERTa 이해하기
-
-
-      
-      
-        <a href="http://localhost:4000/2021-12-07-roberta/" class="post-read-more">[Read&nbsp;More]</a>
-      
-    </div>
-    
-
-    
-    <div class="blog-tags">
-      <span>Tags:</span>
-      
-      <a href="http://localhost:4000/tags#Natural Language Processing">Natural Language Processing</a>
-      
-    </div>
-    
-
-   </article>
-  
-</div>
-
-
-<ul class="pagination main-pager">
-  
-  
-  <li class="page-item next">
-    <a class="page-link" href="http://localhost:4000/page2">Older Posts &rarr;</a>
+<ol>
+  <li>LUKE는 $RoBERTa_{LARGE}$ 를 기반으로한 모델이다.</li>
+  <li>Pretrain 과정에선 Word뿐만 아니라 Entity도 BERT의 MLM으로 학습합니다.</li>
+  <li>Entity 단어 임베딩에는 [MASK]와 [UNK] 두가지 특별한 토큰이 포함되어있다.
+    <blockquote>
+      <p>[UNK] 토큰은 Entity로 선정된 단어가 ‘Entity 단어 임베딩’ 에 없을 경우 대체됨</p>
+    </blockquote>
   </li>
-  
+  <li>RoBERTa의 파라미터의 수(355M) + entity embeddings의 파라미터의 수(128M) = 총 파라미터의 수는 483M 이다.</li>
+  <li>RoBERTa’s 토크나이저 의 수는 50K이며, 계산의 효율성을 위해 entity 단어 임베딩은 500K만 사용된다.</li>
+</ol>
+
+<hr />
+<h3 id="performance">Performance</h3>
+<p><img src="https://user-images.githubusercontent.com/68190553/147895078-f1bcd485-15ab-4e04-a8d6-9ea78f3f364a.png" alt="img_luke_4" class="mx-auto d-block" /></p>
+
+<p>논문에선 기본 Self-attention을 사용했을 때보다 Entity-aware Self-attention 좋은 성능을 보임을 강조했습니다.</p>
+
+<p>추가적으로 LUKE는 아래 5가지 task에서 SOTA를 달성하며, 성공적임 모델임을 증명합니다.</p>
+<ul>
+  <li>entity typing on the Open Entity dataset (Choi et al., 2018)</li>
+  <li>relation classification on the TACRED dataset (Zhang et al., 2017)</li>
+  <li>NER on the CoNLL-2003 dataset (Tjong Kim Sang and De Meulder, 2003)</li>
+  <li>clozestyle QA on the ReCoRD dataset (Zhang et al., 2018a)</li>
+  <li>extractive QA on the SQuAD 1.1 dataset (Rajpurkar et al., 2016).</li>
 </ul>
 
+<h6 id="reference">Reference</h6>
+<ul>
+  <li>https://arxiv.org/pdf/2010.01057.pdf</li>
+</ul>
+
+      </article>
+
+      
+        <div class="blog-tags">
+          <span>Tags:</span>
+          
+            <a href="/tags#Brain Computer Interface">Brain Computer Interface</a>
+          
+        </div>
+      
+
+      
+
+      
+        <!-- Check if any share-links are active -->
+
+
+
 
 
       
 
+      <ul class="pagination blog-pager">
+        
+        <li class="page-item previous">
+          <a class="page-link" href="/2022-01-03-luke/" data-toggle="tooltip" data-placement="top" title="Introduce to LUKE">&larr; Previous Post</a>
+        </li>
+        
+        
+      </ul>
       
+  <div class="disqus-comments">
+  <div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+	  var disqus_shortname = 'beautiful-jekyll';
+	  /* ensure that pages with query string get the same discussion */
+	  var url_parts = window.location.href.split("?");
+	  var disqus_url = url_parts[0];
+	  (function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	  })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+  
+  
+
+  
+
+
+  
+
+
 
     </div>
   </div>

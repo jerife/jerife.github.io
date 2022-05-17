@@ -13,9 +13,9 @@ subtitle: The first step for AI Engineer 🚀
  - 2022.04 AI 기반 불량교복 탐지 및 벌점, 출석관리 서비스
 
 #### Interest 
+ - Brain Computer Interface
  - Computer Vision 
  - Natural Language Processing 
- - Signal Processing
 
 #### License 
  - 2022.04 리눅스마스터 2급

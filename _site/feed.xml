@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - Robust Classification of EEG Signal for Brain Computer Interface</title>
+        <description>
+          P300 Speller - 
+          Brain-Computer Interface P300 Speller 논문 리뷰 LUKE란? LUKE 또한 BERT 기반 모델인 “Introduce to RoBERTa”...
+        </description>
+        <pubDate>Tue, 17 May 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-05-17-P300Speller/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-05-17-P300Speller/</guid>
+      </item>
+    
+      <item>
         <title>Introduce to LUKE</title>
         <description>
           Deep Contextualized Entity Representations with Entity-aware Self-attention - 
@@ -157,7 +168,7 @@
       <item>
         <title>Intriduce to ARIMA Model</title>
         <description>
-          시계열 모형의 이해 - 
+          시계열 모델의 이해 - 
           ARIMA 이해하기 데이터 분석시 가장 전통적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다. ARIMA는 AutoRegressive Integrated...
         </description>
         <pubDate>Sat, 26 Jun 2021 00:00:00 +0900</pubDate>
@@ -218,17 +229,6 @@
         <pubDate>Tue, 11 May 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-05-11-resnet/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-05-11-resnet/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to CNN</title>
-        <description>
-          Image Feature Extractor - 
-          CNN 이해하기 CNN이란? CNN은 Convolution Nerual Network의 약자로서 입력값(이미지 or 텍스트)과 사용자가 지정한 필터(fitter /...
-        </description>
-        <pubDate>Mon, 10 May 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-05-10-cnn/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-05-10-cnn/</guid>
       </item>
     
   </channel>

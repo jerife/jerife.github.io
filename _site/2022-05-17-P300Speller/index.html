@@ -507,103 +507,128 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
 <p><br /></p>
 
-<h2 id="luke란">LUKE란?</h2>
-<p>LUKE 또한 BERT 기반 모델인 <a href="http://localhost:4000/2021-12-07-roberta/">“Introduce to RoBERTa”</a> 를 기반으로 한 모델입니다.<br /> 
-“Language Understanding with Knowledge-based Embeddings” 라는 의미를 가지며, 문장에서 Word 뿐만 아니라 Entity 까지 사용해 학습하는 모델입니다.</p>
+<h2 id="abstract">ABSTRACT</h2>
+<p>위 논문은 EEG의 Synchronous EEG 신호 중 P300을 이용해 6X6 단어 Matrix를 주시하며 생기는 신호를 이용한 text input application을 제안합니다.</p>
+
+<h2 id="introduction">INTRODUCTION</h2>
+<p>P300 신호는 Subject가 원하는 자극이나 예상했던 자극을 받을 경우 300ms이후 의미있는 피크를 발생시키는 뇌파신호입니다.</p>
+
+<p>해당 논문에선 유용한 BCI system이 realtime에서 적용되기 위한 학습시간 단축, 정확도 향상등을 focus했습니다.</p>
+
+<h2 id="methodology">METHODOLOGY</h2>
+<h3 id="a-p300-speller">A. P300 Speller</h3>
+<p>Subject들은 6x6 Metrix에서 한 charactor를 집중합니다. 이후 Metrix의 row, column은 randomly하게 100ms 동안 총 12번 flash됩니다. 이 과정을 총 10 round진행하며, 학습과 평가를 진행합니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/168705446-8c14a0c1-7245-42d1-b65d-c0721c002453.png" alt="image" class="mx-auto d-block" /></p>
 <blockquote>
-  <p>논문에서 Entity란? Wikipedia에 하이퍼링크로 걸려있는 단어를 뜻합니다.</p>
+  <p>User display in P300 Speller</p>
 </blockquote>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/147893652-8f0cdc81-c90d-4a5f-9745-e9b908d89333.png" alt="img_luke_1" class="mx-auto d-block" /></p>
+<h3 id="b-data-acquisition-system-and-procedure">B. Data Acquisition System and Procedure</h3>
+<p>Subject들은 3ft 앞의 LCD패널을 주시하고 flash가 되는 순간의 500ms이후의 EEG 데이터를 수집합니다.</p>
+<blockquote>
+  <p>P300: Subject가 원하는 자극이나 예상했던 자극을 받을 경우 300ms이후 의미있는 피크 발생</p>
+</blockquote>
 
-<h4 id="luke-동작과정">LUKE 동작과정</h4>
+<p>Train / Test(Online) 데이터 수집시엔 “THE QUICK BROWN FOX JUMPS OVER LAZY DOG 24 613 8579” 라는 문장에서 한 묶음(단어)씩 Subject에게 전달합니다.<br />
+단어를 전달 받은 Subject는 한 charactor를 집중해서 주시합니다. 주시하는 동안 LCD패널에 randomly하게 row와 colmun이 flash하며, Subject의 뇌파데이터를 수집합니다.</p>
+
+<p class="box-warning">BCI(Brain Computer Interface)에선 task를 정의하고 이를 실험하여 결과를 증명하는 것이 중요하기 떄문에, 사전 Subject에 관한 정보와 실험과정을 상세하게 기재하곤합니다.</p>
+
+<h3 id="c-signal-processing-and-classification">C. Signal Processing and Classification</h3>
+<h4 id="signal-processing">Signal Processing</h4>
 <ol>
-  <li>“Beyonce lives in Los Angeles.” 문장이 LUKE에 input되고 각 Word와 Entity의 contextualized representation가 출력됩니다.</li>
-  <li>모델은 랜덤하게 [MASK]된 Words(‘lives’, ‘Angeles’)와 Entities(‘Los Angeles’)를 예측합니다.</li>
-  <li>output representations를 linear classifiers 함으로써 적용하고자하는 Downstream tasks에 적용합니다.</li>
+  <li>EEG 데이터는 $F_{s}$ = 250Hz로 수집되었습니다.</li>
 </ol>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/168715590-7c509336-5c41-4ef3-b079-cf6756bfa9e7.png" width="80%" />
+</div>
+<p>Preprocessing 단계에선 Low Pass Filter를 사용해 뇌파 측정시 생기는 잡음을 처리했으며, 최적의 cutoff freqeuncy를 사용했습니다.</p>
+
+<p>이후 데이터를 downsampling하기 위해 Moving Average Window를 사용했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/168715401-2b200e7a-f992-4b12-851a-a5d7acadea77.png" width="60%" />
+</div>
+<p>Subject의 EEG를 측정할때 64개의 채널중에 C3, C4, Cz, CPz, FCz, P7, P8 주변의 25개의 채널만을 사용했습니다.</p>
+
+<p class="box-warning">대뇌는 크게 전두엽(frontal), 두정엽(parietal), 후두엽(occipital), 측두엽(temporal)으로 나눠 져있으며, 후두엽(occipital)은 주로 시각적인 정보 처리를 위해 활성화 됩니다.<br />
+따라서 후두엽에 해당하는 P7, P8 부분의 데이터를 수집한것으로 추청됩니다.</p>
+
+<p>이후 PCA를 통해 25channel 중, 20개의 eigenvalue만을 사용해 차원을 축소했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/168730493-31aa3c2c-e3d4-4772-ab47-00a5d0a90544.png" width="70%" />
+</div>
+<blockquote>
+  <p>$u(n)$ : EOG Signal<br />
+$w(n)$ : EEG Signal<br />
+$n’$ = $n$-1</p>
+</blockquote>
+
+<p>신호처리를 할때 데이터 속에는 자연스럽게 눈을 깜박이면서 생기는 artifact를 고려해 EOG 신호와 EEG신호를 linear superposition으로 데이터를 처리합니다.
+추가적으로 inter-sample correlations을 제거해주는 과정으로 데이터를 최종적으로 처리해줍니다.</p>
+
+<h4 id="classification">Classification</h4>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/168731173-df53b992-bffa-4a95-8421-5c9b1ce4fa0f.png" width="50%" />
+</div>
+<p>위에서 처리한 데이터들을 Gaussian kernel을 이용한 SVM으로 적절한 margin값을 구하도록 학습시키고 Training과정은 마무리 됩니다.</p>
+
+<p>데이터를 학습시키는 것에 주의할 점은, (Train/Test 모든 과정에서) Subject가 6X6 Matrix애서 intension할때 charactor일 확률을 데이터로 수집하는 것이 아닌 12번의 row, column이 flash할때 intension하고 있는 row, column에서 나온 뇌파를 학습합니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/168733321-45959c03-5011-4d5e-8888-4c6aa5205569.png" width="75%" />
+</div>
+
+<p>따라서 SVM model은 12개의 row, column을 flash할때의 데이터를 입력받고 12개의 row, column 이 target값일 확률을 반환하여 argmax로 정답을 예측합니다.</p>
+
+<h3 id="d-reducing-learning-time-requirement">D. Reducing Learning Time Requirement</h3>
+<h4 id="cons">Cons</h4>
+<p>해당 실험의 한가지 결점은 서로 다른 Subject끼리 방출하는 신호가 모델이 상대적이라 사용자마다 모델을 학습시켜야 한다는 점입니다.</p>
+
+<h4 id="pros">Pros</h4>
+<p>논문에선 학습시간 (train model, train data acquisition) 을 줄이는 것과 정확도에 focusing 하고자 하여 2가지 케이스를 제시합니다.</p>
+
+<blockquote>
+  <p>Case 1: 각 charactor마다 10round씩 진행했던 데이터를 전부 사용하지 않는다.<br />
+Case 2: 수집한 데이터 41개를 전부다 사용하지 않는다</p>
+</blockquote>
+
+<p>두 케이스에 따라 비슷한 결과이지만 학습속도를 많이 줄일 수 있다는 점을 강조했으며, 밑에서 마저 다뤄보겠습니다.</p>
+
+<h2 id="results">RESULTS</h2>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/168734959-25925d92-db39-453a-93e8-998aaab2aaba.png" width="100%" />
+</div>
+
+<p>Case 1, Case 2을 각각 줄이면서 학습시키고 평가한 figure입니다.
+ 논문에서는 위의 결과를 제시하고 charactor 25, round 7이상부턴 결과들이 비슷하다는 의견을 제시하고 굳이 모든 데이터를 학습시키지 않아도 된다고 주장했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/168735432-fd3dcf11-3bc0-45d0-b63b-b93c55208d31.png" width="60%" />
+</div>
+
+<p>결론적으론 90%의 accuracy를 유지하면서 학습량은 58%줄였다는 결과를 보여줬습니다.</p>
+
+<h2 id="discussion-and-conclusion">DISCUSSION AND CONCLUSION</h2>
+<p>논문에선 이후 심각한 장애인들이 잠재적으로 분명하게 의사소통할 수 있는 채널을 제공한 날이 올것이라 암시하며 마무리됩니다.</p>
 
 <hr />
 
-<h3 id="1-input-representation">1. Input Representation</h3>
-<h4 id="token-embedding">Token embedding</h4>
-<p>LUKE에선 Word와 Entity를 구분하기에 Token embedding도 각각 두가지입니다.</p>
+<h2 id="고찰">고찰</h2>
+<p>대표적인 Synchronous 신호인 P300의 적용 매커니즘과 데이터 수집 환경 등의 플로우를 이해할 수 있었던 경험이었습니다.</p>
 
-<p>먼저 <strong>Word</strong>의 경우에는 Word 단어 임베딩을 따라가며, “<strong>A</strong>” 기호를 사용합니다.<br />
-반면 <strong>Entity</strong>의 경우에는 Entity 단어 임베딩을 따라가고, 계산의 효율성을 위해 Entity 단어 임베딩을 B와 U로 분해하여 “<strong>BU</strong>” 기호를 사용합니다.</p>
+<p>하지만 뇌파가 사람들마다 달라서 모델을 다시 학습시켜야한다는 것을 보면서, 
+더 일반적으로 뇌파 데이터를 처리하는 방법이나 모델을 고안해볼 필요가 있을 것 같습니다.</p>
 
-<h4 id="position-embedding">Position embedding</h4>
-<p>각 단어의 위치를 나타내는 임베딩입니다.</p>
-
-<p>먼저 <strong>Word</strong>의 경우, “<strong>$C_{i}$</strong>” 기호를 사용합니다.<br />
-반면 <strong>Entity</strong>의 경우, “<strong>$D_{i}$</strong>“기호를 사용합니다.</p>
-
-<p>하지만 Entity가 위 사진처럼 ‘Los’ + ‘Angless’ 로 분리된 2가지 토큰이라면, 각 Position embedding 값을 평균해 사용합니다.</p>
-
-<h4 id="entity-type-embedding">Entity type embedding</h4>
-<p>Entity를 표현하는 단일 벡터 임베딩입니다.</p>
-
-<p><br /></p>
-<h3 id="2-entity-aware-self-attention">2. Entity-aware Self-attention</h3>
-<p><img src="https://user-images.githubusercontent.com/68190553/147894991-2126af1a-2324-4ec3-8933-bded4f5457a8.png" alt="img_luke_2" class="mx-auto d-block" /></p>
-<blockquote>
-  <p>Self-attention 과정</p>
-</blockquote>
-
-<p>기존 Transformer의 Self-attention과 다르게 entity-aware query mechanism를 사용하여 성능을 향상 시켰습니다.</p>
-
-<p><img src="https://user-images.githubusercontent.com/68190553/147895011-3e652707-4dbf-48c0-8d34-51a4760e6c28.png" alt="img_luke_3" class="mx-auto d-block" /></p>
-
-<p>Entity-aware Self-attention에서 attention socre($e_{ij}$)는 downstream task에 따라 위 공식으로 구해집니다.</p>
-
-<p>추가적으로 훈련 시간에 기울기를 계산하고 추가 쿼리 행렬 매개 변수를 업데이트하는 추가 과정을 제외하곤 원래 메커니즘과 제안된 메커니즘의 계산 비용동일하다고 합니다.</p>
-
-<p><br /></p>
-<h3 id="3-pretraining-task">3. Pretraining Task</h3>
-
-<p><img src="https://user-images.githubusercontent.com/68190553/147895323-4fa121d9-7489-4c1c-9d12-dffff001e922.png" alt="img_luke_5" class="mx-auto d-block" /></p>
-
-<p>LUKE는 위키피디아의 하이퍼링크를 entity-annotations 으로 취급하고 위키피디아에서 검색된 대규모 entity-annotated 코퍼스를 사용하여 모델을 훈련합니다.</p>
-
-<p>그리고 Entity의 15퍼센트를 [MASK]로 변환하고 이를 예측하면서 학습해나갑니다.</p>
-<blockquote>
-  <p>위 식에서 $h_{e}$가 [MASK] 변환까지 적용된 Entity입니다.</p>
-</blockquote>
-
-<p><br /></p>
-<h3 id="4-modeling-detail">4. Modeling Detail</h3>
-<p>나열해가면서 LUKE 모델의 Detail을 다뤄보겠습니다.</p>
-
-<ol>
-  <li>LUKE는 $RoBERTa_{LARGE}$ 를 기반으로한 모델이다.</li>
-  <li>Pretrain 과정에선 Word뿐만 아니라 Entity도 BERT의 MLM으로 학습합니다.</li>
-  <li>Entity 단어 임베딩에는 [MASK]와 [UNK] 두가지 특별한 토큰이 포함되어있다.
-    <blockquote>
-      <p>[UNK] 토큰은 Entity로 선정된 단어가 ‘Entity 단어 임베딩’ 에 없을 경우 대체됨</p>
-    </blockquote>
-  </li>
-  <li>RoBERTa의 파라미터의 수(355M) + entity embeddings의 파라미터의 수(128M) = 총 파라미터의 수는 483M 이다.</li>
-  <li>RoBERTa’s 토크나이저 의 수는 50K이며, 계산의 효율성을 위해 entity 단어 임베딩은 500K만 사용된다.</li>
-</ol>
-
-<hr />
-<h3 id="performance">Performance</h3>
-<p><img src="https://user-images.githubusercontent.com/68190553/147895078-f1bcd485-15ab-4e04-a8d6-9ea78f3f364a.png" alt="img_luke_4" class="mx-auto d-block" /></p>
-
-<p>논문에선 기본 Self-attention을 사용했을 때보다 Entity-aware Self-attention 좋은 성능을 보임을 강조했습니다.</p>
-
-<p>추가적으로 LUKE는 아래 5가지 task에서 SOTA를 달성하며, 성공적임 모델임을 증명합니다.</p>
-<ul>
-  <li>entity typing on the Open Entity dataset (Choi et al., 2018)</li>
-  <li>relation classification on the TACRED dataset (Zhang et al., 2017)</li>
-  <li>NER on the CoNLL-2003 dataset (Tjong Kim Sang and De Meulder, 2003)</li>
-  <li>clozestyle QA on the ReCoRD dataset (Zhang et al., 2018a)</li>
-  <li>extractive QA on the SQuAD 1.1 dataset (Rajpurkar et al., 2016).</li>
-</ul>
+<p>추가로 데이터를 임의로 줄여서 학습시키는 과정은 모델의 overfit 을 초래하지 않을까 우려스러운 관점이 있었습니다.</p>
 
 <h6 id="reference">Reference</h6>
 <ul>
-  <li>https://arxiv.org/pdf/2010.01057.pdf</li>
+  <li>https://ieeexplore.ieee.org/document/1605260</li>
 </ul>
 
       </article>

@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - An integrated deep learning model for motor intention recognition of multi-class EEG Signals in upper limb amputees</title>
+        <description>
+          Motor intention recognition with LSTM &amp; SAE - 
+          motor intention recognition of multi-class EEG Signals in upper limb amputees with deep learning 논문...
+        </description>
+        <pubDate>Tue, 24 May 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-05-24-An-integrated-deep-learning-model-for-motor-intention-recognition-of-multi-class-EEG-Signals-in-upper-limb-amputees/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-05-24-An-integrated-deep-learning-model-for-motor-intention-recognition-of-multi-class-EEG-Signals-in-upper-limb-amputees/</guid>
+      </item>
+    
+      <item>
         <title>Review - VR Locomotion in the New Era of Virtual Reality An Empirical Comparison of Prevalent Techniques</title>
         <description>
           Virtual Reality Locomotion - 
@@ -218,17 +229,6 @@
         <pubDate>Sun, 06 Jun 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-06-06-lstm/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-06-06-lstm/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to RNN</title>
-        <description>
-          순환 신경망의 기초 모델 RNN - 
-          RNN 이해하기 RNN이란? Recurrent Neural Network으 약자로 순환신경망이라는 의미를 갖습니다. RNN은 주로 언어 데이터나 시계열...
-        </description>
-        <pubDate>Sat, 05 Jun 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-06-05-rnn/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-06-05-rnn/</guid>
       </item>
     
   </channel>

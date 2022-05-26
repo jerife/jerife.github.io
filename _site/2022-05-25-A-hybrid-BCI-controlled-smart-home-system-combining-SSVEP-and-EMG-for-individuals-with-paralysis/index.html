@@ -6,18 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
+<!--$f(x) = x^2$->
   
 
   
 
-  <title>Introduce to BERT</title>
+  
+
+  <title>Review - A hybrid BCI-controlled smart home system combining SSVEP and EMG for individuals with paralysis</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="Bidirectional Encoder Representations from Transformers">
+  <meta name="description" content="hybrid BCI-controlled SSVEP and EMG">
 
   
 
@@ -86,8 +112,8 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Introduce to BERT">
-  <meta property="og:description" content="Bidirectional Encoder Representations from Transformers">
+  <meta property="og:title" content="Review - A hybrid BCI-controlled smart home system combining SSVEP and EMG for individuals with paralysis">
+  <meta property="og:description" content="hybrid BCI-controlled SSVEP and EMG">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -96,9 +122,9 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-11-19T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-11-19-bert/">
-  <link rel="canonical" href="http://localhost:4000/2021-11-19-bert/">
+  <meta property="og:article:published_time" content="2022-05-25T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-05-25-A-hybrid-BCI-controlled-smart-home-system-combining-SSVEP-and-EMG-for-individuals-with-paralysis/">
+  <link rel="canonical" href="http://localhost:4000/2022-05-25-A-hybrid-BCI-controlled-smart-home-system-combining-SSVEP-and-EMG-for-individuals-with-paralysis/">
   
 
   
@@ -107,8 +133,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Introduce to BERT">
-  <meta property="twitter:description" content="Bidirectional Encoder Representations from Transformers">
+  <meta property="twitter:title" content="Review - A hybrid BCI-controlled smart home system combining SSVEP and EMG for individuals with paralysis">
+  <meta property="twitter:description" content="hybrid BCI-controlled SSVEP and EMG">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -459,15 +485,15 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Introduce to BERT</h1>
+          <h1>Review - A hybrid BCI-controlled smart home system combining SSVEP and EMG for individuals with paralysis</h1>
           
             
-              <h2 class="post-subheading">Bidirectional Encoder Representations from Transformers</h2>
+              <h2 class="post-subheading">hybrid BCI-controlled SSVEP and EMG</h2>
             
           
 
           
-            <span class="post-meta">Posted on November 19, 2021</span>
+            <span class="post-meta">Posted on May 25, 2022</span>
             
             
           
@@ -509,136 +535,229 @@
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h2>BERT 이해하기</h2></div>
+        <div align="center"><h2>A hybrid BCI-controlled smart home system combining SSVEP and EMG 논문 리뷰</h2></div>
 <!--break-->
 
 <hr />
 
-<p><br />
-<img src="https://user-images.githubusercontent.com/68190553/142567208-ad01bb1f-4183-49fd-b176-5e95272a047a.jpeg" alt="bert_img_1" class="mx-auto d-block" /></p>
-<h2 id="bert란">BERT란?</h2>
-<p>BERT는 Bidirectional Encoder Representations from Transformers의 약자로, 이전 포스팅인 <a href="https://jerife.github.io/2021-11-17-transformer/">“Introduce to Transformer”</a> 에서 다룬 Transformers의 Encoder부분을 양방향으로 정보를 공유할 수 있게한 언어모델(Language Model)입니다. <br /> <br />
-BERT는 Wikipedia Corpus와 같은 방대한 양의 텍스트 데이터로 사전훈련된 언어모델(Language Model)입니다. 때문에 이미 Pretrained 된 모델이며, 우리가 어떻게 사용할지에 따라 Fine-tuning해나가는 모델입니다.<br /> <br /></p>
+<p><br /></p>
 
-<h3 id="differences-in-pre-training-model">[Differences in pre-training model]</h3>
-<p><img width="671" alt="bert_img_3" src="https://user-images.githubusercontent.com/68190553/142567337-1cf6dbbf-ce52-4a63-8d9a-0d3684f80253.png" class="mx-auto d-block" />
-위 사진속 모델은 각각, BERT / GPT / ELMo의 Architecture 입니다. <br /> <br />
-GPT는 left-to-right 방식으로 Transformer의 Decoder부분을 이용하며, ELMo는 독립적으로 각각 LSTM을 이용해 left-to-right, right-to-left 방식으로 특징을 얻어냅니다. <br /> <br />
-<img src="https://user-images.githubusercontent.com/68190553/142571487-32a123b3-6604-48dd-8c14-0d793f32c584.png" alt="bert_img_5" class="mx-auto d-block" />
-반면, BERT는 Transformer의 Encoder부분을 이용하며, 양방향으로 공동으로 조절되는 특징을 가지고 있습니다. 때문에 다양한 방법으로 Fine-tuning해, 다양한 Task(MNLI/NER/AQuAD/..)에 적용할 수 있습니다.</p>
+<h2 id="abstract">ABSTRACT</h2>
+<p>본 논문에선 EMG(electromyogram)와 SSVEPs(steady-state visual evoked potentials)를 결합해 마비환자를 위한 hybrid brain–computer interface(hBCI) 기반 스마트홈 제어법을 제안합니다.</p>
+
+<p>Participants는 화면속에서 서로 다른 frequency로 반짝이는 stumli를 응시하면서 조작합니다. 이후 SSVEPs의 의도를 식별하기 위해 4개의 EEG에 correlation analysis(CCA)가 사용됩니다.</p>
+
+<p>selected function, return from the sub-interface to the main interface, switch the system on/off 하기위해 관자근에서 발생하는 occlusal EMG를 이용합니다.</p>
+
+<p>건강한 참가자와 마비 환자가 평균 97.5%, 83.6%의 정확도를 달성했지만 EMG와 SSVEPs를 결합한 결과 정확도가 100%로 극대화되었습니다. 또한 이 task는 높은 workload를 요구하지 않아서 효과적이고 안전하다고 합니다.</p>
+
+<h2 id="introduction">INTRODUCTION</h2>
+<p>EEG-based BCI는 안전하고 낮은 cost에 접근성이 쉽다는 이유로 많이 활용되고 있습니다.</p>
+
+<p>특히 SSVEP-based BCI는 training과정이 필요 없고 information transmission rate (ITR)이 빠르다는 장점이 있기 때문에 휠체어 제어, 병원 침대제어 등에 사용되곤 했습니다.</p>
+
+<p>하지만 대부분의 single EEG는 single device만 control할 수 있으며 single EEG경우 보통 Synchronous하고 지속적으로 일정한 자극 필요합니다. 따라서 유저의 피로도가 올라가거나 정확도가 감소하는 일이 발생합니다.</p>
+
+<p>마비환자들은 인지를 잘 못하거나 뇌파가 비정상적으로 작동하는 경우도 있기 때문에 마비환자를 대상으로 하는 연구는 단순함이 필요합니다.<br />
+추가적으로 대부분의 마비환자는 얼굴 근육의 신호만을 사용할 수 있기 때문에 단순함뿐아니라 적은 workload를 요구해야합니다.</p>
+
+<p>본 논문에선 4-Channel EEG로 환자가 의도하는 coomand를 식별합니다.
+그리고 1-Channel EMG로 target을 확인하고, 메인메뉴로 돌아가고, 시스템을 on/off합니다.</p>
+
+<h2 id="methodology">METHODOLOGY</h2>
+<h3 id="a-smart-home-system">A. Smart home system</h3>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170159914-b72f77e5-7b45-4e2e-8382-b89640f5399a.png" width="100%" />
+</div>
+
+<p>hBCI 시스템은 두가지 모듈로 구성됩니다.</p>
+<ol>
+  <li>EEG/EMG fusion module</li>
+  <li>smart home control module</li>
+</ol>
+
+<p>fusion module은 visual stimulation interface, signal acquisition/processing, feature classification, command coding, feedback systems의 역할을 합니다.</p>
+
+<p>또한 laptop LCD monitor를 통해 stimuli되고 TCP/IP로 working computer에서 연산합니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170161381-aa902a4d-5713-4927-b006-fbd520bee4c5.png" width="100%" />
+</div>
+
+<p>control module의 경우 
+fusion module에서 얻어진 결과를 바탕으로 continuous voltage signals, switch signals, digital signal로 다른 device를 제어합니다.</p>
 <blockquote>
-  <p>어떤 종류의 Task를 수행할 수 있는지는 밑에서 언급하며, 먼저 BERT의 Pre-training 과정에 대해서 먼저 언급하겠습니다.</p>
+  <p>eg. 휠체어의 경우, switch signals을 사용하여 휠체어의 위치를 변경하고 continuous voltage signals을 사용하여 연속적인 이동 및 회전합니다.</p>
 </blockquote>
+
+<h3 id="b-functional-interface">B. Functional interface</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170161594-61446a9c-803e-4cba-a84d-d6170f016cef.png" width="100%" />
+</div>
+
+<p>interface는 아래와 같이 구성되어있습니다.</p>
+<ol>
+  <li>idle interface</li>
+  <li>main interface</li>
+  <li>5-sub interface (wheelchair, hospitalbed, television, telephone, curtain/lights)</li>
+</ol>
+
+<p>각 interface는 일치하는 frequency로 flickering(stimuli)합니다. user는 target을 응시함으로써 적절한 장치와 기능을 선택할 수 있습니다. 명령이 확인되면 flickering(stimuli)은 녹색으로 표시되고 선택한 기능이 표시됩니다.</p>
+
+<h3 id="c-signal-processing">C. Signal processing</h3>
+<h4 id="ssvep-detection">SSVEP detection</h4>
+<p>수집된 EEG의 baseline은 average values를 사용해 제거됐습니다. 이후 low / high frequency band noise를 제거하기위해 3-40Hz BPF가 사용됐습니다.</p>
+
+<p>이후 SSVEP frequency를 식별하기위해 Classical correlation analysis (CCA)를 사용했습니다.</p>
+
+<p class="box-warning">CCA란?<br />
+두 다차원 변수 집합 사이의 근본적인 상관 관계를 밝히는 방법이며, 변환된 두 집합이 최대 상관 관계를 갖도록 두 집합에 대한 Linear transform 쌍을 찾습니다.</p>
+
+<p>인터페이스에 해당하는 flickering(stimuli)은 서로다른 frequency를 갖습니다.</p>
+<blockquote>
+  <p>eg. target이 5개면, frequency는 각각 8,9,10,11,12 Hz</p>
+</blockquote>
+
+<p>EEG는 후두부의 PO4, PO3, O1, O2 channel에서 사용됩니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170181902-8756cfec-94cc-4a7b-a63e-15ce42bb7f8a.png" width="40%" />
+</div>
+<blockquote>
+  <p>sample rate : fs<br />
+the number of target : n <br />
+the number of harmonics : h</p>
+</blockquote>
+
+<p>이후 기준되는 신호 $Y_{fn}$은 flickering(stimuli)로 얻어진 frequency의 sin/cos파와 이것의 매초 마다의 고조파으로 구성되어있습니다.</p>
+
+<h4 id="emg-detection">EMG detection</h4>
+<p>EMG signal은 관자근에서 얻어졌으며, threshold algorithm에 기반한 integral EMG (iEMG)으로 분류되었습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170185722-08b1faef-2ad2-45ce-911f-177812e1dbe7.png" width="40%" />
+</div>
+<blockquote>
+  <p>Envelope (n)은 iEMG의 n번째 point <br />
+EMG(i)는 EMG data의 i번째 sample point<br />
+W(window size) = 20</p>
+</blockquote>
+
+<p>먼저 EMG data는 20–150 Hz BPF를 거친 후 iEMG을 이용해 envelope of EMG data가 추출됩니다.</p>
+
+<p>1000 point의 EMG data는 window로 인해 50 segment가 됩니다. 따라서 iEMG도 50 segment를 얻으며, envelope of EMG data를 이용해 EMG patterns을 탐지할 수 있습니다.</p>
+
+<p>이후 mean filter를 이용해 envelope curve를 스무딩했으며, clench 주기는 임계값을 초과하는 point의 수를 기반으로 계산되었습니다.</p>
+<blockquote>
+  <p>clench : 턱에 힘을 줘 치아르 깨무는 현상</p>
+</blockquote>
+
+<p>clench 지속시간이 지정된 범위 내에 있는 경우 아래 3가지 Pattern을 갖습니다.</p>
+
+<ul>
+  <li>EMG Pattern 1 : 0.2~1.0초 동안 1번 clench 지속되는 경우</li>
+  <li>EMG Pattern 2 : 0.2-1.0초 동안 1번 clench 지속되며, 1초 이내에 다른 클렌치가 있는 경우</li>
+  <li>EMG Pattern 3 : 2.0초 이상 clench 지속됩니다.</li>
+</ul>
+
+<h4 id="fusion-protocols">Fusion protocols</h4>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170189350-3a5778c5-5b60-4418-8ed9-1ad2037a4f36.png" width="80%" />
+</div>
+
+<p>control mode는 EMG patterns과 SSVEPs를 사용해 개발됐으며, 크게 3가지 명령이 가능합니다.</p>
+<ul>
+  <li>Switch command: state를 idle과 working으로 변환해줌 [EMG Pattern 3]</li>
+  <li>Return command: device interface를 main interface로 변환해줌 [EMG Pattern 2]</li>
+  <li>Selection &amp; Confirmation command: user가 희망하는 control을 선택해줌 [SSVEPs &amp; EMG Pattern 1]</li>
+</ul>
+
+<p>최종적으로 본 논문에서 제시한 hybrid smart home system 동작과정을 알아보겠습니다.</p>
+
+<p><strong>[동작과정]</strong></p>
+<ol>
+  <li>idle state에서 EMG Pattern 3를 이용해 system을 작동시킨다.</li>
+  <li>main interface에서 sub interfaces로 넘어가기위해 2가지 과정이 필요합니다.</li>
+  <li>device selection stage에서 원하는 interface의 flicker(stimuli)를 응시합니다.</li>
+  <li>device confirmation stage에서 응시했던 flicker(stimuli)는 SSVEP 특성을 통해 녹색으로 표시되고 EMG Pattern 1을 이용해 sub interface로 넘어갑니다.</li>
+  <li>위의 [3][4]과정과 같이 Device functions stage에서 SSVEP로 인식하고 EMG로 확인합니다.</li>
+</ol>
+
+<ul>
+  <li>EMG Pattern 2는 sub interfaces에서 main interface로 넘어가는 역할을 합니다.</li>
+  <li>Device를 사용할때 wheelchair / curtains 의 경우 EMG Pattern 1을 이용해 멈춥니다.</li>
+</ul>
+
+<h2 id="experiment">EXPERIMENT</h2>
+<h3 id="a-online-verification">A. Online verification</h3>
+<p>EEG와 EMG data는 데이터는 1000$F_{s}$로 수집되었습니다.
+EEG는 후두부의 PO4, PO3, O1, O2 channel에서 수집되었으며, EMG의 경우 관자근 밑 부분에서 수집되었습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170451066-e34248b0-ffb2-41b7-ac8e-61b7de738bc5.png" width="50%" />
+</div>
+<blockquote>
+  <p>screen refresh rate : F
+i 번째 프레임의 stimulus frequency : f</p>
+</blockquote>
+
+<p>Subject는 의자에 앉아서 70cm 앞의 LCD 모니터를 응시합니다.
+flicker(stimuli)는 사인파를 이용해 구현되었습니다.</p>
+
+<p>실험은 37 target Selection &amp; Confirmation commands, 5 Return commands, 2 Switch commands를 포함합니다.</p>
+
+<h3 id="b-evaluation">B. Evaluation</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170451489-6a922ca8-9f4c-47c9-aaf8-602b4b35c774.png" width="65%" />
+</div>
+<p>Information Transfer Rate (ITR)는 위의 식으로 계산되었으며, ITR이 높다는 것은 시간당 더 많은 정보를 전달할 수 있다는 것을 의미합니다.</p>
+
+<p>NASA-TXL를 이용해 Subject의 workload를 측정했습니다.
+NASA-TXL는 mental demand, physical demand, temporal demand, effort level, performance, frustration levels 과 같은 평가척도를 지닙니다.</p>
+
+<h2 id="results">RESULTS</h2>
+<h3 id="a-control-accuracy">A. Control accuracy</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170452631-01302ede-b4cb-4ba2-b158-9fabaf97508f.png" width="100%" />
+</div>
+
+<p>위 table을 보면 Selection 이후 Confirmation을 하는 과정은(Control 과정) 보통사람, 마비환자 둘다 100% accuracy를 기록합니다.</p>
+
+<h3 id="b-information-transmission-rate-itr">B. Information transmission rate (ITR)</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170453221-175ed923-e0d6-4aa4-8a83-c8333d909cb5.png" width="90%" />
+</div>
+<p>위는 confirmation 과정을 추가하거나 빼고 ITR을 측정한 결과입니다.</p>
+
+<p>confirmation 과정은 잘못 처리된 값은 취소할 수 있으며 100%의 accuracy를 보장할 수 있지만 3~4초 정도의 시간이 더 걸립니다.</p>
+
+<h3 id="c-brain-workload">C. Brain workload</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/170453247-a12557f9-31b5-4d5e-ae1b-719293e1fc33.png" width="90%" />
+</div>
+<p>NASA-TXL의 6가지 척도 (mental demand, physical demand, temporal demand, effort level, performance, frustration levels)은 위와 같은 결과를 보입니다.</p>
+
+<p>frustration, performance, effort의 결과를 보면 마비환자도 논문에서 제안된 시스템에 만족감을 느끼는 것이라 합니다.</p>
+
+<h2 id="discussion--conclusion">DISCUSSION &amp; CONCLUSION</h2>
+<p>occlusal의 EMG와 SSVEP를 결합한 hBCI-based smarthome control system은 정확할뿐아니라 안전하고 효울적입니다.<br />
+또한 ITR도 좋고 다른 BCI-basedhome control system보다 false positives의 비율이 낮으며 mental, physical workload가 낮다는 장점이 있습니다.
+그리고 EMG를 통해 interface간 이동도 풍부하게 제공합니다.</p>
+
+<p>이후엔 tree-like GUI나 다양한 device, target function을 적용할 것을 제안합니다.<br />
+또한 기능적인 부분에서 occlusion 패턴인식을 이용한 return, switch command가 약한 clench EMG 때문에 정확도가 떨어지기에 향상시킬 것을 제안합니다.<br />
+또한 64-channel EEG cap은 비쌀뿐아니라 번거롭기 때문에 마비환자가 착용할 수 있는 signal acquisition 장비에 대한 연구도 제안합니다.</p>
 
 <hr />
 
-<h3 id="bert-pre-training">[BERT Pre-training]</h3>
-<p>BERT는 방대한 양의 텍스트 데이터로 사전훈련된 언어모델(Language Model)이라 언급한 바에 있습니다. 그 학습 방법으로는 “MLM”, “NSP”이렇게 두가지가 있으며, 그 전에 BERT에 적용된 기술과, 구조적인 특징에 대해 먼저 설명하겠습니다.<br /> <br /></p>
-
-<h4 id="1-bert-embedding">[1] BERT Embedding</h4>
-<p><img width="535" alt="bert_img_2" src="https://user-images.githubusercontent.com/68190553/142575165-354daaa7-5c19-40c8-b18e-a393a57c5503.png" class="mx-auto d-block" /></p>
-<h5 id="1-1-wordpiece-tokenizer-input">1-1) WordPiece Tokenizer (input)</h5>
-<p>BERT는 학습함에 있어, 단어를 최대한 쪼개어 학습을 진행했습니다. 때문에 input값에 BERT가 학습하지 않았던 단어들은 밑과 같이 분리됩니다.</p>
-<ul>
-  <li>input : “The bird is flying.”</li>
-  <li>WordPiece Tokenizer(input) : “[CLS]”, “The”, “bird”, “is”, “fly”, “##ing”, “[SEP]”</li>
-</ul>
-
-<p>“[CLS]”와 “[SEP]”은 각각 시작함을 알리고, 문장이 끝났다고 모델에게 인식시켜주기 위한 토큰입니다. Bert에는 값이 들어갈때는 이러한 구분자를 생성합니다.</p>
-<blockquote>
-  <p>[PAD] - 0 <br />
- [UNK] - 100 <br />
- [CLS] - 101<br />
- [SEP] - 102<br />
- [MASK] - 103<br /></p>
-</blockquote>
-
-<h5 id="1-2-position-embedding">1-2) Position Embedding</h5>
-<p>이전 글에서 다룬 Transformer은 Sin/Cos함수를 이용해 위치적인 벡터를 표현했습니다. 하지만 BERT에서는 Position Embedding또한 학습시켜서 위치적인 벡터를 얻습니다. <br /> <br />BERT는 Squence(단어 1개)의 최대 길이(갯수)는 512이며, 총 512개의 Position Embedding 벡터가 학습됩니다.</p>
-
-<h5 id="1-3-segment-embedding">1-3) Segment Embedding</h5>
-<p>BERT는 한 문장만 학습할 수 있는것이 아니라, 두문장도 학습이 가능합니다.</p>
-<blockquote>
-  <ul>
-    <li>sentence 1 : “The bird is flying.”</li>
-    <li>sentence 2 : “The dog is running.”</li>
-  </ul>
-</blockquote>
-
-<p>sentence 1 과 sentence 2를 이어 붙여 학습하고자 한다면, 아래와 같이 변할 것입니다.</p>
-<blockquote>
-  <ul>
-    <li>final sentence : “[CLS]”, “The”, “bird”, “is”, “fly”, “##ing”, “[SEP]”, “The”, “dog”, “is”, “run”, “##ing”, “[SEP]”</li>
-  </ul>
-</blockquote>
-
-<p>때문에 sentence 1 과 sentence 2를 구분할 수 있는 Embedding도 input으로 넣어줍니다. 위 이미지에서 Segment Embedding는 초록색 박스들을 의미합니다.</p>
-
-<h5 id="1-4-attention-mask">1-4) Attention Mask</h5>
-<p>위 사진속에는 명시되어있지 않지만, 코딩할 경우 Attention Mask가 추가적으로 필요합니다. Attention Mask는 Attention해야할 부분을 BERT모델에 전달해주는 Embedding입니다.<br /> <br />
-Attention해야할 부분은 우리가 쓰거나 입력에 넣는 문장들입니다. 하지만 BERT는 512개의 Sequence(단어 1개)를 받기때문에, 빈칸은 “[PAD]”로 채워집니다.</p>
-<blockquote>
-  <ul>
-    <li>input : “The bird is flying.”</li>
-    <li>WordPiece Tokenizer(input) : “[CLS]”, “The”, “bird”, “is”, “fly”, “##ing”, “[SEP]”, “[PAD]”, “[PAD]”, “[PAD]”….., “[PAD]”(512번째)</li>
-  </ul>
-</blockquote>
-
-<p>때문에 Attention Mask는 “[PAD]”은 0으로 나머지는 1로 채워줍니다.</p>
-<blockquote>
-  <ul>
-    <li>1 1 1 1 1 1 1 0 0 0 0 0…..0(512번째)</li>
-  </ul>
-</blockquote>
-
-<p>BERT는 (1-2)과정을 통해 모든 단어와의 관계있는 문맥 벡터를 얻고, (1-2,3,4)과정과 함께 입력으로 들어갑니다. 그렇다면, BERT는 어떻게 모든 단어와의 관계있는 문맥을 반영한 임베딩을 얻게 되는 것일까요?</p>
-
-<p class="box-warning"><strong>BERT에는 Self Attention을 할 수 있는 layer가 있기 때문에 스스로의 연관성을 얻을 수 있습니다.</strong></p>
-
-<p><br /></p>
-<h4 id="2-mlmmasked-language-model">[2] MLM(Masked Language Model)</h4>
-<p>지금부터 BERT의 학습과정에 대해 본격적으로 이야기하며, 먼저 Label 없이도 스스로 학습할 수 있는 BERT의 특징에 대해서 이야기해보겠습니다. <br /> <br />
- BERT는 스스로 데이터에 “[MASK]”를 주고, 그걸 맞춰나가면서 스스로 학습하는 언어모델(Language Model)입니다.
-<img src="https://user-images.githubusercontent.com/68190553/142593647-4cb0539b-c040-4db7-a81a-bb77d6a78d67.png" alt="bert_img_7" class="mx-auto d-block" /></p>
-
-<blockquote>
-  <ul>
-    <li>“[MASK]”는 전체 데이터의 15%에만 적용한다.<br /></li>
-    <li>“[MASK]”가 적용된 15% 데이터 중에서, 80%는 “[MASK]”를 적용해서 맞춰나간다.<br /></li>
-    <li>“[MASK]”가 적용된 15% 데이터 중에서, 10%는 다른 단어로 변경해 맞춰나간다.<br /></li>
-    <li>“[MASK]”가 적용된 15% 데이터 중에서, 10%는 “[MASK]”나 다른 단어가 아니라 원래 단어로 유지해 맞춰나간다.</li>
-  </ul>
-</blockquote>
-
-<p>“[MASK]”가 적용된 부분에 대해서만 예측하고, 그 부분만 학습을 합니다. 때문에 전체 데이터의 15%만 “[MASK]”를 적용하는 BERT의 특성상 전체 데이터의 15%만 학습할 수 있는 것입니다.<br /> <br /> <br /></p>
-
-<h4 id="3-nspnext-sentence-prediction">[3] NSP(Next Sentence Prediction)</h4>
-<p><img width="351" alt="bert_img_8" src="https://user-images.githubusercontent.com/68190553/142637536-4aed8a53-28d3-4775-a07c-0af180abe36d.png" class="mx-auto d-block" />
- NSP는 말 그대로 “Next Sentence Prediction”, 다음 문장을 예측하면서 학습해나가는 방법입니다. (두개의 문장을 주고, 두 문장이 이어지는 문장인지 아닌지를 맞추는 방법)</p>
-
-<p><img src="https://user-images.githubusercontent.com/68190553/142593554-33301fda-51d8-4ce1-bf0a-71076077aca6.png" alt="bert_img_6" class="mx-auto d-block" />
- 때문에 50:50 비율로 “한문장, 다음문장” / “한문장, 다른문장” 으로 input에 들어갑니다. BERT는 이 input을 가지고 “[CLS]” 토큰의 출력단에서 예측하고 학습합니다. <br /> <br /> <br /></p>
-
-<h3 id="bert-fine-tuning">[BERT Fine-tuning]</h3>
-<p>BERT는 Pre-trainied되어진 언어모델(Language Model)라 했으며, 사용 용도에 따라 Fine-tuning을 진행할 수 있습니다.
-<img width="574" alt="bert_img_4" src="https://user-images.githubusercontent.com/68190553/142638519-11efeb73-bea5-48c7-8fdd-1060adebd9a7.png" class="mx-auto d-block" /></p>
-
-<blockquote>
-  <ul>
-    <li>[a] : 2개의 sentence의 관계를 가지고, 1개의 출력값을 얻을 수 있습니다.<br /></li>
-    <li>[b] : 1개의 sentence로 1개의 출력값을 얻으며, 대표적으로 감성분류가 있습니다.<br /></li>
-    <li>[c] : Q&amp;A문제를 풀어낼수있습니다. 2개의 sentence로 각각 “질문”, “답이 포함되어있는 문장”을 입력으로 넣으며, “답이 포함되어있는 문장” 속에 답에 해당하는 start index와 end index를 구합니다.<br /></li>
-    <li>[d] : 1개의 sentence를 입력으로 넣어, 각각의 단어 성분에 대한 품사를 구합니다.</li>
-  </ul>
-</blockquote>
-
-<p>위와 같이 BERT라는 언어모델(Language Model)은 용도에 따라 Fine-tuning 진행해 학습할 수 있습니다. BERT소개를 이상으로 마치겠습니다. <br /> <br /></p>
+<h2 id="고찰">고찰</h2>
+<p>‘완전몰입가상현실’ 구현만을 위해 VR과 BCI를 접목시키려 했지만 EMG 같은 신체 신호를 이용해서도 hand free한 VR환경을 구현 할 수도 있을것 같다는 생각이 들었다.</p>
 
 <h6 id="reference">Reference</h6>
 <ul>
-  <li>https://arxiv.org/abs/1810.04805</li>
-  <li>http://jalammar.github.io/illustrated-bert/</li>
-  <li>https://wikidocs.net/115055</li>
+  <li>https://www.sciencedirect.com/science/article/pii/S174680941930268X</li>
 </ul>
 
       </article>
@@ -647,7 +766,7 @@ Attention해야할 부분은 우리가 쓰거나 입력에 넣는 문장들입�
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+            <a href="/tags#Brain Computer Interface">Brain Computer Interface</a>
           
         </div>
       
@@ -666,13 +785,9 @@ Attention해야할 부분은 우리가 쓰거나 입력에 넣는 문장들입�
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-11-17-transformer/" data-toggle="tooltip" data-placement="top" title="Introduce to Transformer">&larr; Previous Post</a>
+          <a class="page-link" href="/2022-05-24-An-integrated-deep-learning-model-for-motor-intention-recognition-of-multi-class-EEG-Signals-in-upper-limb-amputees/" data-toggle="tooltip" data-placement="top" title="Review - An integrated deep learning model for motor intention recognition of multi-class EEG Signals in upper limb amputees">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-12-07-roberta/" data-toggle="tooltip" data-placement="top" title="Introduce to RoBERTa">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

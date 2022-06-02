@@ -37,13 +37,13 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
 
-  <title>Intriduce to ARIMA Model</title>
+  <title>Review - A deep learning method for single-trial EEG classification in RSVP task based on spatiotemporal features of ERPs</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="시계열 모델의 이해">
+  <meta name="description" content="RSVP task based on spatiotemporal features of ERPs">
 
   
 
@@ -112,8 +112,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Intriduce to ARIMA Model">
-  <meta property="og:description" content="시계열 모델의 이해">
+  <meta property="og:title" content="Review - A deep learning method for single-trial EEG classification in RSVP task based on spatiotemporal features of ERPs">
+  <meta property="og:description" content="RSVP task based on spatiotemporal features of ERPs">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -122,9 +122,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-06-26T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-06-26-arima/">
-  <link rel="canonical" href="http://localhost:4000/2021-06-26-arima/">
+  <meta property="og:article:published_time" content="2022-06-02T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-06-02-A-deep-learning-method-for-single-trial-EEG-classification-in-RSVP-task-based-on-spatiotemporal-features-of-ERPs/">
+  <link rel="canonical" href="http://localhost:4000/2022-06-02-A-deep-learning-method-for-single-trial-EEG-classification-in-RSVP-task-based-on-spatiotemporal-features-of-ERPs/">
   
 
   
@@ -133,8 +133,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Intriduce to ARIMA Model">
-  <meta property="twitter:description" content="시계열 모델의 이해">
+  <meta property="twitter:title" content="Review - A deep learning method for single-trial EEG classification in RSVP task based on spatiotemporal features of ERPs">
+  <meta property="twitter:description" content="RSVP task based on spatiotemporal features of ERPs">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -499,15 +499,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Intriduce to ARIMA Model</h1>
+          <h1>Review - A deep learning method for single-trial EEG classification in RSVP task based on spatiotemporal features of ERPs</h1>
           
             
-              <h2 class="post-subheading">시계열 모델의 이해</h2>
+              <h2 class="post-subheading">RSVP task based on spatiotemporal features of ERPs</h2>
             
           
 
           
-            <span class="post-meta">Posted on June 26, 2021</span>
+            <span class="post-meta">Posted on June 2, 2022</span>
             
             
           
@@ -549,114 +549,202 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h1>ARIMA 이해하기</h1></div>
+        <div align="center"><h2>A deep learning method for single-trial EEG classification in RSVP task based on spatiotemporal features of ERPs 논문 리뷰</h2></div>
 <!--break-->
 
 <hr />
 
-<p><br />
-데이터 분석시 가장 전통적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다.</p>
+<p><br /></p>
 
-<p>ARIMA는 AutoRegressive Integrated MovingAverage의 약자로써<br />
-<strong>AutoRegressive</strong>  / <strong>MovingAverage</strong> 2개의 모델이 합쳐지고 Stationary하게 보정된 모델입니다.<br />
-먼저 ARIMA를 설명하기 위해 간단히 두 모델을 알아보겠습니다.</p>
+<h2 id="abstract">ABSTRACT</h2>
 
+<p>대부분의 CNN 모델은 event-related potentials (ERP) 구성 요소의 phase-locked(위상 고정) 특성을 잘 고려하지 않습니다.</p>
+
+<p>따라서 본 논문은 phase-locked(위상 고정) 특성을 이용해 ERP 구성 요소의 공간적인(spatial) 특징을 다른 주기마다 학습합니다.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>본 논문은 EEG classification 중 rapid serial visual presentation (RSVP) task를 다룹니다.</p>
+
+<p>RSVP은 빠른 속도로 여러 이미지가 나타나며 User는 이미지를 보고 target과 non-target을 식별하는 task입니다.<br />
+이때 event-related potentials (ERP)는 이미지 stumli에 의해 유발됩니다.</p>
+
+<p class="box-warning">P300은 target 이미지에 의해 발생하지만 non-target 이미지에는 발생하지는 않습니다.</p>
+
+<p>기존엔 아래와 같은 traditional machine learning로 task가 수행되었습니다.</p>
+<ul>
+  <li>linear discriminant analysis (LDA)</li>
+  <li>Fisher linear discriminant (FLD)</li>
+  <li>Hierarchical discriminant component analysis (HDCA)</li>
+  <li>spatially weighted FLD (SWFP)</li>
+  <li>principal components analysis (PCA)</li>
+</ul>
+
+<p>linear한 모델들은 faster하고 robust하지만 performance가 떨어진다는 단점이 있습니다.</p>
+
+<p>반면 deep learning은 강력한 non linear하게 계산하며 다차원 데이터에서 계층적이고 본질적인 특징을 더 깊이 추출할 수 있습니다.</p>
+
+<p>그중 CNN은 EEG 연구에서 중요한 시간적(temporal) 및 공간적(spatial) 특징을 추출하기 위해 별도로 컨볼루션을 작동하도록 구성할 수 있습니다.</p>
+
+<p>CNN 기반 deep learning 모델중엔 EEG classification를 제안하는 모델들이 있습니다.</p>
+<ul>
+  <li><strong>[Shallow ConvNet / DeepConvNet]</strong> : EEG를 각각의 주파수 band에 temporal convolution를 이용해 분해한 후 spatial convolution를 합니다.</li>
+  <li><strong>[EEGNet]</strong> : depthwise, separable convolution를 통해 temporal, spatial convolution을 강하게 매핑합니다.</li>
+</ul>
+
+<p>그러나 대부분의 CNN 모델은 event-related potentials (ERP) 구성 요소의 phase-locked(위상 고정) 특성을 잘 고려하지 않습니다.</p>
+
+<p>기존 모델들은 가중치가 공유되는 convolution layer를 이용해 같은 spatial filter로 convolution되기에 다른 ERP 구성 요소들로부터 차별적인 정보를 얻을 수 없습니다.</p>
+
+<h4 id="procedure">procedure</h4>
+<p>따라서 본 논문은</p>
+<ol>
+  <li>convolution layer로 temporal정보를 추출하고 차원을 압축합니다.</li>
+  <li>ERP 구성요소는 상대적으로 안정적인 지연 시간 및 파형과 같은 phase-locked(위상 고정) 특성을 가지므로, 다른 ERP의 위상을 학습하기 위해 개별 spatial filter로 데이터의 다른 주기를 학습힙니다.</li>
+  <li>separable convolutional로 temporal feature을 추출한 뒤 FC layer와 softmax를 통해 classifer합니다.</li>
+</ol>
+
+<h2 id="material-and-methods">Material and methods</h2>
+<h3 id="a-experiment-procedure">A. Experiment procedure</h3>
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/68190553/123450881-239d4280-d618-11eb-9c1c-8bee2475fec7.png" width="100%" />
+    <img src="https://user-images.githubusercontent.com/68190553/171114941-cdeb591c-0dcd-4e31-bc89-5ff9b6e0e5d5.png" width="100%" />
 </div>
 
-<h4 id="1-자기회귀모델-ar--autoregressive">1. 자기회귀모델 AR : AutoRegressive</h4>
-<p>AR모델은 이전 시점의 정보를 현재 시점에도 영향을 준다는 특징이 있습니다.</p>
+<p>실험은 이미지 속에 보행자가 있는지 / 없는지 분류하는 task입니다.<br />
+4 ssesion으로 구성되있으며, 각 ssesion은 50 block으로 구성됩니다. 그리고 각 block은 100개의 이미지를 10Hz마다 보여줍니다.</p>
 
-<p><strong>$y(t)=c+ϕ_{1}y_{t−1}+ϕ_{2}y_{t−2}+⋯+ϕ_{p}y_{t−p}+ε_{t}$</strong></p>
+<p>한 ssesion에 75개의 target 이미지가 랜덤하게 들어가며 P300 요소와 집중도가 떨어지지 않게하기 위해 각 block엔 1~2개의 target 이미지만 들어갑니다.</p>
 
-<h4 id="2-이동평균모델-ma--movingaverage">2. 이동평균모델 MA : MovingAverage</h4>
-<p>MA모델은 현재 시점과 일정 과거 시점의 에러를 평균취함으로써 변화율을 반영한다는 특징이 있습니다.</p>
+<p>실험은 검은화면이 1초 유지되고 이후  0.2초깜박인 후에 위 내용의 task가 10초동안(100장의 이미지) 실행되고 5초간 휴식합니다.<br />
+이 과정은 50(blocks) * 4(sessions) 진행됩니다.</p>
 
-<p><strong>$y(t)=c+ε_{t}+θ_{1}ε_{t−1}+θ_{2}ε_{t−2}+⋯+θ_{q}ε_{t−q}$</strong></p>
+<h3 id="b-eeg-acquisition-and-preprocessing">B. EEG acquisition and preprocessing</h3>
+<p>EEG는 60 Ag/AgCl electrodes에서 얻어졌으며 1000Hz로 샘플링 되었습니다.<br />
+EEGLAB의 FIR filters로 0.3–28Hz BPF가 적용 되었습니다.
+데이터는 1024개(대략 1.xx초)의 segment로 나눠졌습니다. 이 segment는 이미지 자극이 시작하기(onset) 0.2초 전에 진폭의 평균만큼 빼졌습니다.<br />
+이후 1024개(대략 1.xx초)의 segment는 128 샘플로 downsample 되었습니다.(1개당 대략 0.008x초) 총 60개의 전극 x 128샘플의 shape를 갖습니다.</p>
 
-<h4 id="3-arma--movingaverage">3. ARMA : MovingAverage</h4>
-<p>ARMA모델은 자기회귀모델 AR과 이동평균모델 MA를 합친 모델입니다.
-사실 ARMA모델은 우리가 알고자하는 ARIMA와는 조금 다릅니다.</p>
-
-<p>바로 ARMA모델은 Non-Stationary 상태에 대응하지 못한다는 단점이 있습니다.
-밑에서 Stationary / Non-Stationary 상태에 대해 알아보겠습니다.</p>
-
-<h5 id="stationary--non-stationary">Stationary / Non-Stationary</h5>
+<h3 id="c-neural-network-architecture">C. Neural network architecture</h3>
 <div align="center">
-    <img alt="Detect your uniform" src="https://user-images.githubusercontent.com/68190553/139376675-bb61270d-4671-46b1-a0c5-2620a4391455.png" width="70%" />
+    <img src="https://user-images.githubusercontent.com/68190553/171521307-7da18cd9-1669-4f0e-b311-7bea163738fd.png" width="100%" />
+</div>
+
+<p>모델의 모듈은 크게 4가지로 구성되어있습니다.</p>
+
+<h4 id="module-1">Module 1</h4>
+<p>Conv2D(kernel size: 1,32)는 256ms 윈도우 사이즈이며 224ms overlap됩니다.<br />
+이 Conv2D는 temporal feature 추출할뿐 아니라 input data를 다른 주기로 나눌 수 있으며 temporal 차원을 줄일 수 있습니다. 또한 이 과정은 각각의 ERP구성을 적절한 spatial filter로 학습할 수 있습니다.<br />
+이후 분포가 shift되는 것을 방지하기 위한 batch normalization (BN)와 linear activation function인 ELU를 사용해 negative value of loss가 되는 것을 방지했습니다.</p>
+
+<h4 id="module-2">Module 2</h4>
+<p>Module 2는 permute를 이용해 sptial feature를 추출했습니다.<br />
+먼저 DepthwiseConv2D(kernel size: 60,1)로 각각의 spatial feature를 학습하기 위해 permute layer에서 eeg_channel x filter x period (60x8x25)로 차원을 변경합니다.<br />
+이후 DepthwiseConv2D를 진행함으로써 25개의 spatial filter를 얻습니다. 다른 주기를 학습하는 각각의 spatial filter는 설계는 ERP의 phase-locked(위상 고정) 특성을 활용합니다.<br />
+이 후 permute를 이용해 원래 차원으로 수정해준 수 Module 1과 마찬카지로 BN, ELU layer를 거칩니다.</p>
+
+<h4 id="module-3">Module 3</h4>
+<p>SeparableConv2D(kernel size: 1,9: Conv2D와 같지만 연산량을 줄여줌) temporal features를 추출합니다.
+이 후 BN, ELU layer를 거치고 global average pooling layer를 이용해 차원을 줄이고 overfiting을 방지합니다.</p>
+
+<h4 id="module-4">Module 4</h4>
+<p>Module 4는 마지막에 2개의 값만 나오게 해주는  FC layer와 softmax를 이용해 두 classes에 대한 확률값을 반환해줍니다.</p>
+
+<h3 id="d-training-settings-and-implementations">D. Training settings and implementations</h3>
+<ul>
+  <li>model의 모든 parameter는 Glorot Uniform method에 의해 초기화</li>
+  <li>class의 불군형을 맞추기위해 class에 가중치를 부여함</li>
+  <li>optimizer: Adam</li>
+  <li>loss function: cross-entropy</li>
+  <li>scheduler: 5 epoch마다 valid loss가 향상되지 않으면 lr를 반씩 줄임, 20 epoch동안 valid loss가 향상되지 않으면 학습 멈춤</li>
+  <li>batchsize: 64</li>
+  <li>cross-validation: 4 fold(4 session중 1개는 train, 1개는 valid, 2개는 test)</li>
+</ul>
+
+<h2 id="results">Results</h2>
+<h3 id="a-classification-performance">A. Classification performance</h3>
+<p>모델 성능 비교는 traditional methods(HDCA/SWFP), deep learning models (DeepConvNet/EEGNet)으로 진행됐습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/171528194-93b0234c-319a-4f31-852c-a7635ad188da.png" width="100%" />
 </div>
 <blockquote>
-  <p>Stationary / Non Stationary 상태의 그래프</p>
+  <p>true positive rate (TPR),false positive rate (FPR), F1-Score and area under the
+curve (AUC)</p>
 </blockquote>
 
-<p>Stationary한 그래프는 “평균”과 “분산”이 일정한 상태를 의미합니다.</p>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/171528384-2d04f66a-85f4-43f7-abc5-a426720b2105.png" width="100%" />
+</div>
+<blockquote>
+  <p>parameter 수 비교</p>
+</blockquote>
 
-<p>반면 위와 반대인 비정상적인 상태는 Non Stationary하다고 표현합니다. Non Stationary한 데이터들엔 어떤 종류가 있을까요?</p>
+<h3 id="b-role-of-permute-layers">B. Role of permute layers</h3>
 
-<ul>
-  <li>그래프의 분산은 일정하지만 평균이 상승하는 상태</li>
-  <li>그래프의 분산도 평균도 불규칙한 상태</li>
-  <li>그래프가 시계열적으로 골구로 퍼지지 않은 상태 (얼핏 보기에 분산이나 평균은 문제 없어 보임)</li>
-</ul>
+<p>논문에서 제시한 PLNet의 permute layer는 depthwise convolution이 서로 다른 periods에 대한 spatial filter를 학습할 수 있게 하기에 중요하다고 합니다.</p>
 
-<h5 id="어떻게-정상상태로-바꿀까">어떻게 정상상태로 바꿀까?</h5>
-<p>바로 “Differencing(차분)”을 해줌으로써 Stationary하게 그래프를 바꿔줄 수 있습니다.<br />
-이때 차분은 보통 1~2번정도 해주고, 차분 횟수에 따라 1차차분 / 2차 차분이라고 불립니다.</p>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/171528438-b24a1702-826a-4081-9713-3eee762572a0.png" width="100%" />
+</div>
+<blockquote>
+  <p>permute layer 추가/미추가 결과 비교</p>
+</blockquote>
 
-<h2 id="arima란">ARIMA란?</h2>
-<p>AR / MA / ARMA 모델은 기본적으로 데이터가 정상적인(Stationary) 시계열 데이터라는 가정하에 사용됩니다.
-반면 ARIMA 모델은 데이터가 비 정상적인(Non-Stationary) 할 경우, “차분”을 통해 데이터를 정상적인(Stationary) 상태로 처리하여 ARMA모델을 사용하는 것입니다.</p>
+<h3 id="c-features-analysis">C. Features analysis</h3>
+<p>PLNet으로 학습된 특징들을 시각화하기위해 topographies, saliency maps 두가지 방법으로 접근했습니다.</p>
 
-<p>즉 ARIMA는 자기회귀누적이동평균 모델이며, “AR” + “I” + “MA” = “ARIMA” 라고 이해하시면 됩니다.
-ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
+<h4 id="1-topographies">1) topographies</h4>
+<p>먼저 Spatial topographies를 사용하기 위해 25개의 spatial filter의 가중치 중에서 가장 discriminative한 특성을 보이는  9, 13, 17번쨰 filter를 시각화 했습니다.</p>
+<blockquote>
+  <p>9번째 filter: 256–512 ms<br />
+13번째 filter: 384–640 ms<br />
+17번째 filter: 512–768 ms</p>
+</blockquote>
 
-<p><strong>$y_{t}=c+ϕ_{1}y_{t−1}+⋯+ϕ_{p}y_{t−p}+θ_{1}ε_{t−1}+⋯+θ_{q}ε_{t−q}+ε_{t}$</strong></p>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/171535058-30450548-34ef-42f8-b8d9-137333725164.png" width="80%" />
+</div>
+<p>특히 9번째 filter(256–512 ms)는 P300 신호이며 대부분의 subject들이 큰 가중치를 보였습니다.</p>
 
-<ul>
-  <li>p : 자기회귀 부분의 차수</li>
-  <li>d : 차분의 횟수</li>
-  <li>q : 이동 평균 부분의 차수</li>
-</ul>
+<h4 id="2-saliency-map">2) saliency map</h4>
+<p>saliency map은 PLNet으로 학습된 temporal features를 분석하기 위한 방법입니다.</p>
 
-<p class="box-note">자기회귀의 양을 p로, 이동평균의 합을 q로, 차분의 횟수를 d로 정합니다.</p>
+<p>saliency map은 Backpropagation 알고리즘을 통해 input에 대한 모델 output의 기울기를 계산하여 얻어집니다.<br />
+saliency map의 기울기 크기는 분류하기 위한 특징의 기여도를 나타냅니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/171541047-e2622320-f625-4a43-aa06-fd745407d9b0.png" width="100%" />
+</div>
+<blockquote>
+  <p>본 논문에선 Pz채널의 평균을 사용함</p>
+</blockquote>
+
+<p>결과를 보면 일반적으로 10Hz의 SSVEP의 특징을 보이고 N200, P300의 ERP 구성을 찾을 수 있었습니다.<br />
+더 큰 기울기는 300–700 ms에 나타나며, 이는 패러다임에 의해 유발되는 P300 및 기타 이후 구성 요소에 해당합니다.<br />
+대부분의 subject의 기울기에서 P100 및 N200과 같은 100~300ms 사이의 일부 ERP 구성 요소도 확인됩니다.</p>
+
+<p class="box-note">결과적으로 PLNet이 ERP 구성 요소의 discriminative한 특징을 효과적으로 추출할수 있다는 것을 보여줍니다.</p>
+
+<h2 id="discussion">Discussion</h2>
+<p>PLNet의 Convolution은 temporal을 압축하고(Conv2d), 다른 주기를 바탕으로 spatial filter를 학습함(depthwise_Conv2d)으로써 ERP 구성 요소의 phase-locked(위상 고정) 특성 포착 할 수 있었습니다.</p>
+
+<p>결론적으로 기존의 EEGNet 및 DeepConvNet과 같은 딥러닝 모델보다 우수한 성능을 얻었습니다.</p>
+<blockquote>
+  <p>FPR의 감소, PR, F1-Score, AUC 증가</p>
+</blockquote>
+
+<p>이후 PLNet이 phase-locked components를 기반으로 하는 패러다임에 적용되길 바라며 EEG연구에 reference가 될수도 있을것이라 하며 마무리 됩니디.</p>
 
 <hr />
-<p><br /></p>
 
-<h2 id="pytorch-code">Pytorch Code</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
-<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="n">sm</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">d</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">q</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">pdq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">q</span><span class="p">))</span>
-<span class="n">pdq</span> <span class="o">=</span> <span class="n">pdq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Drop (0,1,0)
-</span>
-<span class="n">aic</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pdq</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">train_sample</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"ARIMA : {} | AIC : {:.3f}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">model_fit</span><span class="p">.</span><span class="n">aic</span><span class="p">))</span>
-    <span class="n">aic</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_fit</span><span class="p">.</span><span class="n">aic</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.020</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">153.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">157.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.087</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.415</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">156.740</span>
-<span class="p">.....</span>
-</code></pre></div></div>
-<p><br /></p>
+<h2 id="고찰">고찰</h2>
+<p>제어분야(VR, Real Time)와 RSVP를 접목시킨다면, 집중해야하는 곳으 응시해 P300을 발생시켜 특정 task를 수행 시킬 수도 있을 것 같다.<br />
+(eg. VR display에서 우측상단 모서리의 검정색 톱니바퀴를 응시하다가 갑자기 흰색 톱니바퀴가 등장할때 나오는 신호를 분류해 설정화면을 보여줌,
+p300신호를 이용한 인지능력 활용등)</p>
 
 <h6 id="reference">Reference</h6>
 <ul>
-  <li>https://otexts.com/fppkr/non-seasonal-arima.html</li>
-  <li>https://www.researchgate.net/figure/Forecast-from-ARIMA1-0-10-1-1-with-weekly-lags_fig4_284142511</li>
+  <li>https://pubmed.ncbi.nlm.nih.gov/34284365/</li>
 </ul>
 
       </article>
@@ -665,7 +753,7 @@ ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Time Series">Time Series</a>
+            <a href="/tags#Brain Computer Interface">Brain Computer Interface</a>
           
         </div>
       
@@ -684,13 +772,9 @@ ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-06-08-seq2seq/" data-toggle="tooltip" data-placement="top" title="Introduce to Seq2Seq">&larr; Previous Post</a>
+          <a class="page-link" href="/2022-05-30-Artificial-Intelligence-for-the-Metaverse-A-Survey/" data-toggle="tooltip" data-placement="top" title="Review - Artificial Intelligence for the Metaverse - A Survey">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-07-25-rcnn/" data-toggle="tooltip" data-placement="top" title="Introduce to R-CNN">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

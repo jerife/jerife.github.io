@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - A deep learning method for single-trial EEG classification in RSVP task based on spatiotemporal features of ERPs</title>
+        <description>
+          RSVP task based on spatiotemporal features of ERPs - 
+          A deep learning method for single-trial EEG classification in RSVP task based on spatiotemporal features...
+        </description>
+        <pubDate>Thu, 02 Jun 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-06-02-A-deep-learning-method-for-single-trial-EEG-classification-in-RSVP-task-based-on-spatiotemporal-features-of-ERPs/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-06-02-A-deep-learning-method-for-single-trial-EEG-classification-in-RSVP-task-based-on-spatiotemporal-features-of-ERPs/</guid>
+      </item>
+    
+      <item>
         <title>Review - Artificial Intelligence for the Metaverse - A Survey</title>
         <description>
           Artificial Intelligence for the Metaverse - 
@@ -218,17 +229,6 @@
         <pubDate>Sun, 25 Jul 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-07-25-rcnn/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-07-25-rcnn/</guid>
-      </item>
-    
-      <item>
-        <title>Intriduce to ARIMA Model</title>
-        <description>
-          시계열 모델의 이해 - 
-          ARIMA 이해하기 데이터 분석시 가장 전통적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다. ARIMA는 AutoRegressive Integrated...
-        </description>
-        <pubDate>Sat, 26 Jun 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-06-26-arima/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-06-26-arima/</guid>
       </item>
     
   </channel>

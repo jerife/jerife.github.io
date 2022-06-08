@@ -37,13 +37,13 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
 
-  <title>Intriduce to ARIMA Model</title>
+  <title>Review - A Sliding Window Common Spatial Pattern for Enhancing Motor Imagery Classification in EEG-BCI</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="시계열 모델의 이해">
+  <meta name="description" content="Sliding Window Common Spatial Pattern">
 
   
 
@@ -112,8 +112,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Intriduce to ARIMA Model">
-  <meta property="og:description" content="시계열 모델의 이해">
+  <meta property="og:title" content="Review - A Sliding Window Common Spatial Pattern for Enhancing Motor Imagery Classification in EEG-BCI">
+  <meta property="og:description" content="Sliding Window Common Spatial Pattern">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -122,9 +122,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-06-26T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-06-26-arima/">
-  <link rel="canonical" href="http://localhost:4000/2021-06-26-arima/">
+  <meta property="og:article:published_time" content="2022-06-08T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-06-08-A-Sliding-Window-Common-Spatial-Pattern-for-Enhancing-Motor-Imagery-Classification-in-EEG-BCI/">
+  <link rel="canonical" href="http://localhost:4000/2022-06-08-A-Sliding-Window-Common-Spatial-Pattern-for-Enhancing-Motor-Imagery-Classification-in-EEG-BCI/">
   
 
   
@@ -133,8 +133,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Intriduce to ARIMA Model">
-  <meta property="twitter:description" content="시계열 모델의 이해">
+  <meta property="twitter:title" content="Review - A Sliding Window Common Spatial Pattern for Enhancing Motor Imagery Classification in EEG-BCI">
+  <meta property="twitter:description" content="Sliding Window Common Spatial Pattern">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -513,15 +513,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Intriduce to ARIMA Model</h1>
+          <h1>Review - A Sliding Window Common Spatial Pattern for Enhancing Motor Imagery Classification in EEG-BCI</h1>
           
             
-              <h2 class="post-subheading">시계열 모델의 이해</h2>
+              <h2 class="post-subheading">Sliding Window Common Spatial Pattern</h2>
             
           
 
           
-            <span class="post-meta">Posted on June 26, 2021</span>
+            <span class="post-meta">Posted on June 8, 2022</span>
             
             
           
@@ -563,114 +563,204 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h1>ARIMA 이해하기</h1></div>
+        <div align="center"><h2> Sliding Window Common Spatial Pattern for Enhancing Motor Imagery Classification in EEG-BCI 논문 리뷰</h2></div>
 <!--break-->
 
 <hr />
 
-<p><br />
-데이터 분석시 가장 전통적인 시계열 통계 분석이라 하면, ARIMA모델일 것입니다.</p>
+<p><br /></p>
 
-<p>ARIMA는 AutoRegressive Integrated MovingAverage의 약자로써<br />
-<strong>AutoRegressive</strong>  / <strong>MovingAverage</strong> 2개의 모델이 합쳐지고 Stationary하게 보정된 모델입니다.<br />
-먼저 ARIMA를 설명하기 위해 간단히 두 모델을 알아보겠습니다.</p>
+<h2 id="abstract">ABSTRACT</h2>
+<p>본 연구는 two sliding window 기술을 사용해 motor imagery (MI)의 binary classification task를 향상시킵니다.</p>
 
+<ol>
+  <li>첫 번째 방법은 모든 sliding window의 예측 시퀀스의 가장 긴 연속 반복(longest consecutive repetition, LCR)을 계산하며 SW-LCR이라고 합니다.</li>
+  <li>두 번째 방법은 모든 sliding window의 예측 시퀀스 모드(Mode)를 계산하며 SW-Mode라고 명명됩니다.</li>
+</ol>
+
+<p>Common spatial pattern (CSP)는 각 시간마다의 window를 linear
+discriminant analysis (LDA)로 classification하기 위한 특징을 추출할때 사용됩니다.</p>
+
+<p>SW-LCR는 healthy individuals dataset에 좋은 성능을 보였으며 SW-Mode는 stroke patients’ dataset의 MI task에서 낮은편차를 보여주는 성능을 보여줬습니다.</p>
+
+<p>결과적으로 SW-LCR 및 SW-Mode를 사용한 MI의 sliding window 기반 예측이 intertrial 및 intersession의 불일치에 대해 robust하므로 신경 재활 BCI 설정에서 안정적인 성능으로 이어질 수 있음을 보여줍니다.</p>
+
+<h2 id="introduction">INTRODUCTION</h2>
+<p>BCI system의 큰 issue는 EEG가 non-stationarity하다는 점입니다.<br />
+이 문제를 해결하기 위해 data preprocessing 단계에서 EEG신호와 동시에 발생되는 low signal-to-noise (SNR)에 기여하는 EMG, EOG및 artifact를 제거해야한다고 하며, 논문에선 이후 EEG관련 모델과 task들에 대해 소개해줍니다.</p>
+
+<p>하지만 흔하게 볼 수있는 EEG task model(논문에서 간단히 소개한 model)들의 중요한 단점은 EEG data의 앞뒤가 맞지않은 non-stationarity한 특징 때문에 intersession마다 classificaiton accuracy(CA)가 감소한다는 점입니다.</p>
+
+<p>이 문제를 해결하기 위한 일반적인 접근 방식은 가장 일반화 가능한 feature를 찾는 것입니다. 그러나 주의할 점은 trial 기간 내의 시점 선택은 일반적으로 휴리스틱 방식으로 선택된다는 것입니다.</p>
+
+<p>따라서 이러한 모순을 최소화하기 위해서 본 논문은 2가지 새로운 sliding window-based CSP 기술을 소개합니다.</p>
+<ul>
+  <li>SW-LCR</li>
+  <li>SW-Mode</li>
+</ul>
+
+<h2 id="dataset">DATASET</h2>
+<h3 id="a-healthy-individuals-data-set">A. Healthy Individuals’ Data Set</h3>
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/68190553/123450881-239d4280-d618-11eb-9c1c-8bee2475fec7.png" width="100%" />
-</div>
-
-<h4 id="1-자기회귀모델-ar--autoregressive">1. 자기회귀모델 AR : AutoRegressive</h4>
-<p>AR모델은 이전 시점의 정보를 현재 시점에도 영향을 준다는 특징이 있습니다.</p>
-
-<p><strong>$y(t)=c+ϕ_{1}y_{t−1}+ϕ_{2}y_{t−2}+⋯+ϕ_{p}y_{t−p}+ε_{t}$</strong></p>
-
-<h4 id="2-이동평균모델-ma--movingaverage">2. 이동평균모델 MA : MovingAverage</h4>
-<p>MA모델은 현재 시점과 일정 과거 시점의 에러를 평균취함으로써 변화율을 반영한다는 특징이 있습니다.</p>
-
-<p><strong>$y(t)=c+ε_{t}+θ_{1}ε_{t−1}+θ_{2}ε_{t−2}+⋯+θ_{q}ε_{t−q}$</strong></p>
-
-<h4 id="3-arma--movingaverage">3. ARMA : MovingAverage</h4>
-<p>ARMA모델은 자기회귀모델 AR과 이동평균모델 MA를 합친 모델입니다.
-사실 ARMA모델은 우리가 알고자하는 ARIMA와는 조금 다릅니다.</p>
-
-<p>바로 ARMA모델은 Non-Stationary 상태에 대응하지 못한다는 단점이 있습니다.
-밑에서 Stationary / Non-Stationary 상태에 대해 알아보겠습니다.</p>
-
-<h5 id="stationary--non-stationary">Stationary / Non-Stationary</h5>
-<div align="center">
-    <img alt="Detect your uniform" src="https://user-images.githubusercontent.com/68190553/139376675-bb61270d-4671-46b1-a0c5-2620a4391455.png" width="70%" />
+    <img src="https://user-images.githubusercontent.com/68190553/172506865-2889fbf9-a781-48d0-adfe-e93c6451adf7.png" width="90%" />
 </div>
 <blockquote>
-  <p>Stationary / Non Stationary 상태의 그래프</p>
+  <p>Healthy Individuals’ Data Set Experiment Paradigm</p>
 </blockquote>
 
-<p>Stationary한 그래프는 “평균”과 “분산”이 일정한 상태를 의미합니다.</p>
-
-<p>반면 위와 반대인 비정상적인 상태는 Non Stationary하다고 표현합니다. Non Stationary한 데이터들엔 어떤 종류가 있을까요?</p>
+<p>본 dataset은 건강힌 개인의 cue-based BCI MI tasks의 결과를 포함하고있습니다.</p>
 
 <ul>
-  <li>그래프의 분산은 일정하지만 평균이 상승하는 상태</li>
-  <li>그래프의 분산도 평균도 불규칙한 상태</li>
-  <li>그래프가 시계열적으로 골구로 퍼지지 않은 상태 (얼핏 보기에 분산이나 평균은 문제 없어 보임)</li>
+  <li>left hand (class 1)</li>
+  <li>right hand (class 2)</li>
+  <li>both feet (class 3)</li>
+  <li>tongue (class 4)</li>
 </ul>
 
-<h5 id="어떻게-정상상태로-바꿀까">어떻게 정상상태로 바꿀까?</h5>
-<p>바로 “Differencing(차분)”을 해줌으로써 Stationary하게 그래프를 바꿔줄 수 있습니다.<br />
-이때 차분은 보통 1~2번정도 해주고, 차분 횟수에 따라 1차차분 / 2차 차분이라고 불립니다.</p>
+<p>mastoid(귀 밑 뒤통수쪽) 부근에 22개의 전극을 사용했으며, 각 전극은 3.5cm의 거리를 유지합니다.<br />
+50Hz norch filter와 0.5 ~ 100 Hz BPF를 적용하고 250Hz로 데이터가 샘플링됐습니다.</p>
 
-<h2 id="arima란">ARIMA란?</h2>
-<p>AR / MA / ARMA 모델은 기본적으로 데이터가 정상적인(Stationary) 시계열 데이터라는 가정하에 사용됩니다.
-반면 ARIMA 모델은 데이터가 비 정상적인(Non-Stationary) 할 경우, “차분”을 통해 데이터를 정상적인(Stationary) 상태로 처리하여 ARMA모델을 사용하는 것입니다.</p>
+<p>본 연구에선 4개의 classes를 사용해 6가지 조합을 classification합니다.</p>
 
-<p>즉 ARIMA는 자기회귀누적이동평균 모델이며, “AR” + “I” + “MA” = “ARIMA” 라고 이해하시면 됩니다.
-ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
+<h3 id="b-stroke-patients-data-set">B. Stroke Patients’ Data Set</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/172531080-4c142268-092e-4b43-b980-804a415b61da.png" width="90%" />
+</div>
+<blockquote>
+  <p>Stroke Patients’ Data Set Experiment Paradigm</p>
+</blockquote>
 
-<p><strong>$y_{t}=c+ϕ_{1}y_{t−1}+⋯+ϕ_{p}y_{t−p}+θ_{1}ε_{t−1}+⋯+θ_{q}ε_{t−q}+ε_{t}$</strong></p>
+<p>본 dataset은 뇌졸증 환자의 cue-based BCI MI tasks의 결과를 포함하고있습니다.</p>
 
 <ul>
-  <li>p : 자기회귀 부분의 차수</li>
-  <li>d : 차분의 횟수</li>
-  <li>q : 이동 평균 부분의 차수</li>
+  <li>left hand (class 1)</li>
+  <li>right hand (class 2)</li>
 </ul>
 
-<p class="box-note">자기회귀의 양을 p로, 이동평균의 합을 q로, 차분의 횟수를 d로 정합니다.</p>
+<p>50Hz norch filter와 0.1 ~ 100 Hz BPF를 적용하고 500Hz로 데이터가 샘플링됐습니다.</p>
+
+<h2 id="csp">CSP</h2>
+<p>CSP는 class의 분산을 최소화하는 동시에 다른 class의 분산을 최대화하는 spatial filter를 학습하는 것을 목표로 합니다.</p>
+
+<p>CSP는 최적하게 구별되는 MI-based BCI기반의 band-power feature를 얻습니다.</p>
+<blockquote>
+  <p>주어진 주파수 대역의 band-power는 선택한 대역에서 필터링된 EEG 신호의 분산을 제공합니다.</p>
+</blockquote>
+
+<h2 id="lda-classifier">LDA CLASSIFIER</h2>
+<p>LDA-based classifier는 차원을 줄여주는 동시에 클래스의 차별적인 정보를 보호합니다.</p>
+
+<p>본 연구에서 LDA classifier는 가장 차별적인 것을 제공하는 feature들의 최적의 조합을 찾습니다.</p>
+
+<h2 id="methodology">METHODOLOGY</h2>
+<h3 id="a-sliding-window">A. Sliding Window</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/172533267-93362ffd-9272-4b34-8d40-fb49f50a2a47.png" width="80%" />
+</div>
+<blockquote>
+  <p>Dataset A의 경우 2초부터 Cue가 시작됨. 따라서 2초부터 window가 적용됨</p>
+</blockquote>
+
+<p>본 논문에선 2초 짜리 window가 총 9개 사용되며, 각 window는 0.1초를 텀으로 사용됩니다.</p>
+
+<h4 id="exsample">Exsample</h4>
+
+<p class="box-note">first window (T1): 2.0~4.0 s <br />
+second window (T2): 2.1~4.1 s<br />
+ninth window (T9): 2.8~4.8 s<br /></p>
+
+<p>multichannel EEG signal는 BPF를 적용하는 것이 좋다는 타 논문을 바탕으로, EEG data는 8~30 Hz band의 BPF가 적용됩니다.</p>
+
+<h3 id="b-sw-lcr">B. SW-LCR</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/172533210-5d5fb907-4701-4868-a527-2386537a2d59.png" width="100%" />
+</div>
+<p>SW-LCR는 예측의 마지막 단계에서 사용됩니다.
+LCR는 sequence 값에서 가장 긴 subsequence의 값을 의미합니다.</p>
+
+<p>만약 subsequence의 길이가 같은 것이 2개 이상이라면 맨 처음의 subsequence를 사용합니다.</p>
+
+<h4 id="exsample-1">Exsample 1</h4>
+
+<p class="box-note">LDA Classifier output(sequence) : “121 111 222” <br />
+LCR output : “1” (LDA output에서 “1111”라는 subsequence가 가장 길기 때문)</p>
+
+<h4 id="exsample-2">Exsample 2</h4>
+
+<p class="box-note">LDA Classifier output(sequence) : “121 222 111” <br />
+LCR output : “2” (LDA output에서 “222”라는 subsequence가 더 먼저 발견됐기 때문)</p>
+
+<h3 id="c-sw-mode">C. SW-Mode</h3>
+<p>가장 긴 subsequence의 값을 선택하는 LCR와는 달리 SW-Mode는 sequence 속에서 가장 많은 값은 선택하는 방법입니다.</p>
+
+<h4 id="exsample-1-1">Exsample 1</h4>
+
+<p class="box-note">LDA Classifier output(sequence) : “111 112 222” <br />
+Mode output : “1” (LDA output에서 “1”개수가 5개이고 “2”의 개수는 4개이기 때문)</p>
+
+<h4 id="exsample-2-1">Exsample 2</h4>
+
+<p class="box-note">LDA Classifier output(sequence) : “122 121 211” <br />
+Mode output : “1”</p>
+
+<p>특히 Mode 방법은 task를 집중할수 없거나 오랫동안 집중하기 어려운 환자들에게 중요합니다.</p>
+
+<p>위와 같이 “1”과 “2”가 섞이면서(집중을 못한 경우) 더 많은 값이 있는 것을 선택해 LCR일 경우 생기는 misclassification 문제를 줄일 수 있습니다.</p>
+
+<h3 id="d-disscusion">D. Disscusion</h3>
+<p>SW-LCR 및 SW-Mode 기반 전략의 주요 장점은 백그라운드에서 사용되는 feature extraction 또는 classification algorithm에 관계없이 single-trial prediction에 대한 CA를 개선할 수 있다는 것입니다.</p>
+
+<p>이는 제안된 sliding window 기반 방법이 trial마다 그리고 session마다 다를 수 있는 단일 시점에 초점을 맞추지 않고 시행 내 다른 시간 segment에서 feature를 찾기 때문입니다.</p>
+
+<p>하지만 단점으로는 realtime BCI에 sliding window를 적용할 경우 지연시간이 생긴다는 점이 있습니다.</p>
+
+<h2 id="results-and-discussion">RESULTS AND DISCUSSION</h2>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/172544645-10eb8169-8ccb-4583-811d-d28ba7352868.png" width="50%" /><img src="https://user-images.githubusercontent.com/68190553/172544730-f3efc2a6-1338-48f8-945e-ffce23e26238.png" width="50%" />
+</div>
+<blockquote>
+  <p>Healthy Individuals’ Dataset의 SW-LCR &amp; SW-Mode 결과 보고</p>
+</blockquote>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/172544995-7dd7c5f4-59c0-403a-a293-764f9120ee30.png" width="70%" />
+</div>
+<blockquote>
+  <p>Stroke Patients’ Dataset의 다른 Method와 벤치마킹 비교</p>
+</blockquote>
+
+<ul>
+  <li>M1, M3, M4: CSPs + variations</li>
+  <li>M2 : multivariate EMD (MEMD)-based filtering + Riemannian geometry (RG)</li>
+</ul>
+
+<h2 id="conclusion">CONCLUSION</h2>
+<p>EEG data는 session, subject간에 서로 non-stationary합니다.</p>
+
+<p>본 논문에선 위 문제를 해결할 수 있는 intertrial, intersession에 robust한 sliding window-based CSP 기술(SW-LCR &amp; SW-Mode) 소개했습니다.</p>
+
+<p>특히 SW-Mode의 경우 stroke patients’ dataset에서 SOTA모델보다도 좋은 결과를 보였으며, SW-LCR는 healthy individuals dataset에서 좋은 성능을 보였습니다.</p>
+
+<p>결과적으로 healthy individuals, stroke patients dataset에서 accuracy 80%정도와 kappa 0.6이상을 기록했으며 표준편차도 감소했습니다.<br />
+이는 뇌졸중 환자의 EEG 데이터가 겪는 lower SNR와 higher non-stationarity를 해결할 수도 있기에 중요한 점입니다.</p>
+
+<p>결론적으로 SW-LCR 및 SW-Mode는 MI-BCI의 성능을 향상시킬 수 있는 잠재력을 가지고 있으며 신뢰할 수 있는 신경 재활 BCI application을 위한 기반을 마련할 수 있습니다.</p>
 
 <hr />
-<p><br /></p>
 
-<h2 id="pytorch-code">Pytorch Code</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">statsmodels.tsa.arima.model</span> <span class="kn">import</span> <span class="n">ARIMA</span>
-<span class="kn">from</span> <span class="nn">statsmodels.graphics.tsaplots</span> <span class="kn">import</span> <span class="n">plot_acf</span><span class="p">,</span> <span class="n">plot_pacf</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="n">sm</span>
+<h2 id="고찰">고찰</h2>
+<p>Motor Intention / Imagery의 경우 키보드와 같은 즉각적인 반응이 있는 input system처럼 Real-time에 적용하기가 쉽지 않다.</p>
 
-<span class="n">p</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">d</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">q</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">pdq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">q</span><span class="p">))</span>
-<span class="n">pdq</span> <span class="o">=</span> <span class="n">pdq</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Drop (0,1,0)
-</span>
-<span class="n">aic</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pdq</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">ARIMA</span><span class="p">(</span><span class="n">train_sample</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
-    <span class="n">model_fit</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"ARIMA : {} | AIC : {:.3f}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">model_fit</span><span class="p">.</span><span class="n">aic</span><span class="p">))</span>
-    <span class="n">aic</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_fit</span><span class="p">.</span><span class="n">aic</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.020</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">153.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">157.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.087</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.415</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">155.662</span>
-<span class="n">ARIMA</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="n">AIC</span> <span class="p">:</span> <span class="mf">156.740</span>
-<span class="p">.....</span>
-</code></pre></div></div>
-<p><br /></p>
+<p>따라서 본 논문의 Sliding Window기법을 좀더 slice하게 이용해 Real-time에 적용하는 것을 시도해볼 수 있을 것 같다.</p>
+
+<p>더하여 본 논문에선 Deep-Learning 기반 EEGNet의 성능이 더 안 좋다했지만, 정교한 Deep-Learning 기술 접목시켜볼수도 있을것 같다.</p>
+<blockquote>
+  <p>$\delta, \theta, \alpha, \beta$로 데이터 분해, RNN(LSTM), AutoEncoder, Residual block, Dense block, Inception block, attention etc</p>
+</blockquote>
 
 <h6 id="reference">Reference</h6>
 <ul>
-  <li>https://otexts.com/fppkr/non-seasonal-arima.html</li>
-  <li>https://www.researchgate.net/figure/Forecast-from-ARIMA1-0-10-1-1-with-weekly-lags_fig4_284142511</li>
+  <li>DOI: 10.1109/TIM.2021.3051996</li>
 </ul>
 
       </article>
@@ -679,7 +769,7 @@ ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Time Series">Time Series</a>
+            <a href="/tags#Brain Computer Interface">Brain Computer Interface</a>
           
         </div>
       
@@ -698,13 +788,9 @@ ARIMA 모델은 (p,d,q)의 파라미터 값을 갖습니다.</p>
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-06-08-seq2seq/" data-toggle="tooltip" data-placement="top" title="Introduce to Seq2Seq">&larr; Previous Post</a>
+          <a class="page-link" href="/2022-06-07-The-Effect-of-Multisensory-Pseudo-Haptic-Feedback-on-Perception-of-Virtual-Weight/" data-toggle="tooltip" data-placement="top" title="Review - The Effect of Multisensory Pseudo-Haptic Feedback on Perception of Virtual Weight">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-07-25-rcnn/" data-toggle="tooltip" data-placement="top" title="Introduce to R-CNN">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

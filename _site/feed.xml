@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - User-defined walking-in-place gestures for VR locomotion</title>
+        <description>
+          Walking-In-Place for VR locomotion - 
+          User-defined walking-in-place gestures for VR locomotion 논문 리뷰 ABSTRACT Locomotion은 가장 기본이되는 VR interaction이며, VR...
+        </description>
+        <pubDate>Mon, 13 Jun 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-06-13-User-defined-walking-in-place-gestures-for-VR-locomotion/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-06-13-User-defined-walking-in-place-gestures-for-VR-locomotion/</guid>
+      </item>
+    
+      <item>
         <title>Review - A Sliding Window Common Spatial Pattern for Enhancing Motor Imagery Classification in EEG-BCI</title>
         <description>
           Sliding Window Common Spatial Pattern - 
@@ -218,17 +229,6 @@
         <pubDate>Sat, 09 Oct 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-10-09-yolov3/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-10-09-yolov3/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to Faster R-CNN</title>
-        <description>
-          2-Stage Detection Model (3) - 
-          Faster R-CNN 이해하기 Faster R-CNN이란? R-CNN의 연산량 한계를 극복시킨 Fast R-CNN에서 Region Proposal부분에 Nerual Network...
-        </description>
-        <pubDate>Sun, 12 Sep 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-09-12-fasterrcnn/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-09-12-fasterrcnn/</guid>
       </item>
     
   </channel>

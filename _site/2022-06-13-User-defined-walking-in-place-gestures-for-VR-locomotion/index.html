@@ -6,18 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
+<!--$f(x) = x^2$->
   
 
   
 
-  <title>Introduce to Fast R-CNN</title>
+  
+
+  <title>Review - User-defined walking-in-place gestures for VR locomotion</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="2-Stage Detection Model (2)">
+  <meta name="description" content="Walking-In-Place for VR locomotion">
 
   
 
@@ -86,8 +112,8 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Introduce to Fast R-CNN">
-  <meta property="og:description" content="2-Stage Detection Model (2)">
+  <meta property="og:title" content="Review - User-defined walking-in-place gestures for VR locomotion">
+  <meta property="og:description" content="Walking-In-Place for VR locomotion">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -96,9 +122,9 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-09-10T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-09-10-fastrcnn/">
-  <link rel="canonical" href="http://localhost:4000/2021-09-10-fastrcnn/">
+  <meta property="og:article:published_time" content="2022-06-13T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-06-13-User-defined-walking-in-place-gestures-for-VR-locomotion/">
+  <link rel="canonical" href="http://localhost:4000/2022-06-13-User-defined-walking-in-place-gestures-for-VR-locomotion/">
   
 
   
@@ -107,8 +133,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Introduce to Fast R-CNN">
-  <meta property="twitter:description" content="2-Stage Detection Model (2)">
+  <meta property="twitter:title" content="Review - User-defined walking-in-place gestures for VR locomotion">
+  <meta property="twitter:description" content="Walking-In-Place for VR locomotion">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -501,15 +527,15 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Introduce to Fast R-CNN</h1>
+          <h1>Review - User-defined walking-in-place gestures for VR locomotion</h1>
           
             
-              <h2 class="post-subheading">2-Stage Detection Model (2)</h2>
+              <h2 class="post-subheading">Walking-In-Place for VR locomotion</h2>
             
           
 
           
-            <span class="post-meta">Posted on September 10, 2021</span>
+            <span class="post-meta">Posted on June 13, 2022</span>
             
             
           
@@ -551,51 +577,257 @@
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h1>Fast R-CNN 이해하기</h1></div>
+        <div align="center"><h2> User-defined walking-in-place gestures for VR locomotion 논문 리뷰</h2></div>
 <!--break-->
 
 <hr />
 
 <p><br /></p>
-<h2 id="fast-r-cnn이란">Fast R-CNN이란?</h2>
-<h6 id="fast-r-cnn는-이전-포스트에서-설명한-r-cnn을-속도-측면에서-큰-변화를-준-모델입니다-r-cnn은--2000개의-region-proposal들이-convolution-layer를-거쳐서-연산-속도가-굉장히-오려걸렸었습니다-반면-fast-r-cnn는-이런-r-cnn의-속도전-한계를-개선한-모델입니다--">Fast R-CNN는 이전 포스트에서 설명한 R-CNN을 속도 측면에서 큰 변화를 준 모델입니다. R-CNN은  2000개의 Region Proposal들이 Convolution Layer를 거쳐서, 연산 속도가 굉장히 오려걸렸었습니다. 반면 Fast R-CNN는 이런 R-CNN의 속도전 한계를 개선한 모델입니다. <br /> <br /></h6>
-<p><img src="https://user-images.githubusercontent.com/68190553/132810763-8c71bbce-7b8b-4cc0-8ac8-1c87f0a5174d.png" alt="fastrcnn_img_1" class="mx-auto d-block" /> <br /></p>
 
-<h3 id="2-stage-detection-model의-메커니즘-fast-r-cnn">2-Stage Detection Model의 메커니즘 (Fast R-CNN)</h3>
+<h2 id="abstract">ABSTRACT</h2>
+<p>Locomotion은 가장 기본이되는 VR interaction이며, VR Locomotion기술 중 Walking-in-place (WIP)는 실제로 걷는것과 같은 장점이 있습니다.</p>
 
+<p>하지만 대부분의 WIP gestures는 user가 아닌 개발자의 관점에서 개발되었으므로, 학습 및 암기에 대한 인지 부하가 높을 뿐만 아니라 VR에서 존재감이 악화되고 감각 충돌이 증가할 수 있습니다.</p>
+
+<p>따라서 본 연구에선 users로부터 WIP gestures를 도출해내고 평가하는 것을 목표로 합니다.</p>
+
+<h2 id="introduction">INTRODUCTION</h2>
+<p>WIP는 실제 보행보다 선호도가 낮지만, 실제 보행과 동일한 물리적 공간이 아닌 가상 공간을 위한 작은 물리적 공간이면 충분합니다.</p>
+
+<p>또한, 대부분의 경우 hand-free할뿐 아니라 실제 보행과 유사한 움직임으로 전정 및 고유 감각 신호를 제공하여 기존 조이스틱 인터페이스에 비해 더 나은 몰입감과 공간 지각을 제공합니다.</p>
+
+<p>기존의 WIP는 아래와 같은것 들이 존재합니다.</p>
 <ul>
-  <li>
-    <h4 id="1-region-proposal">1) Region Proposal<br /></h4>
-  </li>
-  <li>
-    <h4 id="2-roi-pooling-layer">2) ROI Pooling Layer<br /></h4>
-  </li>
+  <li>Stepping-in-place (SIP): 제자리를 걸어서 control</li>
+  <li>Wiping-in-place : 바닥을 쓸어서 control</li>
+  <li>Tapping-in-place : 발끝을 대고 발뒤꿈지만 들어서 control</li>
+  <li>Swing-in-place : 한발을 들고 몸을 기울여서 control</li>
+  <li>Jogging-in-place : 조깅하듯이 control</li>
+  <li>그밖에도 상체나 머리를 기울여서 control하거나 등의 방법이 존재</li>
 </ul>
 
-<h3 id="1-region-proposal-1">[1] Region Proposal</h3>
-<p><img src="https://user-images.githubusercontent.com/68190553/126890169-48412ad9-8ffb-4d51-b73f-f988e70492bd.png" alt="rcnn_img_2" class="mx-auto d-block" /> <br /></p>
-<h6 id="기존-r-cnn과-fast-r-cnn의-차이점은-어떻게-region-proposal을-해줄-것이냐-입니다--">기존 R-CNN과 Fast R-CNN의 차이점은 ‘어떻게 Region Proposal을 해줄 것이냐?’ 입니다. <br /> <br /></h6>
-<h6 id="위에서-언급한것-처럼-r-cnn은--그-이미지를-동일한-사이즈의-크기로-resize해준-후-cnn-model에-입력으로-넣고-지역을-분류와-bounding-box를-예측합니다---">위에서 언급한것 처럼 R-CNN은 , 그 이미지를 동일한 사이즈의 크기로 Resize해준 후, CNN Model에 입력으로 넣고 지역을 분류와 Bounding Box를 예측합니다.  <br /> <br /></h6>
+<p>하지만 이외의 다양한 방향을 포함하여 서 있는 동안의 WIP gestures를 유도한 연구는 없습니다.<br />
+또한 user가 앞으로 걷기에 step같은 WIP gestures를 선호하는지 의심스러우며, 옆, 뒤 걷기에 자연스럽고 사용하기 쉬운 gestures는 아직 알려지지 않았습니다.</p>
 
-<p><strong>그렇다면 Fast R-CNN은 어떨까요?</strong> <br /> <br />
-<img src="https://user-images.githubusercontent.com/68190553/132815941-16b7578c-f6dc-4f0c-881b-dcbed34e8c1f.png" alt="fastrcnn_img_2" class="mx-auto d-block" /> <br /></p>
-<h6 id="먼저-2000개의-region-proposal를-먼저-추천받는-것은-기존-r-cnn모델과-동일합니다-하지만-cnn-model엔-1장의-이미지가-들어가며-feature-map이-출력됩니다--">먼저 2000개의 Region Proposal를 먼저 추천받는 것은 기존 R-CNN모델과 동일합니다. 하지만 CNN Model엔 1장의 이미지가 들어가며, Feature map이 출력됩니다. <br /> <br /></h6>
-<h6 id="이후-출력된-feature-map에서-추천받았던-2000개의-region-proposal의--crop합니다--">이후 출력된 Feature map에서 추천받았던 2000개의 Region Proposal의  Crop합니다. <br /> <br /></h6>
+<p>따라서 본 연구는 user의 관점에서 앞, 옆, 뒤로 걷는 전체 방향을 포괄하는 완전한 WIP gestures 세트를 생성하는 것을 목표로 합니다. user가 도출해낸 gestures를 수집, 그룹화 및 평가합니다.</p>
 
-<h5 id="기존-r-cnn은-2000개의-이미지가--cnn-model에-입력되어-연산이-오래걸린-반면-fast-r-cnn은-1장의-이미지가-cnn-model에-입력되어-엄청나게-많은-연산을-줄여줍니다"><strong>기존 R-CNN은 2000개의 이미지가  CNN Model에 입력되어 연산이 오래걸린 반면, Fast R-CNN은 1장의 이미지가 CNN Model에 입력되어 엄청나게 많은 연산을 줄여줍니다!</strong></h5>
+<h2 id="experiment-1-elicitation-of-wip-gestures-for-vr-locomotion">Experiment 1: Elicitation of WIP gestures for VR locomotion</h2>
+<h3 id="21-method">2.1. Method</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/172992731-815a4ab7-74b5-4dd0-959b-16556195935d.png" width="80%" />
+</div>
 
-<h4 id="2-roi-pooling-layer-1">[2] ROI Pooling Layer</h4>
-<h6 id="다음은-roi-pooling-layer에-대한-설명입니다-맨-처음-업로드한-fast-r-cnn의-architecture이미지를-보시면-region-proposal부분-이후에-해당하는-layer입니다-">다음은 ROI Pooling Layer에 대한 설명입니다. 맨 처음 업로드한 Fast R-CNN의 Architecture이미지를 보시면 Region Proposal부분 이후에 해당하는 Layer입니다. <br /></h6>
+<p>실험의 모든 commands는 얼굴이 항상 정면을 향하고 가상 환경에서 해당 방향으로 걷는 것을 나타냅니다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/132814386-656475f7-c6f4-4674-9c89-00caab26c7d9.png" alt="fastrcnn_img_3" class="mx-auto d-block" /> <br /></p>
-<h6 id="우리는-region-proposal에서-feature-map에서-추천받았던-2000개의-region-proposal의--crop했습니다-하지만-region-proposal는-사이즈의-크기가-다르기-떄문에-crop을-한다고해도-2000개마다-사이즈가-전부-다를-것입니다--">우리는 Region Proposal에서 Feature map에서 추천받았던 2000개의 Region Proposal의  Crop했습니다. 하지만 Region Proposal는 사이즈의 크기가 다르기 떄문에, Crop을 한다고해도 2000개마다 사이즈가 전부 다를 것입니다. <br /> <br /></h6>
-<h6 id="roi-pooling-layer에서-이미지를-7x7등분-해줌으로써-모든--region-proposal을-같은-크기로-만들어주고-이후-fully-connected-layer에-넣어줄-것입니다-그렇다면-각각-사이즈가-다른-region-proposal의-문제를-해결할-수-있습니다--">ROI Pooling Layer에서 이미지를 7x7등분 해줌으로써 모든  Region Proposal을 같은 크기로 만들어주고, 이후 Fully Connected Layer에 넣어줄 것입니다. 그렇다면 각각 사이즈가 다른 Region Proposal의 문제를 해결할 수 있습니다. <br /> <br /></h6>
+<p>실험은 2가지 순서로 진행됩니다.</p>
+<ol>
+  <li>user가 직접 WIP gestures를 도출하는 실험</li>
+  <li>기존에 존재하는 WIP gestures 방식 3가지(Tapping-in-place / Jogging-in-place / Swing-in-place)를 실험하고 0~7점까지 점수 부여</li>
+</ol>
+
+<h4 id="procedure">Procedure</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173000926-62e9ebda-0e07-4a4b-875d-f58e397ac12a.png" width="100%" />
+</div>
+<blockquote>
+  <p>Reference Video: https://vimeo.com/527773000</p>
+</blockquote>
+
+<p>먼저, 참가자들에게 VR 헤드셋을 가슴 앞에 대고 8방향으로 각각 3보씩 2회 걷게 하고, 두 번째 시도에서의 보행 속도는 VR 헤드셋의 위치 추적으로 측정합니다.</p>
+
+<p>이후 참가자들은 VR 헤드셋을 착용하고 무작위 순서로 3초 동안 8가지 명령을 각각 도출합니다. 앞서 측정한 속도에 따라 보행 속도를 설정하여 WIP gestures 유도 시 자연스러운 느낌을 제공했습니다.</p>
+
+<p>WIP gestures가 완료되면 센서 카메라로 gestures를 기록하고 디자인 이유 및 보행 속도를 높이는 방법에 대한 구두 설명도 함께 기록합니다.</p>
+
+<p>마지막으로, 참가자들은 명령을 표시하는 동안 3-4회 걷기 주기 동안 세 가지 기존의 WIP gestures 각각을 수행합니다.<br />
+각 gestures를 두 번 수행한 직후 참가자들은 3가지 주관적 평가 항목인 7point Likert 척도(1=매우 동의하지 않음, 7=매우 동의함)로 평가하도록 요청받았습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173268477-06c3c502-83ce-48bd-9558-d744176b01d4.png" width="60%" />
+</div>
+<blockquote>
+  <p>Wizard of Oz technique 란? 실제로 구현되는 것이 아닌 상황을 보고 pilot이 직접 작동시키는 방식</p>
+</blockquote>
+
+<p>VR에서의 움직임은 Wizard of Oz technique로 구현됩니다.</p>
+
+<h4 id="data-analysis">Data analysis</h4>
+<p>20명의 참가자가 8 commands를 수행해 총 160 WIP gestures 데이터를 수집했습니다.</p>
+
+<p>유도된 gestures는 먼저 direction과 movement 두 가지 구성요소로 분해하였고, gestures의 움직임 특성과 영상에 기록된 참여자의 구두설명을 고려하여 그룹화합니다.<br />
+그런 다음 각 명령에 대해 일치율(AR)을 계산하여 다양한 참가자로부터 도출된 gestures 간의 일치 정도를 평가했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/172996771-5c60317f-9928-4cc0-9676-6cc6c7e7295f.png" width="50%" />
+</div>
+<blockquote>
+  <p>$P$ : c에 대해 유도된 gestures의 총 수<br />
+$P_{i}$ : P에서 동일한 gestures의 하위 집합 i의 수</p>
+</blockquote>
+
+<ul>
+  <li>AR &lt; 0.1일 때 일치</li>
+  <li>0.1 ≤ AR &lt; 0.3일 때 중간 일치</li>
+  <li>0.3 ≤ AR &lt; 0.5일 때 높은 일치</li>
+  <li>AR ≥ 0.5일 때 매우 높은 일치</li>
+</ul>
+
+<p>기존에 존재했던 gestures 3가지는 ANOVA와 post hoc Tukey tests을 통해 비교됐습니다.</p>
+
+<h3 id="22-results">2.2 Results</h3>
+<h4 id="grouping-results-and-gestures-characteristics">Grouping results and gestures characteristics</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173000201-1bc4eff1-7f81-44cf-992e-18bb04045bfb.png" width="100%" />
+</div>
+<p>Table 1의 표와 같이 direction은 8개의 group, movement는 14개의 group이 도출되었습니다.</p>
+
+<p>direction 중엔 Turn body, Step one foot<br />
+movement의 경우 SIP, Rock, Stay가 우세적이었습니다.</p>
+
+<p>디자인 이유에 따르면 참가자의 50%는 실제 걷는 것과 유사한 느낌을 주기 위해 동작 특성을 가장 많이 모방하고, 35%는 특정 방향으로 움직이는 느낌을 더 중시한다고 설명했습니다. 나머지는 gestures를 수행할 때 편안함을 극대화하는 것을 고려했다고 합니다.</p>
+
+<h4 id="comparison-between-existing-gestures">Comparison between existing gestures</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173000870-6fbc689d-4ed7-4e9c-b033-fa5b686dd8c4.png" width="80%" />
+</div>
+<p>Tapping-in-place gestures가 goodness of fit, ease of use, perceived fatigue 부분에서 outperform 했습니다.</p>
+
+<h3 id="23-discussion">2.3 Discussion</h3>
+
+<p>direction는 대부분의 경우(80%) 참가자가 몸을 돌리거나 해당 방향으로 한 발을 내디뎠습니다.</p>
+
+<p>Turn body는 전후방향으로 방향을 나타내기 위해 한 발보다 많이 선택되었고, 옆으로(±45º, ±90º, ±135º) 방향에서는 반대였습니다.<br />
+90º 방향에서 더 많은 참가자가 몸을 90º로 돌리는 것보다 먼저 가까운 발을 들어 다른 쪽 발보다 높게 만들어 방향을 표시하는 것을 선호했습니다.</p>
+<blockquote>
+  <p>사람의 목은 80º까지 움직이는게 가능하기 때문에 자연스럽게 몸을 돌리는 것은 불편을 초래함</p>
+</blockquote>
+
+<p>movement의 경우 흔히알려진  SIP gestures가 가장 우세했습니다.<br />
+한 가지 흥미로운 점은 0º 이외의 방향에서 SIP gestures를 사용하는 경향이 있다는 것입니다.</p>
+<blockquote>
+  <p>참가자가 지식과 경험을 새로운 지식과 경험으로 다양한 gestures를 시도한다는 것</p>
+</blockquote>
+
+<p>모든 gestures를 조사하는 대신 평균 2명 이상의 참가자가 제안한 gestures가 선택되었으며, 독특하게 디자인된 인기 없는 gestures는 더 나은 학습성과 기억 가능성을 위해 제외되었습니다.</p>
+
+<p>추가로 existing gestures에서 가장 효과적이었던 Tapping-in-place gestures가 함께 조사되어집니다.</p>
+
+<p>따라서 실험 2에서 아래의 WIP가 조사되어질 예정입니다.</p>
+<ul>
+  <li>Turn body + SIP (TSIP)</li>
+  <li>Step one foot + SIP (SSIP)</li>
+  <li>Step one foot + Rock (Rock)</li>
+  <li>Step one foot + Stay (Stay)</li>
+  <li>Exist (TIP)</li>
+</ul>
+
+<h2 id="experiment-2-follow-up-evaluation-of-user-elicited-and-existing-gestures-sets">Experiment 2: Follow-up evaluation of user-elicited and existing gestures sets</h2>
+<h3 id="31-method">3.1. Method</h3>
+<h4 id="experimental-settings-and-procedure">Experimental settings and procedure</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173268794-9ba1f1eb-8507-4eb9-91f0-254a9892b0d7.png" width="100%" />
+</div>
+<blockquote>
+  <p>Reference Video: https://vimeo.com/469634346</p>
+</blockquote>
+
+<p>실험 세팅을 실험 1의 환경과 같게 구축했으며, 이동 속도의 경우 실험 1의 참가자들의 평균 이동속도를 사용했습니다.</p>
+
+<p>먼저 참가자에게 실험 1에서 도출된 5가지 WIP를 video와 설명을 통해 이해시킵니다. 이후 gestures의 평가과정은 실험 1과 같게 진행됩니다.</p>
+
+<p>실험 2에서 추가된 점은 gestures를 수행하기 전 / 후의 위치를 측정해 분석한다는 점입니다.</p>
+
+<h4 id="data-analysis-1">Data analysis</h4>
+<p>주관적인 평가 항목의 등급과 gestures 및 방향의 positional drift를 수집하여 통계적 분석을 위해 정리했습니다.</p>
+
+<p>outlier를 찾기위해 Grubbs’ outlier test로 검증하고 outlier가 존재할 경우 제외시켰습니다.<br />
+Ryan-Joiner test를 통해 normality(정상상태)를 검증하고 정규분포를 따르지 않을 경우 ANOVA, Tukey post hoc grouping tests로 검증했습니다.</p>
+
+<h3 id="32-results">3.2. Results</h3>
+<h4 id="subjective-evaluation-and-preference">Subjective evaluation and preference</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173269695-442231ca-22ca-44e1-8281-6a8ed1a8f3ba.png" width="100%" />
+</div>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173270256-b593a2db-fda9-4c44-8baf-1038a95c5509.png" width="50%" />
+</div>
+<blockquote>
+  <p>각 방향에서 가장 선호하는 gestures의 빈도</p>
+</blockquote>
+
+<h4 id="positional-drift">Positional drift</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173286803-83f5770d-a81f-40f2-9cba-77ac6573473e.png" width="100%" />
+</div>
+
+<p>모든 경우에 평균 위치 편차는 0.03m에서 0.10m 사이였습니다.</p>
+
+<p>TSIP 및 SSIP의 Positional drift가 Rock과 Stay의 Positional drift보다 더 큰 패턴이 발견되었습니다.</p>
+
+<h3 id="33-discussion">3.3. Discussion</h3>
+<h4 id="forward-walking">forward walking</h4>
+<p>walking (0◦)의 경우 TSIP이 subjective evaluation과 overall preference에서 좋은 성능을 보였습니다.</p>
+
+<p>이전 연구에서 SIP는 Tapping-in-place에 비해 신체적 제약이 더 높았던 반면,<br />
+본 연구에선 Exist(Tapping-in-place)가 TSIP에 비해 적합성이 낮습니다. <br />
+또한 피로, 자연스러움에서 유의한 차이가 발견되지 않았으며, 이에 관해 아래와 같은 요소들이 원인임을 추정합니다.</p>
+<ol>
+  <li>기술 구현의 차이 (본 연구는 Wizard of Oz technique 적용)</li>
+  <li>움직이는 횟수의 차이 (본 연구는 각 방향당 6~8번 움직임)</li>
+</ol>
+
+<p>따라서, 더 긴 보행에서 Tapping-in-place를 적절하게 구현하면 SIP에 비해 동등한 적합성과 낮은 피로를 유도할 수 있다고 주장할 수 있습니다.</p>
+
+<h4 id="sideways-and-backward-walking">sideways and backward walking</h4>
+<p>sideways, backward walking의 경우는 Rock과 Stay가 ease of use, perceived fatigue 부분에서 좋은 성능을 보였습니다.</p>
+
+<p>Stay는 주관적인 평가들의 결과에 따라 가장 좋은 gestures로 여겨질 수 있으며 편안하고 쉽기때문에, intense shooting, adventure, role-playing, gameplay scenarios와 같은 domain에 적용될 수 있습니다.</p>
+
+<p>반면 Rock은 강한 몰입감을 주는 SSIP와 편안함을 제공하는 Stay의 장점을 갖기에 가장 많은 참가자들이 선호했습니다.</p>
+
+<p>특히 Stay보다 Rock, SSIP가 더 많이 선호된다는 결과로, 이는 실험 1의 결과에서 참가자의 85%가 실제 보행과 유사한 느낌을 얻는 것을 강조한 결과와 반면 15%가 gestures를 유도할 때 편안함에 초점을 둔 결과와 일치합니다.</p>
+
+<p>따라서, 현실감과 생생함이 참가자들이 VR 이동을 위한 gestures를 선택하는 중요한 요소라고 결론지을 수 있습니다.</p>
+
+<h4 id="design-implications">Design implications</h4>
+<ul>
+  <li>SSIP는 현실감을 극대화하거나 어느 정도의 운동효과를 일으키기에 가장 적합한 선택이 될 것입니다.</li>
+  <li>사용자가 장기간 편안하게 가상 환경을 탐색해야 하는 상황에서는 Stay가 최선의 선택이 될 수 있습니다.</li>
+  <li>일반적으로 Rock은 효율성과 자연스러움 사이의 균형을 유지하면서 최상의 절충안으로 작용할 수 있습니다.</li>
+  <li>또한, 앞으로 걷기를 위한 gestures는 가장 좋은 결과를 보였던 SIP gestures로 교체하는 것이 좋지만 이는 혼란으르 초래할 수 있습니다.</li>
+</ul>
+
+<h2 id="limitations-and-future-work">Limitations and future work</h2>
+<p>이 연구에는 몇 가지 제한 사항이 있습니다.</p>
+<ol>
+  <li>본 연구는 freehand gestures에 대한 문화적 bias가 존재할 수 있습니다. 따라서 한국인이 아닌 사람에게 일반화될지는 의문입니다.</li>
+  <li>Wizard of Oz technique을 기반으로 gestures를 평가했습니다. 따라서 gestures를 식별하는 기술들에 문제가 있을 수 있습니다.</li>
+</ol>
+
+<p>이후의 연구를 통해 표준화된 테스트에서 보다 현실적이고 장기적인 사용 사례에 따라 제안된 gestures를 검증하여 존재 및 멀미를 포함한 VR 관련 측면을 조사할 수 있습니다.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>먼저 사용자로부터 8개의 보행 방향(0◦, ±45◦, ±90◦, ±135◦, 180◦)으로 VR 이동을 위한 WIP gestures를 유도했습니다.
+grouping 분석을 기반으로 Turn body + SIP, Step one foot + SIP/Rock/Stay WIP gestures를 선택하고 평가했습니다.</p>
+
+<p>SIP는 직진에 좋은 성능을 보였고, Step one foot + SIP/Rock/Stay의 경우 효율성과 자연스러움 사이의 tradeoff한 다른 보행 방향에 대해 유망했습니다.</p>
+
+<p>이러한 연구 결과는 user로부터 유도된 WIP gestures를 응용하여 VR locomotion에 더 나은 UX와 더 나은 이동 옵션을 제공할 수 있음을 시사했습니다.</p>
 
 <hr />
 
-<h3 id="fast-r-cnn의-발전">Fast R-CNN의 발전</h3>
-<h6 id="fast-r-cnn은-기존-r-cnn보다-훨씬-빨라졌지만-여전히-2000개의-영역을-추천받는데-시간이-걸립니다-우리는-이-후--region-proposal-영역-조차-neural-network-구조로-만들어-fast-r-cnn에-region-proposal-networkrpn을-적용할-것입니다--">Fast R-CNN은 기존 R-CNN보다 훨씬 빨라졌지만, 여전히 2000개의 영역을 추천받는데 시간이 걸립니다. 우리는 이 후  Region Proposal 영역 조차 Neural Network 구조로 만들어, Fast R-CNN에 Region Proposal Network(RPN)을 적용할 것입니다. <br /> <br /></h6>
-<h6 id="이-모델의-이름은-faster-r-cnn이며-다음-포스트에서-다뤄보겠습니다">이 모델의 이름은 Faster R-CNN이며, 다음 포스트에서 다뤄보겠습니다.</h6>
+<h2 id="고찰">고찰</h2>
+<p>BCI와 접목한다면 딥러닝과 함께 4방향+sigmoid or 8방향+softmax등을 이용해 Motor Intention 부분을 연구할 수 있을 것 같다.</p>
+<blockquote>
+  <p>4방향+sigmoid (eg. 상,좌일 확률이 각각 50% 이상일 경우 좌상단으로 이동)</p>
+</blockquote>
+
+<p>하지만 이 경우, 정면을 향해서만 이동하기 때문에 Motor Imagery(binary classification)를 이용해 얼굴 방향으로 몸을 회전시키는 연구도 고려해볼 수 있을 것 같다.</p>
+
+<h6 id="reference">Reference</h6>
+<ul>
+  <li>DOI: 10.1016/j.ijhcs.2021.102648</li>
+</ul>
 
       </article>
 
@@ -603,9 +835,7 @@
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Computer Vision">Computer Vision</a>
-          
-            <a href="/tags#Object Detection">Object Detection</a>
+            <a href="/tags#Virtual Reality">Virtual Reality</a>
           
         </div>
       
@@ -624,13 +854,9 @@
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-07-25-rcnn/" data-toggle="tooltip" data-placement="top" title="Introduce to R-CNN">&larr; Previous Post</a>
+          <a class="page-link" href="/2022-06-08-A-Sliding-Window-Common-Spatial-Pattern-for-Enhancing-Motor-Imagery-Classification-in-EEG-BCI/" data-toggle="tooltip" data-placement="top" title="Review - A Sliding Window Common Spatial Pattern for Enhancing Motor Imagery Classification in EEG-BCI">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-09-12-fasterrcnn/" data-toggle="tooltip" data-placement="top" title="Introduce to Faster R-CNN">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

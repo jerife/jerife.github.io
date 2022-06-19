@@ -172,11 +172,11 @@ tracking 이 제안되었으며 기존의 asynchronous system보다 더 나은 a
 ---
 
 ## 고찰
-eye-gaze를 VR locomotion에 적용해본다면, EEG data뿐아니라 eye-gaze data를 이용한 multi-modality를 사용해 VR에서의 이동을 classification할 수 있을 것입니다.
+eye-gaze를 VR locomotion에 적용해본다면, EEG data뿐아니라 eye-gaze data를 이용한 multi-modality를 사용해 VR에서의 이동을 classification할 수 있을 것이다.
 
-또한 VR에서 이동할때 몸통을 얼굴의 정면방향으로 움직이는(도는) 방법을 multi-modality를 적용한 MI task로도 시도해볼 수 있습니다.
+또한 VR에서 이동할때 몸통을 얼굴의 정면방향으로 움직이는(도는) 방법을 multi-modality를 적용한 MI task로도 시도해볼 수 있다.
 
-뿐만 아니라 사람들이 몸통을 돌릴때의 눈의 변화를 관측하여 그에 맞는 task를 적용해 classification할 수 있을 것 같습니다.
+뿐만 아니라 사람들이 몸통을 돌릴때의 눈의 변화를 관측하여 그에 맞는 task를 적용해 classification할 수 있을 것 같다.
 > 본 논문에선 sliding window를 이용해 눈의 움직임의 변화와 threshold로 trigger를 판단했음
 
 ###### Reference

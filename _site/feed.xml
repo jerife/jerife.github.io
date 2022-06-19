@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment</title>
+        <description>
+          BCI combined with eye-tracking in virtual environment - 
+          An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment 논문 리뷰 Introduction...
+        </description>
+        <pubDate>Wed, 15 Jun 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-06-15-An-autonomous-hybrid-brain-computer-interface-system-combined-with-eye-tracking-in-virtual-environment/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-06-15-An-autonomous-hybrid-brain-computer-interface-system-combined-with-eye-tracking-in-virtual-environment/</guid>
+      </item>
+    
+      <item>
         <title>Review - User-defined walking-in-place gestures for VR locomotion</title>
         <description>
           Walking-In-Place for VR locomotion - 
@@ -218,17 +229,6 @@
         <pubDate>Thu, 28 Oct 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-10-28-efficientnet/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-10-28-efficientnet/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to Yolo v3</title>
-        <description>
-          1-Stage Detection Model - 
-          Yolo v3 이해하기 YOLO란? YOLO는 이전 포스팅인 2-stage 모델인 Faster RCNN과 다르게 대표적인 1-stage Object...
-        </description>
-        <pubDate>Sat, 09 Oct 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-10-09-yolov3/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-10-09-yolov3/</guid>
       </item>
     
   </channel>

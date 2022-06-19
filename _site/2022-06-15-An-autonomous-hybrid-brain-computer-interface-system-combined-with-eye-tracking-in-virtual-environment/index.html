@@ -6,18 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
+<!--$f(x) = x^2$->
   
 
   
 
-  <title>To start blog with Github</title>
+  
+
+  <title>Review - An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="블로그 시작">
+  <meta name="description" content="BCI combined with eye-tracking in virtual environment">
 
   
 
@@ -86,8 +112,8 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="To start blog with Github">
-  <meta property="og:description" content="블로그 시작">
+  <meta property="og:title" content="Review - An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment">
+  <meta property="og:description" content="BCI combined with eye-tracking in virtual environment">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -96,9 +122,9 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-04-27T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-04-27-first/">
-  <link rel="canonical" href="http://localhost:4000/2021-04-27-first/">
+  <meta property="og:article:published_time" content="2022-06-15T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-06-15-An-autonomous-hybrid-brain-computer-interface-system-combined-with-eye-tracking-in-virtual-environment/">
+  <link rel="canonical" href="http://localhost:4000/2022-06-15-An-autonomous-hybrid-brain-computer-interface-system-combined-with-eye-tracking-in-virtual-environment/">
   
 
   
@@ -107,8 +133,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="To start blog with Github">
-  <meta property="twitter:description" content="블로그 시작">
+  <meta property="twitter:title" content="Review - An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment">
+  <meta property="twitter:description" content="BCI combined with eye-tracking in virtual environment">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -508,15 +534,15 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>To start blog with Github</h1>
+          <h1>Review - An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment</h1>
           
             
-              <h2 class="post-subheading">블로그 시작</h2>
+              <h2 class="post-subheading">BCI combined with eye-tracking in virtual environment</h2>
             
           
 
           
-            <span class="post-meta">Posted on April 27, 2021</span>
+            <span class="post-meta">Posted on June 15, 2022</span>
             
             
           
@@ -558,31 +584,196 @@
       
 
       <article role="main" class="blog-post">
-        <h1 id="블로그-시작을-알리며-">블로그 시작을 알리며, <!--break--></h1>
-<h6 id="이-블로그는-인공지능-관련-지식-공유와-기록을-목적으로-한-블로그로써-인공지능-모델-및-기법등에-대해-리뷰하고-학습하고자하는-블로그입니다-">이 블로그는 인공지능 관련 지식 공유와 기록을 목적으로 한 블로그로써, 인공지능 모델 및 기법등에 대해 리뷰하고 학습하고자하는 블로그입니다.<br /> <br /></h6>
-<h6 id="아직-깊은-지식이-있진-않지만-꾸준한-공부를-통해-블로그의-성장과-동시에-넓혀가는-지식들로-방문해주시는-분들께-도움을-드릴-수-있는-블로그가-될것입니다--">아직 깊은 지식이 있진 않지만, 꾸준한 공부를 통해 블로그의 성장과 동시에 넓혀가는 지식들로 방문해주시는 분들께 도움을 드릴 수 있는 블로그가 될것입니다🌈 <br /> <br /></h6>
+        <div align="center"><h2> An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment 논문 리뷰</h2></div>
+<!--break-->
 
 <hr />
-<h2 id="소개">소개</h2>
-<h6 id="안녕하세요-저는-인공지능을-공부하는-대학생입니다--전공은-정보통신전자공학부이며-현재-관심분야는-computer-vision--nlp-등-비정형-데이터에-대한-관심이-많습니다-">안녕하세요. 저는 인공지능을 공부하는 대학생입니다 :) 전공은 정보통신전자공학부이며, 현재 관심분야는 Computer Vision / NLP 등 비정형 데이터에 대한 관심이 많습니다. <br /></h6>
-<h6 id="처음-머신러닝을-통해-정형데이터를-다루는-것에-흥미를-느꼈지만-가시적인-결과가-도출되는-이미지-처리--문자-처리등에-더욱-매력을-느꼈던-것-같습니다-결국-이런-흥미들이-블로그를-통해-기록하고-나누자는-취지까지-이어졌습니다-">처음 머신러닝을 통해 정형데이터를 다루는 것에 흥미를 느꼈지만, 가시적인 결과가 도출되는 이미지 처리 / 문자 처리등에 더욱 매력을 느꼈던 것 같습니다. 결국 이런 흥미들이 블로그를 통해 기록하고 나누자는 취지까지 이어졌습니다!<br /> <br /></h6>
 
-<h6 id="혼자서-딥러닝-대해서-공부-할때면-막히는-부분도-분명히-많고-매번-같은-내용과-비슷한-내용의-모델들을-또-검색하고-찾아보는-일들에-지치기도-했습니다--">혼자서 딥러닝 대해서 공부 할때면 막히는 부분도 분명히 많고, 매번 같은 내용과 비슷한 내용의 모델들을 또 검색하고 찾아보는 일들에 지치기도 했습니다. <br /> <br /></h6>
-<h6 id="하지만-모델들을-이해하는-과정은-내용이-겹칠만큼-중요한-것이라-생각하며-때문에-모델들을-분석하고-이를-게시글로-작성하며-완벽하게-공부하고-이해하려합니다-글을-작성한다는-것은-단순히-기록하고-나눈다는-것을-넘어-그만큼-정확하고-신뢰성있어야-하기에-글을-게시하기까지-저-또한-깊게-공부하고-이해하는-과정을-거칠것입니다--">하지만 모델들을 이해하는 과정은 내용이 겹칠만큼 중요한 것이라 생각하며, 때문에 모델들을 분석하고 이를 게시글로 작성하며 완벽하게 공부하고 이해하려합니다. 글을 작성한다는 것은 단순히 기록하고 나눈다는 것을 넘어, 그만큼 정확하고 신뢰성있어야 하기에 글을 게시하기까지 저 또한 깊게 공부하고 이해하는 과정을 거칠것입니다. <br /> <br /></h6>
+<p><br /></p>
 
-<h2 id="방향">방향</h2>
+<h2 id="introduction">Introduction</h2>
+<p>전통적인 BCI 시스템은 실제 적용에 몇 가지 결함이 있으며 유연성, 견고성 및 성능의 개선이 필요합니다.</p>
+
+<p>최근엔 여러 생체신호를 결합하는 연구가 좋은 성능을 보여주어 주목을 끌고 있습니다.<br />
+특히 이전의 eye tracking과 EEG가 결합된 hybrid BCI systems은 EEG data와 eye tracking data가 synchronous하게 수집되었습니다.</p>
+
+<p>위처럼 synchronous한 시스템은 높은 ITR과 간단한 디자인을 갖지만, 시스템이 지속적으로 지시를 내려야 하고 사용자의 조작 시간이 엄격하게 제한됩니다.</p>
+
+<p>따라서 본 연구는 조작 제어, 이동 등과 같은 가상 환경에서의 제어 작업을 위해 eye tracking과 SSVEP가 결합된 multi-modality asynchronous hybrid BCI system을 개발하는 것을 목표로 합니다.</p>
+
+<ol>
+  <li>sliding window 방식을 활용하여 시선 데이터의 변화(분산)를 분석하고 대상을 인식합니다.
+(user는 자율적으로 작업을 수행하기 위해 시선을 조정할 수 있습니다.)</li>
+  <li>EEG와 시선 데이터를 결합하기 위해 particle swarm optimization (PSO) fusion 방법이 제안됩니다.</li>
+</ol>
+
+<h2 id="methods">Methods</h2>
+<h3 id="a-autonomous-hybrid-brain-computer-interface-control-system">A. Autonomous hybrid brain-computer interface control system</h3>
+<p>데이터는 아래의 기기로 수집됩니다.</p>
 <ul>
-  <li>
-    <h6 id="이미지-처리-모델-cnn-vgg16-resnet-등">이미지 처리 모델 (CNN, VGG16, ResNet 등..)</h6>
-  </li>
-  <li>
-    <h6 id="언어-처리-모델-rnn-lstm-gru-등">언어 처리 모델 (RNN, LSTM, GRU 등..)</h6>
-  </li>
+  <li>EEG data 수집 기기 : wireless 8-channel Neuracle amplifier</li>
+  <li>Eye gaze 수집 기기 : eye-tracking module: aGlass DKII</li>
 </ul>
 
-<h6 id="일단은-크게-두가지를-중심으로-공부하고-글로-옮길-계획에-있습니다-주로-이론에-대한-글들이을-작성될-예정이며-코드가-필요한-경우-tensorflow-pytorch등의-딥러닝프레임워크를-통해-작성할-예정입니다-">일단은 크게 두가지를 중심으로 공부하고 글로 옮길 계획에 있습니다. 주로 이론에 대한 글들이을 작성될 예정이며, 코드가 필요한 경우 tensorflow, pytorch등의 딥러닝프레임워크를 통해 작성할 예정입니다. <br /></h6>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173763050-2fd67594-8d18-417a-a727-71ecbf814fbd.png" width="100%" />
+</div>
+<p>수집된 데이터는 preprocessing 과정을 거친 후, features extraction 되어 분류됩니다.<br />
+마지막으로 분류 결과는 VR기기를 통해 GUI로 피드백됩니다.</p>
 
-<h6 id="긴-글-읽어주셔서-감사하며-꾸준하고-유익한-블로그로-발전시킬-수-있도록-하겠습니다-️">긴 글 읽어주셔서 감사하며, 꾸준하고 유익한 블로그로 발전시킬 수 있도록 하겠습니다 :)🙇🏻‍♂️</h6>
+<h3 id="b-autonomous-eye-gaze-control-and-eegeye-gaze-fusion">B. Autonomous eye-gaze control and EEG/eye-gaze fusion</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/173763458-fcf2247d-5ef7-4075-b088-a8f8d55691e6.png" width="100%" />
+</div>
+<blockquote>
+  <p>procedure of the autonomous control and dual-modality fusion of EEG and eye-gaze</p>
+</blockquote>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174251216-b4ec6510-790a-4a9b-8dab-00c3b1c868ad.png" width="60%" />
+</div>
+<p>먼저 실험이 시작되면 참가자는 “1” box를 2.5초간 응시합니다. 이 데이터는 eye-gaze의 변화의 threshold를 계산하기 위해 사용됩니다.</p>
+
+<p>참가자의 eye-gaze features를 분석하기위해 sliding window가 사용되었습니다.</p>
+<blockquote>
+  <p>eye-gaze features는 양쪽 눈에 해당하는 X,Y값의 평균과 분산을 포함함.</p>
+</blockquote>
+
+<p>eye-gaze의 변화(분산)가 threshold보다 작고 참가자의 eye-gaze가 자극지역에 있을 경우 BCI system은 working state가 됩니다.<br />
+target recognition이 시작되고 시스템은 짧은 소리 신호와 함께 데이터가 수집, 분석되며 2.5초 후에 마찬가지로 짧은 소리 신호와 함께 수집이 끝났다고 인지시켜줍니다.</p>
+
+<p>만약 자극 위치로부터 참가자의 eye-gaze point가 멀리있거나 eye-gaze가 수집되지 않거나 eye-gaze의 variance가 threshold보다 크다면 BCI system는 idle state가 됩니다.<br /></p>
+<blockquote>
+  <p>idle state동안엔 BCI system는 분석하지 않고 결과를 내지 않습니다.</p>
+</blockquote>
+
+<h3 id="c-data-acquisition">C. Data acquisition</h3>
+<p>wireless EEG cap으로 PO5, PO3, POZ, PO4, PO6, O1, OZ, O2와 기준이될 PZ 신호가 1000Hz로 수집되었습니다.</p>
+
+<p>eye-gaze data는 aGlass SDK를 통해 2차원 position으로 수집되었으며, 120Hz로 샘플링되었습니다.</p>
+
+<h3 id="d-ssvep-paradigm">D. SSVEP paradigm</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174258725-8017c0b3-6d91-4490-be6d-c174bf3a9f46.png" width="60%" />
+</div>
+<p>자극 interface는 10개의 flicker box로 구성되었으며, 0.5 Hz 차이를 기준으로 각각 8~12.5 Hz로 깜박입니다.</p>
+
+<h3 id="e-experimental-procedures">E. Experimental procedures</h3>
+<p>실험은 5 session을 포함하며 각 session은 calibration block과 7 test block을 포함합니다.</p>
+
+<h4 id="calibration-block">Calibration block</h4>
+<p>calibration block에선 자극이 flicker되지 않습니다.
+참가자는 1~10의 번호 box를 순서대로 응시하고</p>
+
+<p>eye-gaze data는 classification의 parameters를 위해 계산되며 classification의 parameters는 7 test blocks에서 사용됩니다.</p>
+
+<p>각 번호 box에 대해 sliding window 방식으로 계산된 eye-gaze 데이터의 변화(분산)가 임계값보다 작을 때 대상이 안정적으로 숫자를 응시하고 있음을 나타냅니다.</p>
+
+<h4 id="test-block">Test block</h4>
+<p>Test block에선 1~10 box를 (순서대로 or 역순으로) 식별하는 실험(7 block)이 진행됩니다. 각 block은 10번의 trial을 포함합니다.</p>
+
+<h3 id="f-data-preprocessing">F. Data preprocessing</h3>
+<p>EEG epochs은 pre-trigger 1s ~ post-trigger 2.5s로 추출되었습니다. <br />
+[6 ~ 40 Hz], [14 ~ 40 Hz], [22 ~ 40 Hz]의 multiple band-pass filters가 적용되었습니다.<br />
+눈을 깜박이거나 감고 있어서 발생한 zero / null 값은 제거되었습니다.</p>
+
+<h3 id="g-feature-extraction-of-eeg-data-and-eye-gaze-data">G. Feature extraction of EEG data and eye-gaze data</h3>
+<h4 id="eeg-features">EEG features</h4>
+<p>1) EEG featuress는 filter bank canonical correlation
+analysis (FBCCA)를 통해 추출되었습니다. FBCCA는 SSVEPs의 주파수 탐지를 향상시킵니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174264676-9953afdb-1c80-4152-929b-a3281d65a22a.png" width="60%" />
+</div>
+<blockquote>
+  <p>$X_{SBn}, n = 1, 2,…, N$ : sub-band components</p>
+</blockquote>
+
+<p>2) 각 sub-band component와 모든 자극 주파수에 해당하는 reference signal ($Y_{fk} , k = 1, 2,…, 10$, flicker box가 10개) 의 correlation value는 standard CCA에 의해 계산되었습니다. correlation vector $ρ_{k}$는 위와 같이 정의 됩니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174270211-ddf21677-e358-4e08-9baf-2a837b403a6d.png" width="25%" />
+</div>
+<p>3) 마지막 EEG feature는 각 trial에 해당하는 correlation vector <strong>$ρ_{j}$</strong> = [$ρ_{j}^{1}, ρ_{j}^{2}, …, ρ_{j}^{10}$]
+입니다.(j번째 trial의 correlation vector)<br />
+여기서 $ρ_{j}^{k}$는 sub-band components에 일치하는 weighted sum of squares of correlation 값을 의미합니다.</p>
+
+<h4 id="eye-gaze-features">Eye-gaze features</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174270997-5abdc98c-1a66-4e31-9e14-5ade1db7c587.png" width="65%" />
+</div>
+<blockquote>
+  <p>$x_{j}$: j번째 eye-gaze trial<br />
+$C_{i}$: i번째 category의 flicker box<br />
+$a_{i}$: i번째 category의 prior probability<br />
+$μ_{i}, \Sigma_{n=1}$: i번째 category의 mean vector와 가우시안 분포의 covariance matrix</p>
+</blockquote>
+
+<p>Eye-gaze feature는 Bayes기법에 의해 얻어졌습니다.
+Eye-gaze data가 독립 다변량 정규 분포를 따른다고 가정했습니다. 따라서 단순화된 Gaussian mixture model(GMM)를 사용할 수 있습니다.</p>
+
+<h3 id="h-feature-fusion-and-classification">H. Feature fusion and classification</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174273120-6fd32768-6746-4315-8943-363e56d3842c.png" width="50%" />
+</div>
+<blockquote>
+  <p><strong>F</strong>: 10개의 category의 예측확률을 포함하는 fusion vector<br />
+$ρ_{j}, p_{j}$: EEG features, Eye-gaze features<br />
+$\beta_{1}, \beta_{2}$: EEG features와 eye-gaze features의 fusion weights</p>
+</blockquote>
+
+<p>EEG and eye-gaze를 융합하는 기법으로 particle swarm optimization (PSO)가 사용됐습니다.</p>
+
+<p>PSO를 통해 EEG features의 correlation vector와 Eye-gaze features의 posterior probability가 분석되었습니다.</p>
+
+<p>$\beta_{1}, \beta_{2}$는 the PSO method에 의해 정의됩니다.</p>
+
+<h2 id="results">Results</h2>
+<h3 id="a-classification-performance-of-single-modality-methods-and-fusion-methods">A. Classification performance of single-modality methods and fusion methods</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174279895-31f77e3f-ad52-4bf9-850b-69f755548172.png" width="100%" />
+</div>
+
+<h3 id="b-performance-of-fusion-methods-for-different-data-lengths">B. Performance of fusion methods for different data lengths</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174280404-75472ab0-fc00-42b7-a268-5362ad052925.png" width="100%" />
+</div>
+
+<h3 id="c-effects-of-different-data-lengths-on-single-modality-methods-and-pso-fusion-method">C. Effects of different data lengths on single-modality methods and PSO fusion method</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/174280203-630d863f-e63c-4bc4-9a3e-67bbcc0f1198.png" width="80%" />
+</div>
+
+<h2 id="discussion--conclusions">Discussion &amp; Conclusions</h2>
+<p>본 연구에선 hybrid BCI system combined with eye
+tracking 이 제안되었으며 기존의 asynchronous system보다 더 나은 accuracy, ITR, short actual time (for single-trial)을 보였습니다.</p>
+
+<p>기존 몇몇의 asynchronous system은 눈을 뜨고있는 시간으로 trigger를 판단하지만 이는 잘못 trigger될 수도 있지만,<br />
+본 연구에선 eye-gaze의 변화(분산)를 분석하는 sliding window로 trigger를 판단합니다.</p>
+
+<p>추가적으로 몇몇의 asynchronous system은 eye tracking으로 target을 선택하고 EEG data로 classification합니다.<br />
+하지만 이런 시스템은 multi-modality를 잘 사용하지 못했습니다.</p>
+
+<p>따라서 본 논문에선 EEG data, eye-gaze data를 융합한 optimal PSO fusion 기법이 제안되었습니다.</p>
+
+<p>결론적으로 본 논문에서 제시한 hybrid BCI system는 single-modality뿐 아니라 다른 fusion methods보다도 좋은 performance를 보였습니다.</p>
+
+<hr />
+
+<h2 id="고찰">고찰</h2>
+<p>eye-gaze를 VR locomotion에 적용해본다면, EEG data뿐아니라 eye-gaze data를 이용한 multi-modality를 사용해 VR에서의 이동을 classification할 수 있을 것입니다.</p>
+
+<p>또한 VR에서 이동할때 몸통을 얼굴의 정면방향으로 움직이는(도는) 방법을 multi-modality를 적용한 MI task로도 시도해볼 수 있습니다.</p>
+
+<p>뿐만 아니라 사람들이 몸통을 돌릴때의 눈의 변화를 관측하여 그에 맞는 task를 적용해 classification할 수 있을 것 같습니다.</p>
+<blockquote>
+  <p>본 논문에선 sliding window를 이용해 눈의 움직임의 변화와 threshold로 trigger를 판단했음</p>
+</blockquote>
+
+<h6 id="reference">Reference</h6>
+<ul>
+  <li>DOI: 10.1016/j.jneumeth.2021.109442</li>
+</ul>
 
       </article>
 
@@ -590,7 +781,7 @@
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Diary">Diary</a>
+            <a href="/tags#Brain Computer Interface">Brain Computer Interface</a>
           
         </div>
       
@@ -608,10 +799,10 @@
 
       <ul class="pagination blog-pager">
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-05-10-cnn/" data-toggle="tooltip" data-placement="top" title="Introduce to CNN">Next Post &rarr;</a>
+        <li class="page-item previous">
+          <a class="page-link" href="/2022-06-13-User-defined-walking-in-place-gestures-for-VR-locomotion/" data-toggle="tooltip" data-placement="top" title="Review - User-defined walking-in-place gestures for VR locomotion">&larr; Previous Post</a>
         </li>
+        
         
       </ul>
       

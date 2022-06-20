@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - Hybrid EEG-EOG-based BCI system for Vehicle Control</title>
+        <description>
+          EEG-EOG-based BCI system for Vehicle Control - 
+          Hybrid EEG-EOG based BCI system for Vehicle Control 논문 리뷰 INTRODUCTION 기존의 EEG를 기반으로하는 real-time...
+        </description>
+        <pubDate>Mon, 20 Jun 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-06-20-Hybrid-EEG-EOG-based-BCI-system-for-Vehicle-Control/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-06-20-Hybrid-EEG-EOG-based-BCI-system-for-Vehicle-Control/</guid>
+      </item>
+    
+      <item>
         <title>Review - An autonomous hybrid brain-computer interface system combined with eye-tracking in virtual environment</title>
         <description>
           BCI combined with eye-tracking in virtual environment - 
@@ -218,17 +229,6 @@
         <pubDate>Mon, 15 Nov 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-11-15-efficientdet/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-11-15-efficientdet/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to EfficientNet</title>
-        <description>
-          Compound Scaling CNN Model - 
-          EfficientNet 이해하기 EfficientNet이란? EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로...
-        </description>
-        <pubDate>Thu, 28 Oct 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-10-28-efficientnet/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-10-28-efficientnet/</guid>
       </item>
     
   </channel>

@@ -3,6 +3,21 @@
     
     
     <url>
+        <loc>http://localhost:4000/2022-07-03-Motion-Imagery-BCI-Based-on-EEG-and-Eye-Movement-Data-Fusion/</loc>
+        
+        <lastmod>2022-07-03T00:00:00+09:00</lastmod>
+        
+        
+        <changefreq>monthly</changefreq>
+        
+        
+        <priority>0.5</priority>
+        
+    </url>
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/2022-06-20-Hybrid-EEG-EOG-based-BCI-system-for-Vehicle-Control/</loc>
         
         <lastmod>2022-06-20T00:00:00+09:00</lastmod>

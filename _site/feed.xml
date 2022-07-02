@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - Motion Imagery-BCI Based on EEG and Eye Movement Data Fusion</title>
+        <description>
+          MI-BCI Based on EEG and Eye Movement Data Fusion - 
+          Motion Imagery-BCI Based on EEG and Eye Movement Data Fusion 논문 리뷰 INTRODUCTION EEG data만...
+        </description>
+        <pubDate>Sun, 03 Jul 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-07-03-Motion-Imagery-BCI-Based-on-EEG-and-Eye-Movement-Data-Fusion/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-07-03-Motion-Imagery-BCI-Based-on-EEG-and-Eye-Movement-Data-Fusion/</guid>
+      </item>
+    
+      <item>
         <title>Review - Hybrid EEG-EOG-based BCI system for Vehicle Control</title>
         <description>
           EEG-EOG-based BCI system for Vehicle Control - 
@@ -218,17 +229,6 @@
         <pubDate>Tue, 16 Nov 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-11-16-attention/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-11-16-attention/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to EfficientDet</title>
-        <description>
-          Compound Scaling 1-Stage Detection Model - 
-          EfficientDet 이해하기 EfficientDet이란? EfficientDet은 1-Stage Detection 모델이며, EfficientNet의 Compound Scaling과 Feature Pyramid Network(FPN)에 변화를 주어...
-        </description>
-        <pubDate>Mon, 15 Nov 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-11-15-efficientdet/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-11-15-efficientdet/</guid>
       </item>
     
   </channel>

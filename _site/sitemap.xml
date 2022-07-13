@@ -3,7 +3,22 @@
     
     
     <url>
-        <loc>http://localhost:4000/2022-07-04-Z-An-EEG-EMG-EOG-Based-Multimodal-Human-Machine-Interface-to-Real-Time-Control-of-a-Soft-Robot-Hand/</loc>
+        <loc>http://localhost:4000/2022-07-13-A-Hybrid-Speller-Design-Using-Eye-Tracking-and-SSVEP-Brain-Computer-Interface/</loc>
+        
+        <lastmod>2022-07-13T00:00:00+09:00</lastmod>
+        
+        
+        <changefreq>monthly</changefreq>
+        
+        
+        <priority>0.5</priority>
+        
+    </url>
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/2022-07-04-An-EEG-EMG-EOG-Based-Multimodal-Human-Machine-Interface-to-Real-Time-Control-of-a-Soft-Robot-Hand/</loc>
         
         <lastmod>2022-07-04T00:00:00+09:00</lastmod>
         

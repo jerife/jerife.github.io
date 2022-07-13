@@ -12,14 +12,25 @@
     
     
       <item>
+        <title>Review -A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface</title>
+        <description>
+          Hybrid Speller Design Using Eye Tracking and SSVEP - 
+          A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface 논문 리뷰 Introduction 기존의...
+        </description>
+        <pubDate>Wed, 13 Jul 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-07-13-A-Hybrid-Speller-Design-Using-Eye-Tracking-and-SSVEP-Brain-Computer-Interface/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-07-13-A-Hybrid-Speller-Design-Using-Eye-Tracking-and-SSVEP-Brain-Computer-Interface/</guid>
+      </item>
+    
+      <item>
         <title>Review - An EEG/EMG/EOG-Based Multimodal Human-Machine Interface to Real-Time Control of a Soft Robot Hand</title>
         <description>
           EEG/EMG/EOG-Based Multimodal Human-Machine Interface - 
           An EEG/EMG/EOG-Based Multimodal Human-Machine Interface to Real-Time Control of a Soft Robot Hand 논문 리뷰...
         </description>
         <pubDate>Mon, 04 Jul 2022 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2022-07-04-Z-An-EEG-EMG-EOG-Based-Multimodal-Human-Machine-Interface-to-Real-Time-Control-of-a-Soft-Robot-Hand/</link>
-        <guid isPermaLink="true">http://localhost:4000/2022-07-04-Z-An-EEG-EMG-EOG-Based-Multimodal-Human-Machine-Interface-to-Real-Time-Control-of-a-Soft-Robot-Hand/</guid>
+        <link>http://localhost:4000/2022-07-04-An-EEG-EMG-EOG-Based-Multimodal-Human-Machine-Interface-to-Real-Time-Control-of-a-Soft-Robot-Hand/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-07-04-An-EEG-EMG-EOG-Based-Multimodal-Human-Machine-Interface-to-Real-Time-Control-of-a-Soft-Robot-Hand/</guid>
       </item>
     
       <item>
@@ -218,17 +229,6 @@
         <pubDate>Fri, 19 Nov 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-11-19-bert/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-11-19-bert/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to Transformer</title>
-        <description>
-          Transformer with Attention - 
-          Transformer 이해하기 Transformer란? 기존의 AI의 NLP분야는 RNN계열의 Lstm, GRU, Seq2Seq등의 모델이 사용되었으며, 추가적으로 Attention Mechanism을...
-        </description>
-        <pubDate>Wed, 17 Nov 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-11-17-transformer/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-11-17-transformer/</guid>
       </item>
     
   </channel>

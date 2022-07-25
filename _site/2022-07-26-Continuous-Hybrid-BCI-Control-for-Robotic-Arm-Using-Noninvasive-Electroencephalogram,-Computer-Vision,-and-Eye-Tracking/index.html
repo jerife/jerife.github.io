@@ -37,13 +37,13 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
 
-  <title>Introduce to ELECTRA</title>
+  <title>Review - Continuous Hybrid BCI Control for Robotic Arm Using Noninvasive Electroencephalogram, Computer Vision, and Eye Tracking</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="Pre-training Text Encoders as Discriminators Rather Than Generators">
+  <meta name="description" content="Hybrid BCI Control for Robotic Arm Using EEG, CV, ET">
 
   
 
@@ -112,8 +112,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Introduce to ELECTRA">
-  <meta property="og:description" content="Pre-training Text Encoders as Discriminators Rather Than Generators">
+  <meta property="og:title" content="Review - Continuous Hybrid BCI Control for Robotic Arm Using Noninvasive Electroencephalogram, Computer Vision, and Eye Tracking">
+  <meta property="og:description" content="Hybrid BCI Control for Robotic Arm Using EEG, CV, ET">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -122,9 +122,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-12-11T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-12-11-electra/">
-  <link rel="canonical" href="http://localhost:4000/2021-12-11-electra/">
+  <meta property="og:article:published_time" content="2022-07-26T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-07-26-Continuous-Hybrid-BCI-Control-for-Robotic-Arm-Using-Noninvasive-Electroencephalogram,-Computer-Vision,-and-Eye-Tracking/">
+  <link rel="canonical" href="http://localhost:4000/2022-07-26-Continuous-Hybrid-BCI-Control-for-Robotic-Arm-Using-Noninvasive-Electroencephalogram,-Computer-Vision,-and-Eye-Tracking/">
   
 
   
@@ -133,8 +133,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Introduce to ELECTRA">
-  <meta property="twitter:description" content="Pre-training Text Encoders as Discriminators Rather Than Generators">
+  <meta property="twitter:title" content="Review - Continuous Hybrid BCI Control for Robotic Arm Using Noninvasive Electroencephalogram, Computer Vision, and Eye Tracking">
+  <meta property="twitter:description" content="Hybrid BCI Control for Robotic Arm Using EEG, CV, ET">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -576,15 +576,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Introduce to ELECTRA</h1>
+          <h1>Review - Continuous Hybrid BCI Control for Robotic Arm Using Noninvasive Electroencephalogram, Computer Vision, and Eye Tracking</h1>
           
             
-              <h2 class="post-subheading">Pre-training Text Encoders as Discriminators Rather Than Generators</h2>
+              <h2 class="post-subheading">Hybrid BCI Control for Robotic Arm Using EEG, CV, ET</h2>
             
           
 
           
-            <span class="post-meta">Posted on December 11, 2021</span>
+            <span class="post-meta">Posted on July 26, 2022</span>
             
             
           
@@ -626,113 +626,221 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h2>ELECTRA 이해하기</h2></div>
+        <div align="center"><h2> Continuous Hybrid BCI Control for Robotic Arm Using Noninvasive Electroencephalogram, Computer Vision, and Eye Tracking 논문 리뷰</h2></div>
 <!--break-->
 
 <hr />
 
 <p><br /></p>
 
-<h2 id="electra란">ELECTRA란?</h2>
-<p>ELECTRA는 이전 포스팅 <a href="https://jerife.github.io/2021-11-19-bert/">“Introduce to BERT”</a> 에서 다룬 BERT를 기반으로 한 모델입니다.<br /> 
-“Efficiently Learning an Encoder that Classifies Token Replacements Accurately” 라는 의미를 가지며, 말 그대로 대체된 Token을 정확하게 분류하는 Task로 만들어진 모델입니다.</p>
+<h2 id="introduction">Introduction</h2>
+<p>현재 다양한 BCI가 발전중이지만 “robotic arm”의 경우 자유도(DOF)가 높기 때문에 BCI를 사용하여 3D 공간에서 여러 물체를 연속적이고 효과적인 방법으로 파악하는 것은 여전히 어려운 문제입니다.</p>
 
-<p><img width="349" alt="gan_img_1" src="https://user-images.githubusercontent.com/68190553/145668086-36461ce6-422f-4249-8d8e-53a6f0437d37.png" class="mx-auto d-block" /></p>
-
-<p>특히 ELECTRA는 기존 GAN(Generative Adversarial Network)의 Generator와 Discriminator의 아이디어를 활용했다고 합니다.<br /> <br /> 
-GAN은 Noise Vector를 입력받는 Generator를 통해 가짜 이미지를 생성하고, Discriminator는 진짜 이미지 데이터와 Generator를 통해 만들어진 가짜 이미지를 분별하는 Network입니다.
-이 둘은 서로를 적대적으로 (Adversarial) 학습합니다.</p>
+<p>따라서 본 논문은 MI-based EEG, computer vision, gaze detection 기술을 융합한 robotic arm을 제안합니다.</p>
 <blockquote>
-  <ul>
-    <li>Generator : Generator를 통해 만들어진 가짜 이미지로 Discriminator가 속게 학습함</li>
-    <li>Discriminator가 : Generator를 통해 만들어진 가짜 이미지를 잘 분류할 수 있게 학습함.</li>
-  </ul>
+  <p>MI-based EEG의 장점은 SSVEP, P300과 다르게 외부의 자극에 의존하지 않으며 행동과 관련한 직접적인 신호를 전달할 수 있다는 점입니다.</p>
 </blockquote>
 
-<p>하지만 ELECTRA는 Generator와 Discriminator가 Adversarial하게 학습하는 것이 아닌, likehood하게 학습한다는 차이점이 있습니다.
-밑에서 ELECTRA에 대한 설명을 시작하겠습니다.</p>
+<h2 id="2-methods-and-experiments">2. Methods and Experiments</h2>
+<h3 id="a-21-system-architecture">A. 2.1. System Architecture</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180722084-51b848eb-ce33-4363-82f7-b28282d3471e.png" width="100%" />
+</div>
+<p>먼저 task의 큰 흐름을 짚고 각 기술들의 detail을 확인하겠습니다.</p>
+
+<p>참가자는 왼손, 오른손, 양손, 휴식(상상X)을 상상하여 화면 속 virtual ball(2D plane)을 각각 좌,우,상,하로 제어합니다. virtual ball은 robotic arm의 움직임과 같기 때문에 robotic arm도 해당방향으로 움직입니다.</p>
+
+<p>robotic arm은 움직이면서 카메라를 통해 target, obstacle의 위치를 실시간으로 모니터에 feedback합니다.</p>
+
+<p>참가자가 MI를 통해 robotic arm을 움직여 카메라로 target을 인지할 경우(모니터에 target이 뜬 경우) gaze detection 기술로 원하는 target을 선택합니다.</p>
+
+<p>robotic arm은 선택한 target을 자동으로 그립하여 task를 마무리됩니다.</p>
+
+<blockquote>
+  <p>robotic arm이 움직이는 과정에선 ROS(robot operating system)가 obstacle를 인식하여 알아서 피합니다.</p>
+</blockquote>
+
+<h4 id="bci-system">BCI System</h4>
+<p>데이터는 Fs = 500Hz로, 왼쪽 귀밑 reference 전극 포함 20개의 전극이 수집되었습니다.</p>
+
+<p>이 후 50Hz notch filter, common average reference (CAR) filter가 적용되었습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180727843-fc047d6a-0cd4-4db5-8554-91928fc7590c.png" width="50%" />
+</div>
+<blockquote>
+  <p>$V_{i}^{CAR}$는 시간 t에서 기준과 i번째 전극 사이의 전위이고, n은 이 연구에 사용된 전극의 수입니다.</p>
+</blockquote>
+
+<p>각 사용자에 대한 mu frequency band의 진폭을 평가하기 위해 다음과 같이 autoregressive(AR) 모델을 구축했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180729308-a955ca8f-9a55-4116-899b-1fadd30e8fac.png" width="35%" />
+</div>
+<blockquote>
+  <p>$a_{i}$ : weight coefficient</p>
+</blockquote>
+
+<p>본 논문에선 각 참가자의 sensorimotor rhythm amplitude를 이용해 ball과 robotic arm를 제어합니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180729897-decc157e-4966-4847-b6e6-c92b64571f84.png" width="50%" />
+</div>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180729946-7299874b-7103-4ecd-a1f8-9995289ea9cd.png" width="52%" />
+</div>
+
+<p>$K_{V}$ 가 negative or positive일 경우 the virtual ball은  up or down으로 움직입니다.<br />
+$K_{H}$ 가 negative or positive일 경우 the virtual ball은  left or righ로 움직입니다.</p>
+
+<p>$K_{V}$와 $K_{H}$의 weight($w$), offset($d$)은 previous trials에 따라 least-mean-square (LMS) algorithm으로 조정되어집니다.</p>
+
+<h4 id="object-identification-and-target-selection">Object Identification and Target Selection</h4>
+<p>본 논문의 computer vision은 online task의 target selection을 위해 object identification, gaze tracking 기술이 사용됩니다.</p>
+
+<p>target은 4가지의 다른 색상이 존재하며 background subtraction algorithm을 기반에 의해 탐지되어집니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180771570-497a6a91-f533-47b0-9365-2d6d2d67bba9.png" width="80%" />
+</div>
+<p>먼저 물체의 밝기를 완화하기 위해 RGB를 HSV로 변환합니다. <br />
+이 후 target 이미지의 색상과 임계값의 차이에 따라 식별되어집니다. <br />
+마지막으로 background subtraction에 의해 block이 식별되고 테두리가 생겨 목표물로 표시됩니다.</p>
+
+<p>이 때 사용자는 gaze-control로 마우스를 목표물로 움진인 후 2초간 유지할 경우 선택되어집니다.</p>
+
+<h4 id="robotic-arm-control-and-obstacle-avoidance">Robotic Arm Control and Obstacle Avoidance</h4>
+<p>본 논문은 단순히 EEG data로만 실험했을 경우 정확도도 낮고 정신적인 부담감이 크기에 obstacle을 탐지하고 robotic arm에 정보(point cloud)를 전달할 수 있는 카메라를 workspace에 설치했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180775426-ba71463b-fd6b-41b5-a174-9c1306efa4cb.png" width="100%" />
+</div>
+<p>workspace 외부에의 point clouds(정보)는 passthrough filter로 삭제되었습니다. <br />
+voxel grid filter로 계산량을 줄이기 위해 downsampling됐습니다. <br />
+outlier를 제거하기 위해 RadiusOutlierRemoval filter가 사용됐습니다. <br />
+마지막으로 위 데이터는 Octomap로 변환되어집니다. <br /></p>
+
+<p>결론적으로, robotic arm은 motion planning 단계에서 장애물을 식별하고 피합니다.</p>
+
+<h3 id="b-experimental-paradigm">B. Experimental Paradigm</h3>
+<h4 id="mi-without-feedback">MI without Feedback</h4>
+<p>mian 실험 전, 모든 피실험자실험자마다의 서로 다른 MI의 차이를 maximizing는 최적의 frequencies, spatial channels, action of MI data를 얻기 위한 실험이 진행됩니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180776495-31cd6581-5a79-41a1-b779-4227f9a32f14.png" width="60%" />
+</div>
+<blockquote>
+  <p>상 : 양 손(팔)을 움직이는 상상<br />
+하: 휴식 (아무 상상 x) <br />
+좌: 왼 손(팔)을 움직이는 상상<br />
+우: 오른 손(팔)을 움직이는 상상</p>
+</blockquote>
+
+<p>해당 실험은 2 session을 포함하고 각 session은 9 run으로 구성됩니다. <br />
+1~3 run은 사진속의 (A)를 상상,<br />
+4~6 run은 (B)를 상상,<br />
+7~9 run은 자신의 임의대로 상상하여 상/하/좌/우에 해당하는 데이터를 수집합니다.</p>
+
+<h4 id="virtual-ball-movement-control-training">Virtual Ball Movement Control Training</h4>
+<p>MI를 기반으로 robotic arm을 지속적으로 제어하는 능력을 향상시키기 위해 피실험자들에게 MI에 의한 virtual ball control 훈련을 실시했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180784162-ffef222d-8c75-4560-99c2-a672210690dc.png" width="80%" />
+</div>
+<blockquote>
+  <p>stage 1 : Vertical MI task<br />
+stage 2 : Horizental MI task<br />
+stage 3 : 2D-MI task</p>
+</blockquote>
+
+<p>Virtual Ball Movement Control Training은 Virtual Ball을 색칠된 블록으로 이동시키는 task이며 stage 1~3 순서로 진행되었습니다.</p>
+
+<h4 id="online-robotic-arm-control">Online Robotic Arm Control</h4>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180786494-18dbd9b7-f813-4c42-b84a-8eb48054daea.png" width="80%" />
+</div>
+<p>모니터는 virtual ball movement area와 the USB camera display area로 나눠져있으며 실험 환경은 위 figure와 같습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180786684-5b7202fc-322a-4c43-8e68-549bfe3f625b.png" width="80%" />
+</div>
+<p>실험이 시작되면 피실험자는 3초간 휴식 및 준비합니다. 이후 Virtual ball이 나타나면 피실험자는 MI를 통해 제어합니다.<br />
+Virtual ball이 움직일때마다 camera display도 움직이며 camera display에 target이 나타나면 피실험자는 eye gaze로 마우스를 제어하여 target쪽으로 이동시킵니다.<br />
+마우스를 해당 target에 2초간 유지할 경우 선택되어 robotic arm이 자동적으로 그랩합니다.</p>
+
+<p>세부적인 detail은 아래와 같습니다.</p>
+<ul>
+  <li>task A : one target without an obstacle</li>
+  <li>task B : one target with an obstacle</li>
+  <li>task C : four targets with an obstacle, can select only one asked target</li>
+</ul>
+
+<h2 id="results">Results</h2>
+<h3 id="a-performance-of-mi-without-feedback">A. Performance of MI without Feedback</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180789265-8ead8367-4bcf-40cc-8bc5-ebec47a5814e.png" width="100%" />
+</div>
+<blockquote>
+  <p>피실험자마다 최대 차이를 보여주는 특성을 얻기 위해 진행된 실험</p>
+</blockquote>
+
+<h3 id="b-performance-of-virtual-ball-control-training">B. Performance of Virtual Ball Control Training</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180789427-8985ed3b-632a-4f91-9434-fabe65b59b63.png" width="100%" />
+</div>
+<blockquote>
+  <p>A : Vertical MI task result<br />
+B : Horizental MI task result<br />
+C : 2D-MI task result<br />
+D : average completion time</p>
+</blockquote>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180789954-a06df71e-1f0b-469a-9479-a946fe970664.png" width="100%" />
+</div>
+<blockquote>
+  <p>Virtual Ball Control Training을 진행한 후 Online 실험에서 MI의 특성이 더 극대화된 차이를 발생시킴</p>
+</blockquote>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180790252-a7728c57-3887-40ee-a223-a64769030260.png" width="80%" />
+</div>
+<blockquote>
+  <p>특히 ERD/ERS의 특징을 확인할 수 있음</p>
+</blockquote>
+
+<h3 id="performance-of-online-experiments">Performance of Online Experiments</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180790569-5eaf3888-b9fe-4d7f-9729-465a4a0463e2.png" width="100%" />
+</div>
+<blockquote>
+  <p>Online Experiments의 성공률과 소요시간</p>
+</blockquote>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/180791166-f47b7926-4e4e-49aa-936c-bfbc0b164187.png" width="70%" />
+</div>
+<blockquote>
+  <p>각 trial의 time–frequency spectral의 변화 (mu bands에서 큰 ERD/ERS를 볼 수 있음)</p>
+</blockquote>
+
+<h2 id="discussion--conclusions">Discussion &amp; Conclusions</h2>
+<p>본 실험은 사전에 피실험자마다의 최적의 parameter를 구하고 Virtual Ball Control Training을 통해 MI control 능력을 향상시켰습니다.</p>
+
+<p>MI control로 대략적인 위치를 제어한 후 computer vision and eye-tracker기술로 정확하게 타겟팅함으로써 뇌의 부담을 덜고 정확도를 향상시켰습니다.</p>
+
+<p>또한 ROS기술을 응용하여 장애물을 자동으로 피하고 target을 그립할수 있도록 구현되었습니다.</p>
+
+<p>결과적으로 ERD/ERS의 특성을 명백하게 보여줬으며, 사용자가 robotic arm의 이동을 조절할 수 있었기에 MI task는 차후 BCI제어에 필수적인 요소가 될것이라 주장합니다.</p>
 
 <hr />
 
-<h3 id="replaced-token-detection-rtd">Replaced Token Detection (RTD)</h3>
-<p><img width="519" alt="electra_img_2" src="https://user-images.githubusercontent.com/68190553/145668133-6bd69a3f-8fd1-4f83-b364-1e05d645711e.png" class="mx-auto d-block" /></p>
-
-<p>위 사진은 Generator와 Discriminator로 이뤄진 ELECTRA의 Architecture이며, 사진을 참고하여 pre-trained과정을 간단히 설명하겠습니다. <br /></p>
-
-<h4 id="동작과정">[동작과정]</h4>
-
-<blockquote>
-  <p>“the”, “chef”, “cooked”, “the”, “meal”</p>
-</blockquote>
-
-<p>위 5개의 단어들은 원본 문장을 tokenize 된 token입니다. 이 단어들은 Generator에 들어가 MLM Task를 통해 학습힙니다. <br />
-때문에 위 5개의 token에 랜덤하게 [MASK]를 취해줍니다. <br /> <br /></p>
-
-<blockquote>
-  <p>“[MASK]”, “chef”, “[MASK]”, “the”, “meal”</p>
-</blockquote>
-
-<p>위와 같이 MLM Task의 input으로 적합한 token들이 나왔습니다. <br />
-이 token들은  <strong>Generator</strong>의 input으로 들어가 MLM Task를 수행하여 각각의 [MASK]를 예측합니다.<br /> <br /></p>
-
-<blockquote>
-  <p>“the”, “chef”, “ate”, “the”, “meal”</p>
-</blockquote>
-
-<p>“the”라는 token은 올바르게 “the”로 예측을 했지만, “cooked”는 “ate”로 틀리게 예측을 했으며, 이 token들은 곧장 Discriminator의 input으로 들어가 학습하게됩니다. <br /> <br /></p>
-
-<p>Discriminator는 input으로 들어온 token들 중에서 원본 데이터가 대체되었는지 아닌지를 (original/replaced) 분류하며 학습을 진행합니다.<br />
-이 Task를 <strong>“Replaced Token Detection (RTD)”</strong> 라 합니다.</p>
-
-<h3 id="mechanism">Mechanism</h3>
-<h4 id="1-generator">1) Generator</h4>
-<p>입력 벡터 $\boldsymbol x = [x_1, …, x_n]$ 중에서 랜덤하게 Masking할 단어들을 고릅니다. <br />
-(Masking된 단어들 : $\boldsymbol m = [m_1, …, m_k]$)</p>
-
-<div align="center">$\boldsymbol x^{masked}$ = REPLACE($\boldsymbol x, \boldsymbol m$, [MASK]) </div>
-
-<p>그 후 위 식을 통해 마스킹을 완료합니다.</p>
-
-<p><img width="441" alt="electra_img_3" src="https://user-images.githubusercontent.com/68190553/145672844-6f4999cd-c834-46c3-a833-99d94a233627.png" class="mx-auto d-block" /></p>
-
-<p>그리고 입력 벡터 <strong>x</strong> = $[x_1, …, x_n]$가 문맥적 의미를 가질 수 있게 $h$(<strong>x</strong>) = $[h_1, …, h_n]$ 문맥을 갖는 벡터로 변화해준 후, 
-위 식 Generator에 input으로 넣은 후 예측합니다. (t번째의 $\ x$에 대한 확률 값을 반환함)  <br /> <br /></p>
-
-<h4 id="2-discriminator">2) Discriminator</h4>
-<p>처음 입력 벡터 <strong>x</strong> = $[x_1, …, x_n]$에, Masking되고 Generator거친 결과 값을 대치(Replace) 합니다. <br /></p>
-<div align="center">$\boldsymbol x^{corrupt}$ = REPLACE($\boldsymbol x, \boldsymbol m, \boldsymbol {\hat x}$) </div>
-
-<p>여기서 $\boldsymbol {\hat x}$ 벡터 값은 Generator에서 예측한 결과 ($P_G(x_t$ㅣ$\boldsymbol x)$) 입니다.</p>
-
-<p><img width="234" alt="electra_img_4" src="https://user-images.githubusercontent.com/68190553/145672907-51af5788-f765-4e4a-ba2e-24c6b5f85e8a.png" class="mx-auto d-block" /></p>
-
-<p>그 후 Discriminator에 $\boldsymbol x$ 벡터를 넣으면, $h_D(\boldsymbol x)_t$를 거치고 가중치와 곱해진 후, Sigmoid layer를 통해 0~1사이의 값을 갖습니다. <br />
-0~1사이의 값은 이 단어가 Replace된 단어인지 아닌지를 예측하며, 학습해 나갑니다.</p>
-
-<h3 id="loss-function">Loss Function</h3>
-<p>이제 위 Generator와 Discriminator가 어떤식으로 학습을 진행하지는 이야기해보겠습니다.</p>
-
-<p><img width="692" alt="electra_img_7" src="https://user-images.githubusercontent.com/68190553/145678181-42fc118b-99f7-4b61-8f38-015298f4cecc.png" class="mx-auto d-block" /></p>
-
-<p>그 후, 위 식($L_{MLM}$)을 통해 Generator의 loss 값을 구하고, <br />
-아래 식($L_{Disc}$)으로 Discriminator의 loss값을 구합니다.</p>
-
-<p><img width="314" alt="electra_img_8" src="https://user-images.githubusercontent.com/68190553/145678515-33aedd2f-589a-4f65-a887-f2de16e556e7.png" class="mx-auto d-block" /></p>
-
-<p>이후 두 식을 더해서 minimization 하는 방향을 Backpropagation을 진행합니다. <br /> <br /></p>
-
-<hr />
-<h3 id="performance">Performance</h3>
-<p><img width="543" alt="electra_img_1" src="https://user-images.githubusercontent.com/68190553/145669156-e2cf46d3-c6de-4409-8fbc-96d744b871df.png" class="mx-auto d-block" />
-위 사진을 보시면, GLUE 성적은 BERT모델보다 5.0 이상 좋은 성적을 높다는 것을 알 수 있습니다. <br />
-또한 타 모델에 비해 적은 연산량(FLOPS)으로 좋은 performance를 보여주는 모델임을 알 수 있습니다. <br />
-이상으로 ELECTRA모델에 대한 소개를 마치겠습니다. <br /> <br /></p>
+<h2 id="고찰">고찰</h2>
+<p>not yet</p>
 
 <h6 id="reference">Reference</h6>
 <ul>
-  <li>https://arxiv.org/abs/2003.10555</li>
-  <li>https://christinakouridi.blog/2019/07/09/vanilla-gan-numpy/</li>
-  <li>https://www.onemathematicalcat.org/MathJaxDocumentation/MathJaxKorean/TeXSyntax_ko.html</li>
+  <li>DOI: 10.3390/math10040618</li>
 </ul>
 
       </article>
@@ -741,7 +849,7 @@ GAN은 Noise Vector를 입력받는 Generator를 통해 가짜 이미지를 생�
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+            <a href="/tags#Brain Computer Interface">Brain Computer Interface</a>
           
         </div>
       
@@ -760,13 +868,9 @@ GAN은 Noise Vector를 입력받는 Generator를 통해 가짜 이미지를 생�
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-12-07-roberta/" data-toggle="tooltip" data-placement="top" title="Introduce to RoBERTa">&larr; Previous Post</a>
+          <a class="page-link" href="/2022-07-13-A-Hybrid-Speller-Design-Using-Eye-Tracking-and-SSVEP-Brain-Computer-Interface/" data-toggle="tooltip" data-placement="top" title="Review -A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-12-31-2021end/" data-toggle="tooltip" data-placement="top" title="2021년 한 해를 돌아보는 회고록">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

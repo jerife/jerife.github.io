@@ -209,11 +209,5 @@ MI control로 대략적인 위치를 제어한 후 computer vision and eye-track
 
 결과적으로 ERD/ERS의 특성을 명백하게 보여줬으며, 사용자가 robotic arm의 이동을 조절할 수 있었기에 MI task는 차후 BCI제어에 필수적인 요소가 될것이라 주장합니다.
 
----
-
-## 고찰
-not yet
-
-
 ###### Reference
 * DOI: 10.3390/math10040618

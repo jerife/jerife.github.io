@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Review -A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface
+title: Review - A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface
 subtitle: Hybrid Speller Design Using Eye Tracking and SSVEP
 gh-repo: jerife/jerife.github.io
 gh-badge: [star, follow]

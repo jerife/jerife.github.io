@@ -3,6 +3,21 @@
     
     
     <url>
+        <loc>http://localhost:4000/2022-08-17-A-multi-modal-modified-feedback-self-paced-BCI-to-control-the-gait-of-an-avatar/</loc>
+        
+        <lastmod>2022-08-17T00:00:00+09:00</lastmod>
+        
+        
+        <changefreq>monthly</changefreq>
+        
+        
+        <priority>0.5</priority>
+        
+    </url>
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/2022-07-26-Continuous-Hybrid-BCI-Control-for-Robotic-Arm-Using-Noninvasive-Electroencephalogram,-Computer-Vision,-and-Eye-Tracking/</loc>
         
         <lastmod>2022-07-26T00:00:00+09:00</lastmod>

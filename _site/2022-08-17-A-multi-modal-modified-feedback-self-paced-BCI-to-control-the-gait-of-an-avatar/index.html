@@ -37,13 +37,13 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
 
-  <title>Introduce to LUKE</title>
+  <title>Review - A multi-modal modified feedback self-paced BCI to control the gait of an avatar</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="Deep Contextualized Entity Representations with Entity-aware Self-attention">
+  <meta name="description" content="BCI to control the gait of an avatar">
 
   
 
@@ -112,8 +112,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Introduce to LUKE">
-  <meta property="og:description" content="Deep Contextualized Entity Representations with Entity-aware Self-attention">
+  <meta property="og:title" content="Review - A multi-modal modified feedback self-paced BCI to control the gait of an avatar">
+  <meta property="og:description" content="BCI to control the gait of an avatar">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -122,9 +122,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2022-01-03T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2022-01-03-luke/">
-  <link rel="canonical" href="http://localhost:4000/2022-01-03-luke/">
+  <meta property="og:article:published_time" content="2022-08-17T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2022-08-17-A-multi-modal-modified-feedback-self-paced-BCI-to-control-the-gait-of-an-avatar/">
+  <link rel="canonical" href="http://localhost:4000/2022-08-17-A-multi-modal-modified-feedback-self-paced-BCI-to-control-the-gait-of-an-avatar/">
   
 
   
@@ -133,8 +133,8 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Introduce to LUKE">
-  <meta property="twitter:description" content="Deep Contextualized Entity Representations with Entity-aware Self-attention">
+  <meta property="twitter:title" content="Review - A multi-modal modified feedback self-paced BCI to control the gait of an avatar">
+  <meta property="twitter:description" content="BCI to control the gait of an avatar">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -583,15 +583,15 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Introduce to LUKE</h1>
+          <h1>Review - A multi-modal modified feedback self-paced BCI to control the gait of an avatar</h1>
           
             
-              <h2 class="post-subheading">Deep Contextualized Entity Representations with Entity-aware Self-attention</h2>
+              <h2 class="post-subheading">BCI to control the gait of an avatar</h2>
             
           
 
           
-            <span class="post-meta">Posted on January 3, 2022</span>
+            <span class="post-meta">Posted on August 17, 2022</span>
             
             
           
@@ -633,110 +633,182 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h2>LUKE 이해하기</h2></div>
+        <div align="center"><h2> A multi-modal modified feedback self-paced BCI to control the gait of an avatar 논문 리뷰</h2></div>
 <!--break-->
 
 <hr />
 
 <p><br /></p>
 
-<h2 id="luke란">LUKE란?</h2>
-<p>LUKE 또한 BERT 기반 모델인 <a href="http://localhost:4000/2021-12-07-roberta/">“Introduce to RoBERTa”</a> 를 기반으로 한 모델입니다.<br /> 
-“Language Understanding with Knowledge-based Embeddings” 라는 의미를 가지며, 문장에서 Word 뿐만 아니라 Entity 까지 사용해 학습하는 모델입니다.</p>
-<blockquote>
-  <p>논문에서 Entity란? Wikipedia에 하이퍼링크로 걸려있는 단어를 뜻합니다.</p>
-</blockquote>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185007112-437d158e-340c-4a71-ac01-f72a1b0ca40c.png" width="50%" />
+</div>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/147893652-8f0cdc81-c90d-4a5f-9745-e9b908d89333.png" alt="img_luke_1" class="mx-auto d-block" /></p>
+<p>본 논문은 virtual reality avatar의 single steps와 forward walking을 control할 수 있는 multi-modal BCI를 제안한다.</p>
 
-<h4 id="luke-동작과정">LUKE 동작과정</h4>
+<h2 id="materials-and-methods">Materials and methods</h2>
+<h3 id="a-data-acquisition-and-recording">A. Data acquisition and recording</h3>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185016458-66a69186-fa4c-40fe-b5b0-ed147722610f.png" width="50%" />
+</div>
+<p>EEG data는 위와 같이 추출되며 AFz 전극이 ground로 사용된다.<br />
+이 data는 EEGStudio를 통해 stream되었다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185016786-f02f259d-d228-4945-b922-5fbbd724eb60.png" width="70%" />
+</div>
+<p>Virtual Environment(VE)는 Unity3D로 구현되었고 Avatar의 경우 MakeHuman을 통해 만들어졌다. 이 avatar가 걷는 모션은 Mixano를 통해 얻어졌다.</p>
+
+<p>VE는 위와 같으며 avatat의 움직임을 인지시키기위해 벽에 수평선이 있다. (주황, 초록색)</p>
+
+<h3 id="b-experimental-protocol">B. Experimental protocol</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185017415-fc9567b0-e6aa-430e-b86a-a98a9666cf71.png" width="70%" />
+</div>
+<p>22명의 건강한 사람들이 실험에 참가했으며 총 4일간 진행되었다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185017729-a28f7cad-5677-4c78-99c7-248c55b166f6.png" width="100%" />
+</div>
+<p>Cue 신호시 VE속 avatat의 152cm 앞에 노란색 arrow가 생성되고 참가자는 이 cue를 보고 MI task를 진행한다.</p>
+
+<h4 id="day-1-cue-paced-bci-design-training">Day 1. Cue-paced BCI design Training</h4>
+<p>첫번째 날, 실험은 Classifier를 학습시킬 데이터를 수집하는 것을 목표로 진행된다.<br />
+참가자는 cue를보고 MI task를 진행하고 Imagine를 통해 발생하는 EEG신호와 무관하게 VE속 avatar는 움직인다.</p>
+
+<p>수집된 데이터들은 아래 두개의 classifier를 학습시킨다.</p>
 <ol>
-  <li>“Beyonce lives in Los Angeles.” 문장이 LUKE에 input되고 각 Word와 Entity의 contextualized representation가 출력됩니다.</li>
-  <li>모델은 랜덤하게 [MASK]된 Words(‘lives’, ‘Angeles’)와 Entities(‘Los Angeles’)를 예측합니다.</li>
-  <li>output representations를 linear classifiers 함으로써 적용하고자하는 Downstream tasks에 적용합니다.</li>
+  <li>Cl1: two possible classes (walking forward or no movement)</li>
+  <li>Cl2: three possible classes (right step, left step or
+no movement)</li>
 </ol>
 
-<hr />
-
-<h3 id="1-input-representation">1. Input Representation</h3>
-<h4 id="token-embedding">Token embedding</h4>
-<p>LUKE에선 Word와 Entity를 구분하기에 Token embedding도 각각 두가지입니다.</p>
-
-<p>먼저 <strong>Word</strong>의 경우에는 Word 단어 임베딩을 따라가며, “<strong>A</strong>” 기호를 사용합니다.<br />
-반면 <strong>Entity</strong>의 경우에는 Entity 단어 임베딩을 따라가고, 계산의 효율성을 위해 Entity 단어 임베딩을 B와 U로 분해하여 “<strong>BU</strong>” 기호를 사용합니다.</p>
-
-<h4 id="position-embedding">Position embedding</h4>
-<p>각 단어의 위치를 나타내는 임베딩입니다.</p>
-
-<p>먼저 <strong>Word</strong>의 경우, “<strong>$C_{i}$</strong>” 기호를 사용합니다.<br />
-반면 <strong>Entity</strong>의 경우, “<strong>$D_{i}$</strong>“기호를 사용합니다.</p>
-
-<p>하지만 Entity가 위 사진처럼 ‘Los’ + ‘Angless’ 로 분리된 2가지 토큰이라면, 각 Position embedding 값을 평균해 사용합니다.</p>
-
-<h4 id="entity-type-embedding">Entity type embedding</h4>
-<p>Entity를 표현하는 단일 벡터 임베딩입니다.</p>
-
-<p><br /></p>
-<h3 id="2-entity-aware-self-attention">2. Entity-aware Self-attention</h3>
-<p><img src="https://user-images.githubusercontent.com/68190553/147894991-2126af1a-2324-4ec3-8933-bded4f5457a8.png" alt="img_luke_2" class="mx-auto d-block" /></p>
+<h4 id="day-2-cue-paced-bci-design-testing">Day 2. Cue-paced BCI design Testing</h4>
+<p>두번째 날, day 1과 같은 paradigm을 갖고 실험이 진행되지만, Imagine를 통한 VE속 avatar의 움직임은 전날 학습된 Classifier의 결과에 따라 움직인다.</p>
 <blockquote>
-  <p>Self-attention 과정</p>
+  <p>avatar는 EEG data에 따라 움직임</p>
 </blockquote>
 
-<p>기존 Transformer의 Self-attention과 다르게 entity-aware query mechanism를 사용하여 성능을 향상 시켰습니다.</p>
+<p>이 classifier의 결과는 200ms마다 생성되며, 상태가 빠르게 변하는 것을 방지하기위해 N번 이상 같은 결과일 경우에만 avatar의 상태를 변경한다는 기술을 사용했다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/147895011-3e652707-4dbf-48c0-8d34-51a4760e6c28.png" alt="img_luke_3" class="mx-auto d-block" /></p>
-
-<p>Entity-aware Self-attention에서 attention socre($e_{ij}$)는 downstream task에 따라 위 공식으로 구해집니다.</p>
-
-<p>추가적으로 훈련 시간에 기울기를 계산하고 추가 쿼리 행렬 매개 변수를 업데이트하는 추가 과정을 제외하곤 원래 메커니즘과 제안된 메커니즘의 계산 비용동일하다고 합니다.</p>
-
-<p><br /></p>
-<h3 id="3-pretraining-task">3. Pretraining Task</h3>
-
-<p><img src="https://user-images.githubusercontent.com/68190553/147895323-4fa121d9-7489-4c1c-9d12-dffff001e922.png" alt="img_luke_5" class="mx-auto d-block" /></p>
-
-<p>LUKE는 위키피디아의 하이퍼링크를 entity-annotations 으로 취급하고 위키피디아에서 검색된 대규모 entity-annotated 코퍼스를 사용하여 모델을 훈련합니다.</p>
-
-<p>그리고 Entity의 15퍼센트를 [MASK]로 변환하고 이를 예측하면서 학습해나갑니다.</p>
-<blockquote>
-  <p>위 식에서 $h_{e}$가 [MASK] 변환까지 적용된 Entity입니다.</p>
-</blockquote>
-
-<p><br /></p>
-<h3 id="4-modeling-detail">4. Modeling Detail</h3>
-<p>나열해가면서 LUKE 모델의 Detail을 다뤄보겠습니다.</p>
+<h4 id="day-3-mdf-cue-paced-bci-design">Day 3. MDF cue-paced BCI design</h4>
+<p>paradigm은 전과 같으며, 2개의 Classifier들은 day 1,2 data로 재학습된다. <br />
+또한 세번째 날부턴 22명의 참가자가 2그룹으로 나뉘고 참가자들에겐 위 사실을 알리지 않는다.</p>
 
 <ol>
-  <li>LUKE는 $RoBERTa_{LARGE}$ 를 기반으로한 모델이다.</li>
-  <li>Pretrain 과정에선 Word뿐만 아니라 Entity도 BERT의 MLM으로 학습합니다.</li>
-  <li>Entity 단어 임베딩에는 [MASK]와 [UNK] 두가지 특별한 토큰이 포함되어있다.
+  <li>MDF 그룹: 실험의 70%를 Classifier 결과에 상관 없이 cue에 해당하는 movement로 움직임</li>
+  <li>일반(RGF) 그룹: Classifier 결과에 해당하는 movement로만 움직임</li>
+</ol>
+
+<h4 id="day-4-multi-modal-self-paced-bci-design">Day 4. Multi-modal self-paced BCI design</h4>
+<p>기존 실험은 cue-paced로 진행되었지만 Day 4의 경우 매번 cue가 제시되지 않고 avatar가 도달해야하는 목적지와 어떤 mode로 도달해야하는지 제공되는 self-paced로 진행된다.</p>
+
+<p>mode 두가지가 존재하며 아래와 같다.</p>
+<ol>
+  <li>continuous mode: avatar가 앞을 향해 움직이도록 상상을 계속 유지하는 mode</li>
+  <li>switch mode: 좌/우 step을 상상하여 avatar가 좌우로 움직이면서 앞으로 나아가는 mode
     <blockquote>
-      <p>[UNK] 토큰은 Entity로 선정된 단어가 ‘Entity 단어 임베딩’ 에 없을 경우 대체됨</p>
+      <p>switch mode의 경우 cue는 제시되지만, 해당 cue의 목적은 최적의 경로를 안내하는 네비게이션 역할</p>
     </blockquote>
   </li>
-  <li>RoBERTa의 파라미터의 수(355M) + entity embeddings의 파라미터의 수(128M) = 총 파라미터의 수는 483M 이다.</li>
-  <li>RoBERTa’s 토크나이저 의 수는 50K이며, 계산의 효율성을 위해 entity 단어 임베딩은 500K만 사용된다.</li>
 </ol>
 
-<hr />
-<h3 id="performance">Performance</h3>
-<p><img src="https://user-images.githubusercontent.com/68190553/147895078-f1bcd485-15ab-4e04-a8d6-9ea78f3f364a.png" alt="img_luke_4" class="mx-auto d-block" /></p>
-
-<p>논문에선 기본 Self-attention을 사용했을 때보다 Entity-aware Self-attention 좋은 성능을 보임을 강조했습니다.</p>
-
-<p>추가적으로 LUKE는 아래 5가지 task에서 SOTA를 달성하며, 성공적임 모델임을 증명합니다.</p>
+<h3 id="c-eeg-signal-pre-processing">C. EEG signal pre-processing</h3>
 <ul>
-  <li>entity typing on the Open Entity dataset (Choi et al., 2018)</li>
-  <li>relation classification on the TACRED dataset (Zhang et al., 2017)</li>
-  <li>NER on the CoNLL-2003 dataset (Tjong Kim Sang and De Meulder, 2003)</li>
-  <li>clozestyle QA on the ReCoRD dataset (Zhang et al., 2018a)</li>
-  <li>extractive QA on the SQuAD 1.1 dataset (Rajpurkar et al., 2016).</li>
+  <li>Data was segmented into 200ms</li>
+  <li>$F_{s}$ = 256 Hz</li>
+  <li>Band-pass filtered (18th order Butterworth IIR filter) between 8 and 30 Hz</li>
+  <li>Artifacts &amp; noise rejection: automatic independent
+component analysis and noise-rejection algorithm</li>
+  <li>signal detrend</li>
 </ul>
+
+<h3 id="d-feature-extraction">D. Feature extraction</h3>
+<ul>
+  <li>Power spectral density (PSD) of every channel</li>
+  <li>5 PSD asymmetrical ratios (1 s hanning) were chosen
+as the feature sets</li>
+  <li>features were segmented 4~8s using 200 ms epochs with no overlap</li>
+  <li>Data were segmented over the 8–30 Hz frequency range using 3 Hz bins with 2 Hz overlap</li>
+  <li>The PSDs in each specific segment and frequency
+range were all concatenated</li>
+</ul>
+
+<h3 id="f-feature-selection">F. Feature selection</h3>
+<ul>
+  <li>redundant features를 삭제하기위해 Wilcoxon signed rank based feature selection이 사용됨</li>
+  <li>mean absolute value of the cross-correlation coefficient이 계산되었으며 유의하게 다르지 않은 feature는 삭제되었음</li>
+</ul>
+
+<h3 id="g-classification">G. Classification</h3>
+<p>Classifier 1,2는 regularized linear discriminate analysis (RLDA)가 사용된다.</p>
+
+<p>Day 4에선 두가지 Classifier가 사용됐다. 먼저 Classifier 1 (Cl1)에 EEG가 입력되어 “no_movement” 결과가 나오면 Classifier 2 (Cl2)에 입력되어 분류되어진다.</p>
+
+<h3 id="h-performance-evaluation">H. Performance evaluation</h3>
+<p>cue paced BCI (days 2, 3) 은  correctly classified trials의 수로 평가되어진다.<br />
+self-paced BCI (day 4)의 경우 아래 parameter에 따라 평가되어진다.</p>
+
+<ul>
+  <li>(a) BCI performance accuracy: for each trial, if the
+participant met all three requirements, it was considered successful.</li>
+  <li>(b) Trajectory completion time: the average time it took to complete the trial.</li>
+  <li>(c) Average number of stops: during forward walking, the number of times a participant stopped before reaching the target.</li>
+  <li>(d) Average stop times: the mean time elapsed between each step, in switch mode.</li>
+  <li>(e) Steps alternation performance: the number of times a participant was able to alternate between left and right steps, in switch mode.</li>
+  <li>(f) Maximum walk-maintain time: the longest amount of time the participant was able to maintain the MI of forward walking, without any stops or interruptions. All parameters were averaged over the last</li>
+</ul>
+
+<h3 id="i-spectral-map-analysis--questionnaires">I. Spectral map analysis &amp; Questionnaires</h3>
+<p>최고의 classification accuracy를 갖는 데이터로 Spectral map analysis가 진행되었으며 각 session 이후 설문조사가 진행된다.</p>
+
+<h2 id="results">Results</h2>
+<h3 id="a-retraining-of-the-classifierscue-paced-bci">A. Retraining of the classifiers—cue-paced BCI</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185041750-f43d83dd-5ddc-44d2-8953-9db89224f81a.png" width="70%" />
+</div>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185042554-03637a34-58d6-41a3-af1e-e452471a1e7e.png" width="70%" />
+</div>
+
+<h3 id="b-mdfcue-paced-bci">B. MDF—cue-paced BCI</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185042704-726ab915-81fe-4ac6-be94-8ed009c36544.png" width="70%" />
+</div>
+
+<h3 id="c-mdfcue-paced-bci-neurophysiological-results">C. MDF—cue-paced BCI: neurophysiological results</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185042769-20209628-52ae-40d4-ad6b-a7801726832c.png" width="70%" />
+</div>
+
+<h3 id="d-self-paced-bci">D. Self-paced BCI</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/185042833-07564795-6a9a-4db7-9a4d-7723a14acb9b.png" width="70%" />
+</div>
+
+<h3 id="e-behavioral-results">E. Behavioral results</h3>
+<ul>
+  <li>perceived body ownership: MDF, RGF 둘다 Day 3까지 점차 증가하지만 Day 4에선 RGF만 감소</li>
+  <li>perceived sense of agency: MDF가 Day 3부터 증가</li>
+  <li>BCI design: MDF, RGF 둘다 증가하자만 MDF가 더 크게 증가</li>
+</ul>
+
+<h2 id="discussion--conclusion">Discussion &amp; Conclusion</h2>
+<p>이 연구는 VR에서 lower MI를 사용하여 avatar의 움직임을 제어하는 BCI 시스템의 성공적인 설계 및 개발했다.</p>
+
+<p>아래 세가지는 본 BCI-system을 성공적으로 개발할 수 있었던 요소이다.</p>
+<ol>
+  <li>Retraining of the classifiers (cue-paced BCI) : 매 seesion마다 학습을 진행함</li>
+  <li>MDF (cue-paced BCI): MDF 실험과정을 겪었을 때 더 좋은 결과를 보임</li>
+  <li>Co-adaptive sequential training (self-paced BCI): cue-paced BCI로 훈련한 덕에 self-paced BCI에서 더 좋은 결과를 보였음.</li>
+</ol>
+
+<p>본 BCI-system는 주체성을 느낄 수 있는 avatar로부터 시각적 피드백을 얻고, 실제로 걷는 상상과 앞으로 쭉 걷는 상상을 함으로써 보행 재활에 사용될 수 있음을 주장한다.</p>
 
 <h6 id="reference">Reference</h6>
 <ul>
-  <li>https://arxiv.org/pdf/2010.01057.pdf</li>
+  <li>DOI: 10.1088/1741-2552/abee51</li>
 </ul>
 
       </article>
@@ -745,7 +817,7 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+            <a href="/tags#Brain Computer Interface">Brain Computer Interface</a>
           
         </div>
       
@@ -764,13 +836,9 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-12-31-2021end/" data-toggle="tooltip" data-placement="top" title="2021년 한 해를 돌아보는 회고록">&larr; Previous Post</a>
+          <a class="page-link" href="/2022-07-26-Continuous-Hybrid-BCI-Control-for-Robotic-Arm-Using-Noninvasive-Electroencephalogram,-Computer-Vision,-and-Eye-Tracking/" data-toggle="tooltip" data-placement="top" title="Review - Continuous Hybrid BCI Control for Robotic Arm Using Noninvasive Electroencephalogram, Computer Vision, and Eye Tracking">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2022-05-17-Robust-classification-of-EEG-signal-for-brain-computer-interface/" data-toggle="tooltip" data-placement="top" title="Review - Robust Classification of EEG Signal for Brain Computer Interface">Next Post &rarr;</a>
-        </li>
         
       </ul>
       

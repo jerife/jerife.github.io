@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>Review - A multi-modal modified feedback self-paced BCI to control the gait of an avatar</title>
+        <description>
+          BCI to control the gait of an avatar - 
+          A multi-modal modified feedback self-paced BCI to control the gait of an avatar 논문 리뷰...
+        </description>
+        <pubDate>Wed, 17 Aug 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-08-17-A-multi-modal-modified-feedback-self-paced-BCI-to-control-the-gait-of-an-avatar/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-08-17-A-multi-modal-modified-feedback-self-paced-BCI-to-control-the-gait-of-an-avatar/</guid>
+      </item>
+    
+      <item>
         <title>Review - Continuous Hybrid BCI Control for Robotic Arm Using Noninvasive Electroencephalogram, Computer Vision, and Eye Tracking</title>
         <description>
           Hybrid BCI Control for Robotic Arm Using EEG, CV, ET - 
@@ -23,7 +34,7 @@
       </item>
     
       <item>
-        <title>Review -A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface</title>
+        <title>Review - A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface</title>
         <description>
           Hybrid Speller Design Using Eye Tracking and SSVEP - 
           A Hybrid Speller Design Using Eye Tracking and SSVEP Brain–Computer Interface 논문 리뷰 Introduction 기존의...
@@ -218,17 +229,6 @@
         <pubDate>Sat, 11 Dec 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-12-11-electra/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-12-11-electra/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to RoBERTa</title>
-        <description>
-          Robustly Optimized BERT Pretraining Approach - 
-          RoBERTa 이해하기 RoBERTa란? RoBERTa는 Robustly Optimized BERT Pretraining Approach의 약자로, 이전 포스팅 “Introduce to BERT”...
-        </description>
-        <pubDate>Tue, 07 Dec 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-12-07-roberta/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-12-07-roberta/</guid>
       </item>
     
   </channel>

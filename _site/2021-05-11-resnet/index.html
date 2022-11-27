@@ -366,17 +366,17 @@
         }, \
        \
         { \
+          "title"    : "Introduce to Yolo v3", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-10-29-yolov3/", \
+          "date"     : "October 29, 2021" \
+        }, \
+       \
+        { \
           "title"    : "Introduce to EfficientNet", \
           "category" : "Computer Vision", \
           "url"      : "/2021-10-28-efficientnet/", \
           "date"     : "October 28, 2021" \
-        }, \
-       \
-        { \
-          "title"    : "Introduce to Yolo v3", \
-          "category" : "Computer VisionObject Detection", \
-          "url"      : "/2021-10-09-yolov3/", \
-          "date"     : "October  9, 2021" \
         }, \
        \
         { \
@@ -607,34 +607,45 @@
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h1>ResNet 이해하기</h1></div>
+        <div align="center"><h2>ResNet 이해하기</h2></div>
 <!--break-->
 
 <hr />
 
 <p><br /></p>
-<h1 id="resnet이란">ResNet이란?</h1>
-<h6 id="residual-network를-명하는-단어로써-cnn모델-중-하나입니다-앞으로-다양한-cnn-모델을-접할-예정인데-그에-앞서-가장-기본이-되는-resnet의-원리를-이해해보겠습니다--">Residual Network를 명하는 단어로써, CNN모델 중 하나입니다. 앞으로 다양한 CNN 모델을 접할 예정인데, 그에 앞서 가장 기본이 되는 ResNet의 원리를 이해해보겠습니다. <br /> <br /></h6>
+
+<h2 id="resnet이란">ResNet이란?</h2>
+<p>Residual Network를 명하는 단어로써, CNN모델 중 하나입니다. 앞으로 다양한 CNN 모델을 접할 예정인데, 그에 앞서 가장 기본이 되는 ResNet의 원리를 이해해보겠습니다.</p>
+
 <p><img src="https://user-images.githubusercontent.com/68190553/117818702-d3eefb80-b2a3-11eb-8e9b-759f9ba3a579.png" alt="img" class="mx-auto d-block" /></p>
 <blockquote>
-  <h6 id="일반-cnn모델은-층이-깊어질수록-error-가-더-큼을-알-수-있음">일반 CNN모델은 층이 깊어질수록 ERROR% 가 더 큼을 알 수 있음</h6>
+  <p>일반 CNN모델은 층이 깊어질수록 ERROR% 가 더 큼을 알 수 있음</p>
 </blockquote>
 
-<h6 id="우리가-이해하는-cnn모델은-convolution-layer와-pooling-layer의-층을-깊게-쌓아-학습시킴으로서-컴퓨터가-특징을-알아서-학습하는-모델입니다---">우리가 이해하는 CNN모델은 Convolution layer와 Pooling layer의 층을 깊게 쌓아 학습시킴으로서, 컴퓨터가 특징을 알아서 학습하는 모델입니다.  <br /> <br /></h6>
-<h6 id="cnn모델은-층이-깊어질수록-더-섬세한-특징을-학습할-수-있단-장점을-갖지만-오히려-너무-섬세하게-학습을-해-과적합overfitting될-수-있다는-단점을-가지고있습니다---">CNN모델은 층이 깊어질수록 더 섬세한 특징을 학습할 수 있단 장점을 갖지만, 오히려 너무 섬세하게 학습을 해 과적합(Overfitting)될 수 있다는 단점을 가지고있습니다.  <br /> <br /></h6>
-<h6 id="즉-층이-너무-깊어질수록-모델에-부작용이-미친다는-것입니다-resnet은-이런-문제를-해결하기-위해--residual-block라는--아이디어를-제안합니다--">즉, 층이 너무 깊어질수록 모델에 부작용이 미친다는 것입니다. Resnet은 이런 문제를 해결하기 위해  <strong>Residual Block</strong>라는  아이디어를 제안합니다. <br /> <br /></h6>
-<p><img src="https://user-images.githubusercontent.com/68190553/117786104-23bbcb80-b280-11eb-9b6e-55427faf1d62.jpg" alt="v2-4fb840788867722ba48fb6398041c678_1440w" class="mx-auto d-block" /> <br /></p>
-<h6 id="위-사진-속엔-3가지-모델이-있습니다-밑의-2-3번-모델은-일반적을-사용되는-cnn모델이며-convolution-layer와-pooling-layer이-적접-사용되는것을-볼-수-있습니다-">위 사진 속엔 3가지 모델이 있습니다. 밑의 2, 3번 모델은 일반적을 사용되는 CNN모델이며 Convolution layer와 Pooling layer이 적접 사용되는것을 볼 수 있습니다. <br /></h6>
-<h6 id="반면-1번-모델은-화살표-모양의-특이한-구조가-있습니다-이것이-residual-block의-핵심-기법입니다-">반면 1번 모델은 화살표 모양의 특이한 구조가 있습니다. 이것이 Residual Block의 핵심 기법입니다. <br /></h6>
+<p>우리가 이해하는 CNN모델은 Convolution layer와 Pooling layer의 층을 깊게 쌓아 학습시킴으로서, 컴퓨터가 특징을 알아서 학습하는 모델입니다.</p>
+
+<p>CNN모델은 층이 깊어질수록 더 섬세한 특징을 학습할 수 있단 장점을 갖지만, 오히려 너무 섬세하게 학습을 해 과적합(Overfitting)될 수 있다는 단점을 가지고있습니다.</p>
+
+<p>즉, 층이 너무 깊어질수록 모델에 부작용이 미친다는 것입니다. Resnet은 이런 문제를 해결하기 위해  <strong>Residual Block</strong>라는  아이디어를 제안합니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/117786104-23bbcb80-b280-11eb-9b6e-55427faf1d62.jpg" alt="v2-4fb840788867722ba48fb6398041c678_1440w" class="mx-auto d-block" /></p>
+
+<p>위 사진 속엔 3가지 모델이 있습니다. 밑의 2, 3번 모델은 일반적을 사용되는 CNN모델이며 Convolution layer와 Pooling layer이 적접 사용되는것을 볼 수 있습니다. <br /> 
+반면 1번 모델은 화살표 모양의 특이한 구조가 있습니다. 이것이 Residual Block의 핵심 기법입니다.</p>
 
 <hr />
 
-<h2 id="residual-block">[Residual Block]</h2>
-<h6 id="위에서-말한것-처럼-residual-block은-기본-cnn모델과는-달리-화살표-모양의-특이한-구조를-갖고있습니다-">위에서 말한것 처럼 Residual Block은 기본 CNN모델과는 달리 화살표 모양의 특이한 구조를 갖고있습니다.<br /> <br /></h6>
-<p><img src="https://user-images.githubusercontent.com/68190553/117819890-f5041c00-b2a4-11eb-89ef-68bad69af927.png" alt="images" class="mx-auto d-block" /> <br /></p>
-<h6 id="원래-기존-cnn모델의-경우에-일반적으로-weight-layer를-2개-거친-후-fx를-구하는-것을-반복합니다-">원래 기존 CNN모델의 경우에 일반적으로 Weight layer를 2개 거친 후 F(x)를 구하는 것을 반복합니다. <br /></h6>
-<h6 id="하지만-residual-block에선-weight-layer를-2개-거친-후의-결과-fx--weight-layer를-2개-거치기-전의-입력--x그림상에선-화살표를-의미-를-통해-hx--fx--x-로-결과를-구합니다--">하지만 Residual Block에선 “Weight layer를 2개 거친 후의 결과 :F(x)” + “Weight layer를 2개 거치기 전의 입력 : x(그림상에선 화살표를 의미)” 를 통해 H(x) = F(x) + x 로 결과를 구합니다. <br /> <br /></h6>
-<h6 id="이는-입력에서-뽑은-특성과-출력에서-뽑은-더-복잡한-특성을-모두-사용한다는-장점이-있습니다-또한-더하기-연산한-역전파-계산시-기울기가-1이기에-기울기-소실이-발생하지-않습니다-">이는 입력에서 뽑은 특성과 출력에서 뽑은 더 복잡한 특성을 모두 사용한다는 장점이 있습니다. 또한 더하기 연산한 역전파 계산시 기울기가 1이기에, 기울기 소실이 발생하지 않습니다.<br /> <br /></h6>
+<h2 id="residual-block">Residual Block</h2>
+<p>위에서 말한것 처럼 Residual Block은 기본 CNN모델과는 달리 화살표 모양의 특이한 구조를 갖고있습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/117819890-f5041c00-b2a4-11eb-89ef-68bad69af927.png" alt="images" class="mx-auto d-block" /></p>
+
+<p>원래 기존 CNN모델의 경우에 일반적으로 Weight layer를 2개 거친 후 F(x)를 구하는 것을 반복합니다.</p>
+
+<p>하지만 Residual Block에선 “Weight layer를 2개 거친 후의 결과 : F(x)” + “Weight layer를 2개 거치기 전의 입력 : x(그림상에선 화살표를 의미)” 를 통해 H(x) = F(x) + x 로 결과를 구합니다.</p>
+
+<p>이는 입력에서 뽑은 특성과 출력에서 뽑은 더 복잡한 특성을 모두 사용한다는 장점이 있습니다. 또한 더하기 연산한 역전파 계산시 기울기가 1이기에, 기울기 소실이 발생하지 않습니다.</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">layer_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
   <span class="n">nn</span><span class="p">.</span><span class="n">Conv</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mi">3</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
   <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">ReLU</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
@@ -646,11 +657,16 @@
 <span class="n">H</span> <span class="o">=</span> <span class="n">F</span> <span class="o">+</span> <span class="n">x</span>
 </code></pre></div></div>
 
-<h2 id="bottleneck-block">[Bottleneck Block]</h2>
-<h6 id="residual-block과-원리는-같지만-조금-다른-bottleneck현상을-해결해주는-bottleneck-block입니다-">Residual Block과 원리는 같지만 조금 다른 Bottleneck현상을 해결해주는 Bottleneck Block입니다.<br /> <br /></h6>
-<p><img src="https://user-images.githubusercontent.com/68190553/117821317-6bede480-b2a6-11eb-81b6-2b1aaae7c568.jpg" alt="IMG_0480" class="mx-auto d-block" /> <br /></p>
-<h6 id="bottleneck-block은--weight-layer를-2개-거친-후-결과를-구하는-것이-아닌--weight-layer전에-1x1-convolution을-진행해-연산수파라미터를-줄여-주는-블록입니다--">Bottleneck Block은  Weight layer를 2개 거친 후 결과를 구하는 것이 아닌  Weight layer전에 1x1 Convolution을 진행해 연산수(파라미터)를 줄여 주는 블록입니다. <br /> <br /></h6>
-<h6 id="resnet에선-50-layer이상의-모델에선-bottleneck현상-해결을-위해-bottleneck-block을-이용합니다-">ResNet에선 50 layer이상의 모델에선 Bottleneck현상 해결을 위해 Bottleneck Block을 이용합니다.<br /> <br /></h6>
+<p><br /></p>
+<h2 id="bottleneck-block">Bottleneck Block</h2>
+<p>Residual Block과 원리는 같지만 조금 다른 Bottleneck현상을 해결해주는 Bottleneck Block입니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/117821317-6bede480-b2a6-11eb-81b6-2b1aaae7c568.jpg" alt="IMG_0480" class="mx-auto d-block" /></p>
+
+<p>Bottleneck Block은  Weight layer를 2개 거친 후 결과를 구하는 것이 아닌  Weight layer전에 1x1 Convolution을 진행해 연산수(파라미터)를 줄여 주는 블록입니다.</p>
+
+<p>ResNet에선 50 layer이상의 모델에선 Bottleneck현상 해결을 위해 Bottleneck Block을 이용합니다.</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">layer_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
   <span class="n">nn</span><span class="p">.</span><span class="n">Conv</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
   <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">ReLU</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
@@ -663,10 +679,13 @@
 <span class="n">F</span> <span class="o">=</span> <span class="n">layer_function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">H</span> <span class="o">=</span> <span class="n">F</span> <span class="o">+</span> <span class="n">x</span>
 </code></pre></div></div>
+
 <p><br /></p>
-<h2 id="resnet-architecture">[ResNet Architecture]</h2>
-<p><img src="https://user-images.githubusercontent.com/68190553/117823565-9345b100-b2a8-11eb-8b06-cfbe5511b053.png" alt="resnet-architectures-34-101" class="mx-auto d-block" /> <br /></p>
-<h6 id="위는-resnet의-기본적인-구조입니다-18--34--50---등-깊이에-따라-residual-block을-사용하는지-bottleneck-block을-사용하는지-다르며-필터의-크기-층의-개수등-모두-다르기-떄문에-자신의-입력-데이터에-적합한-모델을-이용하시길-바랍니다-">위는 ResNet의 기본적인 구조입니다. 18 / 34 / 50 / …. 등 깊이에 따라 Residual Block을 사용하는지 Bottleneck Block을 사용하는지 다르며, 필터의 크기 층의 개수등 모두 다르기 떄문에, 자신의 입력 데이터에 적합한 모델을 이용하시길 바랍니다.<br /> <br /></h6>
+<h2 id="resnet-architecture">ResNet Architecture</h2>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/117823565-9345b100-b2a8-11eb-8b06-cfbe5511b053.png" alt="resnet-architectures-34-101" class="mx-auto d-block" /></p>
+
+<p>위는 ResNet의 기본적인 구조입니다. 18 / 34 / 50 / …. 등 깊이에 따라 Residual Block을 사용하는지 Bottleneck Block을 사용하는지 다르며, 필터의 크기 층의 개수등 모두 다르기 떄문에, 자신의 입력 데이터에 적합한 모델을 이용하시길 바랍니다.</p>
 
 <h2 id="pytorch-code">Pytorch Code</h2>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pytorch</span>
@@ -720,17 +739,11 @@
 </code></pre></div></div>
 <p><br /></p>
 
-<blockquote>
-  <h5 id="reference">Reference</h5>
-  <ul>
-    <li>
-      <h6 id="httpsarxivorgpdf151203385pdf">https://arxiv.org/pdf/1512.03385.pdf</h6>
-    </li>
-    <li>
-      <h6 id="파이토치-첫걸음--최건호--한빛-미디어">파이토치 첫걸음 / 최건호 / 한빛 미디어</h6>
-    </li>
-  </ul>
-</blockquote>
+<h6 id="reference">Reference</h6>
+<ul>
+  <li>https://arxiv.org/pdf/1512.03385.pdf</li>
+  <li>파이토치 첫걸음 / 최건호 / 한빛 미디어</li>
+</ul>
 
       </article>
 

@@ -378,9 +378,9 @@
     
     
     <url>
-        <loc>http://localhost:4000/2021-10-28-efficientnet/</loc>
+        <loc>http://localhost:4000/2021-10-29-yolov3/</loc>
         
-        <lastmod>2021-10-28T00:00:00+09:00</lastmod>
+        <lastmod>2021-10-29T00:00:00+09:00</lastmod>
         
         
         <changefreq>monthly</changefreq>
@@ -393,9 +393,9 @@
     
     
     <url>
-        <loc>http://localhost:4000/2021-10-09-yolov3/</loc>
+        <loc>http://localhost:4000/2021-10-28-efficientnet/</loc>
         
-        <lastmod>2021-10-09T00:00:00+09:00</lastmod>
+        <lastmod>2021-10-28T00:00:00+09:00</lastmod>
         
         
         <changefreq>monthly</changefreq>

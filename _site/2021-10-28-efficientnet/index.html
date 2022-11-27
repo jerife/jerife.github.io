@@ -6,6 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<!--$f(x) = x^2$->
+  
 
   
 
@@ -366,17 +392,17 @@
         }, \
        \
         { \
+          "title"    : "Introduce to Yolo v3", \
+          "category" : "Computer VisionObject Detection", \
+          "url"      : "/2021-10-29-yolov3/", \
+          "date"     : "October 29, 2021" \
+        }, \
+       \
+        { \
           "title"    : "Introduce to EfficientNet", \
           "category" : "Computer Vision", \
           "url"      : "/2021-10-28-efficientnet/", \
           "date"     : "October 28, 2021" \
-        }, \
-       \
-        { \
-          "title"    : "Introduce to Yolo v3", \
-          "category" : "Computer VisionObject Detection", \
-          "url"      : "/2021-10-09-yolov3/", \
-          "date"     : "October  9, 2021" \
         }, \
        \
         { \
@@ -607,48 +633,74 @@
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h1>EfficientNet 이해하기</h1></div>
+        <div align="center"><h2>EfficientNet 이해하기</h2></div>
 <!--break-->
 
 <hr />
+
 <p><br /></p>
-<h1 id="efficientnet이란">EfficientNet이란?</h1>
-<h6 id="efficientnet은-기본-cnn모델resnet-mobilenet-etc와-같은-feature-extractor-모델입니다-즉-이미지를-input으로-받고-특징을-output으로-내보내는-모델이죠-">EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로 받고 특징을 output으로 내보내는 모델이죠.<br /> <br /></h6>
-<h6 id="그렇다면-기존-모델들과-무슨-차이점이-있기에-sota를-달성했을까요-">그렇다면 기존 모델들과 무슨 차이점이 있기에 SOTA를 달성했을까요?<br /> <br /></h6>
+
+<h2 id="efficientnet이란">EfficientNet이란?</h2>
+<p>EfficientNet은 기본 CNN모델(ResNet, MobileNet, etc..)와 같은 Feature Extractor 모델입니다. 즉 이미지를 input으로 받고 특징을 output으로 내보내는 모델이죠.</p>
+
+<p>그렇다면 기존 모델들과 무슨 차이점이 있기에 SOTA를 달성했을까요?</p>
 
 <p><img src="https://user-images.githubusercontent.com/68190553/139193693-0c5b58cd-990b-450e-a98d-13e73ef282c4.png" alt="efficientnet_img_2" class="mx-auto d-block" /></p>
-<h6 id="우리는-기존-cnn모델을-향상시키기위해-위-사진처럼-a모델을-bcd-와-같이-scaling하며-모델을-수정해왔습니다-특히-이-과정에bcd서-주로-1가지-방법으로만-scaling해-모델을-성능을-기대해왔습니다-">우리는 기존 CNN모델을 향상시키기위해, 위 사진처럼 (a)모델을 (b)/(c)/(d) 와 같이 scaling하며 모델을 수정해왔습니다. 특히 이 과정에(b/c/d)서 주로 1가지 방법으로만 scaling해 모델을 성능을 기대해왔습니다.<br /> <br /></h6>
-<h6 id="하지만-efficientnet에선-bcd과정을-골고루-조합하면-즉-e방법으로-적은-연산량으로-더-좋은-성능을-낼수있음을-증명했습니다-">하지만 EfficientNet에선 (b)/(c)/(d)과정을 골고루 조합하면, 즉 (e)방법으로 적은 연산량으로 더 좋은 성능을 낼수있음을 증명했습니다.<br /> <br /></h6>
-<h5 id="efficientnet에선-이를-compound-scaling-라합니다---">EfficientNet에선 이를 <strong>“Compound Scaling”</strong> 라합니다. <br /> <br /> <br /></h5>
 
-<h2 id="compound-scaling">[Compound Scaling]</h2>
+<p>우리는 기존 CNN모델을 향상시키기위해, 위 사진처럼 (a)모델을 (b)/(c)/(d) 와 같이 scaling하며 모델을 수정해왔습니다. 특히 이 과정에(b/c/d)서 주로 1가지 방법으로만 scaling해 모델을 성능을 기대해왔습니다.</p>
+
+<p>하지만 EfficientNet에선 (b)/(c)/(d)과정을 골고루 조합하면, 즉 (e)방법으로 적은 연산량으로 더 좋은 성능을 낼수있음을 증명했습니다.</p>
+
+<h5 id="efficientnet에선-이를-compound-scaling-라합니다">EfficientNet에선 이를 <strong>“Compound Scaling”</strong> 라합니다.</h5>
+
+<h2 id="compound-scaling">Compound Scaling</h2>
 <p><img src="https://user-images.githubusercontent.com/68190553/139195588-84b59886-a118-4184-8f63-83ae00f4d54c.png" alt="efficientnet_img_3" class="mx-auto d-block" /></p>
-<h6 id="compound-scaling과-비교하기전-기존-scaling를-참고해보겠습니다-위-사진-3개는-각각-width-depth-resoultion을-점점-늘려가면서-실험한-결과입니다-">Compound Scaling과 비교하기전 기존 Scaling를 참고해보겠습니다. 위 사진 3개는 각각 width, depth, resoultion을 점점 늘려가면서 실험한 결과입니다.<br /> <br /></h6>
-<h6 id="일정-수준까지-빠르게-상승하다-일정-accuracy80-쯤에서-머무르는-것을-알-수-있습니다--">일정 수준까지 빠르게 상승하다, 일정 Accuracy(80% 쯤)에서 머무르는 것을 알 수 있습니다. <br /> <br /></h6>
-<p><img src="https://user-images.githubusercontent.com/68190553/139196343-99d0578e-7307-4711-a4b2-d3ab3c13b581.png" alt="4" class="mx-auto d-block" /></p>
-<h6 id="이번엔-depth와-resolution을-함께-조정한-compound-scaling을-살펴보겠습니다-">이번엔 depth와 resolution을 함께 조정한 Compound Scaling을 살펴보겠습니다.<br /> <br /></h6>
-<h6 id="기존-scaling으로-했을-때는-일정-accuracy80-이하에서-머물렀던-반면-compound-scaling시-기존보다-3프로-가량의-accuracy가-상승한-것을-볼-수-있습니다--">기존 Scaling으로 했을 때는 일정 Accuracy(80% 이하)에서 머물렀던 반면, Compound Scaling시 기존보다 3%프로 가량의 Accuracy가 상승한 것을 볼 수 있습니다. <br /> <br /></h6>
-<p><img src="https://user-images.githubusercontent.com/68190553/139203032-1fcea2dc-ad0e-4590-923d-f8fa8c52ac99.png" alt="efficientnet_img_4" class="mx-auto d-block" /></p>
-<h6 id="efficientnet에선-compound-scaling을-적용하기-위해-위의-식을-적용했습니다-width-depth-resoultion를-각각-α-β-γ로-지정하여-φ를-제곱승-해줍니다--">EfficientNet에선 Compound Scaling을 적용하기 위해 위의 식을 적용했습니다. width, depth, resoultion를 각각 α, β, γ로 지정하여 Φ를 제곱승 해줍니다. <br /> <br /></h6>
-<h6 id="이때-φ는-모델의-크기에-따라-조절할-수-있는-변수입니다늘릴수록-연산량-증가-논문에선-α12-β11-γ115를-사용하며φ를-조절함으로써-모델-사이즈도-조절합니다--">이때 Φ는 모델의 크기에 따라 조절할 수 있는 변수입니다.(늘릴수록 연산량 증가) 논문에선 α=1.2, β=1.1, γ=1.15를 사용하며,Φ를 조절함으로써 모델 사이즈도 조절합니다. <br /> <br /></h6>
-<h6 id="추가적으로-논문에선-α-β2-γ2--2로-제한함으로써--flops가-α-β2-γ22배-만큼만-증가하게-제한을-뒀습니다-하지만-우리는-φ를-조절함으로써-flops을-증가시킬-수-있습니다">추가적으로 논문에선 α, β^2, γ^2 = 2로 제한함으로써  FLOPs가 (α, β^2, γ^2)^2배 만큼만 증가하게 제한을 뒀습니다. 하지만 우리는 Φ를 조절함으로써 FLOPs을 증가시킬 수 있습니다.</h6>
-<p><br /></p>
 
-<h2 id="architecture">[Architecture]</h2>
-<h6 id="efficientnet의-이론을-알았으니-어떤-모델에-사용되는지-알아보겠습니다">EfficientNet의 이론을 알았으니, 어떤 모델에 사용되는지 알아보겠습니다.</h6>
+<p>Compound Scaling과 비교하기전 기존 Scaling를 참고해보겠습니다. 위 사진 3개는 각각 width, depth, resoultion을 점점 늘려가면서 실험한 결과입니다.</p>
+
+<p>일정 수준까지 빠르게 상승하다, 일정 Accuracy(80% 쯤)에서 머무르는 것을 알 수 있습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/139196343-99d0578e-7307-4711-a4b2-d3ab3c13b581.png" alt="4" class="mx-auto d-block" /></p>
+
+<p>이번엔 depth와 resolution을 함께 조정한 Compound Scaling을 살펴보겠습니다.</p>
+
+<p>기존 Scaling으로 했을 때는 일정 Accuracy(80% 이하)에서 머물렀던 반면, Compound Scaling시 기존보다 3%프로 가량의 Accuracy가 상승한 것을 볼 수 있습니다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/68190553/139203032-1fcea2dc-ad0e-4590-923d-f8fa8c52ac99.png" alt="efficientnet_img_4" class="mx-auto d-block" /></p>
+
+<p>EfficientNet에선 Compound Scaling을 적용하기 위해 위의 식을 적용했습니다. width, depth, resoultion를 각각 α, β, γ로 지정하여 Φ를 제곱승 해줍니다.</p>
+
+<p>이때 Φ는 모델의 크기에 따라 조절할 수 있는 변수입니다.(늘릴수록 연산량 증가) 논문에선 α=1.2, β=1.1, γ=1.15를 사용하며,Φ를 조절함으로써 모델 사이즈도 조절합니다.</p>
+
+<p>추가적으로 논문에선 α, $β^{2}$, $γ^{2}$ = 2로 제한함으로써  FLOPs가 (α, $β^{2}$, $γ^{2}$$)^{2}$배 만큼만 증가하게 제한을 뒀습니다. 하지만 우리는 Φ를 조절함으로써 FLOPs을 증가시킬 수 있습니다.</p>
+
+<h2 id="architecture">Architecture</h2>
+<p>EfficientNet의 이론을 알았으니, 어떤 모델에 사용되는지 알아보겠습니다.</p>
+
 <p><img src="https://user-images.githubusercontent.com/68190553/139201539-a7c8fe3b-bc0e-4b56-b003-7f944639a8c5.png" alt="efficientnet_img_5" class="mx-auto d-block" /></p>
-<h6 id="efficientnet은-mobilenetv2과-mnasnet랑-유사한-모델을-사용하고있습니다-하지만-이-모델을-바탕으로-compound-scaling한다는-점이-차이점이죠">EfficientNet은 MobileNetV2과 MnasNet랑 유사한 모델을 사용하고있습니다. 하지만 이 모델을 바탕으로 Compound Scaling한다는 점이 차이점이죠.</h6>
-<h6 id="사실-모델의-architecture보단-compound-scaling의-매커니즘이-큰-주목받고-있는-모델이랍니다-">사실 모델의 Architecture보단 Compound Scaling의 매커니즘이 큰 주목받고 있는 모델이랍니다.<br /> <br /></h6>
+
+<p>EfficientNet은 MobileNetV2과 MnasNet랑 유사한 모델을 사용하고있습니다. 하지만 이 모델을 바탕으로 Compound Scaling한다는 점이 차이점이죠. 
+사실 모델의 Architecture보단 Compound Scaling의 매커니즘이 큰 주목받고 있는 모델이랍니다.</p>
 
 <hr />
 
-<h2 id="performance">[Performance]</h2>
+<h2 id="performance">Performance</h2>
+
 <p><img src="https://user-images.githubusercontent.com/68190553/139202754-0f131c96-c269-4ec1-9ec2-6e14dbddd46a.png" alt="efficientnet_img_6" class="mx-auto d-block" /></p>
-<h6 id="마지막으로-논문에서-제공한-performance에-대해-이야기하고-마치겠습니다">마지막으로 논문에서 제공한 performance에 대해 이야기하고 마치겠습니다.</h6>
-<h6 id="위-사진들은-각각의-scaling시-나온-featuremap입니다-compound-scaling이-가장-특징을-잘-추출해내는-것을-알-수-있습니다-">위 사진들은 각각의 Scaling시 나온 Featuremap입니다. Compound Scaling이 가장 특징을 잘 추출해내는 것을 알 수 있습니다.<br /> <br /></h6>
+
+<p>마지막으로 논문에서 제공한 performance에 대해 이야기하고 마치겠습니다. 
+위 사진들은 각각의 Scaling시 나온 Featuremap입니다. Compound Scaling이 가장 특징을 잘 추출해내는 것을 알 수 있습니다.</p>
+
 <p><img src="https://user-images.githubusercontent.com/68190553/139203576-2f44a51b-f828-4fc2-906b-24646970edf6.png" alt="efficientnet_img_7" class="mx-auto d-block" /></p>
-<h6 id="마지막은-다른-모델들과-비교한-efficientnet의-performance입니다-다른-cnnfeature-extractor보다-적은-연산량으로-좋은-성능을-낸다는것을-알수있죠-">마지막은 다른 모델들과 비교한 EfficientNet의 performance입니다. 다른 CNN(Feature Extractor)보다 적은 연산량으로 좋은 성능을 낸다는것을 알수있죠.<br /> <br /></h6>
-<h6 id="이상으로-efficientnet에-대한-설명을-마치겠습니다">이상으로 EfficientNet에 대한 설명을 마치겠습니다.</h6>
+
+<p>마지막은 다른 모델들과 비교한 EfficientNet의 performance입니다. 다른 CNN(Feature Extractor)보다 적은 연산량으로 좋은 성능을 낸다는것을 알수있죠.</p>
+
+<p>이상으로 EfficientNet에 대한 설명을 마치겠습니다.</p>
+
+<h6 id="reference">Reference</h6>
+<ul>
+  <li>https://arxiv.org/abs/1905.11946</li>
+</ul>
 
       </article>
 
@@ -675,12 +727,12 @@
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-10-09-yolov3/" data-toggle="tooltip" data-placement="top" title="Introduce to Yolo v3">&larr; Previous Post</a>
+          <a class="page-link" href="/2021-09-12-fasterrcnn/" data-toggle="tooltip" data-placement="top" title="Introduce to Faster R-CNN">&larr; Previous Post</a>
         </li>
         
         
         <li class="page-item next">
-          <a class="page-link" href="/2021-11-15-efficientdet/" data-toggle="tooltip" data-placement="top" title="Introduce to EfficientDet">Next Post &rarr;</a>
+          <a class="page-link" href="/2021-10-29-yolov3/" data-toggle="tooltip" data-placement="top" title="Introduce to Yolo v3">Next Post &rarr;</a>
         </li>
         
       </ul>

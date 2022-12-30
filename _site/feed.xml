@@ -12,6 +12,17 @@
     
     
       <item>
+        <title>2022년 한 해를 돌아보는 회고록</title>
+        <description>
+          2022 Memoir - 
+          2022년도를 마무리하며 블로그를 찾아주신 모든 분께 🙌🏻 한 해의 안부를 전하며, 먼저 블로그를 방문해주셔서 감사합니다....
+        </description>
+        <pubDate>Sat, 31 Dec 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022-12-31-2022end/</link>
+        <guid isPermaLink="true">http://localhost:4000/2022-12-31-2022end/</guid>
+      </item>
+    
+      <item>
         <title>Review - A multi-modal modified feedback self-paced BCI to control the gait of an avatar</title>
         <description>
           BCI to control the gait of an avatar - 
@@ -218,17 +229,6 @@
         <pubDate>Fri, 31 Dec 2021 00:00:00 +0900</pubDate>
         <link>http://localhost:4000/2021-12-31-2021end/</link>
         <guid isPermaLink="true">http://localhost:4000/2021-12-31-2021end/</guid>
-      </item>
-    
-      <item>
-        <title>Introduce to ELECTRA</title>
-        <description>
-          Pre-training Text Encoders as Discriminators Rather Than Generators - 
-          ELECTRA 이해하기 ELECTRA란? ELECTRA는 이전 포스팅 “Introduce to BERT” 에서 다룬 BERT를 기반으로 한 모델입니다....
-        </description>
-        <pubDate>Sat, 11 Dec 2021 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/2021-12-11-electra/</link>
-        <guid isPermaLink="true">http://localhost:4000/2021-12-11-electra/</guid>
       </item>
     
   </channel>

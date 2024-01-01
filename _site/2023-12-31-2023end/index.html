@@ -6,18 +6,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
+<!--$f(x) = x^2$->
   
 
   
 
-  <title>Introduce to Attention Mechanism</title>
+  
+
+  <title>2023년 한 해를 돌아보는 회고록</title>
 
   
   <meta name="author" content="Jerife">
   
 
-  <meta name="description" content="Attention Is All You Need">
+  <meta name="description" content="2023 Memoir">
 
   
 
@@ -86,8 +112,8 @@
 
   
   <meta property="og:site_name" content="Jerife">
-  <meta property="og:title" content="Introduce to Attention Mechanism">
-  <meta property="og:description" content="Attention Is All You Need">
+  <meta property="og:title" content="2023년 한 해를 돌아보는 회고록">
+  <meta property="og:description" content="2023 Memoir">
 
   
   <meta property="og:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -96,9 +122,9 @@
   
   <meta property="og:type" content="article">
   <meta property="og:article:author" content="Jerife">
-  <meta property="og:article:published_time" content="2021-11-16T00:00:00+09:00">
-  <meta property="og:url" content="http://localhost:4000/2021-11-16-attention/">
-  <link rel="canonical" href="http://localhost:4000/2021-11-16-attention/">
+  <meta property="og:article:published_time" content="2023-12-31T00:00:00+09:00">
+  <meta property="og:url" content="http://localhost:4000/2023-12-31-2023end/">
+  <link rel="canonical" href="http://localhost:4000/2023-12-31-2023end/">
   
 
   
@@ -107,8 +133,8 @@
   <meta name="twitter:site" content="@">
   <meta name="twitter:creator" content="@">
 
-  <meta property="twitter:title" content="Introduce to Attention Mechanism">
-  <meta property="twitter:description" content="Attention Is All You Need">
+  <meta property="twitter:title" content="2023년 한 해를 돌아보는 회고록">
+  <meta property="twitter:description" content="2023 Memoir">
 
   
   <meta name="twitter:image" content="http://localhost:4000/assets/img/avatar-icon.png">
@@ -573,15 +599,15 @@
     <div class="row">
       <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1">
         <div class="post-heading">
-          <h1>Introduce to Attention Mechanism</h1>
+          <h1>2023년 한 해를 돌아보는 회고록</h1>
           
             
-              <h2 class="post-subheading">Attention Is All You Need</h2>
+              <h2 class="post-subheading">2023 Memoir</h2>
             
           
 
           
-            <span class="post-meta">Posted on November 16, 2021</span>
+            <span class="post-meta">Posted on December 31, 2023</span>
             
             
           
@@ -622,89 +648,143 @@
       
 
       <article role="main" class="blog-post">
-        <div align="center"><h1>Attention Mechanism 이해하기</h1></div>
+        <div align="center"><h2>2023년도를 마무리하며</h2></div>
 <!--break-->
 
 <hr />
 
 <p><br /></p>
-<h2 id="attention란">Attention란?</h2>
-<p>우리는 이전에 언어처리에 관한 Seq2Seq모델을 <a href="https://jerife.github.io/2021-06-08-seq2seq/">“Introduce to Seq2Seq”</a>이글에서 다뤘습니다.<br /> 
-Seq2Seq는 RNN모델(RNN, LSTM, GRU)등을 순환성을 기반으로 시퀀스 데이터(언어, 시계열 데이터 등)를 또 다른 시퀀스 데이터로 변환해주는 모델이라 했었습니다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/68190553/121048577-e2bcc580-c7f1-11eb-9c39-2cb0f717ce2d.gif" alt="image" class="mx-auto d-block" /></p>
-<blockquote>
-  <p>Artchitecture of Seq2Seq</p>
-</blockquote>
-
-<p><br /></p>
-<h3 id="1-seq2seq의-한계">1) Seq2Seq의 한계</h3>
-<p>Seq2Seq의 한계는 Encoder -&gt; Decoder로 보내는 Context Vector의 크기가 고정되었다는 것입니다.
-<img width="27" alt="seq2seq_img_4" src="https://user-images.githubusercontent.com/68190553/121125066-e2a7de80-c860-11eb-8fd7-20e3e2ebefb5.png" class="mx-auto d-block" /></p>
-
-<p>Context Vector는 입력값(“je suis étudiant”)의 모든 정보를 모아 놓은 동시에, 고정된 크기의 벡터이기도 합니다.<br /> <br />
-Context Vector는 많은양의 데이터도 꾹꾹 눌러서 압축시켜야하기 때문에, 정보 손실이 있다는 단점이 있었죠? 뿐만아니라 RNN계열의 특성상 Gradient Vanishing의 단점도 해결해야할 숙제였습니다.<br /> <br />
-이 한계를 극복하게해준 Mechanism이 <a href="https://arxiv.org/abs/1409.0473">“Neural Machine Translation by Jointly Learning to Align and Translate
-Dzmitry Bahdanau, Kyunghyun Cho, Yoshua Bengio”</a> 논문에서 제안된 바로 <strong>“Attention”</strong> 입니다.<br /></p>
-
-<h3 id="2-attention-mechanism">2) Attention Mechanism</h3>
-<p>Attention Mechanism은 Decoder에서 출력 단어를 예측하는 매 시점마다, 인코더에서의 전체 입력 문장을 다시 한 번 참고한다는 점입니다.<br /> <br />
-Attention은 “집중”라는 의미를 지니고있습니다. Attention Mechanism에서도 입력 문장을 다시 한 번 참고할때, 해당 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중(Attention)해서 보게 됩니다.</p>
-
-<p><img src="https://user-images.githubusercontent.com/68190553/141924378-e7348509-de3e-4d72-944c-b62954a304bd.gif" alt="attention_gif_1" class="mx-auto d-block" />
-위 사진은 Seq2Seq모델에 Attention을 적용했을때의 동작과정입니다. 지금부터 자세한 동작과정을 기술해보겠습니다.</p>
+<h2 id="한-해를-돌아보며">한 해를 돌아보며</h2>
+<p>작년 2022년은 성장을 추구했던 한 해였습니다. 성장하는 것과 방향성을 설정하는 것에만 초점을 두고 서둘렀습니다. 올해 2023년에는 여유를 갖고 다양한 경험을 하며 AI분야의 도메인도 정하고 다음 한해의 목표를 설정해나가는 것을 목표로 한 해를 보냈습니다. 많은 경험을 통해 시야를 넓혀나가고 가치관에 큰 변화를 줄 수 있었던 의미있던 한해였습니다.</p>
 
 <hr />
+<h2 id="1분기-1월3월">1분기 [1월~3월]</h2>
+<h3 id="1-allusernet-회사-devops-및-mlops-개발-인턴">1) Alluser.net 회사 DevOps 및 MLOps 개발 인턴</h3>
+<p>1월부터 2월까지 2개월간 ‘올유저닷넷’이라는 NLP기반 AI 서비스를 제공하는 회사에서 개발인턴을 진행했습니다. 비록 크지 않은 회사여서 담당 선임이 없이 지시된 업무를 힘들게 해결해왔지만, 업무를 통해 IT기업 회사의 흐름을 이해하고 실제 인프라를 다뤄보는 등의 최고의 값진 경험을 했습니다.</p>
 
-<h3 id="seq2seq-with-attention">Seq2Seq with Attention</h3>
-<h4 id="1-prepare-inputs">[1] Prepare inputs</h4>
-<p><img width="1147" alt="attention_img_2" src="https://user-images.githubusercontent.com/68190553/141924473-d9c88274-635d-4e91-9fc7-eee9a899b35b.png" class="mx-auto d-block" /></p>
+<p>사내에서 DevOps 및 MLOps 업무를 담당했으며, 기존 Docker기반으로 운영하던 사내 인프라 환경을 Kubernetes 환경으로 교체했습니다. 또한 기존에 사용되던 모델 배포 과정을 체계적으로 관리할 수 있도록 MLOps를 통해 관리할 수 있도록 구현했으며 아래와 같은 일들을 경험했습니다.</p>
 
-<p>1-1) Seq2Seq의 Encoder 부분에서 각 단어마다 Hidden state가 나오며, 최종 출력단에 Context Vector가 나옵니다.<br /> 
-1-2) 첫번째 Decoder는 “<START>"라는 입력과, 최종 출력단에 Context Vector를  Hidden state로 입력 받으며, 자신도 Output(Hidden state)을 출력합니다.</START></p>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
 
-<blockquote>
-  <p>여기까진 Seq2Seq의 Mechanism 입니다.</p>
-</blockquote>
-
-<p><br /></p>
-<h4 id="2-score-each-hidden-state">[2] Score each hidden state</h4>
-<p><img width="958" alt="attention_img_3" src="https://user-images.githubusercontent.com/68190553/141924521-cfe9da87-1916-4b63-88e5-d7b1b06e8c43.png" class="mx-auto d-block" /></p>
-
-<p>2) 첫번째 Decoder의 Output(Hidden state)과 Encoder 부분에서 각 단어마다 Hidden state들을 dot product합니다.(이 값들을 <strong>“Attention score”</strong>라 합니다.)</p>
-
-<p><br /></p>
-<h4 id="3-softmax-the-scores">[3] Softmax the scores</h4>
-<p><img width="842" alt="attention_img_4" src="https://user-images.githubusercontent.com/68190553/141925277-a6d6160b-4d2d-4936-ac51-10448dfd7460.png" class="mx-auto d-block" /></p>
-
-<p>3) 그리고 Attention score를 Softmax 취해줌으로써, Encoder 부분에서 각 단어마다 Hidden state들이 0~1사이 값을 가지게 됩니다.
-   (첫번째 Decoder의 Output(Hidden state)과 연관 있을시 높은 점수를 얻습니다.)</p>
-
-<p><br /></p>
-<h4 id="4-sum-up-the-weighted-vectors">[4] Sum up the weighted vectors</h4>
-<p><img width="926" alt="attention_img_5" src="https://user-images.githubusercontent.com/68190553/141924653-6a52712d-4e39-4724-a6c0-02bafae5dab0.png" class="mx-auto d-block" /></p>
-
-<p>4) 그리고 Softmax를 거친 Attention score과 Encoder 부분에서 각 단어마다 Hidden state를 곱한후, 더합니다.(weight sum)</p>
-
-<p><br /></p>
-<h4 id="5-concatnation-with-decoders-hidden-state-and-weighted-vectors">[5] Concatnation with Decoders Hidden state and weighted vectors</h4>
-<p>5-1) weight sum한 값과 첫번째 Decoder의 Output(Hidden state)을 Concatnation해줍니다.<br />
-5-2) Concatnation한 값을 Layer넘겨 첫번째 Decoder 최종 Output 예측하고, 두번째 Decoder의 입력으로 값을 넘깁니다.</p>
-
-<p class="box-warning">결국 Attention 은 위에서 언급한 것과 같이 Decoder에서 출력 단어를 예측하는 시점에서 예측해야할 단어와 연관이 있는 입력 단어 부분을 좀 더 집중하는 Mechanism이라는 것을 알수있죠.</p>
-
-<hr />
-
-<h3 id="performance">Performance</h3>
-<p><img src="https://user-images.githubusercontent.com/68190553/141936561-810fb691-8665-4a37-aa94-5c1e92866443.png" alt="attention_img_6" class="mx-auto d-block" />
-어텐션 메커니즘의 유용한 속성은 해석이 가능하다는 점입니다. 입력 시퀀스의 특정 인코더 출력에 가중치를 부여하는 데 사용되므로 각 시간 단계에서 네트워크가 가장 집중되는 위치를 파악할 수 있습니다. <br /> <br />
-이상으로 Attention Mechanism에 대한 설명을 마치겠습니다.<br /> <br /></p>
-
-<h6 id="reference">Reference</h6>
+<h4 id="인턴-생활-중-담당했던-업무">인턴 생활 중 담당했던 업무</h4>
+<h6 id="backend">Backend</h6>
 <ul>
-  <li>https://arxiv.org/abs/1409.0473</li>
-  <li>https://jalammar.github.io/illustrated-transformer/</li>
+  <li>서버 QA 기능 추가 및 SSO 서버 디버깅</li>
 </ul>
+
+<h6 id="devops">DevOps</h6>
+<ul>
+  <li>Kubernetes 환경 구축</li>
+  <li>Kubernetes 환경) CI/CD, Project Server, Private docker hub, External-DNS, self signed certificate, 등 구축 및 배포</li>
+  <li>개발 과정 및 사용법 문서화</li>
+</ul>
+
+<h6 id="mlops">MLOps</h6>
+<ul>
+  <li>Kubernetes 환경) Data Labeling Tool, Model Registry Server, Model Deploy Server, Model Pipeline Server 구축 및 배포</li>
+  <li>위 환경을 통해 REST API-based AI Server 구축</li>
+  <li>개발 과정 및 사용법 문서화</li>
+</ul>
+
+<h3 id="2-ai-보조강사">2) AI 보조강사</h3>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>회사 인턴을 진행하며 주말엔 AI 보조 강사를 진행했습니다. 주 강사분들의 강의 노하우를 간접적으로 습득하는 동시에 학생들의 AI 실습과 관련한 지도를 전박적으로 담당했습니다. 본 경험을 통해 교육자로서 학생들의 눈높이를 이해하고 수업을 고려해서 구성하는 등의 교육자로서의 자질을 배울 수 시간이었습니다.</p>
+
+<h3 id="3-군-복학">3) 군 복학</h3>
+<p>2021 ~ 2022 동안의 군 복무를 마치고 2023/03 에 군 복학을 했습니다. 복무기간동안의 열정 가득한 마음 가짐을 갖고 2분기를 맞이합니다.</p>
+
+<p><br /></p>
+
+<h2 id="2분기-4월6월">2분기 [4월~6월]</h2>
+<h3 id="1-학교-생활">1) 학교 생활</h3>
+<p>성적 향상을 목표로 학교 생활을 했습니다. 더하여 BRAIN LAB 학부연구생 활동과 3, 4분기에 언급될 국제봉사, 해외여행 그리고 2023 관광데이터 활용 공모전을 준비해왔던 분기였습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>해당 분기의 목표 달성을 위해 열심히 준비해 만족스러운 성적을 달성할 수 있었습니다.</p>
+
+<p><br /></p>
+
+<h2 id="3분기-7월9월">3분기 [7월~9월]</h2>
+<h3 id="1-2023-제19기-국제봉사단">1) 2023 제19기 국제봉사단</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>국제 봉사활동을 통해 크고 작음과 좋고 싫음 등, 여러 섬세한 감정을 느끼며 평소에 느끼지 못했던 감정들을 마주하는 경험을 할 수 있었습니다. 평소 꿈을 달성하는 것이 행복해지는 길이라 생각하며 살아왔지만, 정작 아이들이 뛰어놀고 장난치는 것에서 느껴지는 행복감을 보고 사소한 것들에도 행복이 존재함을 상기할 수 있었습니다.</p>
+
+<p>감사함을 배울 수 있었습니다. 봉사 이전 현재의 삶이 만족스럽지 못해서 무작정 더 나아가야겠다는 생각만을 해왔지만, 더 열악한 아이들의 환경을 직접 경험해 보니 지금의 삶이 당연한 것이 아님을 깨달을 수 있었습니다. 앞으론 사소한 것에도 감사함을 느끼고 그것을 조금이나마 베풀며 살아갈 것입니다.</p>
+
+<h3 id="2-2023-해외-문화탐방">2) 2023 해외 문화탐방</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>스페인 산티아고 순례길을 걷는 것을 목적으로 유럽 여행을 다녀왔습니다. 국내와 내가 경험해본 것들이 최고일거라고 생각했던 편협한 생각 속에서 깨어날 수 있었던 아주 소중한 경험이었습니다.</p>
+
+<p>유럽의 자유로운 분위기와 남들의 시선 속에서 억압되지 않는 여유있는 분위기를 직접 경험하며, 사회속에 맞춰 살아가려던 자신에게 반성할 수 있었습니다. 순례길 탐방과 여행 중 자아 성찰과 ‘긍정’의 중요성을 깨달을 수 있으며 마음가짐을 되잡을 수 있었던 값진 경험이었습니다.</p>
+
+<h3 id="3-ai-캠프-주강사">3) AI 캠프 주강사</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>국제 봉사와 해외 여행이 끝난 후, 이천 부원 고등학교에서 AI 주강사로서 강의를 진행했습니다. AI 이론부터 실습까지의 교육을 담당하고 학생들과 직접 교류하며 지식을 전달하는 과정 속에서 학생들의 눈높이를 이해하고 좋은 교육에 대해 생각해나갈 수 있었던 기회였습니다.</p>
+
+<p><br /></p>
+
+<h2 id="4분기-10월12월">4분기 [10월~12월]</h2>
+<h3 id="1-학교-생활-1">1) 학교 생활</h3>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>2학기 학교 생활 목표도 마찬가지로 성적 유지였습니다. 3학년 과목이라 프로젝트도 많고 내용도 심화적이어서 수업을 따라가기 버거웠습니다. 더하여 교내 근로, 파이썬 데이터 분석 멘토링, 연구실 생활까지 병행하여 여유가 많이 부족했지만 포기하지 않고 끝까지 노력해서 만족스러운 결과를 얻을 수 있었습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>또한 졸업 작품 프로젝트를 통해 이를 연구, 실험, 개발하고 최종적으로 포스터화를 진행했습니다. 2024년도엔 이후 이를 논문화하는 것을 목표로 노력하고자 합니다.</p>
+
+<h3 id="2-2023-관광데이터-활용-공모전-수상">2) 2023 관광데이터 활용 공모전 수상</h3>
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>반년 가까이 준비했던 공모전에서 우수상을 수상했습니다. 
+본 프로젝트의 목적은 여행지에서의 옷울 추천해주는 어플리케이션 개발 및 배포입니다. 사용자 정보, 목적과 최신 SNS 피드를 바탕으로 유행하는 옷을 분석하여 여행지 내에서의 옷을 추천해주는 AI와 AI 서비스를 개발했습니다.</p>
+
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/68190553/210046553-fcb43336-b3ee-4a16-a5c7-1cb354800102.png" width="90%" />
+</div>
+
+<p>특히 모델 학습을 위한 handcraft한 데이터 라벨링의 한계가 존재하기 때문에 Large Model들로 임의의 pusedo labeling을 진행하는 등의 시도를 했습니다. 단순히 서비스에 AI를 적용하는 것뿐이 아닌 실무처럼 AI를 효율적이고 실용적으로 적용해보고자 노력했습니다.</p>
+
+<h3 id="3-ai-도메인-결정">3) AI 도메인 결정</h3>
+<p>Brain Computer Interface의 상상만으로 일상을 대체할 수 있다는 매력에 생체신호처리 분야의 BRAIN LAB 학부연구생으로 연구를 진행했었습니다. 하지만 이를 실험하고 개발하는 과정 속에서 적성과의 거리감을 느낄 수 있었습니다.</p>
+
+<p>또한 제가 원하는 것은 AI를 개발하고 이를 서비스하는 것이었지만, 연구를 진행하며 BCI는 상용화까지 오랜 시간이 요구될 것이라 판단했습니다. 따라서 AI를 상용화 하는 것과 밀접하고 평소 관심 있던 인간의 언어를 다루는 NLP 기술 분야로 AI 도메인을 결정했습니다.</p>
+
+<p>교수님의 감사한 지도를 통해 정말 많이 배우고 성장했으며, 연구생들과 함께 성장하던 과정 속의 추억에 고마움을 전달하며, 교수님과의 상담 후에 BCI연구를 병행하며, NLP를 다루는 연구실에서 학부연구생을 진행하기로 결정했습니다.</p>
+
+<hr />
+
+<h2 id="나에게-2023년도란">나에게 2023년도란?</h2>
+<p>도전적이고</p>
+
+<p>도전에 겁먹고 있었음</p>
+
 
       </article>
 
@@ -712,7 +792,7 @@ Attention은 “집중”라는 의미를 지니고있습니다. Attention Mecha
         <div class="blog-tags">
           <span>Tags:</span>
           
-            <a href="/tags#Natural Language Processing">Natural Language Processing</a>
+            <a href="/tags#Diary">Diary</a>
           
         </div>
       
@@ -731,13 +811,9 @@ Attention은 “집중”라는 의미를 지니고있습니다. Attention Mecha
       <ul class="pagination blog-pager">
         
         <li class="page-item previous">
-          <a class="page-link" href="/2021-11-15-efficientdet/" data-toggle="tooltip" data-placement="top" title="Introduce to EfficientDet">&larr; Previous Post</a>
+          <a class="page-link" href="/2022-12-31-2022end/" data-toggle="tooltip" data-placement="top" title="2022년 한 해를 돌아보는 회고록">&larr; Previous Post</a>
         </li>
         
-        
-        <li class="page-item next">
-          <a class="page-link" href="/2021-11-17-transformer/" data-toggle="tooltip" data-placement="top" title="Introduce to Transformer">Next Post &rarr;</a>
-        </li>
         
       </ul>
       
